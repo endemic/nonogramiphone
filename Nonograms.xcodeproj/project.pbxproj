@@ -14,7 +14,6 @@
 		38F17BA4115A9EAC007CAB05 /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */; };
 		38F17BA7115AA305007CAB05 /* creditsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F17BA6115AA305007CAB05 /* creditsBackground.png */; };
 		38F17BEB115AA774007CAB05 /* LevelSelectScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BEA115AA774007CAB05 /* LevelSelectScene.m */; };
-		38F17BEE115AB35C007CAB05 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BED115AB35C007CAB05 /* Button.m */; };
 		502BC35D1120837500A0B92A /* CDAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC3551120837500A0B92A /* CDAudioManager.h */; };
 		502BC35E1120837500A0B92A /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 502BC3561120837500A0B92A /* CDAudioManager.m */; };
 		502BC35F1120837500A0B92A /* CDConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 502BC3571120837500A0B92A /* CDConfig.h */; };
@@ -242,8 +241,6 @@
 		38F17BA6115AA305007CAB05 /* creditsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditsBackground.png; sourceTree = "<group>"; };
 		38F17BE9115AA774007CAB05 /* LevelSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectScene.h; sourceTree = "<group>"; };
 		38F17BEA115AA774007CAB05 /* LevelSelectScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSelectScene.m; sourceTree = "<group>"; };
-		38F17BEC115AB35C007CAB05 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
-		38F17BED115AB35C007CAB05 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		502BC3551120837500A0B92A /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
 		502BC3561120837500A0B92A /* CDAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAudioManager.m; sourceTree = "<group>"; };
 		502BC3571120837500A0B92A /* CDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDConfig.h; sourceTree = "<group>"; };
@@ -538,8 +535,6 @@
 				38F17BA3115A9EAC007CAB05 /* CreditsScene.m */,
 				38F17BE9115AA774007CAB05 /* LevelSelectScene.h */,
 				38F17BEA115AA774007CAB05 /* LevelSelectScene.m */,
-				38F17BEC115AB35C007CAB05 /* Button.h */,
-				38F17BED115AB35C007CAB05 /* Button.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1009,7 +1004,6 @@
 				38F17B6A115A886E007CAB05 /* TitleScene.m in Sources */,
 				38F17BA4115A9EAC007CAB05 /* CreditsScene.m in Sources */,
 				38F17BEB115AA774007CAB05 /* LevelSelectScene.m in Sources */,
-				38F17BEE115AB35C007CAB05 /* Button.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

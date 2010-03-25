@@ -11,6 +11,11 @@
 @interface LevelSelectScene : CCScene { }
 @end
 
-@interface LevelSelectLayer : CCLayer { }
+@interface LevelSelectLayer : CCLayer 
+{
+	//NSMutableArray *levelDisplayList;
+	CCSprite *levelDisplayList[15];
+	int currentlyDisplayedLevel;
+}
 @end
 
