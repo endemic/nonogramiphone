@@ -17,5 +17,10 @@
 	CCSprite *levelDisplayList[15];
 	int currentlyDisplayedLevel;
 }
+
+-(void) showNextLevel: (id)sender;
+-(void) showPreviousLevel: (id)sender;
+-(void) playLevel: (id)sender;
+
 @end
 

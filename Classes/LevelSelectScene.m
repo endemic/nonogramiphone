@@ -7,6 +7,7 @@
 //
 
 #import "LevelSelectScene.h"
+#import "PlayScene.h"
 
 // Set up level select scene
 @implementation LevelSelectScene
@@ -42,19 +43,24 @@
 		[nextButtonMenu setPosition:ccp(300, 240)];
 		[self addChild:nextButtonMenu z:1];
 		
+		// Set up "play" button
+		CCMenuItem *playButton = [CCMenuItemFont itemFromString:@"Play" target: self selector: @selector(playLevel:)];
+		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, nil];
+		[playButtonMenu setPosition:ccp(160, 80)];
+		[self addChild:playButtonMenu z:1];
+		
 		// Set up sprites that show level details
 		for (int i = 0; i < 15; i++) 
 		{
 			CCSprite *s = [CCSprite spriteWithFile:@"Icon.png"];
 			if (i == 0)
-				[s setPosition:ccp(160, 260)];	// First one
+				[s setPosition:ccp(160, 260)];	// First one is in the middle of the screen
 			else
 				[s setPosition:ccp(350, 260)];	// Offscreen for the rest
 
 			[self addChild:s];
 			
 			levelDisplayList[i] = s;
-			//[levelDisplayList addObject:s];
 		}
 		
 		currentlyDisplayedLevel = 0;
@@ -82,6 +88,12 @@
 		currentlyDisplayedLevel++;
 		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 260)]];
 	}
+}
+
+-(void) playLevel: (id)sender
+{
+	NSLog(@"Play level");
+	[[CCDirector sharedDirector] replaceScene:[PlayScene node]];
 }
 
 @end
