@@ -34,18 +34,31 @@
 {
 	if ((self = [super init])) 
 	{
+		// Set touch enabled
 		[self setIsTouchEnabled:YES];
 		
+		// Set the width of puzzle blocks
+		blockSize = 15;
+		
 		// Init horizontal "cursor" highlight
-		horizontalHighlight = [CCSprite spriteWithFile:@"verticalHighlight.png"];
-		[horizontalHighlight setPosition:ccp(160, 240)];
-		[horizontalHighlight setRotation:90.0];
+		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
+		[horizontalHighlight setPosition:ccp(160, 228)];
 		[self addChild:horizontalHighlight z:3];
 		
 		// Init vertical "cursor" highlight
-		verticalHighlight = [CCSprite spriteWithFile:@"verticalHighlight.png"];
+		verticalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
 		[verticalHighlight setPosition:ccp(160, 240)];
+		[verticalHighlight setRotation:90.0];
 		[self addChild:verticalHighlight z:3];
+		
+		// A record of where the player's finger is at. The highlights & "cursor" get their values from this via rounding
+		fingerPoint = ccp(160, 240);
+		
+		// Testing labels
+		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:8.0];
+		[testLabel setColor:ccc3(0, 0, 0)];
+		[testLabel setPosition:ccp(92, 273)];
+		[self addChild:testLabel z:3];
 	}
 	return self;
 }
@@ -59,8 +72,8 @@
 	
 	if (touch) 
 	{
-		touchStart = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
-		NSLog(@"Touch began at (%f, %f)", touchStart.x, touchStart.y);
+		previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+		NSLog(@"Touch began at (%f, %f)", previousPoint.x, previousPoint.y);
 	}
 }
 
@@ -75,16 +88,17 @@
 		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
 		CGPoint convertedPoint = [[CCDirector sharedDirector] convertToGL:location];
 		
-		convertedPoint.x = touchStart.x - floor(convertedPoint.x / 15) * 15;
-		convertedPoint.y = touchStart.y - floor(convertedPoint.y / 15) * 15;
+		// Gets relative movement
+		CGPoint relativePoint = ccp(convertedPoint.x - previousPoint.x, convertedPoint.y - previousPoint.y);
+
+		NSLog(@"Moving relatively: (%f, %f)", relativePoint.x, relativePoint.y);
 		
-		NSLog(@"Moving relative to (%f, %f)", convertedPoint.x, convertedPoint.y);
+		fingerPoint = ccpAdd(fingerPoint, relativePoint);
 		
-		CGPoint newHorizontalPosition = ccp(160, horizontalHighlight.position.y + convertedPoint.y);
-		CGPoint newVerticalPosition = ccp(verticalHighlight.position.x + convertedPoint.x, 240);
+		[horizontalHighlight setPosition:ccp(160, floor(fingerPoint.y / blockSize) * blockSize)];
+		[verticalHighlight setPosition:ccp(floor(fingerPoint.x / blockSize) * blockSize, 240)];
 		
-		[verticalHighlight setPosition:newVerticalPosition];
-		[horizontalHighlight setPosition:newHorizontalPosition];
+		previousPoint = convertedPoint;
 	}
 }
 

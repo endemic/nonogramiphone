@@ -14,7 +14,8 @@
 @interface PlayLayer : CCLayer 
 {
 	CCSprite *horizontalHighlight, *verticalHighlight;
-	CGPoint touchStart;
+	CGPoint previousPoint, fingerPoint;
+	int blockSize;
 }
 
 @end

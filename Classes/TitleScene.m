@@ -37,6 +37,7 @@
 		[self addChild:background z:0];													// Add background with lowest z-index
 		
 		// Set up buttons
+		[CCMenuItemFont setFontName:@"slkscr.ttf"];
 		CCMenuItem *startButton = [CCMenuItemFont itemFromString:@"Start" target:self selector:@selector(goToLevelSelect:)];
 		CCMenuItem *tutorialButton = [CCMenuItemFont itemFromString:@"Tutorial" target:self selector:@selector(goToTutorial:)];
 		CCMenuItem *creditsButton = [CCMenuItemFont itemFromString:@"Credits" target:self selector:@selector(goToCredits:)];
