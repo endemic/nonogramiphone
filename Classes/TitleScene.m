@@ -51,7 +51,7 @@
 -(void) goToLevelSelect: (id)sender
 {
 	NSLog(@"Level select");
-	[[CCDirector sharedDirector] replaceScene:[LevelSelectScene node]];
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }
 
 -(void) goToTutorial: (id)sender
@@ -62,7 +62,11 @@
 -(void) goToCredits: (id)sender
 {
 	NSLog(@"Credits");
-	[[CCDirector sharedDirector] replaceScene:[CreditsScene node]];
+	//CreditsScene *scene = [CreditsScene node];
+	
+	//[[CCDirector sharedDirector] runScene:scene];
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[CreditsScene node]]];
+	//[[CCDirector sharedDirector] replaceScene:[CreditsScene node]];
 }
 
 @end
