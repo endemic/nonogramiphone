@@ -42,23 +42,28 @@
 		
 		// Init horizontal "cursor" highlight
 		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
-		[horizontalHighlight setPosition:ccp(160, 228)];
+		[horizontalHighlight setPosition:ccp(160, 227)];
 		[self addChild:horizontalHighlight z:3];
 		
 		// Init vertical "cursor" highlight
 		verticalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
-		[verticalHighlight setPosition:ccp(160, 240)];
+		[verticalHighlight setPosition:ccp(93, 240)];
 		[verticalHighlight setRotation:90.0];
 		[self addChild:verticalHighlight z:3];
 		
 		// A record of where the player's finger is at. The highlights & "cursor" get their values from this via rounding
-		fingerPoint = ccp(160, 240);
+		fingerPoint = ccp(93, 227);
 		
 		// Testing labels
 		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:8.0];
 		[testLabel setColor:ccc3(0, 0, 0)];
 		[testLabel setPosition:ccp(92, 273)];
 		[self addChild:testLabel z:3];
+		
+		CCBitmapFontAtlas *testAtlas = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"1\n2\n3" fntFile:@"slkscr.fnt"];
+		[testAtlas setPosition:ccp(110, 273)];
+		[self addChild:testAtlas z:3];
+		
 	}
 	return self;
 }
@@ -91,12 +96,18 @@
 		// Gets relative movement
 		CGPoint relativePoint = ccp(convertedPoint.x - previousPoint.x, convertedPoint.y - previousPoint.y);
 
-		NSLog(@"Moving relatively: (%f, %f)", relativePoint.x, relativePoint.y);
+		NSLog(@"Cursor position: (%f, %f)", floor(fingerPoint.y / blockSize) * blockSize + 2, floor(fingerPoint.x / blockSize) * blockSize + 3);
 		
 		fingerPoint = ccpAdd(fingerPoint, relativePoint);
 		
-		[horizontalHighlight setPosition:ccp(160, floor(fingerPoint.y / blockSize) * blockSize)];
-		[verticalHighlight setPosition:ccp(floor(fingerPoint.x / blockSize) * blockSize, 240)];
+		// 93, 227 - 303, 17
+		int newHorizontalPosition = floor(fingerPoint.y / blockSize) * blockSize + 2;
+		if (newHorizontalPosition >= 17 && newHorizontalPosition <= 227)
+			[horizontalHighlight setPosition:ccp(160, newHorizontalPosition)];
+		
+		int newVerticalPosition = floor(fingerPoint.x / blockSize) * blockSize + 3;
+		if (newVerticalPosition >= 93 && newVerticalPosition <= 303)
+			[verticalHighlight setPosition:ccp(newVerticalPosition, 240)];
 		
 		previousPoint = convertedPoint;
 	}

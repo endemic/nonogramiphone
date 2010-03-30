@@ -210,6 +210,8 @@
 		50F414F01069373D002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EC1069373D002A0D5E /* Default.png */; };
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
+		7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFD9B116208F200182B25 /* slkscr.fnt */; };
+		7D9BFDA411620A1400182B25 /* slkscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDA311620A1400182B25 /* slkscr.png */; };
 		7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */; };
 		7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */; };
 		7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10BF115CBCC90083D073 /* playBackground.png */; };
@@ -440,6 +442,8 @@
 		50F414ED1069373D002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D9BFD9B116208F200182B25 /* slkscr.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slkscr.fnt; sourceTree = "<group>"; };
+		7D9BFDA311620A1400182B25 /* slkscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slkscr.png; sourceTree = "<group>"; };
 		7DBB10AF115CB6780083D073 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		7DBB10B0115CB6780083D073 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
 		7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScene.h; sourceTree = "<group>"; };
@@ -575,6 +579,8 @@
 		38FF51E311613C3400FF0BC9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				7D9BFDA311620A1400182B25 /* slkscr.png */,
+				7D9BFD9B116208F200182B25 /* slkscr.fnt */,
 				38FF51E911613C5000FF0BC9 /* slkscr.ttf */,
 			);
 			name = Fonts;
@@ -1027,6 +1033,8 @@
 				7DBB10C4115CBE570083D073 /* verticalHighlight.png in Resources */,
 				38FF51EA11613C5000FF0BC9 /* slkscr.ttf in Resources */,
 				38FF52111161435E00FF0BC9 /* highlight.png in Resources */,
+				7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */,
+				7D9BFDA411620A1400182B25 /* slkscr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
