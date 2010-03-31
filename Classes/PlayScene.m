@@ -40,6 +40,9 @@
 		// Set the width of puzzle blocks
 		blockSize = 15;
 		
+		// A value to let us know if we should move the cursor or place a mark on the board
+		cursorMoved = FALSE;
+		
 		// Init horizontal "cursor" highlight
 		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
 		[horizontalHighlight setPosition:ccp(160, 227)];
@@ -55,16 +58,18 @@
 		fingerPoint = ccp(93, 227);
 		
 		// Testing labels
-		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:12.0];
+		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:8.0];
 		[testLabel setColor:ccc3(0, 0, 0)];
+		[testLabel.texture setAliasTexParameters];
 		[testLabel setPosition:ccp(92, 273)];
 		[self addChild:testLabel z:3];
 		
 		// Waahhh, can't do multi-line bitmap font aliases :(
 		// Check out this forum post for non-blurry text: http://www.cocos2d-iphone.org/forum/topic/2865#post-17718
-		CCBitmapFontAtlas *testAtlas = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"1\n2 \n 3" fntFile:@"slkscr.fnt"];
-		[testAtlas setPosition:ccp(110, 273)];
-		[self addChild:testAtlas z:3];
+		//CCBitmapFontAtlas *testAtlas = [CCBitmapFontAtlas bitmapFontAtlasWithString:@"1\n2 \n 3" fntFile:@"slkscr.fnt"];
+		//[testAtlas.textureAtlas.texture setAliasTexParameters];
+		//[testAtlas setPosition:ccp(110, 273)];
+		//[self addChild:testAtlas z:3];
 		
 		// Look into CGImage for loading level data
 		// CGImageGetBitsPerPixel / [CCSprite initWithCGImage:image]
@@ -81,8 +86,7 @@
 	
 	if (touch) 
 	{
-		previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
-		NSLog(@"Touch began at (%f, %f)", previousPoint.x, previousPoint.y);
+		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 	}
 }
 
@@ -100,18 +104,22 @@
 		// Gets relative movement
 		CGPoint relativePoint = ccp(convertedPoint.x - previousPoint.x, convertedPoint.y - previousPoint.y);
 
-		NSLog(@"Cursor position: (%f, %f)", floor(fingerPoint.y / blockSize) * blockSize + 2, floor(fingerPoint.x / blockSize) * blockSize + 3);
-		
 		fingerPoint = ccpAdd(fingerPoint, relativePoint);
 		
 		// 93, 227 - 303, 17
 		int newHorizontalPosition = floor(fingerPoint.y / blockSize) * blockSize + 2;
 		if (newHorizontalPosition >= 17 && newHorizontalPosition <= 227)
+		{
 			[horizontalHighlight setPosition:ccp(160, newHorizontalPosition)];
+			cursorMoved = TRUE;
+		}
 		
 		int newVerticalPosition = floor(fingerPoint.x / blockSize) * blockSize + 3;
 		if (newVerticalPosition >= 93 && newVerticalPosition <= 303)
+		{
 			[verticalHighlight setPosition:ccp(newVerticalPosition, 240)];
+			cursorMoved = TRUE;
+		}
 		
 		previousPoint = convertedPoint;
 	}
@@ -119,7 +127,13 @@
 
 -(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	NSLog(@"Touches ended");
+	if (!cursorMoved)
+	{
+		CCSprite *b = [CCSprite spriteWithFile:@"fillIcon.png"];
+		[b setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		[self addChild:b z:2];
+	}
+	cursorMoved = FALSE;
 }
 
 @end;

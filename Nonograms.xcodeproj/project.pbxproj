@@ -212,6 +212,8 @@
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
 		7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFD9B116208F200182B25 /* slkscr.fnt */; };
 		7D9BFDA411620A1400182B25 /* slkscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDA311620A1400182B25 /* slkscr.png */; };
+		7D9BFDEA116356B600182B25 /* fillIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDE8116356B600182B25 /* fillIcon.png */; };
+		7D9BFDEB116356B600182B25 /* markIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDE9116356B600182B25 /* markIcon.png */; };
 		7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */; };
 		7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */; };
 		7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10BF115CBCC90083D073 /* playBackground.png */; };
@@ -444,6 +446,8 @@
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D9BFD9B116208F200182B25 /* slkscr.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slkscr.fnt; sourceTree = "<group>"; };
 		7D9BFDA311620A1400182B25 /* slkscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slkscr.png; sourceTree = "<group>"; };
+		7D9BFDE8116356B600182B25 /* fillIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fillIcon.png; sourceTree = "<group>"; };
+		7D9BFDE9116356B600182B25 /* markIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markIcon.png; sourceTree = "<group>"; };
 		7DBB10AF115CB6780083D073 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		7DBB10B0115CB6780083D073 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
 		7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScene.h; sourceTree = "<group>"; };
@@ -566,6 +570,8 @@
 		38F17B6B115A9C70007CAB05 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7D9BFDE8116356B600182B25 /* fillIcon.png */,
+				7D9BFDE9116356B600182B25 /* markIcon.png */,
 				38FF52101161435E00FF0BC9 /* highlight.png */,
 				7DBB10C1115CBE570083D073 /* horizontalHighlight.png */,
 				7DBB10C2115CBE570083D073 /* verticalHighlight.png */,
@@ -1035,6 +1041,8 @@
 				38FF52111161435E00FF0BC9 /* highlight.png in Resources */,
 				7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */,
 				7D9BFDA411620A1400182B25 /* slkscr.png in Resources */,
+				7D9BFDEA116356B600182B25 /* fillIcon.png in Resources */,
+				7D9BFDEB116356B600182B25 /* markIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
