@@ -9,10 +9,24 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1F3B9A2D0EF2145700286867 /* NonogramsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B9A2B0EF2145700286867 /* NonogramsAppDelegate.m */; };
+		380CA11E11663E9D002B3E1C /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11611663E9D002B3E1C /* nextButton.png */; };
+		380CA11F11663E9D002B3E1C /* optionsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11711663E9D002B3E1C /* optionsButton.png */; };
+		380CA12011663E9D002B3E1C /* optionsButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11811663E9D002B3E1C /* optionsButtonOn.png */; };
+		380CA12111663E9D002B3E1C /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11911663E9D002B3E1C /* playButton.png */; };
+		380CA12211663E9D002B3E1C /* playButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11A11663E9D002B3E1C /* playButtonOn.png */; };
+		380CA12311663E9D002B3E1C /* prevButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11B11663E9D002B3E1C /* prevButton.png */; };
+		380CA12411663E9D002B3E1C /* tutorialButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11C11663E9D002B3E1C /* tutorialButton.png */; };
+		380CA12511663E9D002B3E1C /* tutorialButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA11D11663E9D002B3E1C /* tutorialButtonOn.png */; };
+		380CA13411664007002B3E1C /* OptionsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 380CA13311664007002B3E1C /* OptionsScene.m */; };
+		380CA1381166412B002B3E1C /* optionsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA1371166412B002B3E1C /* optionsBackground.png */; };
+		380CA13D116642A7002B3E1C /* defaultLevelPreview.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA13B116642A7002B3E1C /* defaultLevelPreview.png */; };
+		380CA13E116642A7002B3E1C /* levelSelectBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA13C116642A7002B3E1C /* levelSelectBackground.png */; };
+		380CA14311664400002B3E1C /* nextButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14111664400002B3E1C /* nextButtonOn.png */; };
+		380CA14411664400002B3E1C /* prevButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14211664400002B3E1C /* prevButtonOn.png */; };
+		380CA1F511667389002B3E1C /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 380CA1F411667389002B3E1C /* buttonPress.wav */; };
 		38F17B6A115A886E007CAB05 /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17B69115A886E007CAB05 /* TitleScene.m */; };
 		38F17B90115A9C7A007CAB05 /* titleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F17B8F115A9C7A007CAB05 /* titleBackground.png */; };
 		38F17BA4115A9EAC007CAB05 /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */; };
-		38F17BA7115AA305007CAB05 /* creditsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F17BA6115AA305007CAB05 /* creditsBackground.png */; };
 		38F17BEB115AA774007CAB05 /* LevelSelectScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BEA115AA774007CAB05 /* LevelSelectScene.m */; };
 		38FF51EA11613C5000FF0BC9 /* slkscr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38FF51E911613C5000FF0BC9 /* slkscr.ttf */; };
 		38FF52111161435E00FF0BC9 /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 38FF52101161435E00FF0BC9 /* highlight.png */; };
@@ -217,8 +231,6 @@
 		7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */; };
 		7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */; };
 		7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10BF115CBCC90083D073 /* playBackground.png */; };
-		7DBB10C3115CBE570083D073 /* horizontalHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10C1115CBE570083D073 /* horizontalHighlight.png */; };
-		7DBB10C4115CBE570083D073 /* verticalHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10C2115CBE570083D073 /* verticalHighlight.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -244,12 +256,27 @@
 		1F3B9A2C0EF2145700286867 /* NonogramsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NonogramsAppDelegate.h; path = Classes/NonogramsAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		1F3B9A820EF2151B00286867 /* Nonograms_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nonograms_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		380CA11611663E9D002B3E1C /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nextButton.png; path = Buttons/nextButton.png; sourceTree = "<group>"; };
+		380CA11711663E9D002B3E1C /* optionsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = optionsButton.png; path = Buttons/optionsButton.png; sourceTree = "<group>"; };
+		380CA11811663E9D002B3E1C /* optionsButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = optionsButtonOn.png; path = Buttons/optionsButtonOn.png; sourceTree = "<group>"; };
+		380CA11911663E9D002B3E1C /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playButton.png; path = Buttons/playButton.png; sourceTree = "<group>"; };
+		380CA11A11663E9D002B3E1C /* playButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playButtonOn.png; path = Buttons/playButtonOn.png; sourceTree = "<group>"; };
+		380CA11B11663E9D002B3E1C /* prevButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButton.png; path = Buttons/prevButton.png; sourceTree = "<group>"; };
+		380CA11C11663E9D002B3E1C /* tutorialButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorialButton.png; path = Buttons/tutorialButton.png; sourceTree = "<group>"; };
+		380CA11D11663E9D002B3E1C /* tutorialButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorialButtonOn.png; path = Buttons/tutorialButtonOn.png; sourceTree = "<group>"; };
+		380CA13211664007002B3E1C /* OptionsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsScene.h; sourceTree = "<group>"; };
+		380CA13311664007002B3E1C /* OptionsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsScene.m; sourceTree = "<group>"; };
+		380CA1371166412B002B3E1C /* optionsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsBackground.png; sourceTree = "<group>"; };
+		380CA13B116642A7002B3E1C /* defaultLevelPreview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultLevelPreview.png; sourceTree = "<group>"; };
+		380CA13C116642A7002B3E1C /* levelSelectBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelSelectBackground.png; sourceTree = "<group>"; };
+		380CA14111664400002B3E1C /* nextButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nextButtonOn.png; path = Buttons/nextButtonOn.png; sourceTree = "<group>"; };
+		380CA14211664400002B3E1C /* prevButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButtonOn.png; path = Buttons/prevButtonOn.png; sourceTree = "<group>"; };
+		380CA1F411667389002B3E1C /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = buttonPress.wav; path = Sounds/buttonPress.wav; sourceTree = "<group>"; };
 		38F17B68115A886E007CAB05 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		38F17B69115A886E007CAB05 /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
 		38F17B8F115A9C7A007CAB05 /* titleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleBackground.png; sourceTree = "<group>"; };
 		38F17BA2115A9EAC007CAB05 /* CreditsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsScene.h; sourceTree = "<group>"; };
 		38F17BA3115A9EAC007CAB05 /* CreditsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsScene.m; sourceTree = "<group>"; };
-		38F17BA6115AA305007CAB05 /* creditsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditsBackground.png; sourceTree = "<group>"; };
 		38F17BE9115AA774007CAB05 /* LevelSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectScene.h; sourceTree = "<group>"; };
 		38F17BEA115AA774007CAB05 /* LevelSelectScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelSelectScene.m; sourceTree = "<group>"; };
 		38FF51E911613C5000FF0BC9 /* slkscr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = slkscr.ttf; sourceTree = "<group>"; };
@@ -453,8 +480,6 @@
 		7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScene.h; sourceTree = "<group>"; };
 		7DBB10B5115CBAE90083D073 /* PlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayScene.m; sourceTree = "<group>"; };
 		7DBB10BF115CBCC90083D073 /* playBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playBackground.png; sourceTree = "<group>"; };
-		7DBB10C1115CBE570083D073 /* horizontalHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = horizontalHighlight.png; sourceTree = "<group>"; };
-		7DBB10C2115CBE570083D073 /* verticalHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = verticalHighlight.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -563,20 +588,48 @@
 				38F17BEA115AA774007CAB05 /* LevelSelectScene.m */,
 				7DBB10AF115CB6780083D073 /* TutorialScene.h */,
 				7DBB10B0115CB6780083D073 /* TutorialScene.m */,
+				380CA13211664007002B3E1C /* OptionsScene.h */,
+				380CA13311664007002B3E1C /* OptionsScene.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		380CA11511663E8F002B3E1C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				380CA14111664400002B3E1C /* nextButtonOn.png */,
+				380CA14211664400002B3E1C /* prevButtonOn.png */,
+				380CA11611663E9D002B3E1C /* nextButton.png */,
+				380CA11711663E9D002B3E1C /* optionsButton.png */,
+				380CA11811663E9D002B3E1C /* optionsButtonOn.png */,
+				380CA11911663E9D002B3E1C /* playButton.png */,
+				380CA11A11663E9D002B3E1C /* playButtonOn.png */,
+				380CA11B11663E9D002B3E1C /* prevButton.png */,
+				380CA11C11663E9D002B3E1C /* tutorialButton.png */,
+				380CA11D11663E9D002B3E1C /* tutorialButtonOn.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		380CA1F31166737D002B3E1C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				380CA1F411667389002B3E1C /* buttonPress.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		38F17B6B115A9C70007CAB05 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				380CA13B116642A7002B3E1C /* defaultLevelPreview.png */,
+				380CA13C116642A7002B3E1C /* levelSelectBackground.png */,
+				380CA1371166412B002B3E1C /* optionsBackground.png */,
+				380CA11511663E8F002B3E1C /* Buttons */,
 				7D9BFDE8116356B600182B25 /* fillIcon.png */,
 				7D9BFDE9116356B600182B25 /* markIcon.png */,
 				38FF52101161435E00FF0BC9 /* highlight.png */,
-				7DBB10C1115CBE570083D073 /* horizontalHighlight.png */,
-				7DBB10C2115CBE570083D073 /* verticalHighlight.png */,
 				7DBB10BF115CBCC90083D073 /* playBackground.png */,
-				38F17BA6115AA305007CAB05 /* creditsBackground.png */,
 				38F17B8F115A9C7A007CAB05 /* titleBackground.png */,
 			);
 			name = Images;
@@ -852,6 +905,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				380CA1F31166737D002B3E1C /* Sounds */,
 				38FF51E311613C3400FF0BC9 /* Fonts */,
 				38F17B6B115A9C70007CAB05 /* Images */,
 				50F414EC1069373D002A0D5E /* Default.png */,
@@ -1033,16 +1087,27 @@
 				50F414F11069373D002A0D5E /* fps_images.png in Resources */,
 				50F414F21069373D002A0D5E /* Icon.png in Resources */,
 				38F17B90115A9C7A007CAB05 /* titleBackground.png in Resources */,
-				38F17BA7115AA305007CAB05 /* creditsBackground.png in Resources */,
 				7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */,
-				7DBB10C3115CBE570083D073 /* horizontalHighlight.png in Resources */,
-				7DBB10C4115CBE570083D073 /* verticalHighlight.png in Resources */,
 				38FF51EA11613C5000FF0BC9 /* slkscr.ttf in Resources */,
 				38FF52111161435E00FF0BC9 /* highlight.png in Resources */,
 				7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */,
 				7D9BFDA411620A1400182B25 /* slkscr.png in Resources */,
 				7D9BFDEA116356B600182B25 /* fillIcon.png in Resources */,
 				7D9BFDEB116356B600182B25 /* markIcon.png in Resources */,
+				380CA11E11663E9D002B3E1C /* nextButton.png in Resources */,
+				380CA11F11663E9D002B3E1C /* optionsButton.png in Resources */,
+				380CA12011663E9D002B3E1C /* optionsButtonOn.png in Resources */,
+				380CA12111663E9D002B3E1C /* playButton.png in Resources */,
+				380CA12211663E9D002B3E1C /* playButtonOn.png in Resources */,
+				380CA12311663E9D002B3E1C /* prevButton.png in Resources */,
+				380CA12411663E9D002B3E1C /* tutorialButton.png in Resources */,
+				380CA12511663E9D002B3E1C /* tutorialButtonOn.png in Resources */,
+				380CA1381166412B002B3E1C /* optionsBackground.png in Resources */,
+				380CA13D116642A7002B3E1C /* defaultLevelPreview.png in Resources */,
+				380CA13E116642A7002B3E1C /* levelSelectBackground.png in Resources */,
+				380CA14311664400002B3E1C /* nextButtonOn.png in Resources */,
+				380CA14411664400002B3E1C /* prevButtonOn.png in Resources */,
+				380CA1F511667389002B3E1C /* buttonPress.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,6 +1125,7 @@
 				38F17BEB115AA774007CAB05 /* LevelSelectScene.m in Sources */,
 				7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */,
 				7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */,
+				380CA13411664007002B3E1C /* OptionsScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

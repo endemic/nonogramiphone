@@ -7,7 +7,7 @@
 //
 
 #import "TitleScene.h"
-#import "CreditsScene.h"
+#import "OptionsScene.h"
 #import "LevelSelectScene.h"
 
 @implementation TitleScene
@@ -37,13 +37,18 @@
 		[self addChild:background z:0];													// Add background with lowest z-index
 		
 		// Set up buttons
-		[CCMenuItemFont setFontName:@"slkscr.ttf"];
-		CCMenuItem *startButton = [CCMenuItemFont itemFromString:@"Start" target:self selector:@selector(goToLevelSelect:)];
-		CCMenuItem *tutorialButton = [CCMenuItemFont itemFromString:@"Tutorial" target:self selector:@selector(goToTutorial:)];
-		CCMenuItem *creditsButton = [CCMenuItemFont itemFromString:@"Credits" target:self selector:@selector(goToCredits:)];
+		CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" disabledImage:@"playButton.png" target:self selector:@selector(goToLevelSelect:)];
+		CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton.png"	selectedImage:@"tutorialButtonOn.png" disabledImage:@"tutorialButton.png" target:self selector:@selector(goToTutorial:)];
+		CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButtong.png" target:self selector:@selector(goToOptions:)];
 		
-		CCMenu *menu = [CCMenu menuWithItems:startButton, tutorialButton, creditsButton, nil];		// Create container menu object
+//		[CCMenuItemFont setFontName:@"slkscr.ttf"];
+//		CCMenuItem *startButton = [CCMenuItemFont itemFromString:@"Start" target:self selector:@selector(goToLevelSelect:)];
+//		CCMenuItem *tutorialButton = [CCMenuItemFont itemFromString:@"Tutorial" target:self selector:@selector(goToTutorial:)];
+//		CCMenuItem *creditsButton = [CCMenuItemFont itemFromString:@"Credits" target:self selector:@selector(goToCredits:)];
+		
+		CCMenu *menu = [CCMenu menuWithItems:playButton, tutorialButton, optionsButton, nil];		// Create container menu object
 		[menu alignItemsVertically];
+		[menu setPosition:ccp(160, 100)];
 		[self addChild:menu	z:1];
 	}
 	return self;
@@ -60,14 +65,12 @@
 	NSLog(@"Tutorial");
 }
 
--(void) goToCredits: (id)sender
+-(void) goToOptions: (id)sender
 {
-	NSLog(@"Credits");
-	//CreditsScene *scene = [CreditsScene node];
-	
-	//[[CCDirector sharedDirector] runScene:scene];
-	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[CreditsScene node]]];
-	//[[CCDirector sharedDirector] replaceScene:[CreditsScene node]];
+	NSLog(@"Options");
+	// Check this out: http://www.cocos2d-iphone.org/forum/topic/55
+	//[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[OptionsScene node]]];
 }
 
 @end

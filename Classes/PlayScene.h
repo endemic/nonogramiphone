@@ -17,6 +17,10 @@
 	CGPoint startPoint, previousPoint, fingerPoint;
 	int blockSize;
 	bool cursorMoved;
+	
+	// For timer calculation/display
+	int minutesLeft, secondsLeft;
+	CCLabel *minutesLeftLabel, *secondsLeftLabel;
 }
 
 @end

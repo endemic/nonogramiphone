@@ -15,7 +15,7 @@
 
 -(void) goToLevelSelect: (id)sender;
 -(void) goToTutorial: (id)sender;
--(void) goToCredits: (id)sender;
+-(void) goToOptions: (id)sender;
 
 @end
 
