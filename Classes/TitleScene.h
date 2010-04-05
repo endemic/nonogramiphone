@@ -7,6 +7,8 @@
 //
 
 #import "cocos2d.h"
+#import "CocosDenshion.h"
+#import "SimpleAudioEngine.h"
 
 @interface TitleScene : CCScene { }
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "cocos2d.h"
+#import "CocosDenshion.h"
+#import "SimpleAudioEngine.h"
+#import "LevelManager.h"
 
 @interface PlayScene : CCScene { }
 @end

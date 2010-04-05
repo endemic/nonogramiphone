@@ -8,6 +8,8 @@
 
 #import "NonogramsAppDelegate.h"
 #import "cocos2d.h"
+#import "CocosDenshion.h"
+#import "SimpleAudioEngine.h"
 #import "TitleScene.h"
 
 @implementation NonogramsAppDelegate
@@ -50,7 +52,12 @@
 	// create an openGL view inside a window
 	[[CCDirector sharedDirector] attachInView:window];	
 	[window makeKeyAndVisible];		
-		
+	
+	// Preload some SFX/muzak!
+	// Check this out: http://www.cocos2d-iphone.org/forum/topic/55
+	// To convert .wav files: afconvert -v -f WAVE -d LEI16 notworking.wav working.wav
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
+
 	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
 }
 

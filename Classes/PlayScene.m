@@ -94,6 +94,16 @@
 		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
+		
+		// Try out tile stuff
+		CCTMXTiledMap *map = [CCTMXTiledMap tiledMapWithTMXFile:@"test.tmx"];
+		CCTMXLayer *layer = [map layerNamed:@"Layer 1"];
+		NSLog(@"Tile GID at (20,0) is %d", [layer tileGIDAt:ccp(20, 0)]);
+		
+		[self addChild:map z:5];	// Doesn't seem to be working?
+		
+		// Level manager
+		NSLog(@"Current level: %d", [LevelManager sharedInstance].currentLevel);
 	}
 	return self;
 }
@@ -170,6 +180,9 @@
 			[verticalHighlight setPosition:ccp(newVerticalPosition, 200)];
 			cursorMoved = TRUE;
 		}
+		
+		//if (cursorMoved)
+		//	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 		
 		previousPoint = convertedPoint;
 	}

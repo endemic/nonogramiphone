@@ -24,6 +24,9 @@
 		380CA14311664400002B3E1C /* nextButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14111664400002B3E1C /* nextButtonOn.png */; };
 		380CA14411664400002B3E1C /* prevButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14211664400002B3E1C /* prevButtonOn.png */; };
 		380CA1F511667389002B3E1C /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 380CA1F411667389002B3E1C /* buttonPress.wav */; };
+		38EC2504116A7DF400358D1B /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2502116A7DF400358D1B /* test.tmx */; };
+		38EC2505116A7DF400358D1B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2503116A7DF400358D1B /* texture.png */; };
+		38EC252E116A861600358D1B /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EC252D116A861600358D1B /* LevelManager.m */; };
 		38F17B6A115A886E007CAB05 /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17B69115A886E007CAB05 /* TitleScene.m */; };
 		38F17B90115A9C7A007CAB05 /* titleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F17B8F115A9C7A007CAB05 /* titleBackground.png */; };
 		38F17BA4115A9EAC007CAB05 /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */; };
@@ -272,6 +275,10 @@
 		380CA14111664400002B3E1C /* nextButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nextButtonOn.png; path = Buttons/nextButtonOn.png; sourceTree = "<group>"; };
 		380CA14211664400002B3E1C /* prevButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButtonOn.png; path = Buttons/prevButtonOn.png; sourceTree = "<group>"; };
 		380CA1F411667389002B3E1C /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = buttonPress.wav; path = Sounds/buttonPress.wav; sourceTree = "<group>"; };
+		38EC2502116A7DF400358D1B /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.tmx; path = Maps/test.tmx; sourceTree = "<group>"; };
+		38EC2503116A7DF400358D1B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Maps/texture.png; sourceTree = "<group>"; };
+		38EC252C116A861600358D1B /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		38EC252D116A861600358D1B /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
 		38F17B68115A886E007CAB05 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		38F17B69115A886E007CAB05 /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
 		38F17B8F115A9C7A007CAB05 /* titleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleBackground.png; sourceTree = "<group>"; };
@@ -590,6 +597,8 @@
 				7DBB10B0115CB6780083D073 /* TutorialScene.m */,
 				380CA13211664007002B3E1C /* OptionsScene.h */,
 				380CA13311664007002B3E1C /* OptionsScene.m */,
+				38EC252C116A861600358D1B /* LevelManager.h */,
+				38EC252D116A861600358D1B /* LevelManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -617,6 +626,15 @@
 				380CA1F411667389002B3E1C /* buttonPress.wav */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		38EC2501116A7DE600358D1B /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				38EC2502116A7DF400358D1B /* test.tmx */,
+				38EC2503116A7DF400358D1B /* texture.png */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 		38F17B6B115A9C70007CAB05 /* Images */ = {
@@ -905,6 +923,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38EC2501116A7DE600358D1B /* Maps */,
 				380CA1F31166737D002B3E1C /* Sounds */,
 				38FF51E311613C3400FF0BC9 /* Fonts */,
 				38F17B6B115A9C70007CAB05 /* Images */,
@@ -1108,6 +1127,8 @@
 				380CA14311664400002B3E1C /* nextButtonOn.png in Resources */,
 				380CA14411664400002B3E1C /* prevButtonOn.png in Resources */,
 				380CA1F511667389002B3E1C /* buttonPress.wav in Resources */,
+				38EC2504116A7DF400358D1B /* test.tmx in Resources */,
+				38EC2505116A7DF400358D1B /* texture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1147,7 @@
 				7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */,
 				7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */,
 				380CA13411664007002B3E1C /* OptionsScene.m in Sources */,
+				38EC252E116A861600358D1B /* LevelManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
