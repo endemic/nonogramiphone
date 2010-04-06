@@ -8,6 +8,7 @@
 
 #import "LevelSelectScene.h"
 #import "PlayScene.h"
+#import "LevelManager.h"
 
 // Set up level select scene
 @implementation LevelSelectScene
@@ -79,6 +80,7 @@
 	NSLog(@"Show previous level");
 	if (currentlyDisplayedLevel > 0)
 	{
+		[LevelManager sharedInstance].currentLevel--;
 		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(440, 230)]];
 		currentlyDisplayedLevel--;
 		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 230)]];
@@ -90,6 +92,7 @@
 	NSLog(@"Show next level");
 	if (currentlyDisplayedLevel < 14)
 	{
+		[LevelManager sharedInstance].currentLevel++;
 		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(-120, 230)]];
 		currentlyDisplayedLevel++;
 		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 230)]];
