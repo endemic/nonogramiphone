@@ -24,6 +24,9 @@
 		380CA14311664400002B3E1C /* nextButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14111664400002B3E1C /* nextButtonOn.png */; };
 		380CA14411664400002B3E1C /* prevButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14211664400002B3E1C /* prevButtonOn.png */; };
 		380CA1F511667389002B3E1C /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 380CA1F411667389002B3E1C /* buttonPress.wav */; };
+		38D20732116CF0340096DC65 /* CCRadioMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D20731116CF0340096DC65 /* CCRadioMenu.m */; };
+		38D20736116CF0DA0096DC65 /* fillButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D20734116CF0DA0096DC65 /* fillButtonSelected.png */; };
+		38D20737116CF0DA0096DC65 /* markButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D20735116CF0DA0096DC65 /* markButtonSelected.png */; };
 		38EC2504116A7DF400358D1B /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2502116A7DF400358D1B /* test.tmx */; };
 		38EC2505116A7DF400358D1B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2503116A7DF400358D1B /* texture.png */; };
 		38EC252E116A861600358D1B /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EC252D116A861600358D1B /* LevelManager.m */; };
@@ -280,6 +283,10 @@
 		380CA14111664400002B3E1C /* nextButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nextButtonOn.png; path = Buttons/nextButtonOn.png; sourceTree = "<group>"; };
 		380CA14211664400002B3E1C /* prevButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButtonOn.png; path = Buttons/prevButtonOn.png; sourceTree = "<group>"; };
 		380CA1F411667389002B3E1C /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = buttonPress.wav; path = Sounds/buttonPress.wav; sourceTree = "<group>"; };
+		38D20730116CF0340096DC65 /* CCRadioMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCRadioMenu.h; sourceTree = "<group>"; };
+		38D20731116CF0340096DC65 /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
+		38D20734116CF0DA0096DC65 /* fillButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fillButtonSelected.png; path = Buttons/fillButtonSelected.png; sourceTree = "<group>"; };
+		38D20735116CF0DA0096DC65 /* markButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = markButtonSelected.png; path = Buttons/markButtonSelected.png; sourceTree = "<group>"; };
 		38EC2502116A7DF400358D1B /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.tmx; path = Maps/test.tmx; sourceTree = "<group>"; };
 		38EC2503116A7DF400358D1B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Maps/texture.png; sourceTree = "<group>"; };
 		38EC252C116A861600358D1B /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
@@ -593,6 +600,7 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				38D2072F116CF0340096DC65 /* CCRadioMenu */,
 				7DBB10B4115CBAE90083D073 /* PlayScene.h */,
 				7DBB10B5115CBAE90083D073 /* PlayScene.m */,
 				1F3B9A2C0EF2145700286867 /* NonogramsAppDelegate.h */,
@@ -616,6 +624,8 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				38D20734116CF0DA0096DC65 /* fillButtonSelected.png */,
+				38D20735116CF0DA0096DC65 /* markButtonSelected.png */,
 				38EC2631116BB69C00358D1B /* fillButton.png */,
 				38EC2632116BB69C00358D1B /* fillButtonOn.png */,
 				38EC2633116BB69C00358D1B /* markButton.png */,
@@ -640,6 +650,15 @@
 				380CA1F411667389002B3E1C /* buttonPress.wav */,
 			);
 			name = Sounds;
+			sourceTree = "<group>";
+		};
+		38D2072F116CF0340096DC65 /* CCRadioMenu */ = {
+			isa = PBXGroup;
+			children = (
+				38D20730116CF0340096DC65 /* CCRadioMenu.h */,
+				38D20731116CF0340096DC65 /* CCRadioMenu.m */,
+			);
+			path = CCRadioMenu;
 			sourceTree = "<group>";
 		};
 		38EC2501116A7DE600358D1B /* Maps */ = {
@@ -1149,6 +1168,8 @@
 				38EC2637116BB69C00358D1B /* markButton.png in Resources */,
 				38EC2638116BB69C00358D1B /* markButtonOn.png in Resources */,
 				38EC2657116BCE9500358D1B /* pixelTarget.png in Resources */,
+				38D20736116CF0DA0096DC65 /* fillButtonSelected.png in Resources */,
+				38D20737116CF0DA0096DC65 /* markButtonSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1189,7 @@
 				7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */,
 				380CA13411664007002B3E1C /* OptionsScene.m in Sources */,
 				38EC252E116A861600358D1B /* LevelManager.m in Sources */,
+				38D20732116CF0340096DC65 /* CCRadioMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

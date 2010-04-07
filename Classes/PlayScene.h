@@ -10,6 +10,7 @@
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
 #import "LevelManager.h"
+#import "CCRadioMenu.h"
 
 #define MARK 0
 #define FILL 1

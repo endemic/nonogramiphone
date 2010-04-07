@@ -275,8 +275,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>6</integer>
-									<integer>4</integer>
+									<integer>35</integer>
+									<integer>30</integer>
+									<integer>23</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -330,7 +331,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38D2072E116CD4E10096DC65</string>
+										<string>38D20746116CF21B0096DC65</string>
 										<key>history</key>
 										<array>
 											<string>38F17B92115A9C8F007CAB05</string>
@@ -341,7 +342,6 @@
 											<string>38F17C05115ABCAA007CAB05</string>
 											<string>38FF52671162689100FF0BC9</string>
 											<string>38FF528411626B3800FF0BC9</string>
-											<string>380CA10011663E2E002B3E1C</string>
 											<string>380CA1491166470A002B3E1C</string>
 											<string>380CA14B1166470A002B3E1C</string>
 											<string>380CA14C1166470A002B3E1C</string>
@@ -365,9 +365,11 @@
 											<string>38EC260D116B9F0F00358D1B</string>
 											<string>38EC2621116BB63600358D1B</string>
 											<string>38EC2672116BDADC00358D1B</string>
-											<string>38D206E5116CBC890096DC65</string>
 											<string>38D206F0116CBFF20096DC65</string>
-											<string>38D206F1116CBFF20096DC65</string>
+											<string>38D20739116CF0E60096DC65</string>
+											<string>38D2073A116CF0E60096DC65</string>
+											<string>38D2073C116CF0E60096DC65</string>
+											<string>38D2073D116CF0E60096DC65</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -426,6 +428,12 @@
 											<string>38D206EA116CBC890096DC65</string>
 											<string>38D206F2116CBFF20096DC65</string>
 											<string>38D206F3116CBFF20096DC65</string>
+											<string>38D2073E116CF0E60096DC65</string>
+											<string>38D2073F116CF0E60096DC65</string>
+											<string>38D20740116CF0E60096DC65</string>
+											<string>38D20741116CF0E60096DC65</string>
+											<string>38D20743116CF0E60096DC65</string>
+											<string>38D20744116CF0E60096DC65</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

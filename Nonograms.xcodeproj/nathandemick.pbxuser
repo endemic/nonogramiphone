@@ -114,6 +114,18 @@
 			38D2072A116CD3DF0096DC65 /* PBXTextBookmark */ = 38D2072A116CD3DF0096DC65 /* PBXTextBookmark */;
 			38D2072C116CD4BF0096DC65 /* PBXTextBookmark */ = 38D2072C116CD4BF0096DC65 /* PBXTextBookmark */;
 			38D2072E116CD4E10096DC65 /* PBXTextBookmark */ = 38D2072E116CD4E10096DC65 /* PBXTextBookmark */;
+			38D20739116CF0E60096DC65 /* PBXTextBookmark */ = 38D20739116CF0E60096DC65 /* PBXTextBookmark */;
+			38D2073A116CF0E60096DC65 /* PBXTextBookmark */ = 38D2073A116CF0E60096DC65 /* PBXTextBookmark */;
+			38D2073C116CF0E60096DC65 /* PBXTextBookmark */ = 38D2073C116CF0E60096DC65 /* PBXTextBookmark */;
+			38D2073D116CF0E60096DC65 /* PBXTextBookmark */ = 38D2073D116CF0E60096DC65 /* PBXTextBookmark */;
+			38D2073E116CF0E60096DC65 /* PBXTextBookmark */ = 38D2073E116CF0E60096DC65 /* PBXTextBookmark */;
+			38D2073F116CF0E60096DC65 /* PBXTextBookmark */ = 38D2073F116CF0E60096DC65 /* PBXTextBookmark */;
+			38D20740116CF0E60096DC65 /* PBXTextBookmark */ = 38D20740116CF0E60096DC65 /* PBXTextBookmark */;
+			38D20741116CF0E60096DC65 /* PBXTextBookmark */ = 38D20741116CF0E60096DC65 /* PBXTextBookmark */;
+			38D20743116CF0E60096DC65 /* PBXTextBookmark */ = 38D20743116CF0E60096DC65 /* PBXTextBookmark */;
+			38D20744116CF0E60096DC65 /* PBXTextBookmark */ = 38D20744116CF0E60096DC65 /* PBXTextBookmark */;
+			38D20745116CF0E60096DC65 /* PBXTextBookmark */ = 38D20745116CF0E60096DC65 /* PBXTextBookmark */;
+			38D20746116CF21B0096DC65 /* PBXTextBookmark */ = 38D20746116CF21B0096DC65 /* PBXTextBookmark */;
 			38EC24CC116A641A00358D1B = 38EC24CC116A641A00358D1B /* PBXTextBookmark */;
 			38EC24DD116A64BE00358D1B = 38EC24DD116A64BE00358D1B /* PBXTextBookmark */;
 			38EC24DE116A64BE00358D1B = 38EC24DE116A64BE00358D1B /* PBXTextBookmark */;
@@ -324,7 +336,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 108";
 		rLen = 0;
-		rLoc = 4390;
+		rLoc = 4423;
 		rType = 0;
 		vrLen = 1753;
 		vrLoc = 2998;
@@ -334,7 +346,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 108";
 		rLen = 0;
-		rLoc = 4390;
+		rLoc = 4423;
 		rType = 0;
 		vrLen = 1753;
 		vrLoc = 2998;
@@ -344,7 +356,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 32";
 		rLen = 0;
-		rLoc = 962;
+		rLoc = 986;
 		rType = 0;
 		vrLen = 867;
 		vrLoc = 0;
@@ -354,7 +366,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 108";
 		rLen = 0;
-		rLoc = 4390;
+		rLoc = 4423;
 		rType = 0;
 		vrLen = 2148;
 		vrLoc = 1863;
@@ -364,7 +376,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 108";
 		rLen = 0;
-		rLoc = 4390;
+		rLoc = 4423;
 		rType = 0;
 		vrLen = 2190;
 		vrLoc = 1821;
@@ -374,7 +386,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 32";
 		rLen = 0;
-		rLoc = 962;
+		rLoc = 986;
 		rType = 0;
 		vrLen = 867;
 		vrLoc = 0;
@@ -384,7 +396,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 138";
 		rLen = 0;
-		rLoc = 5399;
+		rLoc = 5432;
 		rType = 0;
 		vrLen = 1865;
 		vrLoc = 2695;
@@ -394,7 +406,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 36";
 		rLen = 0;
-		rLoc = 795;
+		rLoc = 819;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 0;
@@ -404,7 +416,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 116";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4810;
 		rType = 0;
 		vrLen = 1862;
 		vrLoc = 3060;
@@ -414,7 +426,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 116";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4810;
 		rType = 0;
 		vrLen = 1862;
 		vrLoc = 3060;
@@ -424,7 +436,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 35";
 		rLen = 15;
-		rLoc = 756;
+		rLoc = 780;
 		rType = 0;
 		vrLen = 1161;
 		vrLoc = 0;
@@ -434,7 +446,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 116";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4810;
 		rType = 0;
 		vrLen = 1862;
 		vrLoc = 3060;
@@ -444,7 +456,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 36";
 		rLen = 0;
-		rLoc = 795;
+		rLoc = 819;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 0;
@@ -454,7 +466,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 116";
 		rLen = 0;
-		rLoc = 4777;
+		rLoc = 4810;
 		rType = 0;
 		vrLen = 2748;
 		vrLoc = 971;
@@ -464,7 +476,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 106";
 		rLen = 0;
-		rLoc = 4001;
+		rLoc = 4034;
 		rType = 0;
 		vrLen = 2968;
 		vrLoc = 971;
@@ -484,7 +496,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 158";
 		rLen = 7;
-		rLoc = 5453;
+		rLoc = 5486;
 		rType = 0;
 		vrLen = 2119;
 		vrLoc = 4560;
@@ -494,7 +506,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 158";
 		rLen = 7;
-		rLoc = 5453;
+		rLoc = 5486;
 		rType = 0;
 		vrLen = 2119;
 		vrLoc = 4560;
@@ -514,7 +526,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 167";
 		rLen = 0;
-		rLoc = 5903;
+		rLoc = 5936;
 		rType = 0;
 		vrLen = 2123;
 		vrLoc = 4560;
@@ -524,7 +536,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 156";
 		rLen = 0;
-		rLoc = 5367;
+		rLoc = 5400;
 		rType = 0;
 		vrLen = 1870;
 		vrLoc = 4025;
@@ -534,7 +546,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 90";
 		rLen = 0;
-		rLoc = 3432;
+		rLoc = 3465;
 		rType = 0;
 		vrLen = 2262;
 		vrLoc = 2591;
@@ -544,7 +556,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 91";
 		rLen = 0;
-		rLoc = 3576;
+		rLoc = 3609;
 		rType = 0;
 		vrLen = 2262;
 		vrLoc = 2591;
@@ -554,7 +566,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 84";
 		rLen = 0;
-		rLoc = 3094;
+		rLoc = 3127;
 		rType = 0;
 		vrLen = 2263;
 		vrLoc = 2591;
@@ -564,7 +576,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 85";
 		rLen = 0;
-		rLoc = 3228;
+		rLoc = 3261;
 		rType = 0;
 		vrLen = 2263;
 		vrLoc = 2591;
@@ -574,7 +586,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 138";
 		rLen = 0;
-		rLoc = 4916;
+		rLoc = 4949;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 3566;
@@ -584,7 +596,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 143";
 		rLen = 0;
-		rLoc = 5077;
+		rLoc = 5110;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 3566;
@@ -594,7 +606,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 135";
 		rLen = 0;
-		rLoc = 4861;
+		rLoc = 4894;
 		rType = 0;
 		vrLen = 1797;
 		vrLoc = 3738;
@@ -604,7 +616,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 127";
 		rLen = 0;
-		rLoc = 4629;
+		rLoc = 4662;
 		rType = 0;
 		vrLen = 1850;
 		vrLoc = 3738;
@@ -614,7 +626,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 82";
 		rLen = 0;
-		rLoc = 2852;
+		rLoc = 2885;
 		rType = 0;
 		vrLen = 2616;
 		vrLoc = 2169;
@@ -624,7 +636,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 131";
 		rLen = 0;
-		rLoc = 4678;
+		rLoc = 4711;
 		rType = 0;
 		vrLen = 1747;
 		vrLoc = 3990;
@@ -634,7 +646,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 227";
 		rLen = 0;
-		rLoc = 7897;
+		rLoc = 7930;
 		rType = 0;
 		vrLen = 1720;
 		vrLoc = 6498;
@@ -644,7 +656,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 167";
 		rLen = 27;
-		rLoc = 5649;
+		rLoc = 5682;
 		rType = 0;
 		vrLen = 1763;
 		vrLoc = 4203;
@@ -654,7 +666,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 167";
 		rLen = 0;
-		rLoc = 5610;
+		rLoc = 5643;
 		rType = 0;
 		vrLen = 1723;
 		vrLoc = 4203;
@@ -664,7 +676,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 230";
 		rLen = 0;
-		rLoc = 7729;
+		rLoc = 7762;
 		rType = 0;
 		vrLen = 2024;
 		vrLoc = 6341;
@@ -674,7 +686,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 94";
 		rLen = 0;
-		rLoc = 3529;
+		rLoc = 3562;
 		rType = 0;
 		vrLen = 2470;
 		vrLoc = 2414;
@@ -684,7 +696,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 94";
 		rLen = 0;
-		rLoc = 3529;
+		rLoc = 3562;
 		rType = 0;
 		vrLen = 2468;
 		vrLoc = 2414;
@@ -694,7 +706,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 89";
 		rLen = 0;
-		rLoc = 3223;
+		rLoc = 3256;
 		rType = 0;
 		vrLen = 2480;
 		vrLoc = 2414;
@@ -704,7 +716,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 94";
 		rLen = 0;
-		rLoc = 3529;
+		rLoc = 3562;
 		rType = 0;
 		vrLen = 2470;
 		vrLoc = 2414;
@@ -714,7 +726,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 174";
 		rLen = 0;
-		rLoc = 5906;
+		rLoc = 5939;
 		rType = 0;
 		vrLen = 1869;
 		vrLoc = 4679;
@@ -724,7 +736,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 169";
 		rLen = 0;
-		rLoc = 5875;
+		rLoc = 5908;
 		rType = 0;
 		vrLen = 1867;
 		vrLoc = 4679;
@@ -734,7 +746,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 169";
 		rLen = 0;
-		rLoc = 5832;
+		rLoc = 5865;
 		rType = 0;
 		vrLen = 2039;
 		vrLoc = 4148;
@@ -744,7 +756,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 169";
 		rLen = 0;
-		rLoc = 5869;
+		rLoc = 5902;
 		rType = 0;
 		vrLen = 1992;
 		vrLoc = 4148;
@@ -754,7 +766,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 169";
 		rLen = 0;
-		rLoc = 5874;
+		rLoc = 5907;
 		rType = 0;
 		vrLen = 1961;
 		vrLoc = 4148;
@@ -764,10 +776,142 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 169";
 		rLen = 0;
-		rLoc = 5874;
+		rLoc = 5907;
 		rType = 0;
 		vrLen = 1961;
 		vrLoc = 4148;
+	};
+	38D20739116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 50D3B03811498A370002F919 /* CCMenuItem.m */;
+		name = "CCMenuItem.m: 420";
+		rLen = 0;
+		rLoc = 9446;
+		rType = 0;
+		vrLen = 2015;
+		vrLoc = 9218;
+	};
+	38D2073A116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38D2073B116CF0E60096DC65 /* CCRadioMenu.m */;
+		name = "CCRadioMenu.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1708;
+		vrLoc = 374;
+	};
+	38D2073B116CF0E60096DC65 /* CCRadioMenu.m */ = {
+		isa = PBXFileReference;
+		name = CCRadioMenu.m;
+		path = /Users/nathandemick/Downloads/CCRadioMenu/CCRadioMenu.m;
+		sourceTree = "<absolute>";
+	};
+	38D2073C116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
+		name = "PlayScene.h: 13";
+		rLen = 0;
+		rLoc = 256;
+		rType = 0;
+		vrLen = 1213;
+		vrLoc = 0;
+	};
+	38D2073D116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 152";
+		rLen = 0;
+		rLoc = 5181;
+		rType = 0;
+		vrLen = 1988;
+		vrLoc = 0;
+	};
+	38D2073E116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 59";
+		rLen = 15;
+		rLoc = 1326;
+		rType = 0;
+		vrLen = 2924;
+		vrLoc = 502;
+	};
+	38D2073F116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 50D3B03811498A370002F919 /* CCMenuItem.m */;
+		name = "CCMenuItem.m: 420";
+		rLen = 0;
+		rLoc = 9446;
+		rType = 0;
+		vrLen = 2015;
+		vrLoc = 9218;
+	};
+	38D20740116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 59";
+		rLen = 15;
+		rLoc = 1326;
+		rType = 0;
+		vrLen = 2941;
+		vrLoc = 502;
+	};
+	38D20741116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38D20742116CF0E60096DC65 /* CCRadioMenu.m */;
+		name = "CCRadioMenu.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1708;
+		vrLoc = 374;
+	};
+	38D20742116CF0E60096DC65 /* CCRadioMenu.m */ = {
+		isa = PBXFileReference;
+		name = CCRadioMenu.m;
+		path = /Users/nathandemick/Downloads/CCRadioMenu/CCRadioMenu.m;
+		sourceTree = "<absolute>";
+	};
+	38D20743116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 152";
+		rLen = 0;
+		rLoc = 5181;
+		rType = 0;
+		vrLen = 1988;
+		vrLoc = 0;
+	};
+	38D20744116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
+		name = "PlayScene.h: 13";
+		rLen = 0;
+		rLoc = 256;
+		rType = 0;
+		vrLen = 1213;
+		vrLoc = 0;
+	};
+	38D20745116CF0E60096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 61";
+		rLen = 0;
+		rLoc = 1593;
+		rType = 0;
+		vrLen = 3145;
+		vrLoc = 877;
+	};
+	38D20746116CF21B0096DC65 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 65";
+		rLen = 0;
+		rLoc = 1823;
+		rType = 0;
+		vrLen = 3146;
+		vrLoc = 877;
 	};
 	38EC24CC116A641A00358D1B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1068,7 +1212,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 23";
 		rLen = 0;
-		rLoc = 529;
+		rLoc = 553;
 		rType = 0;
 		vrLen = 802;
 		vrLoc = 0;
@@ -1088,7 +1232,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 108";
 		rLen = 0;
-		rLoc = 4390;
+		rLoc = 4423;
 		rType = 0;
 		vrLen = 1773;
 		vrLoc = 2998;
@@ -1504,7 +1648,7 @@
 		fRef = 7DBB10B4115CBAE90083D073 /* PlayScene.h */;
 		name = "PlayScene.h: 17";
 		rLen = 0;
-		rLoc = 517;
+		rLoc = 541;
 		rType = 0;
 		vrLen = 311;
 		vrLoc = 0;
@@ -1587,9 +1731,9 @@
 	};
 	50D3B03811498A370002F919 /* CCMenuItem.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1347, 7602}}";
-			sepNavSelRange = "{10097, 141}";
-			sepNavVisRange = "{8705, 1817}";
+			sepNavIntBoundsRect = "{{0, 0}, {1315, 7672}}";
+			sepNavSelRange = "{9446, 0}";
+			sepNavVisRange = "{9218, 2015}";
 		};
 	};
 	50D3B03C11498A370002F919 /* CCNode.m */ = {
@@ -1666,15 +1810,15 @@
 	7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1315, 917}}";
-			sepNavSelRange = "{795, 0}";
-			sepNavVisRange = "{0, 1189}";
+			sepNavSelRange = "{256, 0}";
+			sepNavVisRange = "{0, 1213}";
 		};
 	};
 	7DBB10B5115CBAE90083D073 /* PlayScene.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1315, 4760}}";
-			sepNavSelRange = "{5874, 0}";
-			sepNavVisRange = "{4148, 1961}";
+			sepNavIntBoundsRect = "{{0, 0}, {1315, 4620}}";
+			sepNavSelRange = "{1823, 0}";
+			sepNavVisRange = "{877, 3146}";
 		};
 	};
 }
