@@ -27,6 +27,12 @@
 		38D20732116CF0340096DC65 /* CCRadioMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D20731116CF0340096DC65 /* CCRadioMenu.m */; };
 		38D20736116CF0DA0096DC65 /* fillButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D20734116CF0DA0096DC65 /* fillButtonSelected.png */; };
 		38D20737116CF0DA0096DC65 /* markButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D20735116CF0DA0096DC65 /* markButtonSelected.png */; };
+		38D207B2116D1A9B0096DC65 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207AC116D1A9B0096DC65 /* backButton.png */; };
+		38D207B3116D1A9B0096DC65 /* backButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207AD116D1A9B0096DC65 /* backButtonOn.png */; };
+		38D207B4116D1A9B0096DC65 /* offButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207AE116D1A9B0096DC65 /* offButton.png */; };
+		38D207B5116D1A9B0096DC65 /* offButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207AF116D1A9B0096DC65 /* offButtonSelected.png */; };
+		38D207B6116D1A9B0096DC65 /* onButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207B0116D1A9B0096DC65 /* onButton.png */; };
+		38D207B7116D1A9B0096DC65 /* onButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207B1116D1A9B0096DC65 /* onButtonSelected.png */; };
 		38EC2504116A7DF400358D1B /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2502116A7DF400358D1B /* test.tmx */; };
 		38EC2505116A7DF400358D1B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2503116A7DF400358D1B /* texture.png */; };
 		38EC252E116A861600358D1B /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EC252D116A861600358D1B /* LevelManager.m */; };
@@ -287,6 +293,12 @@
 		38D20731116CF0340096DC65 /* CCRadioMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCRadioMenu.m; sourceTree = "<group>"; };
 		38D20734116CF0DA0096DC65 /* fillButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fillButtonSelected.png; path = Buttons/fillButtonSelected.png; sourceTree = "<group>"; };
 		38D20735116CF0DA0096DC65 /* markButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = markButtonSelected.png; path = Buttons/markButtonSelected.png; sourceTree = "<group>"; };
+		38D207AC116D1A9B0096DC65 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backButton.png; path = Buttons/backButton.png; sourceTree = "<group>"; };
+		38D207AD116D1A9B0096DC65 /* backButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backButtonOn.png; path = Buttons/backButtonOn.png; sourceTree = "<group>"; };
+		38D207AE116D1A9B0096DC65 /* offButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = offButton.png; path = Buttons/offButton.png; sourceTree = "<group>"; };
+		38D207AF116D1A9B0096DC65 /* offButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = offButtonSelected.png; path = Buttons/offButtonSelected.png; sourceTree = "<group>"; };
+		38D207B0116D1A9B0096DC65 /* onButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onButton.png; path = Buttons/onButton.png; sourceTree = "<group>"; };
+		38D207B1116D1A9B0096DC65 /* onButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onButtonSelected.png; path = Buttons/onButtonSelected.png; sourceTree = "<group>"; };
 		38EC2502116A7DF400358D1B /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.tmx; path = Maps/test.tmx; sourceTree = "<group>"; };
 		38EC2503116A7DF400358D1B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Maps/texture.png; sourceTree = "<group>"; };
 		38EC252C116A861600358D1B /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
@@ -624,6 +636,12 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				38D207AC116D1A9B0096DC65 /* backButton.png */,
+				38D207AD116D1A9B0096DC65 /* backButtonOn.png */,
+				38D207AE116D1A9B0096DC65 /* offButton.png */,
+				38D207AF116D1A9B0096DC65 /* offButtonSelected.png */,
+				38D207B0116D1A9B0096DC65 /* onButton.png */,
+				38D207B1116D1A9B0096DC65 /* onButtonSelected.png */,
 				38D20734116CF0DA0096DC65 /* fillButtonSelected.png */,
 				38D20735116CF0DA0096DC65 /* markButtonSelected.png */,
 				38EC2631116BB69C00358D1B /* fillButton.png */,
@@ -1170,6 +1188,12 @@
 				38EC2657116BCE9500358D1B /* pixelTarget.png in Resources */,
 				38D20736116CF0DA0096DC65 /* fillButtonSelected.png in Resources */,
 				38D20737116CF0DA0096DC65 /* markButtonSelected.png in Resources */,
+				38D207B2116D1A9B0096DC65 /* backButton.png in Resources */,
+				38D207B3116D1A9B0096DC65 /* backButtonOn.png in Resources */,
+				38D207B4116D1A9B0096DC65 /* offButton.png in Resources */,
+				38D207B5116D1A9B0096DC65 /* offButtonSelected.png in Resources */,
+				38D207B6116D1A9B0096DC65 /* onButton.png in Resources */,
+				38D207B7116D1A9B0096DC65 /* onButtonSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

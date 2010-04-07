@@ -7,6 +7,7 @@
 //
 
 #import "cocos2d.h"
+#import "CCRadioMenu.h"
 
 @interface OptionsScene : CCScene { }
 

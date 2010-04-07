@@ -275,9 +275,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>35</integer>
-									<integer>30</integer>
-									<integer>23</integer>
+									<integer>19</integer>
+									<integer>4</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -319,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PlayScene.m</string>
+								<string>OptionsScene.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PlayScene.m</string>
+										<string>OptionsScene.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38D20746116CF21B0096DC65</string>
+										<string>38D207CC116D1E0F0096DC65</string>
 										<key>history</key>
 										<array>
 											<string>38F17B92115A9C8F007CAB05</string>
@@ -344,7 +343,6 @@
 											<string>38FF528411626B3800FF0BC9</string>
 											<string>380CA1491166470A002B3E1C</string>
 											<string>380CA14B1166470A002B3E1C</string>
-											<string>380CA14C1166470A002B3E1C</string>
 											<string>380CA1661166595C002B3E1C</string>
 											<string>38EC24DD116A64BE00358D1B</string>
 											<string>38EC24DE116A64BE00358D1B</string>
@@ -353,7 +351,6 @@
 											<string>38EC2508116A7E7D00358D1B</string>
 											<string>38EC2509116A7E7D00358D1B</string>
 											<string>38EC250C116A7E7D00358D1B</string>
-											<string>38EC2534116A89E800358D1B</string>
 											<string>38EC2555116A8B5000358D1B</string>
 											<string>38EC256C116B778100358D1B</string>
 											<string>38EC2582116B78C700358D1B</string>
@@ -361,7 +358,6 @@
 											<string>38EC25A4116B7F9D00358D1B</string>
 											<string>38EC25BA116B83E400358D1B</string>
 											<string>38EC25DC116B89BC00358D1B</string>
-											<string>38EC260C116B9F0F00358D1B</string>
 											<string>38EC260D116B9F0F00358D1B</string>
 											<string>38EC2621116BB63600358D1B</string>
 											<string>38EC2672116BDADC00358D1B</string>
@@ -369,7 +365,10 @@
 											<string>38D20739116CF0E60096DC65</string>
 											<string>38D2073A116CF0E60096DC65</string>
 											<string>38D2073C116CF0E60096DC65</string>
-											<string>38D2073D116CF0E60096DC65</string>
+											<string>38D2079F116D11230096DC65</string>
+											<string>38D207BD116D1B140096DC65</string>
+											<string>38D207C5116D1C4A0096DC65</string>
+											<string>38D207C6116D1C4A0096DC65</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -434,6 +433,19 @@
 											<string>38D20741116CF0E60096DC65</string>
 											<string>38D20743116CF0E60096DC65</string>
 											<string>38D20744116CF0E60096DC65</string>
+											<string>38D207A2116D11230096DC65</string>
+											<string>38D207A3116D11230096DC65</string>
+											<string>38D207A4116D11230096DC65</string>
+											<string>38D207A5116D11230096DC65</string>
+											<string>38D207A6116D11230096DC65</string>
+											<string>38D207A7116D11230096DC65</string>
+											<string>38D207A8116D11230096DC65</string>
+											<string>38D207A9116D11230096DC65</string>
+											<string>38D207AA116D11230096DC65</string>
+											<string>38D207BB116D1AEA0096DC65</string>
+											<string>38D207BF116D1B140096DC65</string>
+											<string>38D207C0116D1B140096DC65</string>
+											<string>38D207C7116D1C4A0096DC65</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -651,12 +663,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>PlayScene.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

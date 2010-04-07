@@ -55,16 +55,14 @@
 		[self addChild:verticalHighlight z:3];
 		
 		// Set up buttons to control mark/fill
-		tapAction = 0;	// 0 for mark, 1 for fill
-		
 		CCMenuItem *markButton = [CCMenuItemImage itemFromNormalImage:@"markButton.png" selectedImage:@"markButtonSelected.png" target:self selector:@selector(changeTapActionToMark:)];
 		CCMenuItem *fillButton = [CCMenuItemImage itemFromNormalImage:@"fillButton.png" selectedImage:@"fillButtonSelected.png" target:self selector:@selector(changeTapActionToFill:)];
-		
 		CCRadioMenu *actionsMenu = [CCRadioMenu menuWithItems:fillButton, markButton, nil];
 		[actionsMenu alignItemsHorizontally];
 		[actionsMenu setPosition:ccp(160, 23)];
 		[actionsMenu setSelectedItem:markButton];
 		[markButton selected];
+		tapAction = MARK;	// 0 for mark, 1 for fill
 		[self addChild:actionsMenu z:3];
 		
 		// Testing labels
@@ -319,6 +317,11 @@
 					CCSprite *b = [CCSprite spriteWithFile:@"fillIcon.png"];
 					[b setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
 					[self addChild:b z:2];
+				}
+				else
+				{
+					// Take off time here, as well as play sfx of some kind and shake the screen
+					[CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:1];
 				}
 			}
 			else if (tapAction == MARK)
