@@ -64,11 +64,11 @@
 		[self addChild:actionsMenu z:3];
 		
 		// Testing labels
-		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
-		[testLabel setColor:ccc3(0, 0, 0)];
-		[testLabel.texture setAliasTexParameters];
-		[testLabel setPosition:ccp(115, 300)];
-		[self addChild:testLabel z:3];
+//		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+//		[testLabel setColor:ccc3(0, 0, 0)];
+//		[testLabel.texture setAliasTexParameters];
+//		[testLabel setPosition:ccp(115, 300)];
+//		[self addChild:testLabel z:3];
 
 		// Waahhh, can't do multi-line bitmap font aliases :(
 		// Check out this forum post for non-blurry text: http://www.cocos2d-iphone.org/forum/topic/2865#post-17718
@@ -76,6 +76,103 @@
 		//[testAtlas.textureAtlas.texture setAliasTexParameters];
 		//[testAtlas setPosition:ccp(110, 273)];
 		//[self addChild:testAtlas z:3];
+		
+		// Load tile map for this particular puzzle
+		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"test.tmx"];
+		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
+		
+		// Create "clue" labels in arrays for rows and columns
+		for (int i = 0; i < 10; i++)
+		{
+			// Create new label; set position/color/aliasing values
+			verticalClues[i] = [CCLabel labelWithString:@"testing" dimensions:CGSizeMake(20, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:12];
+			[verticalClues[i] setPosition:ccp(120 + (blockSize * i), 300)];
+			[verticalClues[i] setColor:ccc3(0,0,0)];
+			[verticalClues[i].texture setAliasTexParameters];
+			[self addChild:verticalClues[i] z:3];
+			
+			horizontalClues[i] = [CCLabel labelWithString:@"testing" dimensions:CGSizeMake(75, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:12];
+			[horizontalClues[i] setPosition:ccp(70, 60 + (blockSize * i))];
+			[horizontalClues[i] setColor:ccc3(0,0,0)];
+			[horizontalClues[i].texture setAliasTexParameters];
+			[self addChild:horizontalClues[i] z:3];
+		}
+		
+		// Populate/position the clues
+		totalBlocksInPuzzle = 0;
+		int counterHoriz = 0;
+		int counterVert = 0;
+		Boolean previousHoriz = FALSE;
+		Boolean previousVert = FALSE;
+		NSString *cluesTextHoriz = @"";
+		NSString *cluesTextVert = @"";
+
+		for (int i = 0; i < 10; i++) 
+		{
+			cluesTextHoriz = @"";
+			cluesTextVert = @"";
+			for (int j = 0; j < 10; j++) 
+			{
+				// Horizontal clues (for rows)
+				if ([tileMapLayer tileGIDAt:ccp(j, i)] == 1)
+				{
+					counterHoriz++;
+					previousHoriz = TRUE;
+				}
+				else if (previousHoriz == TRUE) 
+				{
+					cluesTextHoriz = [cluesTextHoriz stringByAppendingFormat:@"%i ", counterHoriz];
+					totalBlocksInPuzzle += counterHoriz;		// This number is for our win condition - only need to count on one side, since clues are counted twice
+					counterHoriz = 0;
+					previousHoriz = FALSE;
+				}
+				
+				// Vertical clues (for columns)
+				if ([tileMapLayer tileGIDAt:ccp(i, j)] == 1)
+				{
+					counterVert++;
+					previousVert = TRUE;
+				}
+				else if (previousVert == TRUE) 
+				{
+					cluesTextVert = [cluesTextVert stringByAppendingFormat:@"%i\n", counterVert];
+					counterVert = 0;
+					previousVert = FALSE;
+				}
+			}
+			
+			// Condition for if a row ends with filled in blocks
+			if (previousHoriz == TRUE)
+			{
+				cluesTextHoriz = [cluesTextHoriz stringByAppendingFormat:@"%i ", counterHoriz];
+				totalBlocksInPuzzle += counterHoriz;
+				counterHoriz = 0;
+				previousHoriz = FALSE;
+			}
+			if (previousVert == TRUE)
+			{
+				cluesTextVert = [cluesTextVert stringByAppendingFormat:@"%i\n", counterVert];
+				counterVert = 0;
+				previousVert = FALSE;
+			}
+			
+			// Add the text to the label objects
+			if ([cluesTextHoriz length] > 0)
+			{
+				[horizontalClues[9 - i] setString:cluesTextHoriz];
+			}
+			if ([cluesTextVert length] > 0)
+			{
+				[verticalClues[i] setString:cluesTextVert];
+				NSArray *numberOfVerticalClues = [cluesTextVert componentsSeparatedByString:@"\n"];
+				NSLog(@"Number of vertical clues: %i", [numberOfVerticalClues count]);
+				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 13))];
+			}
+			else
+			{
+				//_verticalClues[i].y = 93;
+			}
+		}
 		
 		// Set up schedulers
 		[self schedule:@selector(update:)];
@@ -97,10 +194,6 @@
 		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
-		
-		// Load tile map for this particular puzzle
-		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"test.tmx"];
-		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
 		
 		// Level manager
 		NSLog(@"Current level: %d", [LevelManager sharedInstance].currentLevel);
@@ -134,6 +227,9 @@
 	// Update labels for time
 	[minutesLeftLabel setString:[NSString stringWithFormat:@"%d", minutesLeft]];
 	[secondsLeftLabel setString:[NSString stringWithFormat:@"%d", secondsLeft]];
+	
+	// This is causin' an error
+	//[secondsLeftLabel setString:[[NSString stringWithFormat:@"%d", secondsLeft] stringByPaddingToLength:2 withString:@"0" startingAtIndex:1]];
 }
 
 -(void) changeTapActionToMark:(id)selector
@@ -170,10 +266,10 @@
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
 		
 		// Gets relative movement
-		CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
+		//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 		
-		//NSLog(@"Relative movement: %f, %f", relativeMovement.x, relativeMovement.y);
-		//NSLog(@"Previous point: %f, %f", previousPoint.x, previousPoint.y);
+		// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
+		CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
 		
 		// Add to current point the cursor is at
 		cursorPoint = ccpAdd(cursorPoint, relativeMovement);
