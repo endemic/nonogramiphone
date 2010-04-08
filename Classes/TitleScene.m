@@ -46,9 +46,6 @@
 		[menu alignItemsVertically];
 		[menu setPosition:ccp(160, 100)];
 		[self addChild:menu	z:1];
-		
-		//[GameDataManager sharedManager].currentLevel = 1;
-		[[GameDataManager sharedManager] setCurrentLevel:1];
 	}
 	return self;
 }

@@ -11,6 +11,7 @@
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
 #import "TitleScene.h"
+#import "GameDataManager.h"
 
 @implementation NonogramsAppDelegate
 
@@ -58,6 +59,15 @@
 	// To convert .wav files: afconvert -v -f WAVE -d LEI16 notworking.wav working.wav
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
 
+	// Load default defaults - I'm just going to assume this is working
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
+	
+	// Set global game data singleton options with preferences
+	[GameDataManager sharedManager].playSFX = [defaults boolForKey:@"playSFX"];
+	[GameDataManager sharedManager].playMusic = [defaults boolForKey:@"playMusic"];
+	
+	// Run default scene
 	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
 }
 

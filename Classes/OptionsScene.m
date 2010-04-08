@@ -39,13 +39,18 @@
 		
 		[sfxMenu alignItemsHorizontally];
 		[sfxMenu setPosition:ccp(200, 210)];
-		[sfxMenu setSelectedItem:sfxOnButton];
 		
 		// Decide which button is highlighted
 		if ([GameDataManager sharedManager].playSFX == TRUE)
+		{	
 			[sfxOnButton selected];
+			[sfxMenu setSelectedItem:sfxOnButton];
+		}
 		else 
+		{
 			[sfxOffButton selected];
+			[sfxMenu setSelectedItem:sfxOffButton];
+		}
 		
 		[self addChild:sfxMenu z:1];
 		
@@ -55,13 +60,18 @@
 		
 		[musicMenu alignItemsHorizontally];
 		[musicMenu setPosition:ccp(200, 160)];
-		[musicMenu setSelectedItem:musicOnButton];
 		
 		// Decide which button is highlighted
 		if ([GameDataManager sharedManager].playMusic == TRUE)
+		{	
 			[musicOnButton selected];
+			[musicMenu setSelectedItem:musicOnButton];
+		}
 		else 
+		{
+			[musicMenu setSelectedItem:musicOffButton];
 			[musicOffButton selected];
+		}
 
 		[self addChild:musicMenu z:1];
 		
@@ -76,26 +86,26 @@
 
 -(void) sfxOn:(id)selector
 {
-	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-	[preferences setBool:TRUE forKey:@"playSFX"];
+	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playSFX"];
+	[GameDataManager sharedManager].playSFX = TRUE;
 }
 
 -(void) sfxOff:(id)selector
 {
-	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-	[preferences setBool:FALSE forKey:@"playSFX"];
+	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playSFX"];
+	[GameDataManager sharedManager].playSFX = FALSE;
 }
 
 -(void) musicOn:(id)selector
 {
-	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-	[preferences setBool:TRUE forKey:@"playMusic"];
+	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playMusic"];
+	[GameDataManager sharedManager].playMusic = TRUE;
 }
 
 -(void) musicOff:(id)selector
 {
-	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-	[preferences setBool:FALSE forKey:@"playMusic"];
+	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playMusic"];
+	[GameDataManager sharedManager].playMusic = FALSE;
 }
 
 -(void) goToTitleScreen:(id)selector

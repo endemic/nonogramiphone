@@ -70,13 +70,6 @@
 		CCMenu *quitMenu = [CCMenu menuWithItems:quitButton, nil];
 		[quitMenu setPosition:ccp(25, 415)];
 		[self addChild:quitMenu z:3];
-		
-		// Testing labels
-//		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
-//		[testLabel setColor:ccc3(0, 0, 0)];
-//		[testLabel.texture setAliasTexParameters];
-//		[testLabel setPosition:ccp(115, 300)];
-//		[self addChild:testLabel z:3];
 
 		// Waahhh, can't do multi-line bitmap font aliases :(
 		// Check out this forum post for non-blurry text: http://www.cocos2d-iphone.org/forum/topic/2865#post-17718

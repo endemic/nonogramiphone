@@ -70,6 +70,7 @@
 			levelDisplayList[i] = s;
 		}
 		
+		[GameDataManager sharedManager].currentLevel = 1;
 		currentlyDisplayedLevel = 0;
 	}
 	return self;
