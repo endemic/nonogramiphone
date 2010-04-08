@@ -33,6 +33,8 @@
 		38D207B5116D1A9B0096DC65 /* offButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207AF116D1A9B0096DC65 /* offButtonSelected.png */; };
 		38D207B6116D1A9B0096DC65 /* onButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207B0116D1A9B0096DC65 /* onButton.png */; };
 		38D207B7116D1A9B0096DC65 /* onButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207B1116D1A9B0096DC65 /* onButtonSelected.png */; };
+		38D207DD116D28E30096DC65 /* quitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207DB116D28E30096DC65 /* quitButton.png */; };
+		38D207DE116D28E30096DC65 /* quitButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207DC116D28E30096DC65 /* quitButtonOn.png */; };
 		38EC2504116A7DF400358D1B /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2502116A7DF400358D1B /* test.tmx */; };
 		38EC2505116A7DF400358D1B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2503116A7DF400358D1B /* texture.png */; };
 		38EC252E116A861600358D1B /* GameDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EC252D116A861600358D1B /* GameDataManager.m */; };
@@ -299,6 +301,8 @@
 		38D207AF116D1A9B0096DC65 /* offButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = offButtonSelected.png; path = Buttons/offButtonSelected.png; sourceTree = "<group>"; };
 		38D207B0116D1A9B0096DC65 /* onButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onButton.png; path = Buttons/onButton.png; sourceTree = "<group>"; };
 		38D207B1116D1A9B0096DC65 /* onButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onButtonSelected.png; path = Buttons/onButtonSelected.png; sourceTree = "<group>"; };
+		38D207DB116D28E30096DC65 /* quitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quitButton.png; path = Buttons/quitButton.png; sourceTree = "<group>"; };
+		38D207DC116D28E30096DC65 /* quitButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quitButtonOn.png; path = Buttons/quitButtonOn.png; sourceTree = "<group>"; };
 		38EC2502116A7DF400358D1B /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.tmx; path = Maps/test.tmx; sourceTree = "<group>"; };
 		38EC2503116A7DF400358D1B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Maps/texture.png; sourceTree = "<group>"; };
 		38EC252C116A861600358D1B /* GameDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDataManager.h; sourceTree = "<group>"; };
@@ -636,6 +640,8 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				38D207DB116D28E30096DC65 /* quitButton.png */,
+				38D207DC116D28E30096DC65 /* quitButtonOn.png */,
 				38D207AC116D1A9B0096DC65 /* backButton.png */,
 				38D207AD116D1A9B0096DC65 /* backButtonOn.png */,
 				38D207AE116D1A9B0096DC65 /* offButton.png */,
@@ -1194,6 +1200,8 @@
 				38D207B5116D1A9B0096DC65 /* offButtonSelected.png in Resources */,
 				38D207B6116D1A9B0096DC65 /* onButton.png in Resources */,
 				38D207B7116D1A9B0096DC65 /* onButtonSelected.png in Resources */,
+				38D207DD116D28E30096DC65 /* quitButton.png in Resources */,
+				38D207DE116D28E30096DC65 /* quitButtonOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

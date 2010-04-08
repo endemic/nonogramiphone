@@ -7,7 +7,7 @@
 //
 
 #import "PlayScene.h"
-
+#import "LevelSelectScene.h"
 
 @implementation PlayScene
 
@@ -64,6 +64,12 @@
 		[markButton selected];
 		tapAction = MARK;	// 0 for mark, 1 for fill
 		[self addChild:actionsMenu z:3];
+		
+		// Set up "quit" button
+		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+		CCMenu *quitMenu = [CCMenu menuWithItems:quitButton, nil];
+		[quitMenu setPosition:ccp(25, 415)];
+		[self addChild:quitMenu z:3];
 		
 		// Testing labels
 //		CCLabel *testLabel = [CCLabel labelWithString:@"11\n2\n3" dimensions:CGSizeMake(15, 75) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
@@ -167,7 +173,6 @@
 			{
 				[verticalClues[i] setString:cluesTextVert];
 				NSArray *numberOfVerticalClues = [cluesTextVert componentsSeparatedByString:@"\n"];
-				NSLog(@"Number of vertical clues: %i", [numberOfVerticalClues count]);
 				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 13))];
 			}
 			else
@@ -321,7 +326,10 @@
 				else
 				{
 					// Take off time here, as well as play sfx of some kind and shake the screen
-					[CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:1];
+					id shake = [CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:0.1];
+					
+					// Run "shake" action, then return the grid to its original state
+					[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
 				}
 			}
 			else if (tapAction == MARK)
@@ -333,6 +341,13 @@
 			}
 		}
 	}
+}
+
+-(void) goToLevelSelect:(id)sender
+{
+	NSLog(@"Level select");
+	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }
 
 -(void) dealloc
