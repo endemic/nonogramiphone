@@ -8,6 +8,7 @@
 
 #import "OptionsScene.h"
 #import "TitleScene.h"
+#import "GameDataManager.h"
 
 @implementation OptionsScene
 
@@ -39,7 +40,13 @@
 		[sfxMenu alignItemsHorizontally];
 		[sfxMenu setPosition:ccp(200, 210)];
 		[sfxMenu setSelectedItem:sfxOnButton];
-		[sfxOnButton selected];
+		
+		// Decide which button is highlighted
+		if ([GameDataManager sharedManager].playSFX == TRUE)
+			[sfxOnButton selected];
+		else 
+			[sfxOffButton selected];
+		
 		[self addChild:sfxMenu z:1];
 		
 		CCMenuItem *musicOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton.png" selectedImage:@"onButtonSelected.png" target:self selector:@selector(musicOn:)];
@@ -49,7 +56,13 @@
 		[musicMenu alignItemsHorizontally];
 		[musicMenu setPosition:ccp(200, 160)];
 		[musicMenu setSelectedItem:musicOnButton];
-		[musicOnButton selected];
+		
+		// Decide which button is highlighted
+		if ([GameDataManager sharedManager].playMusic == TRUE)
+			[musicOnButton selected];
+		else 
+			[musicOffButton selected];
+
 		[self addChild:musicMenu z:1];
 		
 		// Create "back" button that takes us back to the home screen
@@ -63,26 +76,34 @@
 
 -(void) sfxOn:(id)selector
 {
-	// [[OptionsManager sharedManager] setPlaySFX:TRUE];
+	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+	[preferences setBool:TRUE forKey:@"playSFX"];
 }
 
 -(void) sfxOff:(id)selector
 {
-	// [[OptionsManager sharedManager] setPlaySFX:FALSE];
+	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+	[preferences setBool:FALSE forKey:@"playSFX"];
 }
 
 -(void) musicOn:(id)selector
 {
-	// [[OptionsManager sharedManager] setPlayMusic:TRUE];
+	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+	[preferences setBool:TRUE forKey:@"playMusic"];
 }
 
 -(void) musicOff:(id)selector
 {
-	// [[OptionsManager sharedManager] setPlayMusic:FALSE];
+	NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+	[preferences setBool:FALSE forKey:@"playMusic"];
 }
 
 -(void) goToTitleScreen:(id)selector
 {
+	// Suggested to synch preferences?
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+	// Return to title sceen
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }
 

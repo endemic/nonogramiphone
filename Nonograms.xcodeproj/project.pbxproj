@@ -35,7 +35,7 @@
 		38D207B7116D1A9B0096DC65 /* onButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 38D207B1116D1A9B0096DC65 /* onButtonSelected.png */; };
 		38EC2504116A7DF400358D1B /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2502116A7DF400358D1B /* test.tmx */; };
 		38EC2505116A7DF400358D1B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2503116A7DF400358D1B /* texture.png */; };
-		38EC252E116A861600358D1B /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EC252D116A861600358D1B /* LevelManager.m */; };
+		38EC252E116A861600358D1B /* GameDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EC252D116A861600358D1B /* GameDataManager.m */; };
 		38EC2635116BB69C00358D1B /* fillButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2631116BB69C00358D1B /* fillButton.png */; };
 		38EC2636116BB69C00358D1B /* fillButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2632116BB69C00358D1B /* fillButtonOn.png */; };
 		38EC2637116BB69C00358D1B /* markButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2633116BB69C00358D1B /* markButton.png */; };
@@ -301,8 +301,8 @@
 		38D207B1116D1A9B0096DC65 /* onButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onButtonSelected.png; path = Buttons/onButtonSelected.png; sourceTree = "<group>"; };
 		38EC2502116A7DF400358D1B /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.tmx; path = Maps/test.tmx; sourceTree = "<group>"; };
 		38EC2503116A7DF400358D1B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Maps/texture.png; sourceTree = "<group>"; };
-		38EC252C116A861600358D1B /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
-		38EC252D116A861600358D1B /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
+		38EC252C116A861600358D1B /* GameDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDataManager.h; sourceTree = "<group>"; };
+		38EC252D116A861600358D1B /* GameDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDataManager.m; sourceTree = "<group>"; };
 		38EC2631116BB69C00358D1B /* fillButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fillButton.png; path = Buttons/fillButton.png; sourceTree = "<group>"; };
 		38EC2632116BB69C00358D1B /* fillButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fillButtonOn.png; path = Buttons/fillButtonOn.png; sourceTree = "<group>"; };
 		38EC2633116BB69C00358D1B /* markButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = markButton.png; path = Buttons/markButton.png; sourceTree = "<group>"; };
@@ -627,8 +627,8 @@
 				7DBB10B0115CB6780083D073 /* TutorialScene.m */,
 				380CA13211664007002B3E1C /* OptionsScene.h */,
 				380CA13311664007002B3E1C /* OptionsScene.m */,
-				38EC252C116A861600358D1B /* LevelManager.h */,
-				38EC252D116A861600358D1B /* LevelManager.m */,
+				38EC252C116A861600358D1B /* GameDataManager.h */,
+				38EC252D116A861600358D1B /* GameDataManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1212,7 +1212,7 @@
 				7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */,
 				7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */,
 				380CA13411664007002B3E1C /* OptionsScene.m in Sources */,
-				38EC252E116A861600358D1B /* LevelManager.m in Sources */,
+				38EC252E116A861600358D1B /* GameDataManager.m in Sources */,
 				38D20732116CF0340096DC65 /* CCRadioMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

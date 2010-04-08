@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
-#import "LevelManager.h"
+#import "GameDataManager.h"
 #import "CCRadioMenu.h"
 
 #define MARK 0

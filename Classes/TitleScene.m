@@ -9,7 +9,7 @@
 #import "TitleScene.h"
 #import "OptionsScene.h"
 #import "LevelSelectScene.h"
-#import "LevelManager.h"
+#import "GameDataManager.h"
 
 @implementation TitleScene
 
@@ -47,8 +47,8 @@
 		[menu setPosition:ccp(160, 100)];
 		[self addChild:menu	z:1];
 		
-		LevelManager *levelManger = [LevelManager sharedInstance];
-		[levelManger setCurrentLevel:1];
+		//[GameDataManager sharedManager].currentLevel = 1;
+		[[GameDataManager sharedManager] setCurrentLevel:1];
 	}
 	return self;
 }

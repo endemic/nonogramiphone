@@ -1,5 +1,5 @@
 //
-//  LevelManager.h
+//  GameDataManager.h
 //  Nonograms
 //
 //  Created by Nathan Demick on 4/5/10.
@@ -8,14 +8,20 @@
 
 #import "cocos2d.h"
 
-@interface LevelManager : NSObject {
-
+@interface GameDataManager : NSObject 
+{
 	// Current level
 	int currentLevel;
+	
+	// Options for music/sound
+	bool playSFX;
+	bool playMusic;
 }
 
 @property int currentLevel;
+@property bool playSFX;
+@property bool playMusic;
 
-+(LevelManager *)sharedInstance;
++(GameDataManager *)sharedManager;
 
 @end

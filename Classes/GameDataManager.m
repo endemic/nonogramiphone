@@ -1,33 +1,33 @@
 //
-//  LevelManager.m
+//  GameDataManager.m
 //  Nonograms
 //
 //  Created by Nathan Demick on 4/5/10.
 //  Copyright 2010 huber+co.. All rights reserved.
 //
 
-#import "LevelManager.h"
+#import "GameDataManager.h"
 
 
-@implementation LevelManager
+@implementation GameDataManager
 
-@synthesize currentLevel;
+@synthesize currentLevel, playSFX, playMusic;
 
 // Holds singleton class instance
-static LevelManager *sharedInstance = nil;
+static GameDataManager *sharedManager = nil;
 
 // Class method that provides access to shared instance
-+(LevelManager *)sharedInstance
++(GameDataManager *)sharedManager
 {
 	// Lock the object
 	@synchronized(self)
 	{
-		if (sharedInstance == nil)
+		if (sharedManager == nil)
 		{
 			[[self alloc] init];
 		}
 	}
-	return sharedInstance;
+	return sharedManager;
 }
 
 // This is called when you alloc an object.  To protect against instances of this class being
@@ -38,10 +38,10 @@ static LevelManager *sharedInstance = nil;
 {
 	@synchronized(self)
 	{
-		if (sharedInstance == nil)
+		if (sharedManager == nil)
 		{
-			sharedInstance = [super allocWithZone:zone];
-			return sharedInstance;
+			sharedManager = [super allocWithZone:zone];
+			return sharedManager;
 		}
 	}
 	return nil;

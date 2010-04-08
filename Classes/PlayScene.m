@@ -198,7 +198,7 @@
 		[self addChild:secondsLeftLabel z:3];
 		
 		// Level manager
-		NSLog(@"Current level: %d", [LevelManager sharedInstance].currentLevel);
+		NSLog(@"Current level: %d", [GameDataManager sharedManager].currentLevel);
 		
 		// Movement debug info
 //		pixelTarget = [CCSprite spriteWithFile:@"pixelTarget.png"];
