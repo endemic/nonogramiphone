@@ -15,6 +15,10 @@
 #define MARK 0
 #define FILL 1
 
+#define BLANK 0
+#define MARKED 1
+#define FILLED 2
+
 @interface PlayScene : CCScene { }
 @end
 
@@ -37,7 +41,10 @@
 	CCLabel *verticalClues[10];
 	
 	// 2D array of sprites that show marking/filling the puzzle
-	CCSprite *blocks[10][10];
+	CCSprite *blockSprites[10][10];
+	
+	// 2D array of ints to figure out the current status of the puzzle - prevents having to subclass CCSprite, I guess
+	int blockStatus[10][10];
 	
 	// Tile map layer that contains the puzzle
 	CCTMXLayer *tileMapLayer;

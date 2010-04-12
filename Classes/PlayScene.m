@@ -41,7 +41,8 @@
 		blockSize = 20;
 		
 		// Current position of the cursor
-		currentRow = currentColumn = 1;
+		currentColumn = 1;
+		currentRow = 10;
 		
 		// Init variables used to keep track of correct/incorrect guesses
 		hits = misses = 0;
@@ -84,6 +85,11 @@
 		// Load tile map for this particular puzzle
 		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"test.tmx"];
 		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
+		
+		// Init block status array
+		for (int i = 0; i < 10; i++)
+			for (int j = 0; j < 10; j++)
+				blockStatus[i][j] = 0;		// Unmarked, unfilled
 		
 		// Create "clue" labels in arrays for rows and columns
 		for (int i = 0; i < 10; i++)
@@ -312,18 +318,22 @@
 			{
 				// If the tile at the current location is a filled in tile...
 				// The tilemap's y-coords are inverse of the iphone coords, so invert it
-				if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1)
+				if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 				{
-					// Draw filled in sprite on top ov it
-					CCSprite *b = [CCSprite spriteWithFile:@"fillIcon.png"];
-					[b setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
-					[self addChild:b z:2];
+					blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
+					[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+					[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
+					blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
 					
 					if (++hits == totalBlocksInPuzzle) 
 					{
 						// Win condition
 						NSLog(@"You won!");
 					}
+				}
+				else if (blockStatus[currentRow - 1][currentColumn - 1] == MARKED)
+				{
+					// Play dud noise
 				}
 				else
 				{
@@ -343,12 +353,32 @@
 			}
 			else if (tapAction == MARK)
 			{
-				// Draw filled in sprite on top ov it
-				CCSprite *c = [CCSprite spriteWithFile:@"markIcon.png"];
-				[c setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
-				[self addChild:c z:2];	
-			}
-		}
+				// Toggle 'X' mark on a block if it's not already filled in
+				if (blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
+				{
+					// If not marked, mark
+					if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
+					{
+						blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon.png"];
+						[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+						[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
+						blockStatus[currentRow - 1][currentColumn - 1] = MARKED;
+					}
+					// If marked, remove mark
+					else
+					{
+						[self removeChild:blockSprites[currentRow - 1][currentColumn - 1] cleanup:FALSE];
+						blockSprites[currentRow - 1][currentColumn - 1] = nil;
+						blockStatus[currentRow - 1][currentColumn - 1] = BLANK;
+					}
+				}
+				// Block is filled
+				else
+				{
+					// Play dud noise
+				}
+			} // if (tapAction == MARK)
+		} // if (ccpDistance(startPoint, endPoint) < moveThreshold)
 	}
 }
 
