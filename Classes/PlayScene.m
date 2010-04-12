@@ -15,13 +15,8 @@
 {
 	if ((self = [super init])) 
 	{
-		// Add background to center of scene
-		CCSprite *background = [CCSprite spriteWithFile:@"playBackground.png"];
-		[background setPosition:ccp(160, 240)];
-		[self addChild:background z:0];
-		
 		// Add "play" layer
-		[self addChild:[PlayLayer node] z: 1];
+		[self addChild:[PlayLayer node] z:0];
 	}
 	return self;
 }
@@ -37,11 +32,19 @@
 		// Set touch enabled
 		[self setIsTouchEnabled:YES];
 		
+		// Add background to center of scene
+		CCSprite *background = [CCSprite spriteWithFile:@"playBackground.png"];
+		[background setPosition:ccp(160, 240)];
+		[self addChild:background z:0];
+		
 		// Set the width of puzzle blocks
 		blockSize = 20;
 		
 		// Current position of the cursor
 		currentRow = currentColumn = 1;
+		
+		// Init variables used to keep track of correct/incorrect guesses
+		hits = misses = 0;
 		
 		// Init horizontal "cursor" highlight
 		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
@@ -300,7 +303,7 @@
 		CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		
 		// This value is the sensitivity for filling/marking a block
-		int moveThreshold = 5;
+		int moveThreshold = 10;
 		
 		// If a tap is detected - i.e. if the movement of the finger is less than the threshold
 		if (ccpDistance(startPoint, endPoint) < moveThreshold)
@@ -315,6 +318,12 @@
 					CCSprite *b = [CCSprite spriteWithFile:@"fillIcon.png"];
 					[b setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
 					[self addChild:b z:2];
+					
+					if (++hits == totalBlocksInPuzzle) 
+					{
+						// Win condition
+						NSLog(@"You won!");
+					}
 				}
 				else
 				{
@@ -323,6 +332,13 @@
 					
 					// Run "shake" action, then return the grid to its original state
 					[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
+					
+					switch (++misses)
+					{
+						case 1: minutesLeft -= 2; break;
+						case 2: minutesLeft -= 4; break;
+						default: minutesLeft -= 8; break;
+					}
 				}
 			}
 			else if (tapAction == MARK)

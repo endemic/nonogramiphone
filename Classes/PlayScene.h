@@ -36,6 +36,9 @@
 	CCLabel *horizontalClues[10];
 	CCLabel *verticalClues[10];
 	
+	// 2D array of sprites that show marking/filling the puzzle
+	CCSprite *blocks[10][10];
+	
 	// Tile map layer that contains the puzzle
 	CCTMXLayer *tileMapLayer;
 	
@@ -43,7 +46,7 @@
 	int tapAction;
 	
 	// To keep track of a win condition
-	int totalBlocksInPuzzle;
+	int totalBlocksInPuzzle, hits, misses;
 	
 	// For debuggin' the position of a person's finger!
 	CCSprite *pixelTarget;
