@@ -70,11 +70,11 @@
 		tapAction = MARK;	// 0 for mark, 1 for fill
 		[self addChild:actionsMenu z:3];
 		
-		// Set up "quit" button
-		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
-		CCMenu *quitMenu = [CCMenu menuWithItems:quitButton, nil];
-		[quitMenu setPosition:ccp(25, 415)];
-		[self addChild:quitMenu z:3];
+		// Set up "pause" button
+		CCMenuItem *pauseButton = [CCMenuItemImage itemFromNormalImage:@"pauseButton.png" selectedImage:@"pauseButtonOn.png" target:self selector:@selector(pause:)];
+		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
+		[pauseMenu setPosition:ccp(25, 415)];
+		[self addChild:pauseMenu z:3];
 
 		// Waahhh, can't do multi-line bitmap font aliases :(
 		// Check out this forum post for non-blurry text: http://www.cocos2d-iphone.org/forum/topic/2865#post-17718
@@ -193,7 +193,7 @@
 		
 		// Set up timer labels/internal variables/scheduler
 		[self schedule:@selector(timer:) interval:1.0];
-		
+
 		minutesLeft = 30;
 		secondsLeft = 0;
 		
@@ -239,6 +239,18 @@
 	
 	// This is causin' an error
 	//[secondsLeftLabel setString:[[NSString stringWithFormat:@"%d", secondsLeft] stringByPaddingToLength:2 withString:@"0" startingAtIndex:1]];
+}
+
+-(void) pause:(id)sender
+{
+	// Move "paused" overlay on top of puzzle, and unschedule the timer
+	[self unschedule:@selector(timer:)];
+}
+
+-(void) resume:(id)sender
+{
+	// Remove "paused" overlay and reschedule timer
+	[self schedule:@selector(timer:) interval:1.0];
 }
 
 -(void) changeTapActionToMark:(id)selector

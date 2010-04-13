@@ -330,14 +330,12 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38CD547711750C3F00F1C75B</string>
+										<string>38CD547F117519DD00F1C75B</string>
 										<key>history</key>
 										<array>
 											<string>38CD53991174C38600F1C75B</string>
-											<string>38CD54351174FFC500F1C75B</string>
 											<string>38CD54361174FFC500F1C75B</string>
 											<string>38CD5441117501F400F1C75B</string>
-											<string>38CD544F1175033100F1C75B</string>
 											<string>38CD545C11750C3F00F1C75B</string>
 											<string>38CD545D11750C3F00F1C75B</string>
 											<string>38CD545E11750C3F00F1C75B</string>
@@ -350,7 +348,9 @@
 											<string>38CD546511750C3F00F1C75B</string>
 											<string>38CD546611750C3F00F1C75B</string>
 											<string>38CD546711750C3F00F1C75B</string>
-											<string>38CD546811750C3F00F1C75B</string>
+											<string>38CD5479117519DD00F1C75B</string>
+											<string>38CD547A117519DD00F1C75B</string>
+											<string>38CD547B117519DD00F1C75B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -423,6 +423,9 @@
 											<string>38CD547411750C3F00F1C75B</string>
 											<string>38CD547511750C3F00F1C75B</string>
 											<string>38CD547611750C3F00F1C75B</string>
+											<string>38CD547C117519DD00F1C75B</string>
+											<string>38CD547D117519DD00F1C75B</string>
+											<string>38CD547E117519DD00F1C75B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -618,9 +621,9 @@
 	<array>
 		<string>38CD53A11174C38600F1C75B</string>
 		<string>38CD53A21174C38600F1C75B</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>38F17B97115A9C8F007CAB05</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/nathandemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1003,7 +1006,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
