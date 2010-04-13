@@ -58,6 +58,7 @@
 	// Check this out: http://www.cocos2d-iphone.org/forum/topic/55
 	// To convert .wav files: afconvert -v -f WAVE -d LEI16 notworking.wav working.wav
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
 
 	// Load default defaults - I'm just going to assume this is working
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -66,6 +67,10 @@
 	// Set global game data singleton options with preferences
 	[GameDataManager sharedManager].playSFX = [defaults boolForKey:@"playSFX"];
 	[GameDataManager sharedManager].playMusic = [defaults boolForKey:@"playMusic"];
+	
+	// Load information about levels from .plist
+	[GameDataManager sharedManager].levels = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"]];
+	NSLog([[[GameDataManager sharedManager].levels objectAtIndex:0] objectForKey:@"filename"]);
 	
 	// Run default scene
 	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];

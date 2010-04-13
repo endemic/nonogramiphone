@@ -16,11 +16,14 @@
 	// Options for music/sound
 	bool playSFX;
 	bool playMusic;
+	
+	NSArray *levels;
 }
 
 @property int currentLevel;
 @property bool playSFX;
 @property bool playMusic;
+@property (retain) NSArray *levels;
 
 +(GameDataManager *)sharedManager;
 

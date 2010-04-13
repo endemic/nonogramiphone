@@ -34,6 +34,7 @@
 		
 		// Add background to center of scene
 		CCSprite *background = [CCSprite spriteWithFile:@"playBackground.png"];
+		[background.texture setAliasTexParameters];	// Make aliased
 		[background setPosition:ccp(160, 240)];
 		[self addChild:background z:0];
 		
@@ -82,8 +83,12 @@
 		//[testAtlas setPosition:ccp(110, 273)];
 		//[self addChild:testAtlas z:3];
 		
+		// Load level!
+		NSLog(@"Current level: %d", [GameDataManager sharedManager].currentLevel);
+		NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+		
 		// Load tile map for this particular puzzle
-		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"test.tmx"];
+		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
 		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
 		
 		// Init block status array
@@ -95,13 +100,13 @@
 		for (int i = 0; i < 10; i++)
 		{
 			// Create new label; set position/color/aliasing values
-			verticalClues[i] = [CCLabel labelWithString:@"testing" dimensions:CGSizeMake(20, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:12];
+			verticalClues[i] = [CCLabel labelWithString:@"0" dimensions:CGSizeMake(20, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
 			[verticalClues[i] setPosition:ccp(120 + (blockSize * i), 300)];
 			[verticalClues[i] setColor:ccc3(0,0,0)];
 			[verticalClues[i].texture setAliasTexParameters];
 			[self addChild:verticalClues[i] z:3];
 			
-			horizontalClues[i] = [CCLabel labelWithString:@"testing" dimensions:CGSizeMake(75, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:12];
+			horizontalClues[i] = [CCLabel labelWithString:@"0" dimensions:CGSizeMake(75, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
 			[horizontalClues[i] setPosition:ccp(70, 60 + (blockSize * i))];
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
@@ -192,24 +197,18 @@
 		minutesLeft = 30;
 		secondsLeft = 0;
 		
-		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", minutesLeft] fontName:@"slkscr.ttf" fontSize:48];
+		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
 		[minutesLeftLabel setPosition:ccp(90, 420)];
 		[minutesLeftLabel setColor:ccc3(33, 33, 33)];
 		[minutesLeftLabel.texture setAliasTexParameters];
 		[self addChild:minutesLeftLabel z:3];
 		
-		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", secondsLeft] fontName:@"slkscr.ttf" fontSize:48];
+		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
 		[secondsLeftLabel setPosition:ccp(90, 380)];
 		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
-		
-		// Level manager
-		NSLog(@"Current level: %d", [GameDataManager sharedManager].currentLevel);
-		
-		// Movement debug info
-//		pixelTarget = [CCSprite spriteWithFile:@"pixelTarget.png"];
-//		[self addChild:pixelTarget z:4];
+
 	}
 	return self;
 }
@@ -226,7 +225,8 @@
 	secondsLeft--;
 	if (minutesLeft == 0 && secondsLeft < 0)
 	{
-		// End game here
+		// Game over
+		NSLog(@"You lose");
 	}
 	else if (secondsLeft < 0)
 	{
@@ -269,6 +269,11 @@
 	
 	if (touch) 
 	{
+		// Variables used to determine whether SFX should be played or not
+		int previousRow = currentRow;
+		int previousColumn = currentColumn;
+		
+		// User's finger
 		CGPoint location = [touch locationInView: [touch view]];
 		
 		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
@@ -292,6 +297,10 @@
 		if (currentRow < 1) currentRow = 1;
 		if (currentColumn > 10) currentColumn = 10;
 		if (currentColumn < 1) currentColumn = 1;
+
+		// If the cursor has changed rows, play SFX
+		if (previousRow != currentRow || previousColumn != currentColumn)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
 		
 		// Set the previous point value to be what we used as current
 		previousPoint = currentPoint;
@@ -334,9 +343,16 @@
 					{
 						// Win condition
 						NSLog(@"You won!");
+						
+						// Shoot some fireworks?
+						CCParticleSystem *emitter = [CCParticleExplosion node];
+						[self addChild:emitter z:10];
+						emitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"8pxSquare.png"];
+						emitter.autoRemoveOnFinish = YES;
+						[emitter setPosition:ccp(160, 240)];
 					}
 				}
-				else if (blockStatus[currentRow - 1][currentColumn - 1] == MARKED)
+				else if (blockStatus[currentRow - 1][currentColumn - 1] == FILLED)
 				{
 					// Play dud noise
 				}

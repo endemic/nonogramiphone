@@ -11,7 +11,7 @@
 
 @implementation GameDataManager
 
-@synthesize currentLevel, playSFX, playMusic;
+@synthesize currentLevel, playSFX, playMusic, levels;
 
 // Holds singleton class instance
 static GameDataManager *sharedManager = nil;
