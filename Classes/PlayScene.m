@@ -325,6 +325,11 @@
 					[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 					blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
 					
+					// Add sprite to "progress" section as well - these don't have to be referenced later
+					CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
+					[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];
+					[self addChild:b z:2];
+					
 					if (++hits == totalBlocksInPuzzle) 
 					{
 						// Win condition
