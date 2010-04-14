@@ -214,6 +214,7 @@
 		
 		// Set up pause overlay
 		pauseOverlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+		[pauseOverlay.texture setAliasTexParameters];
 		[pauseOverlay setPosition:ccp(-150, 200)];	// It's off screen to the right
 		[self addChild:pauseOverlay z:4];
 		
@@ -242,7 +243,7 @@
 	if (minutesLeft == 0 && secondsLeft < 0)
 	{
 		// Game over
-		NSLog(@"You lose");
+		[self lostGame];
 	}
 	else if (secondsLeft < 0)
 	{
@@ -259,20 +260,24 @@
 
 -(void) pause:(id)sender
 {
-	// Move "paused" overlay on top of puzzle, and unschedule the timer
-	[self unschedule:@selector(timer:)];
-	
-	// Make sure the overlay is on the left side of the screen
-	[pauseOverlay setPosition:ccp(-150, 200)];
-	
-	// Move pause overlay to 160, 200
-	[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
-	
-	// Hide cursor highlights
-	horizontalHighlight.visible = FALSE;
-	verticalHighlight.visible = FALSE;
-	
-	paused = TRUE;
+	// Do nothing if the game is already paused
+	if (!paused)
+	{
+		// Move "paused" overlay on top of puzzle, and unschedule the timer
+		[self unschedule:@selector(timer:)];
+		
+		// Make sure the overlay is on the left side of the screen
+		[pauseOverlay setPosition:ccp(-150, 200)];
+		
+		// Move pause overlay to 160, 200
+		[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+		
+		// Hide cursor highlights
+		horizontalHighlight.visible = FALSE;
+		verticalHighlight.visible = FALSE;
+		
+		paused = TRUE;
+	}
 }
 
 -(void) resume:(id)sender
@@ -378,8 +383,10 @@
 				// The tilemap's y-coords are inverse of the iphone coords, so invert it
 				if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 				{
+					// Add a "filled" block to the grid
 					blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
 					[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+					[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 					[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 					blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
 					
@@ -388,14 +395,9 @@
 					[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];
 					[self addChild:b z:2];
 					
+					// Win condition
 					if (++hits == totalBlocksInPuzzle) 
-					{
-						// Win condition
-						NSLog(@"You won!");
-						
-						// Don't allow for any more normal user input
-						paused = TRUE;
-					}
+						[self wonGame];
 				}
 				else if (blockStatus[currentRow - 1][currentColumn - 1] == FILLED)
 				{
@@ -410,12 +412,19 @@
 					// Run "shake" action, then return the grid to its original state
 					[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
 					
+					// Subtract time based on how many mistakes you made previously
 					switch (++misses)
 					{
 						case 1: minutesLeft -= 2; break;
 						case 2: minutesLeft -= 4; break;
 						default: minutesLeft -= 8; break;
 					}
+					if (minutesLeft < 0)
+					{
+						minutesLeft = 0;
+						secondsLeft = 0;
+					}
+					// Need to update labels here?
 				}
 			}
 			else if (tapAction == MARK)
@@ -428,6 +437,7 @@
 					{
 						blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon.png"];
 						[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+						[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 						[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 						blockStatus[currentRow - 1][currentColumn - 1] = MARKED;
 					}
@@ -452,19 +462,62 @@
 
 -(void) wonGame
 {
-	// Move "you win" overlay down on screen
+	NSLog(@"You win!");
+	
 	paused = TRUE;
+	[self unschedule:@selector(timer:)];
+	
+	// Create/move "you win" overlay down on screen
+	CCSprite *overlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+	[overlay.texture setAliasTexParameters];
+	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
+	[self addChild:overlay z:4];
+	
+	// Add buttons to overlay
+	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+	
+	CCMenu *overlayMenu = [CCMenu menuWithItems:continueButton, nil];		// Create container menu object
+	[overlayMenu setPosition:ccp(150, 50)];
+	[overlay addChild:overlayMenu];
+	
+	// Draw finished puzzle image on to overlay
+	
+	// Write image title on to overlay
+	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+	CCLabel *levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
+	[levelTitle setPosition:ccp(150, 150)];
+	[overlay addChild:levelTitle];
+	
+	// Move overlay downwards over play area
+	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 }
 
 -(void) lostGame
 {
-	// Move "you lose" overlay down on screen
+	NSLog(@"You lose!");
+
 	paused = TRUE;
+	[self unschedule:@selector(timer:)];
+	
+	// Create/move "you win" overlay down on screen
+	CCSprite *overlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+	[overlay.texture setAliasTexParameters];
+	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
+	[self addChild:overlay z:4];
+	
+	// Add buttons to overlay
+	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+	
+	CCMenu *overlayMenu = [CCMenu menuWithItems:continueButton, nil];		// Create container menu object
+	[overlayMenu setPosition:ccp(150, 50)];
+	[overlay addChild:overlayMenu];
+	
+	// Move overlay downwards over play area
+	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 }
 
 -(void) goToLevelSelect:(id)sender
 {
-	NSLog(@"Level select");
 	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }

@@ -69,4 +69,7 @@
 	bool paused;
 }
 
+-(void)wonGame;
+-(void)lostGame;
+
 @end

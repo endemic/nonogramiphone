@@ -268,13 +268,12 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>50F414EB1069373D002A0D5E</string>
-								<string>380CA1F31166737D002B3E1C</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>25</integer>
+									<integer>33</integer>
 									<integer>23</integer>
 									<integer>0</integer>
 								</array>
@@ -317,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>NonogramsAppDelegate.m</string>
+								<string>Tasks.rtf</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,19 +324,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>NonogramsAppDelegate.m</string>
+										<string>Tasks.rtf</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38A28F3B11761C2B00BA300A</string>
+										<string>38A28F72117662FB00BA300A</string>
 										<key>history</key>
 										<array>
 											<string>38A28F1611760F4900BA300A</string>
-											<string>38A28F1811760F4900BA300A</string>
-											<string>38A28F2D117618B400BA300A</string>
 											<string>38A28F3111761B8B00BA300A</string>
-											<string>38A28F3811761C2B00BA300A</string>
-											<string>38A28F3911761C2B00BA300A</string>
+											<string>38A28F571176469500BA300A</string>
+											<string>38A28F591176469500BA300A</string>
+											<string>38A28F6B1176486A00BA300A</string>
+											<string>38A28F6E1176551D00BA300A</string>
+											<string>38A28F6F1176551D00BA300A</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -376,6 +376,13 @@
 											<string>38A28F2F117618B400BA300A</string>
 											<string>38A28F3311761B8B00BA300A</string>
 											<string>38A28F3A11761C2B00BA300A</string>
+											<string>38A28F5B1176469500BA300A</string>
+											<string>38A28F5C1176469500BA300A</string>
+											<string>38A28F5D1176469500BA300A</string>
+											<string>38A28F5E1176469500BA300A</string>
+											<string>38A28F66117647C400BA300A</string>
+											<string>38A28F6C1176486A00BA300A</string>
+											<string>38A28F701176551D00BA300A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -569,9 +576,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
+		<string>38A28F68117647C400BA300A</string>
+		<string>38A28F69117647C400BA300A</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>38F17B97115A9C8F007CAB05</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/nathandemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -598,7 +607,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LevelSelectScene.m</string>
+								<string>PlayScene.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -907,6 +916,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -952,7 +963,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

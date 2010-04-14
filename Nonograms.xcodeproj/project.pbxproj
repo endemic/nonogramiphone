@@ -28,6 +28,8 @@
 		38A28EFA1175F53400BA300A /* resumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28EF81175F53400BA300A /* resumeButton.png */; };
 		38A28EFB1175F53400BA300A /* resumeButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28EF91175F53400BA300A /* resumeButtonOn.png */; };
 		38A28F3711761C1400BA300A /* dud.wav in Resources */ = {isa = PBXBuildFile; fileRef = 38A28F3611761C1400BA300A /* dud.wav */; };
+		38A28F441176459500BA300A /* continueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28F421176459500BA300A /* continueButton.png */; };
+		38A28F451176459500BA300A /* continueButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28F431176459500BA300A /* continueButtonOn.png */; };
 		38CD53831174C0A900F1C75B /* cursorMove.wav in Resources */ = {isa = PBXBuildFile; fileRef = 38CD53821174C0A900F1C75B /* cursorMove.wav */; };
 		38CD53AD1174F09D00F1C75B /* bomb.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38CD53A41174F09D00F1C75B /* bomb.tmx */; };
 		38CD53AE1174F09D00F1C75B /* crescentMoon.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38CD53A51174F09D00F1C75B /* crescentMoon.tmx */; };
@@ -316,6 +318,8 @@
 		38A28EF81175F53400BA300A /* resumeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resumeButton.png; path = Buttons/resumeButton.png; sourceTree = "<group>"; };
 		38A28EF91175F53400BA300A /* resumeButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resumeButtonOn.png; path = Buttons/resumeButtonOn.png; sourceTree = "<group>"; };
 		38A28F3611761C1400BA300A /* dud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dud.wav; path = Sounds/dud.wav; sourceTree = "<group>"; };
+		38A28F421176459500BA300A /* continueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continueButton.png; path = Buttons/continueButton.png; sourceTree = "<group>"; };
+		38A28F431176459500BA300A /* continueButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continueButtonOn.png; path = Buttons/continueButtonOn.png; sourceTree = "<group>"; };
 		38CD53821174C0A900F1C75B /* cursorMove.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cursorMove.wav; path = Sounds/cursorMove.wav; sourceTree = "<group>"; };
 		38CD53A41174F09D00F1C75B /* bomb.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = bomb.tmx; path = Maps/bomb.tmx; sourceTree = "<group>"; };
 		38CD53A51174F09D00F1C75B /* crescentMoon.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = crescentMoon.tmx; path = Maps/crescentMoon.tmx; sourceTree = "<group>"; };
@@ -682,6 +686,8 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				38A28F421176459500BA300A /* continueButton.png */,
+				38A28F431176459500BA300A /* continueButtonOn.png */,
 				38A28EF81175F53400BA300A /* resumeButton.png */,
 				38A28EF91175F53400BA300A /* resumeButtonOn.png */,
 				7DE7C3FF1175D0360047653D /* pauseButton.png */,
@@ -1286,6 +1292,8 @@
 				38A28EFA1175F53400BA300A /* resumeButton.png in Resources */,
 				38A28EFB1175F53400BA300A /* resumeButtonOn.png in Resources */,
 				38A28F3711761C1400BA300A /* dud.wav in Resources */,
+				38A28F441176459500BA300A /* continueButton.png in Resources */,
+				38A28F451176459500BA300A /* continueButtonOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
