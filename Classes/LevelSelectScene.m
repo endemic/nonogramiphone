@@ -32,6 +32,7 @@
 
 // Level select layer
 // Level manager is a singleton?
+// Maybe use NSSelectorFromString to select levels?
 @implementation LevelSelectLayer
 
 -(id) init

@@ -64,6 +64,9 @@
 	
 	// Used to obscure the puzzle when the game is paused
 	CCSprite *pauseOverlay;
+	
+	// Determines if the game is paused or playing
+	bool paused;
 }
 
 @end

@@ -4,6 +4,12 @@
 <array>
 	<dict>
 		<key>title</key>
+		<string>Test</string>
+		<key>filename</key>
+		<string>test.tmx</string>
+	</dict>
+	<dict>
+		<key>title</key>
 		<string>St. John&apos;s Arms</string>
 		<key>filename</key>
 		<string>stJohnsArms.tmx</string>

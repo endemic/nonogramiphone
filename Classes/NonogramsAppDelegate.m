@@ -59,6 +59,7 @@
 	// To convert .wav files: afconvert -v -f WAVE -d LEI16 notworking.wav working.wav
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
 
 	// Load default defaults - I'm just going to assume this is working
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -98,6 +99,7 @@
 }
 
 - (void)dealloc {
+	[[GameDataManager sharedManager] release];
 	[[CCDirector sharedDirector] release];
 	[window release];
 	[super dealloc];

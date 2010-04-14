@@ -25,6 +25,9 @@
 		380CA14411664400002B3E1C /* prevButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14211664400002B3E1C /* prevButtonOn.png */; };
 		380CA1F511667389002B3E1C /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 380CA1F411667389002B3E1C /* buttonPress.wav */; };
 		38287D5D116E15920085B8E2 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38287D5C116E15920085B8E2 /* Defaults.plist */; };
+		38A28EFA1175F53400BA300A /* resumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28EF81175F53400BA300A /* resumeButton.png */; };
+		38A28EFB1175F53400BA300A /* resumeButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28EF91175F53400BA300A /* resumeButtonOn.png */; };
+		38A28F3711761C1400BA300A /* dud.wav in Resources */ = {isa = PBXBuildFile; fileRef = 38A28F3611761C1400BA300A /* dud.wav */; };
 		38CD53831174C0A900F1C75B /* cursorMove.wav in Resources */ = {isa = PBXBuildFile; fileRef = 38CD53821174C0A900F1C75B /* cursorMove.wav */; };
 		38CD53AD1174F09D00F1C75B /* bomb.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38CD53A41174F09D00F1C75B /* bomb.tmx */; };
 		38CD53AE1174F09D00F1C75B /* crescentMoon.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 38CD53A51174F09D00F1C75B /* crescentMoon.tmx */; };
@@ -310,6 +313,9 @@
 		380CA14211664400002B3E1C /* prevButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButtonOn.png; path = Buttons/prevButtonOn.png; sourceTree = "<group>"; };
 		380CA1F411667389002B3E1C /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = buttonPress.wav; path = Sounds/buttonPress.wav; sourceTree = "<group>"; };
 		38287D5C116E15920085B8E2 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		38A28EF81175F53400BA300A /* resumeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resumeButton.png; path = Buttons/resumeButton.png; sourceTree = "<group>"; };
+		38A28EF91175F53400BA300A /* resumeButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resumeButtonOn.png; path = Buttons/resumeButtonOn.png; sourceTree = "<group>"; };
+		38A28F3611761C1400BA300A /* dud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dud.wav; path = Sounds/dud.wav; sourceTree = "<group>"; };
 		38CD53821174C0A900F1C75B /* cursorMove.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cursorMove.wav; path = Sounds/cursorMove.wav; sourceTree = "<group>"; };
 		38CD53A41174F09D00F1C75B /* bomb.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = bomb.tmx; path = Maps/bomb.tmx; sourceTree = "<group>"; };
 		38CD53A51174F09D00F1C75B /* crescentMoon.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = crescentMoon.tmx; path = Maps/crescentMoon.tmx; sourceTree = "<group>"; };
@@ -676,6 +682,8 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				38A28EF81175F53400BA300A /* resumeButton.png */,
+				38A28EF91175F53400BA300A /* resumeButtonOn.png */,
 				7DE7C3FF1175D0360047653D /* pauseButton.png */,
 				7DE7C4001175D0360047653D /* pauseButtonOn.png */,
 				38D207DB116D28E30096DC65 /* quitButton.png */,
@@ -709,6 +717,7 @@
 		380CA1F31166737D002B3E1C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				38A28F3611761C1400BA300A /* dud.wav */,
 				38CD53821174C0A900F1C75B /* cursorMove.wav */,
 				380CA1F411667389002B3E1C /* buttonPress.wav */,
 			);
@@ -1274,6 +1283,9 @@
 				7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */,
 				7DE7C4011175D0360047653D /* pauseButton.png in Resources */,
 				7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */,
+				38A28EFA1175F53400BA300A /* resumeButton.png in Resources */,
+				38A28EFB1175F53400BA300A /* resumeButtonOn.png in Resources */,
+				38A28F3711761C1400BA300A /* dud.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

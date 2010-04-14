@@ -209,17 +209,20 @@
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
 		
+		// Not paused to start with!
+		paused = FALSE;
+		
 		// Set up pause overlay
 		pauseOverlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
 		[pauseOverlay setPosition:ccp(-150, 200)];	// It's off screen to the right
 		[self addChild:pauseOverlay z:4];
 		
 		// Add buttons to overlay
-		CCMenuItem *resumeButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" disabledImage:@"playButton.png" target:self selector:@selector(resume:)];
-		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButton.png" target:self selector:@selector(goToLevelSelect:)];
+		CCMenuItem *resumeButton = [CCMenuItemImage itemFromNormalImage:@"resumeButton.png" selectedImage:@"resumeButtonOn.png" disabledImage:@"resumeButton.png" target:self selector:@selector(resume:)];
+		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" disabledImage:@"quitButton.png" target:self selector:@selector(goToLevelSelect:)];
 		
 		CCMenu *overlayMenu = [CCMenu menuWithItems:resumeButton, quitButton, nil];		// Create container menu object
-		[overlayMenu alignItemsVertically];
+		[overlayMenu alignItemsVerticallyWithPadding:20];
 		[overlayMenu setPosition:ccp(150, 150)];
 		[pauseOverlay addChild:overlayMenu];
 	}
@@ -268,6 +271,8 @@
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;
 	verticalHighlight.visible = FALSE;
+	
+	paused = TRUE;
 }
 
 -(void) resume:(id)sender
@@ -281,6 +286,8 @@
 	// Show cursor highlights
 	horizontalHighlight.visible = TRUE;
 	verticalHighlight.visible = TRUE;
+	
+	paused = FALSE;
 }
 
 -(void) changeTapActionToMark:(id)sender
@@ -298,7 +305,7 @@
 	// Figure out initial location of touch
 	UITouch *touch = [touches anyObject];
 	
-	if (touch) 
+	if (touch && !paused) 
 	{
 		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
@@ -309,7 +316,7 @@
 {
 	UITouch *touch = [touches anyObject];
 	
-	if (touch) 
+	if (touch && !paused) 
 	{
 		// Variables used to determine whether SFX should be played or not
 		int previousRow = currentRow;
@@ -341,7 +348,7 @@
 		if (currentColumn < 1) currentColumn = 1;
 
 		// If the cursor has changed rows, play SFX
-		if (previousRow != currentRow || previousColumn != currentColumn)
+		if ((previousRow != currentRow || previousColumn != currentColumn) && [GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
 		
 		// Set the previous point value to be what we used as current
@@ -354,7 +361,7 @@
 	// Determine block placement here
 	UITouch *touch = [touches anyObject];
 	
-	if (touch)
+	if (touch && !paused)
 	{
 		// convert touch coords
 		CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
@@ -386,17 +393,14 @@
 						// Win condition
 						NSLog(@"You won!");
 						
-						// Shoot some fireworks?
-						CCParticleSystem *emitter = [CCParticleExplosion node];
-						[self addChild:emitter z:10];
-						emitter.texture = [[CCTextureCache sharedTextureCache] addImage:@"8pxSquare.png"];
-						emitter.autoRemoveOnFinish = YES;
-						[emitter setPosition:ccp(160, 240)];
+						// Don't allow for any more normal user input
+						paused = TRUE;
 					}
 				}
 				else if (blockStatus[currentRow - 1][currentColumn - 1] == FILLED)
 				{
 					// Play dud noise
+					[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
 				}
 				else
 				{
@@ -439,10 +443,23 @@
 				else
 				{
 					// Play dud noise
+					[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
 				}
 			} // if (tapAction == MARK)
 		} // if (ccpDistance(startPoint, endPoint) < moveThreshold)
 	}
+}
+
+-(void) wonGame
+{
+	// Move "you win" overlay down on screen
+	paused = TRUE;
+}
+
+-(void) lostGame
+{
+	// Move "you lose" overlay down on screen
+	paused = TRUE;
 }
 
 -(void) goToLevelSelect:(id)sender
