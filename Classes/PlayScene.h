@@ -61,6 +61,9 @@
 	// For timer calculation/display
 	int minutesLeft, secondsLeft;
 	CCLabel *minutesLeftLabel, *secondsLeftLabel;
+	
+	// Used to obscure the puzzle when the game is paused
+	CCSprite *pauseOverlay;
 }
 
 @end

@@ -266,12 +266,14 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>50F414EB1069373D002A0D5E</string>
+								<string>38F17B6B115A9C70007CAB05</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>33</integer>
+									<integer>35</integer>
+									<integer>27</integer>
 									<integer>23</integer>
 									<integer>0</integer>
 								</array>
@@ -314,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Tasks.rtf</string>
+								<string>PlayScene.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -322,26 +324,26 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Tasks.rtf</string>
+										<string>PlayScene.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D5F7888117483E900BC4651</string>
+										<string>7DE7C4121175D1FF0047653D</string>
 										<key>history</key>
 										<array>
 											<string>7DDF4256116D4685006FC228</string>
 											<string>7DEFB36C116DE8910019FC39</string>
-											<string>7DEFB36D116DE8910019FC39</string>
-											<string>7DEFB36E116DE8910019FC39</string>
 											<string>7DEFB36F116DE8910019FC39</string>
 											<string>7DEFB370116DE8910019FC39</string>
 											<string>7D8EFB3711732ECD002D5627</string>
 											<string>7D8EFB3811732ECD002D5627</string>
 											<string>7D5685451174795A004CDB64</string>
-											<string>7D5F7884117483E900BC4651</string>
-											<string>7D5F7885117483E900BC4651</string>
 											<string>7D5F7886117483E900BC4651</string>
-											<string>7D5F7887117483E900BC4651</string>
+											<string>7DE7C40D1175D1FF0047653D</string>
+											<string>7DE7C40E1175D1FF0047653D</string>
+											<string>7DE7C40F1175D1FF0047653D</string>
+											<string>7DE7C4101175D1FF0047653D</string>
+											<string>7DE7C4111175D1FF0047653D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -399,9 +401,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7D5F783A1174798A00BC4651</string>
+				<string>7DE7C3F51175C6120047653D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7D5F783B1174798A00BC4651</string>
+				<string>7DE7C3F61175C6120047653D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -539,9 +541,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -622,7 +624,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7DB8C2B8115BB9630097C084</string>
-				<string>7D5F783C1174798A00BC4651</string>
+				<string>7DE7C3F71175C6120047653D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -744,13 +746,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7D5F783D1174798A00BC4651</string>
+				<string>7DE7C4131175D1FF0047653D</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7D5F783E1174798A00BC4651</string>
-				<string>7D5F783F1174798A00BC4651</string>
-				<string>7D5F78401174798A00BC4651</string>
-				<string>7D5F78411174798A00BC4651</string>
-				<string>7D5F78421174798A00BC4651</string>
+				<string>7DE7C4141175D1FF0047653D</string>
+				<string>7DE7C4151175D1FF0047653D</string>
+				<string>7DE7C4161175D1FF0047653D</string>
+				<string>7DE7C4171175D1FF0047653D</string>
+				<string>7DE7C4181175D1FF0047653D</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -914,7 +916,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>7D5F78431174798A00BC4651</string>
+				<string>7DE7C4191175D1FF0047653D</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -924,7 +926,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

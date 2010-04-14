@@ -265,6 +265,9 @@
 		7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */; };
 		7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */; };
 		7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10BF115CBCC90083D073 /* playBackground.png */; };
+		7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3F91175C9310047653D /* pauseOverlay.png */; };
+		7DE7C4011175D0360047653D /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3FF1175D0360047653D /* pauseButton.png */; };
+		7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C4001175D0360047653D /* pauseButtonOn.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -550,6 +553,9 @@
 		7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScene.h; sourceTree = "<group>"; };
 		7DBB10B5115CBAE90083D073 /* PlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayScene.m; sourceTree = "<group>"; };
 		7DBB10BF115CBCC90083D073 /* playBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playBackground.png; sourceTree = "<group>"; };
+		7DE7C3F91175C9310047653D /* pauseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseOverlay.png; sourceTree = "<group>"; };
+		7DE7C3FF1175D0360047653D /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Buttons/pauseButton.png; sourceTree = "<group>"; };
+		7DE7C4001175D0360047653D /* pauseButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButtonOn.png; path = Buttons/pauseButtonOn.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -670,6 +676,8 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				7DE7C3FF1175D0360047653D /* pauseButton.png */,
+				7DE7C4001175D0360047653D /* pauseButtonOn.png */,
 				38D207DB116D28E30096DC65 /* quitButton.png */,
 				38D207DC116D28E30096DC65 /* quitButtonOn.png */,
 				38D207AC116D1A9B0096DC65 /* backButton.png */,
@@ -737,6 +745,7 @@
 		38F17B6B115A9C70007CAB05 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7DE7C3F91175C9310047653D /* pauseOverlay.png */,
 				7D5685411174792A004CDB64 /* 8pxSquare.png */,
 				7D56853D11747878004CDB64 /* 4pxSquare.png */,
 				38EC2656116BCE9500358D1B /* pixelTarget.png */,
@@ -1262,6 +1271,9 @@
 				38CD53B41174F09D00F1C75B /* stJohnsArms.tmx in Resources */,
 				38CD53B51174F09D00F1C75B /* trashCan.tmx in Resources */,
 				38CD53B71174F21900F1C75B /* Levels.plist in Resources */,
+				7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */,
+				7DE7C4011175D0360047653D /* pauseButton.png in Resources */,
+				7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -208,7 +208,20 @@
 		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
-
+		
+		// Set up pause overlay
+		pauseOverlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+		[pauseOverlay setPosition:ccp(-150, 200)];	// It's off screen to the right
+		[self addChild:pauseOverlay z:4];
+		
+		// Add buttons to overlay
+		CCMenuItem *resumeButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" disabledImage:@"playButton.png" target:self selector:@selector(resume:)];
+		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButton.png" target:self selector:@selector(goToLevelSelect:)];
+		
+		CCMenu *overlayMenu = [CCMenu menuWithItems:resumeButton, quitButton, nil];		// Create container menu object
+		[overlayMenu alignItemsVertically];
+		[overlayMenu setPosition:ccp(150, 150)];
+		[pauseOverlay addChild:overlayMenu];
 	}
 	return self;
 }
@@ -245,20 +258,37 @@
 {
 	// Move "paused" overlay on top of puzzle, and unschedule the timer
 	[self unschedule:@selector(timer:)];
+	
+	// Make sure the overlay is on the left side of the screen
+	[pauseOverlay setPosition:ccp(-150, 200)];
+	
+	// Move pause overlay to 160, 200
+	[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	
+	// Hide cursor highlights
+	horizontalHighlight.visible = FALSE;
+	verticalHighlight.visible = FALSE;
 }
 
 -(void) resume:(id)sender
 {
 	// Remove "paused" overlay and reschedule timer
 	[self schedule:@selector(timer:) interval:1.0];
+	
+	// Move pause overlay off screen to the right, then reset position offscreen left
+	[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(470, 200)]];
+	
+	// Show cursor highlights
+	horizontalHighlight.visible = TRUE;
+	verticalHighlight.visible = TRUE;
 }
 
--(void) changeTapActionToMark:(id)selector
+-(void) changeTapActionToMark:(id)sender
 {
 	tapAction = MARK;
 }
 
--(void) changeTapActionToFill:(id)selector
+-(void) changeTapActionToFill:(id)sender
 {
 	tapAction = FILL;
 }
