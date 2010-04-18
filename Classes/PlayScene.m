@@ -100,13 +100,13 @@
 		for (int i = 0; i < 10; i++)
 		{
 			// Create new label; set position/color/aliasing values
-			verticalClues[i] = [CCLabel labelWithString:@"0" dimensions:CGSizeMake(20, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+			verticalClues[i] = [CCLabel labelWithString:@"0\n" dimensions:CGSizeMake(25, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
 			[verticalClues[i] setPosition:ccp(120 + (blockSize * i), 300)];
 			[verticalClues[i] setColor:ccc3(0,0,0)];
 			[verticalClues[i].texture setAliasTexParameters];
 			[self addChild:verticalClues[i] z:3];
 			
-			horizontalClues[i] = [CCLabel labelWithString:@"0" dimensions:CGSizeMake(75, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
+			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(75, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
 			[horizontalClues[i] setPosition:ccp(70, 60 + (blockSize * i))];
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
@@ -180,7 +180,7 @@
 			{
 				[verticalClues[i] setString:cluesTextVert];
 				NSArray *numberOfVerticalClues = [cluesTextVert componentsSeparatedByString:@"\n"];
-				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 13))];
+				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 17))];
 			}
 			else
 			{
@@ -190,7 +190,7 @@
 		
 		// Set up schedulers
 		[self schedule:@selector(update:)];
-		
+
 		// Set up timer labels/internal variables/scheduler
 		[self schedule:@selector(timer:) interval:1.0];
 
@@ -198,13 +198,13 @@
 		secondsLeft = 0;
 		
 		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
-		[minutesLeftLabel setPosition:ccp(90, 420)];
+		[minutesLeftLabel setPosition:ccp(110, 395)];
 		[minutesLeftLabel setColor:ccc3(33, 33, 33)];
 		[minutesLeftLabel.texture setAliasTexParameters];
 		[self addChild:minutesLeftLabel z:3];
 		
 		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
-		[secondsLeftLabel setPosition:ccp(90, 380)];
+		[secondsLeftLabel setPosition:ccp(110, 355)];
 		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
@@ -352,9 +352,23 @@
 		if (currentColumn > 10) currentColumn = 10;
 		if (currentColumn < 1) currentColumn = 1;
 
-		// If the cursor has changed rows, play SFX
-		if ((previousRow != currentRow || previousColumn != currentColumn) && [GameDataManager sharedManager].playSFX)
-			[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
+		// If the cursor has changed rows
+		if ((previousRow != currentRow || previousColumn != currentColumn))
+		{
+			// Play SFX if allowed
+			if ([GameDataManager sharedManager].playSFX)
+				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
+			
+			// If player has double tapped, try to place a mark/fill in the new block
+			if (touch.tapCount > 1) 
+			{
+				switch (tapAction) 
+				{
+					case FILL: [self fillBlock]; break;
+					case MARK: [self markBlock]; break;
+				}
+			}
+		}
 		
 		// Set the previous point value to be what we used as current
 		previousPoint = currentPoint;
@@ -377,86 +391,98 @@
 		// If a tap is detected - i.e. if the movement of the finger is less than the threshold
 		if (ccpDistance(startPoint, endPoint) < moveThreshold)
 		{
-			if (tapAction == FILL)
+			switch (tapAction) 
 			{
-				// If the tile at the current location is a filled in tile...
-				// The tilemap's y-coords are inverse of the iphone coords, so invert it
-				if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
-				{
-					// Add a "filled" block to the grid
-					blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
-					[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
-					[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
-					[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
-					blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
-					
-					// Add sprite to "progress" section as well - these don't have to be referenced later
-					CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-					[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];
-					[self addChild:b z:2];
-					
-					// Win condition
-					if (++hits == totalBlocksInPuzzle) 
-						[self wonGame];
-				}
-				else if (blockStatus[currentRow - 1][currentColumn - 1] == FILLED)
-				{
-					// Play dud noise
-					[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
-				}
-				else
-				{
-					// Take off time here, as well as play sfx of some kind and shake the screen
-					id shake = [CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:0.1];
-					
-					// Run "shake" action, then return the grid to its original state
-					[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
-					
-					// Subtract time based on how many mistakes you made previously
-					switch (++misses)
-					{
-						case 1: minutesLeft -= 2; break;
-						case 2: minutesLeft -= 4; break;
-						default: minutesLeft -= 8; break;
-					}
-					if (minutesLeft < 0)
-					{
-						minutesLeft = 0;
-						secondsLeft = 0;
-					}
-					// Need to update labels here?
-				}
+				case FILL: [self fillBlock]; break;
+				case MARK: [self markBlock]; break;
 			}
-			else if (tapAction == MARK)
-			{
-				// Toggle 'X' mark on a block if it's not already filled in
-				if (blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
-				{
-					// If not marked, mark
-					if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
-					{
-						blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon.png"];
-						[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
-						[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
-						[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
-						blockStatus[currentRow - 1][currentColumn - 1] = MARKED;
-					}
-					// If marked, remove mark
-					else
-					{
-						[self removeChild:blockSprites[currentRow - 1][currentColumn - 1] cleanup:FALSE];
-						blockSprites[currentRow - 1][currentColumn - 1] = nil;
-						blockStatus[currentRow - 1][currentColumn - 1] = BLANK;
-					}
-				}
-				// Block is filled
-				else
-				{
-					// Play dud noise
-					[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
-				}
-			} // if (tapAction == MARK)
-		} // if (ccpDistance(startPoint, endPoint) < moveThreshold)
+		}
+	}
+}
+
+-(void) markBlock
+{
+	// Toggle 'X' mark on a block if it's not already filled in
+	if (blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
+	{
+		// If not marked, mark
+		if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
+		{
+			blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon.png"];
+			[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+			[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
+			[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
+			blockStatus[currentRow - 1][currentColumn - 1] = MARKED;
+		}
+		// If marked, remove mark
+		else
+		{
+			[self removeChild:blockSprites[currentRow - 1][currentColumn - 1] cleanup:FALSE];
+			blockSprites[currentRow - 1][currentColumn - 1] = nil;
+			blockStatus[currentRow - 1][currentColumn - 1] = BLANK;
+		}
+	}
+	// Block is filled
+	else
+	{
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
+	}
+}
+
+-(void) fillBlock
+{
+	// If the tile at the current location is a filled in tile...
+	// The tilemap's y-coords are inverse of the iphone coords, so invert it
+	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
+	{
+		// Add a "filled" block to the grid
+		blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
+		[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
+		[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
+		blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
+		
+		// Add sprite to "progress" section as well - these don't have to be referenced later
+		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
+		[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];
+		[self addChild:b z:2];
+		
+		// Win condition
+		if (++hits == totalBlocksInPuzzle) 
+			[self wonGame];
+	}
+	else if (blockStatus[currentRow - 1][currentColumn - 1] == FILLED)
+	{
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
+	}
+	else
+	{
+		// Take off time here, as well as play sfx of some kind and shake the screen
+		id shake = [CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:0.1];
+		
+		// Run "shake" action, then return the grid to its original state
+		[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
+		
+		// Subtract time based on how many mistakes you made previously
+		switch (++misses)
+		{
+			case 1: minutesLeft -= 2; break;
+			case 2: minutesLeft -= 4; break;
+			default: minutesLeft -= 8; break;
+		}
+		if (minutesLeft < 0)
+		{
+			minutesLeft = 0;
+			secondsLeft = 0;
+		}
+		
+		// Update time labels
+		[minutesLeftLabel setString:[NSString stringWithFormat:@"%d", minutesLeft]];
+		[secondsLeftLabel setString:[NSString stringWithFormat:@"%d", secondsLeft]];
 	}
 }
 
@@ -486,7 +512,7 @@
 	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
 	CCLabel *levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
 	[levelTitle setPosition:ccp(150, 150)];
-	[overlay addChild:levelTitle];
+	[overlay addChild:levelTitle z:5];
 	
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];

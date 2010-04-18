@@ -69,7 +69,9 @@
 	bool paused;
 }
 
--(void)wonGame;
--(void)lostGame;
+-(void) markBlock;
+-(void) fillBlock;
+-(void) wonGame;
+-(void) lostGame;
 
 @end

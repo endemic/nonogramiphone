@@ -71,7 +71,7 @@
 	
 	// Load information about levels from .plist
 	[GameDataManager sharedManager].levels = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"]];
-	NSLog([[[GameDataManager sharedManager].levels objectAtIndex:0] objectForKey:@"filename"]);
+	//NSLog([[[GameDataManager sharedManager].levels objectAtIndex:0] objectForKey:@"filename"]);
 	
 	// Run default scene
 	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
