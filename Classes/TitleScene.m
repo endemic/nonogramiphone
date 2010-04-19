@@ -53,20 +53,31 @@
 -(void) goToLevelSelect: (id)sender
 {
 	NSLog(@"Level select");
-	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }
 
 -(void) goToTutorial: (id)sender
 {
-	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	NSLog(@"Tutorial");
 }
 
 -(void) goToOptions: (id)sender
 {
 	NSLog(@"Options");
-	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[OptionsScene node]]];
 }
 

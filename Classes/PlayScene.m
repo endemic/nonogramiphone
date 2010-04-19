@@ -184,12 +184,12 @@
 			}
 			else
 			{
-				//_verticalClues[i].y = 93;
+				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
 			}
 		}
 		
 		// Set up schedulers
-		[self schedule:@selector(update:)];
+		//[self schedule:@selector(update:)];
 
 		// Set up timer labels/internal variables/scheduler
 		[self schedule:@selector(timer:) interval:1.0];
@@ -230,6 +230,7 @@
 	return self;
 }
 
+// This scheduled method currently commented out
 -(void) update:(ccTime)dt
 {	
 	// Update sprite positions based on row/column variables
@@ -351,10 +352,14 @@
 		if (currentRow < 1) currentRow = 1;
 		if (currentColumn > 10) currentColumn = 10;
 		if (currentColumn < 1) currentColumn = 1;
-
+		
 		// If the cursor has changed rows
 		if ((previousRow != currentRow || previousColumn != currentColumn))
 		{
+			// Update sprite positions based on row/column variables
+			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
+			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
+			
 			// Play SFX if allowed
 			if ([GameDataManager sharedManager].playSFX)
 				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
@@ -493,6 +498,10 @@
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
 	
+	// Hide cursor highlights
+	horizontalHighlight.visible = FALSE;
+	verticalHighlight.visible = FALSE;
+	
 	// Create/move "you win" overlay down on screen
 	CCSprite *overlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
 	[overlay.texture setAliasTexParameters];
@@ -511,8 +520,8 @@
 	// Write image title on to overlay
 	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
 	CCLabel *levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
-	[levelTitle setPosition:ccp(150, 150)];
-	[overlay addChild:levelTitle z:5];
+	[levelTitle setPosition:ccp(150, 100)];
+	[overlay addChild:levelTitle];
 	
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
@@ -524,6 +533,10 @@
 
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
+	
+	// Hide cursor highlights
+	horizontalHighlight.visible = FALSE;
+	verticalHighlight.visible = FALSE;
 	
 	// Create/move "you win" overlay down on screen
 	CCSprite *overlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];

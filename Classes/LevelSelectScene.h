@@ -15,7 +15,6 @@
 {
 	//NSMutableArray *levelDisplayList;
 	CCSprite *levelDisplayList[15];
-	int currentlyDisplayedLevel;
 }
 
 -(void) showNextLevel: (id)sender;

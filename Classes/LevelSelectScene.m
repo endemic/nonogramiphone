@@ -58,11 +58,14 @@
 		[self addChild:playButtonMenu z:1];
 		
 		// Set up sprites that show level details
-		for (int i = 0; i < 15; i++) 
+		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
 		{
 			CCSprite *s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
-			if (i == 0)
-				[s setPosition:ccp(160, 230)];	// First one is in the middle of the screen
+			
+			if (i < [GameDataManager sharedManager].currentLevel - 1)
+				[s setPosition:ccp(-140, 230)];	// Position to the left
+			else if (i == [GameDataManager sharedManager].currentLevel - 1)
+				[s setPosition:ccp(160, 230)];	// Current one is in the middle of the screen
 			else
 				[s setPosition:ccp(440, 230)];	// Offscreen for the rest
 
@@ -70,9 +73,6 @@
 			
 			levelDisplayList[i] = s;
 		}
-		
-		[GameDataManager sharedManager].currentLevel = 1;
-		currentlyDisplayedLevel = 0;
 	}
 	return self;
 }
@@ -80,30 +80,43 @@
 -(void) showPreviousLevel: (id)sender
 {
 	NSLog(@"Show previous level");
-	if (currentlyDisplayedLevel > 0)
+	if ([GameDataManager sharedManager].currentLevel > 1)
 	{
+		// Subtract array key values by one
+		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(440, 230)]];
 		[GameDataManager sharedManager].currentLevel--;
-		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(440, 230)]];
-		currentlyDisplayedLevel--;
-		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 230)]];
+		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 230)]];
 	}
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 -(void) showNextLevel: (id)sender
 {
 	NSLog(@"Show next level");
-	if (currentlyDisplayedLevel < 14)
+	if ([GameDataManager sharedManager].currentLevel < [[GameDataManager sharedManager].levels count] - 1)
 	{
+		// Subtract key values by one, since arrays start at 0
+		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(-120, 230)]];
 		[GameDataManager sharedManager].currentLevel++;
-		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(-120, 230)]];
-		currentlyDisplayedLevel++;
-		[levelDisplayList[currentlyDisplayedLevel] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 230)]];
+		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCMoveTo actionWithDuration:0.75 position:ccp(160, 230)]];
 	}
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 -(void) playLevel: (id)sender
 {
 	NSLog(@"Play level");
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[PlayScene node]]];
 }
 
