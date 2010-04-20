@@ -57,6 +57,15 @@
 		[playButtonMenu setPosition:ccp(160, 80)];
 		[self addChild:playButtonMenu z:1];
 		
+		// Get best times/attempts
+		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
+		
+		NSLog(@"Best time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"]);
+		NSLog(@"# of attempts at level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]);
+		
+		// Re-save
+		[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
+		
 		// Set up sprites that show level details
 		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
 		{
@@ -70,8 +79,8 @@
 				[s setPosition:ccp(440, 230)];	// Offscreen for the rest
 
 			[self addChild:s];
-			
 			levelDisplayList[i] = s;
+			//[s release];
 		}
 	}
 	return self;

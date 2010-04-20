@@ -190,7 +190,14 @@
 		
 		// Set up schedulers
 		//[self schedule:@selector(update:)];
-
+		
+		// Set up % complete label
+		percentComplete = [CCLabel labelWithString:@"0" fontName:@"slkscr.ttf" fontSize:48];
+		[percentComplete setPosition:ccp(260, 415)];
+		[percentComplete.texture setAliasTexParameters];
+		[percentComplete setColor:ccc3(33, 33, 33)];
+		[self addChild:percentComplete z:3];
+		
 		// Set up timer labels/internal variables/scheduler
 		[self schedule:@selector(timer:) interval:1.0];
 
@@ -449,10 +456,15 @@
 		[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 		blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
 		
-		// Add sprite to "progress" section as well - these don't have to be referenced later
+		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-		[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];
+		//[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];	// Old position
+		[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
 		[self addChild:b z:2];
+		
+		// Update "% complete" number
+		// This is not working for some reason
+		[percentComplete setString:[NSString stringWithFormat:@"%f", (float)(hits / totalBlocksInPuzzle)]];
 		
 		// Win condition
 		if (++hits == totalBlocksInPuzzle) 
@@ -553,6 +565,18 @@
 	
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	
+	// Get best times/attempts
+	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];
+	NSNumber *attempts = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"];
+	NSLog(@"Attempts: %@", [NSNumber numberWithInt:[attempts intValue] + 1]);
+	
+	NSMutableDictionary *timeData = [NSMutableDictionary dictionaryWithDictionary: [levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1]];
+	[timeData setValue:[NSNumber numberWithInt:[attempts intValue] + 1] forKey:@"attempts"];
+	
+	// Re-save
+	[levelTimes replaceObjectAtIndex:[GameDataManager sharedManager].currentLevel - 1 withObject:timeData];
+	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
 }
 
 -(void) goToLevelSelect:(id)sender

@@ -55,6 +55,9 @@
 	// To keep track of a win condition
 	int totalBlocksInPuzzle, hits, misses;
 	
+	// Shows % complete of puzzle
+	CCLabel *percentComplete;
+	
 	// For debuggin' the position of a person's finger!
 	CCSprite *pixelTarget;
 	

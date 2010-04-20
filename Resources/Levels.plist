@@ -3,60 +3,80 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
 		<key>title</key>
 		<string>Test</string>
 		<key>filename</key>
 		<string>test.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
 		<key>title</key>
 		<string>St. John&apos;s Arms</string>
 		<key>filename</key>
 		<string>stJohnsArms.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
 		<key>title</key>
 		<string>Trash Can</string>
 		<key>filename</key>
 		<string>trashCan.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
 		<key>title</key>
 		<string>Question Mark</string>
 		<key>filename</key>
 		<string>questionMark.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
 		<key>title</key>
 		<string>Musical Note</string>
 		<key>filename</key>
 		<string>note.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
 		<key>title</key>
 		<string>Heart</string>
 		<key>filename</key>
 		<string>heart.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
 		<key>title</key>
 		<string>Emoticon</string>
 		<key>filename</key>
 		<string>emoticon.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
 		<key>title</key>
 		<string>Exclamation Mark</string>
 		<key>filename</key>
 		<string>exclamationMark.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
 		<key>title</key>
 		<string>Bomb</string>
 		<key>filename</key>
 		<string>bomb.tmx</string>
 	</dict>
 	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
 		<key>title</key>
 		<string>Crescent Moon</string>
 		<key>filename</key>
