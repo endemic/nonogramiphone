@@ -248,7 +248,7 @@
 -(void) timer:(ccTime)dt
 {
 	secondsLeft--;
-	if (minutesLeft == 0 && secondsLeft < 0)
+	if (minutesLeft == 0 && secondsLeft == 0)
 	{
 		// Game over
 		[self lostGame];
@@ -259,8 +259,8 @@
 		secondsLeft = 59;
 	}
 	// Update labels for time
-	[minutesLeftLabel setString:[NSString stringWithFormat:@"%d", minutesLeft]];
-	[secondsLeftLabel setString:[NSString stringWithFormat:@"%d", secondsLeft]];
+	[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
+	[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
 	
 	// This is causin' an error
 	//[secondsLeftLabel setString:[[NSString stringWithFormat:@"%d", secondsLeft] stringByPaddingToLength:2 withString:@"0" startingAtIndex:1]];
@@ -464,7 +464,8 @@
 		
 		// Update "% complete" number
 		// This is not working for some reason
-		[percentComplete setString:[NSString stringWithFormat:@"%f", (float)(hits / totalBlocksInPuzzle)]];
+		[percentComplete setString:[NSString stringWithFormat:@"%02d", (hits / totalBlocksInPuzzle)]];
+		NSLog(@"Percent complete: %02d", (hits / totalBlocksInPuzzle));
 		
 		// Win condition
 		if (++hits == totalBlocksInPuzzle) 
@@ -498,15 +499,13 @@
 		}
 		
 		// Update time labels
-		[minutesLeftLabel setString:[NSString stringWithFormat:@"%d", minutesLeft]];
-		[secondsLeftLabel setString:[NSString stringWithFormat:@"%d", secondsLeft]];
+		[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
+		[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
 	}
 }
 
 -(void) wonGame
 {
-	NSLog(@"You win!");
-	
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
 	
@@ -537,6 +536,41 @@
 	
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	
+	// Get whole array of default level times
+	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];
+	
+	// Make mutable dictionary of current level times
+	NSMutableDictionary *timeData = [NSMutableDictionary dictionaryWithDictionary: [levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1]];
+	
+	// Set local vars with the default/current values
+	NSNumber *attempts = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"];
+	NSString *firstTime = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"];
+	NSString *bestTime = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"];
+	
+	// Subtract minute/second values by 30/60 respectively, so that time shown is total time taken, rather than time left
+	NSString *currentTime = [NSString stringWithFormat:@"%@:%@", [NSString stringWithFormat:@"%02d", 30 - minutesLeft], [NSString stringWithFormat:@"%02d", 60 - secondsLeft]];
+	
+	// Decide if they need to be updated
+	if ([firstTime isEqualToString:@"--:--"])
+		[timeData setValue:currentTime forKey:@"firstTime"];
+	
+	if ([bestTime isEqualToString:@"--:--"])
+		[timeData setValue:currentTime forKey:@"bestTime"];
+	
+	// If currentTime is lower than bestTime
+	if ([currentTime compare:bestTime options:NSNumericSearch] == NSOrderedAscending)
+	{
+		NSLog(@"Replacing %@ with %@ as the best time", bestTime, currentTime);
+		[timeData setValue:currentTime forKey:@"bestTime"];
+	}
+	
+	// Increment attempts
+	[timeData setValue:[NSNumber numberWithInt:[attempts intValue] + 1] forKey:@"attempts"];
+	
+	// Re-save
+	[levelTimes replaceObjectAtIndex:[GameDataManager sharedManager].currentLevel - 1 withObject:timeData];
+	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
 }
 
 -(void) lostGame
@@ -566,12 +600,16 @@
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 	
-	// Get best times/attempts
+	// Get whole array of default level times
 	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];
-	NSNumber *attempts = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"];
-	NSLog(@"Attempts: %@", [NSNumber numberWithInt:[attempts intValue] + 1]);
 	
+	// Make mutable dictionary of current level times
 	NSMutableDictionary *timeData = [NSMutableDictionary dictionaryWithDictionary: [levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1]];
+	
+	// Set local vars with the default/current values
+	NSNumber *attempts = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"];
+	
+	// Increment attempts
 	[timeData setValue:[NSNumber numberWithInt:[attempts intValue] + 1] forKey:@"attempts"];
 	
 	// Re-save

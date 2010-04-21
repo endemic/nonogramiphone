@@ -60,6 +60,7 @@
 		// Get best times/attempts
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
 		
+		NSLog(@"First time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"]);
 		NSLog(@"Best time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"]);
 		NSLog(@"# of attempts at level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]);
 		
