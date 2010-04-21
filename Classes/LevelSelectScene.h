@@ -15,11 +15,20 @@
 {
 	//NSMutableArray *levelDisplayList;
 	CCSprite *levelDisplayList[15];
+	
+	// Labels for level data
+	CCLabel *headerLabel;
+	CCLabel *difficultyLabel;
+	CCLabel *attemptsLabel;
+	CCLabel *firstTimeLabel;
+	CCLabel *bestTimeLabel;
 }
 
--(void) showNextLevel: (id)sender;
--(void) showPreviousLevel: (id)sender;
--(void) playLevel: (id)sender;
+- (void)showNextLevel:(id)sender;
+- (void)showPreviousLevel:(id)sender;
+- (void)playLevel:(id)sender;
+- (void)hideLevelData:(id)sender;
+- (void)showLevelData:(id)sender;
 
 @end
 

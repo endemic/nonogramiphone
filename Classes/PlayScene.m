@@ -548,8 +548,8 @@
 	NSString *firstTime = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"];
 	NSString *bestTime = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"];
 	
-	// Subtract minute/second values by 30/60 respectively, so that time shown is total time taken, rather than time left
-	NSString *currentTime = [NSString stringWithFormat:@"%@:%@", [NSString stringWithFormat:@"%02d", 30 - minutesLeft], [NSString stringWithFormat:@"%02d", 60 - secondsLeft]];
+	// Subtract minute/second values by 29/60 respectively, so that time shown is total time taken, rather than time left
+	NSString *currentTime = [NSString stringWithFormat:@"%@:%@", [NSString stringWithFormat:@"%02d", 29 - minutesLeft], [NSString stringWithFormat:@"%02d", 60 - secondsLeft]];
 	
 	// Decide if they need to be updated
 	if ([firstTime isEqualToString:@"--:--"])
