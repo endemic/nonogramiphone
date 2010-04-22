@@ -84,7 +84,6 @@
 		//[self addChild:testAtlas z:3];
 		
 		// Load level!
-		NSLog(@"Current level: %d", [GameDataManager sharedManager].currentLevel);
 		NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
 		
 		// Load tile map for this particular puzzle
@@ -192,7 +191,7 @@
 		//[self schedule:@selector(update:)];
 		
 		// Set up % complete label
-		percentComplete = [CCLabel labelWithString:@"0" fontName:@"slkscr.ttf" fontSize:48];
+		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:48];
 		[percentComplete setPosition:ccp(260, 415)];
 		[percentComplete.texture setAliasTexParameters];
 		[percentComplete setColor:ccc3(33, 33, 33)];
@@ -204,13 +203,13 @@
 		minutesLeft = 30;
 		secondsLeft = 0;
 		
-		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
+		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
 		[minutesLeftLabel setPosition:ccp(110, 395)];
 		[minutesLeftLabel setColor:ccc3(33, 33, 33)];
 		[minutesLeftLabel.texture setAliasTexParameters];
 		[self addChild:minutesLeftLabel z:3];
 		
-		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
+		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
 		[secondsLeftLabel setPosition:ccp(110, 355)];
 		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
 		[secondsLeftLabel.texture setAliasTexParameters];
@@ -463,9 +462,8 @@
 		[self addChild:b z:2];
 		
 		// Update "% complete" number
-		// This is not working for some reason
-		[percentComplete setString:[NSString stringWithFormat:@"%02d", (hits / totalBlocksInPuzzle)]];
-		NSLog(@"Percent complete: %02d", (hits / totalBlocksInPuzzle));
+		// This is not working for some reason - I am a retard
+		[percentComplete setString:[NSString stringWithFormat:@"%02d", ((float)hits / (float)totalBlocksInPuzzle) * 100]];
 		
 		// Win condition
 		if (++hits == totalBlocksInPuzzle) 
