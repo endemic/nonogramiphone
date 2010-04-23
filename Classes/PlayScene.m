@@ -191,7 +191,7 @@
 		//[self schedule:@selector(update:)];
 		
 		// Set up % complete label
-		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:48];
+		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:64];
 		[percentComplete setPosition:ccp(260, 415)];
 		[percentComplete.texture setAliasTexParameters];
 		[percentComplete setColor:ccc3(33, 33, 33)];
@@ -461,12 +461,39 @@
 		[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
 		[self addChild:b z:2];
 		
+		// Increment correct guess counter
+		hits++;
+		
+		// Cycle through that particular row/column to see if all the blocks have been filled in; if so, "dim" the row/column clues
+		Boolean rowComplete = TRUE;
+		Boolean columnComplete = TRUE;
+		for (int i = 0; i < 10; i++) 
+		{
+			NSLog(@"%i vs. %i", blockStatus[i][currentColumn - 1], [tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)]);
+		
+			if (blockStatus[i][currentColumn - 1] - 1 != [tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)])
+				rowComplete = FALSE;
+			if (blockStatus[currentRow - 1][i] != FILLED && [tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] != 1)
+				columnComplete = FALSE;
+		}
+		NSLog(@"\n");
+		if (rowComplete)
+		{
+			NSLog(@"Row complete");
+			[horizontalClues[currentRow - 1] setColor:ccc3(66, 66, 66)];
+		}
+		
+		if (columnComplete) 
+		{
+			NSLog(@"Column complete");
+			[verticalClues[currentColumn - 1] setColor:ccc3(66, 66, 66)];
+		}
+		
 		// Update "% complete" number
-		// This is not working for some reason - I am a retard
-		[percentComplete setString:[NSString stringWithFormat:@"%02d", ((float)hits / (float)totalBlocksInPuzzle) * 100]];
+		[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
 		
 		// Win condition
-		if (++hits == totalBlocksInPuzzle) 
+		if (hits == totalBlocksInPuzzle) 
 			[self wonGame];
 	}
 	else if (blockStatus[currentRow - 1][currentColumn - 1] == FILLED)
