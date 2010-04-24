@@ -326,7 +326,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D8BF9A911806A8D00A08B27</string>
+										<string>7D8BFA041183208200A08B27</string>
 										<key>history</key>
 										<array>
 											<string>7DDF4256116D4685006FC228</string>
@@ -349,10 +349,10 @@
 											<string>7D8BF944117F0A6A00A08B27</string>
 											<string>7D8BF945117F0A6A00A08B27</string>
 											<string>7D8BF952117F0D8C00A08B27</string>
-											<string>7D8BF953117F0D8C00A08B27</string>
 											<string>7D8BF98C11805CC000A08B27</string>
 											<string>7D8BF98D11805CC000A08B27</string>
-											<string>7D8BF98E11805CC000A08B27</string>
+											<string>7D8BF9D21181B44600A08B27</string>
+											<string>7D8BF9D41181B44600A08B27</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -410,9 +410,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7D8BF9801180597F00A08B27</string>
+				<string>7D8BF9E611831B7500A08B27</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7D8BF9811180597F00A08B27</string>
+				<string>7D8BF9E711831B7500A08B27</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -550,9 +550,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -633,7 +633,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7DB8C2B8115BB9630097C084</string>
-				<string>7D8BF9821180597F00A08B27</string>
+				<string>7D8BF9E811831B7500A08B27</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -755,13 +755,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7D8BF9831180597F00A08B27</string>
+				<string>7D8BF9EE11831D9600A08B27</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7D8BF9841180597F00A08B27</string>
-				<string>7D8BF9851180597F00A08B27</string>
-				<string>7D8BF9861180597F00A08B27</string>
-				<string>7D8BF9871180597F00A08B27</string>
-				<string>7D8BF9881180597F00A08B27</string>
+				<string>7D8BF9EF11831D9600A08B27</string>
+				<string>7D8BF9F011831D9600A08B27</string>
+				<string>7D8BF9F111831D9600A08B27</string>
+				<string>7D8BF9F211831D9600A08B27</string>
+				<string>7D8BF9F311831D9600A08B27</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -902,7 +902,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {650, 209}}</string>
 								<key>RubberWindowFrame</key>
-								<string>53 90 650 250 0 0 1440 878 </string>
+								<string>47 56 650 250 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -925,17 +925,17 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>7D8BF9891180597F00A08B27</string>
+				<string>7D8BF9F411831D9600A08B27</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>53 90 650 250 0 0 1440 878 </string>
+			<string>47 56 650 250 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

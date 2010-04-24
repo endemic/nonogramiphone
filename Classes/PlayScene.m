@@ -465,29 +465,29 @@
 		hits++;
 		
 		// Cycle through that particular row/column to see if all the blocks have been filled in; if so, "dim" the row/column clues
-		Boolean rowComplete = TRUE;
-		Boolean columnComplete = TRUE;
+		int columnTotal = 0;
+		int filledColumnTotal = 0;
+		
+		int rowTotal = 0;
+		int filledRowTotal = 0;
+		
 		for (int i = 0; i < 10; i++) 
 		{
-			NSLog(@"%i vs. %i", blockStatus[i][currentColumn - 1], [tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)]);
-		
-			if (blockStatus[i][currentColumn - 1] - 1 != [tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)])
-				rowComplete = FALSE;
-			if (blockStatus[currentRow - 1][i] != FILLED && [tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] != 1)
-				columnComplete = FALSE;
+			if (blockStatus[i][currentColumn - 1] == FILLED) filledColumnTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)] == 1) columnTotal++;
+			
+			if (blockStatus[currentRow - 1][i] == FILLED) filledRowTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] == 1) rowTotal++;
 		}
-		NSLog(@"\n");
-		if (rowComplete)
-		{
-			NSLog(@"Row complete");
+		
+		//NSLog(@"Filled vs. total in column: %i, %i", filledColumnTotal, columnTotal);
+		//NSLog(@"Filled vs. total in row: %i, %i", filledRowTotal, rowTotal);
+		
+		if (rowTotal == filledRowTotal)
 			[horizontalClues[currentRow - 1] setColor:ccc3(66, 66, 66)];
-		}
 		
-		if (columnComplete) 
-		{
-			NSLog(@"Column complete");
+		if (columnTotal == filledColumnTotal) 
 			[verticalClues[currentColumn - 1] setColor:ccc3(66, 66, 66)];
-		}
 		
 		// Update "% complete" number
 		[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
