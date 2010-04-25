@@ -100,28 +100,39 @@
 		
 		// Init level display list
 		levelDisplayList = [[NSMutableArray arrayWithCapacity:[[GameDataManager sharedManager].levels count]] retain];
-		
-		/*
-		unsigned counter = [levelDisplayList count];
-		while (counter--)
-			[levelDisplayList insertObject:[NSNull null] atIndex:counter];
-		*/
-		
-		// Load level!
-		//NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
-		
-		// Draw on to overlay, if needed
-		
-		//CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
-		//[overlay addChild:tileMap];
-		//[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] addChild:tileMap];
-		
 
 		// Set up sprites that show level details
 		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
 		{
-			CCSprite *s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+			CCSprite *s;
 			
+			if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
+			{
+				// Load question mark
+				s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+			}
+			else 
+			{
+				s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+				
+				// Load puzzle image
+				// Load level!
+				NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:i];
+				
+				// Draw on to overlay
+				CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+				[tileMap setScale:0.75];
+				[tileMap setPosition:ccp(25, 35)];
+				[s addChild:tileMap];
+				
+				// Draw title
+				CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+				[label setColor:ccc3(00, 00, 00)];
+				[label setPosition:ccp(100, 15)];
+				[label.texture setAliasTexParameters];
+				[s addChild:label];
+			}
+
 			if (i < [GameDataManager sharedManager].currentLevel - 1)
 				[s setPosition:ccp(-140, 300)];	// Position to the left
 			else if (i == [GameDataManager sharedManager].currentLevel - 1)
@@ -197,7 +208,7 @@
 
 - (void)showNextLevel:(id)sender
 {
-	if ([GameDataManager sharedManager].currentLevel < [[GameDataManager sharedManager].levels count] - 1)
+	if ([GameDataManager sharedManager].currentLevel < [[GameDataManager sharedManager].levels count])
 	{
 		// Move current offscreen
 		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-140, 300)];

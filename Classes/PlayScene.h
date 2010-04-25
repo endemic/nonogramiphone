@@ -72,9 +72,10 @@
 	bool paused;
 }
 
--(void) markBlock;
--(void) fillBlock;
--(void) wonGame;
--(void) lostGame;
-
+- (void)markBlock;
+- (void)fillBlock;
+- (void)wonGame;
+- (void)lostGame;
+- (void)goToLevelSelect:(id)sender;
+- (void)retryLevel:(id)sender;
 @end

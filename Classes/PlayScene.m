@@ -247,8 +247,11 @@
 -(void) timer:(ccTime)dt
 {
 	secondsLeft--;
-	if (minutesLeft == 0 && secondsLeft == 0)
+	if (minutesLeft == 0 && secondsLeft < 0)
 	{
+		// So '00:00' is correctly shown instead of 00:-01
+		secondsLeft = 0;
+		
 		// Game over
 		[self lostGame];
 	}
@@ -260,9 +263,6 @@
 	// Update labels for time
 	[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
 	[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
-	
-	// This is causin' an error
-	//[secondsLeftLabel setString:[[NSString stringWithFormat:@"%d", secondsLeft] stringByPaddingToLength:2 withString:@"0" startingAtIndex:1]];
 }
 
 -(void) pause:(id)sender
@@ -539,7 +539,7 @@
 	verticalHighlight.visible = FALSE;
 	
 	// Create/move "you win" overlay down on screen
-	CCSprite *overlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+	CCSprite *overlay = [CCSprite spriteWithFile:@"winOverlay.png"];
 	[overlay.texture setAliasTexParameters];
 	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
 	[self addChild:overlay z:4];
@@ -561,7 +561,7 @@
 	tileMap.scaleX = 0.5;
 	tileMap.scaleY = 0.5;
 	
-	[tileMap setPosition:ccp(150, 150)];
+	[tileMap setPosition:ccp(100, 125)];
 	[overlay addChild:tileMap];
 	
 	// Write image title on to overlay
@@ -611,10 +611,8 @@
 	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
 }
 
--(void) lostGame
+- (void)lostGame
 {
-	NSLog(@"You lose!");
-
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
 	
@@ -623,15 +621,16 @@
 	verticalHighlight.visible = FALSE;
 	
 	// Create/move "you win" overlay down on screen
-	CCSprite *overlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+	CCSprite *overlay = [CCSprite spriteWithFile:@"loseOverlay.png"];
 	[overlay.texture setAliasTexParameters];
 	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
 	[self addChild:overlay z:4];
 	
 	// Add buttons to overlay
 	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+	CCMenuItem *tryAgainButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(retryLevel:)];
 	
-	CCMenu *overlayMenu = [CCMenu menuWithItems:continueButton, nil];		// Create container menu object
+	CCMenu *overlayMenu = [CCMenu menuWithItems:tryAgainButton, continueButton, nil];		// Create container menu object
 	[overlayMenu setPosition:ccp(150, 50)];
 	[overlay addChild:overlayMenu];
 	
@@ -655,16 +654,29 @@
 	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
 }
 
--(void) goToLevelSelect:(id)sender
+- (void)goToLevelSelect:(id)sender
 {
-	[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }
 
--(void) dealloc
+- (void)retryLevel:(id)sender
 {
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Just reload the scene
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[PlayScene node]]];
+}
+
+- (void)dealloc
+{
+	[tileMapLayer release];
 	[super dealloc];
-	[tileMapLayer dealloc];
 }
 
 @end;

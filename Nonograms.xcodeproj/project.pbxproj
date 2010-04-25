@@ -270,6 +270,9 @@
 		7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */; };
 		7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */; };
 		7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10BF115CBCC90083D073 /* playBackground.png */; };
+		7DDB877A1184CFA6007FB078 /* loseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87781184CFA6007FB078 /* loseOverlay.png */; };
+		7DDB877B1184CFA6007FB078 /* winOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87791184CFA6007FB078 /* winOverlay.png */; };
+		7DDB879F1184DD04007FB078 /* blankLevelPreview.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB879E1184DD04007FB078 /* blankLevelPreview.png */; };
 		7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3F91175C9310047653D /* pauseOverlay.png */; };
 		7DE7C4011175D0360047653D /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3FF1175D0360047653D /* pauseButton.png */; };
 		7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C4001175D0360047653D /* pauseButtonOn.png */; };
@@ -563,6 +566,9 @@
 		7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScene.h; sourceTree = "<group>"; };
 		7DBB10B5115CBAE90083D073 /* PlayScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayScene.m; sourceTree = "<group>"; };
 		7DBB10BF115CBCC90083D073 /* playBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playBackground.png; sourceTree = "<group>"; };
+		7DDB87781184CFA6007FB078 /* loseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loseOverlay.png; sourceTree = "<group>"; };
+		7DDB87791184CFA6007FB078 /* winOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winOverlay.png; sourceTree = "<group>"; };
+		7DDB879E1184DD04007FB078 /* blankLevelPreview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankLevelPreview.png; sourceTree = "<group>"; };
 		7DE7C3F91175C9310047653D /* pauseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseOverlay.png; sourceTree = "<group>"; };
 		7DE7C3FF1175D0360047653D /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Buttons/pauseButton.png; sourceTree = "<group>"; };
 		7DE7C4001175D0360047653D /* pauseButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButtonOn.png; path = Buttons/pauseButtonOn.png; sourceTree = "<group>"; };
@@ -760,6 +766,9 @@
 		38F17B6B115A9C70007CAB05 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7DDB879E1184DD04007FB078 /* blankLevelPreview.png */,
+				7DDB87781184CFA6007FB078 /* loseOverlay.png */,
+				7DDB87791184CFA6007FB078 /* winOverlay.png */,
 				7DE7C3F91175C9310047653D /* pauseOverlay.png */,
 				7D5685411174792A004CDB64 /* 8pxSquare.png */,
 				7D56853D11747878004CDB64 /* 4pxSquare.png */,
@@ -1294,6 +1303,9 @@
 				38A28F3711761C1400BA300A /* dud.wav in Resources */,
 				38A28F441176459500BA300A /* continueButton.png in Resources */,
 				38A28F451176459500BA300A /* continueButtonOn.png in Resources */,
+				7DDB877A1184CFA6007FB078 /* loseOverlay.png in Resources */,
+				7DDB877B1184CFA6007FB078 /* winOverlay.png in Resources */,
+				7DDB879F1184DD04007FB078 /* blankLevelPreview.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
