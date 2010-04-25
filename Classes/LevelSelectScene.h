@@ -13,8 +13,8 @@
 
 @interface LevelSelectLayer : CCLayer 
 {
-	//NSMutableArray *levelDisplayList;
-	CCSprite *levelDisplayList[15];
+	NSMutableArray *levelDisplayList;
+	//CCSprite *levelDisplayList[15];
 	
 	// Labels for level data
 	CCLabel *headerLabel;

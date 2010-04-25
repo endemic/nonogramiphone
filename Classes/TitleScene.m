@@ -52,8 +52,6 @@
 
 -(void) goToLevelSelect: (id)sender
 {
-	NSLog(@"Level select");
-	
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
@@ -66,14 +64,10 @@
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
-	
-	NSLog(@"Tutorial");
 }
 
 -(void) goToOptions: (id)sender
 {
-	NSLog(@"Options");
-	
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];

@@ -551,12 +551,25 @@
 	[overlayMenu setPosition:ccp(150, 50)];
 	[overlay addChild:overlayMenu];
 	
+	// Load level!
+	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+	
 	// Draw finished puzzle image on to overlay
+	CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+	
+	// Try to shrink by half
+	tileMap.scaleX = 0.5;
+	tileMap.scaleY = 0.5;
+	
+	[tileMap setPosition:ccp(150, 150)];
+	[overlay addChild:tileMap];
 	
 	// Write image title on to overlay
-	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
 	CCLabel *levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
+	[levelTitle setColor:ccc3(33, 33, 33)];
+	[levelTitle.texture setAliasTexParameters];
 	[levelTitle setPosition:ccp(150, 100)];
+	
 	[overlay addChild:levelTitle];
 	
 	// Move overlay downwards over play area

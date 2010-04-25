@@ -88,22 +88,38 @@
 {
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playSFX"];
 	[GameDataManager sharedManager].playSFX = TRUE;
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 -(void) sfxOff:(id)selector
 {
 	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playSFX"];
 	[GameDataManager sharedManager].playSFX = FALSE;
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 -(void) musicOn:(id)selector
 {
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = TRUE;
 }
 
 -(void) musicOff:(id)selector
 {
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
 	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = FALSE;
 }
@@ -112,6 +128,10 @@
 {
 	// Suggested to synch preferences?
 	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
 	// Return to title sceen
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];

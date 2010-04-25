@@ -35,7 +35,7 @@
 // Maybe use NSSelectorFromString to select levels?
 @implementation LevelSelectLayer
 
--(id) init
+- (id)init
 {
 	if ((self = [super init]))
 	{
@@ -70,34 +70,53 @@
 		[self addChild:headerLabel z:3];
 		
 		// Details for each level
-		NSLog(@"Difficulty: %@", [[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"]);
+		//NSLog(@"Difficulty: %@", [[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"]);
 		difficultyLabel = [CCLabel labelWithString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
 		[difficultyLabel setPosition:ccp(230, 175)];
 		[difficultyLabel setColor:ccc3(255,255,255)];
 		[difficultyLabel.texture setAliasTexParameters];
 		[self addChild:difficultyLabel z:3];
 		
-		NSLog(@"Attempts: %@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]);
+		//NSLog(@"Attempts: %@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]);
 		attemptsLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
 		[attemptsLabel setPosition:ccp(230, 156)];
 		[attemptsLabel setColor:ccc3(255,255,255)];
 		[attemptsLabel.texture setAliasTexParameters];
 		[self addChild:attemptsLabel z:3];
 		
-		NSLog(@"First time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"]);
+		//NSLog(@"First time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"]);
 		firstTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
 		[firstTimeLabel setPosition:ccp(230, 137)];
 		[firstTimeLabel setColor:ccc3(255,255,255)];
 		[firstTimeLabel.texture setAliasTexParameters];
 		[self addChild:firstTimeLabel z:3];
 		
-		NSLog(@"Best time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"]);
+		//NSLog(@"Best time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"]);
 		bestTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
 		[bestTimeLabel setPosition:ccp(230, 118)];
 		[bestTimeLabel setColor:ccc3(255,255,255)];
 		[bestTimeLabel.texture setAliasTexParameters];
 		[self addChild:bestTimeLabel z:3];
 		
+		// Init level display list
+		levelDisplayList = [[NSMutableArray arrayWithCapacity:[[GameDataManager sharedManager].levels count]] retain];
+		
+		/*
+		unsigned counter = [levelDisplayList count];
+		while (counter--)
+			[levelDisplayList insertObject:[NSNull null] atIndex:counter];
+		*/
+		
+		// Load level!
+		//NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+		
+		// Draw on to overlay, if needed
+		
+		//CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+		//[overlay addChild:tileMap];
+		//[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] addChild:tileMap];
+		
+
 		// Set up sprites that show level details
 		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
 		{
@@ -111,7 +130,7 @@
 				[s setPosition:ccp(440, 300)];	// Offscreen for the rest
 
 			[self addChild:s];
-			levelDisplayList[i] = s;
+			[levelDisplayList insertObject:s atIndex:i];
 		}
 	}
 	return self;
@@ -129,12 +148,15 @@
 
 - (void)showLevelData:(id)sender
 {
+	// Load level data!
+	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+
 	// Get best times/attempts
 	NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
 	
 	// Update all labels
 	[headerLabel setString:[NSString stringWithFormat:@"Level %i", [GameDataManager sharedManager].currentLevel]];
-	[difficultyLabel setString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"]];
+	[difficultyLabel setString:[level objectForKey:@"difficulty"]];
 	[attemptsLabel setString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]]];
 	[firstTimeLabel setString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"]];
 	[bestTimeLabel setString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"]];
@@ -154,8 +176,9 @@
 		// Move current offscreen
 		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(440, 300)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
+		//id removeSelfAction = [CCCallFunc actionWithTarget:self selector:@selector(removeFromParent:)];
 		
-		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
+		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
 		
 		// Decrement level counter
 		[GameDataManager sharedManager].currentLevel--;
@@ -164,7 +187,7 @@
 		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(160, 300)];
 		id showLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(showLevelData:)];
 		
-		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
+		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
 	}
 	
 	// Play SFX if allowed
@@ -172,24 +195,25 @@
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
--(void) showNextLevel: (id)sender
+- (void)showNextLevel:(id)sender
 {
 	if ([GameDataManager sharedManager].currentLevel < [[GameDataManager sharedManager].levels count] - 1)
 	{
 		// Move current offscreen
-		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-120, 300)];
+		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-140, 300)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
+		//id removeSelfAction = [CCCallFunc actionWithTarget:self selector:@selector(removeFromParent:)];
 		
-		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
+		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
 		
 		// Increment level counter
 		[GameDataManager sharedManager].currentLevel++;
-		
+
 		// Move next onscreen
 		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(160, 300)];
 		id showLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(showLevelData:)];
 		
-		[levelDisplayList[[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
+		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
 	}
 	
 	// Play SFX if allowed
@@ -197,13 +221,24 @@
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
--(void) playLevel: (id)sender
+- (void)playLevel:(id)sender
 {
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[PlayScene node]]];
+}
+
+- (void)removeFromParent:(CCNode *)sprite
+{
+	[sprite.parent removeChild:sprite cleanup:YES];
+}
+
+- (void)dealloc
+{
+	[levelDisplayList release];
+	[super dealloc];
 }
 
 @end
