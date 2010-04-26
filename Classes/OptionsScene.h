@@ -3,7 +3,7 @@
 //  Nonograms
 //
 //  Created by Nathan Demick on 4/2/10.
-//  Copyright 2010 huber+co.. All rights reserved.
+//  Copyright 2010 Ganbaru Games. All rights reserved.
 //
 
 #import "cocos2d.h"

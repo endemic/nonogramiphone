@@ -3,9 +3,10 @@
 //  Nonograms
 //
 //  Created by Nathan Demick on 3/24/10.
-//  Copyright 2010 huber+co.. All rights reserved.
+//  Copyright 2010 Ganbaru Games. All rights reserved.
 //
 
+#import "TitleScene.h"
 #import "LevelSelectScene.h"
 #import "PlayScene.h"
 #import "GameDataManager.h"
@@ -51,10 +52,12 @@
 		[nextButtonMenu setPosition:ccp(290, 300)];
 		[self addChild:nextButtonMenu z:1];
 		
-		// Set up "play" button
+		// Set up play/back buttons
 		CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" disabledImage:@"playButton.png" target:self selector:@selector(playLevel:)];
-		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, nil];
-		[playButtonMenu setPosition:ccp(160, 30)];
+		CCMenuItem *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButton.png" target:self selector:@selector(goToTitle:)];
+		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, backButton, nil];
+		[playButtonMenu alignItemsVertically];
+		[playButtonMenu setPosition:ccp(160, 50)];
 		[self addChild:playButtonMenu z:1];
 		
 		// Get best times/attempts
@@ -241,6 +244,16 @@
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[PlayScene node]]];
 }
 
+- (void)goToTitle:(id)sender
+{
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
+}
+
+// This isn't used; might not work
 - (void)removeFromParent:(CCNode *)sprite
 {
 	[sprite.parent removeChild:sprite cleanup:YES];

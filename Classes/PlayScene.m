@@ -3,7 +3,7 @@
 //  Nonograms
 //
 //  Created by Nathan Demick on 3/25/10.
-//  Copyright 2010 huber+co.. All rights reserved.
+//  Copyright 2010 Ganbaru Games. All rights reserved.
 //
 
 #import "PlayScene.h"
@@ -191,8 +191,8 @@
 		//[self schedule:@selector(update:)];
 		
 		// Set up % complete label
-		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:64];
-		[percentComplete setPosition:ccp(260, 415)];
+		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:48];
+		[percentComplete setPosition:ccp(260, 430)];
 		[percentComplete.texture setAliasTexParameters];
 		[percentComplete setColor:ccc3(33, 33, 33)];
 		[self addChild:percentComplete z:3];
@@ -226,11 +226,11 @@
 		
 		// Add buttons to overlay
 		CCMenuItem *resumeButton = [CCMenuItemImage itemFromNormalImage:@"resumeButton.png" selectedImage:@"resumeButtonOn.png" disabledImage:@"resumeButton.png" target:self selector:@selector(resume:)];
-		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" disabledImage:@"quitButton.png" target:self selector:@selector(goToLevelSelect:)];
+		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" disabledImage:@"quitButton.png" target:self selector:@selector(quit:)];
 		
 		CCMenu *overlayMenu = [CCMenu menuWithItems:resumeButton, quitButton, nil];		// Create container menu object
-		[overlayMenu alignItemsVerticallyWithPadding:20];
-		[overlayMenu setPosition:ccp(150, 150)];
+		[overlayMenu alignItemsVertically];
+		[overlayMenu setPosition:ccp(150, 50)];
 		[pauseOverlay addChild:overlayMenu];
 	}
 	return self;
@@ -558,15 +558,14 @@
 	CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
 	
 	// Try to shrink by half
-	tileMap.scaleX = 0.5;
-	tileMap.scaleY = 0.5;
+	[tileMap setScale:0.5];
 	
 	[tileMap setPosition:ccp(100, 125)];
 	[overlay addChild:tileMap];
 	
 	// Write image title on to overlay
 	CCLabel *levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
-	[levelTitle setColor:ccc3(33, 33, 33)];
+	[levelTitle setColor:ccc3(00, 00, 00)];
 	[levelTitle.texture setAliasTexParameters];
 	[levelTitle setPosition:ccp(150, 100)];
 	
@@ -671,6 +670,32 @@
 	
 	// Just reload the scene
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[PlayScene node]]];
+}
+
+// This function is here to increase the "attempts" counter as well as send you back to the level select scene
+- (void)quit:(id)sender
+{
+	// Get whole array of default level times
+	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];
+	
+	// Make mutable dictionary of current level times
+	NSMutableDictionary *timeData = [NSMutableDictionary dictionaryWithDictionary: [levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1]];
+	
+	// Set local vars with the default/current values
+	NSNumber *attempts = [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"];
+	
+	// Increment attempts
+	[timeData setValue:[NSNumber numberWithInt:[attempts intValue] + 1] forKey:@"attempts"];
+	
+	// Re-save
+	[levelTimes replaceObjectAtIndex:[GameDataManager sharedManager].currentLevel - 1 withObject:timeData];
+	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }
 
 - (void)dealloc

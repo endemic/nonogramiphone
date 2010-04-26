@@ -3,7 +3,7 @@
 //  Nonograms
 //
 //  Created by Nathan Demick on 3/24/10.
-//  Copyright 2010 huber+co.. All rights reserved.
+//  Copyright 2010 Ganbaru Games. All rights reserved.
 //
 
 #import "TitleScene.h"
