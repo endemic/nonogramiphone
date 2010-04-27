@@ -62,7 +62,6 @@
 		
 		// Get best times/attempts
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
-		NSLog(@"%@", levelTimes);
 		// Set up labels to show level number, difficulty, times, etc.
 		
 		// Large headline that shows level number
@@ -109,7 +108,7 @@
 		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
 		{
 			CCSprite *s;
-			NSLog(@"%i", i);
+
 			if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
 			{
 				// Load question mark

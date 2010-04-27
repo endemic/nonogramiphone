@@ -61,11 +61,10 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
 
-	// Load default defaults - I'm just going to assume this is working
+	// Load default defaults
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
-	[defaults synchronize];
-	
+	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
+
 	// Set global game data singleton options with preferences
 	[GameDataManager sharedManager].playSFX = [defaults boolForKey:@"playSFX"];
 	[GameDataManager sharedManager].playMusic = [defaults boolForKey:@"playMusic"];
