@@ -273,6 +273,20 @@
 		7DDB877A1184CFA6007FB078 /* loseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87781184CFA6007FB078 /* loseOverlay.png */; };
 		7DDB877B1184CFA6007FB078 /* winOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87791184CFA6007FB078 /* winOverlay.png */; };
 		7DDB879F1184DD04007FB078 /* blankLevelPreview.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB879E1184DD04007FB078 /* blankLevelPreview.png */; };
+		7DDB88041186EE40007FB078 /* ankh.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87F61186EE40007FB078 /* ankh.tmx */; };
+		7DDB88051186EE40007FB078 /* apple.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87F71186EE40007FB078 /* apple.tmx */; };
+		7DDB88061186EE40007FB078 /* castle.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87F81186EE40007FB078 /* castle.tmx */; };
+		7DDB88071186EE40007FB078 /* clock.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87F91186EE40007FB078 /* clock.tmx */; };
+		7DDB88081186EE40007FB078 /* floppyDisk.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87FA1186EE40007FB078 /* floppyDisk.tmx */; };
+		7DDB88091186EE40007FB078 /* house.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87FB1186EE40007FB078 /* house.tmx */; };
+		7DDB880A1186EE40007FB078 /* insect.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87FC1186EE40007FB078 /* insect.tmx */; };
+		7DDB880B1186EE40007FB078 /* mushroom.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87FD1186EE40007FB078 /* mushroom.tmx */; };
+		7DDB880C1186EE40007FB078 /* padlock.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87FE1186EE40007FB078 /* padlock.tmx */; };
+		7DDB880D1186EE40007FB078 /* smiley.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87FF1186EE40007FB078 /* smiley.tmx */; };
+		7DDB880E1186EE40007FB078 /* socket.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB88001186EE40007FB078 /* socket.tmx */; };
+		7DDB880F1186EE40007FB078 /* stairs.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB88011186EE40007FB078 /* stairs.tmx */; };
+		7DDB88101186EE40007FB078 /* sword.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB88021186EE40007FB078 /* sword.tmx */; };
+		7DDB88111186EE40007FB078 /* tv.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB88031186EE40007FB078 /* tv.tmx */; };
 		7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3F91175C9310047653D /* pauseOverlay.png */; };
 		7DE7C4011175D0360047653D /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3FF1175D0360047653D /* pauseButton.png */; };
 		7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C4001175D0360047653D /* pauseButtonOn.png */; };
@@ -569,6 +583,20 @@
 		7DDB87781184CFA6007FB078 /* loseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loseOverlay.png; sourceTree = "<group>"; };
 		7DDB87791184CFA6007FB078 /* winOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winOverlay.png; sourceTree = "<group>"; };
 		7DDB879E1184DD04007FB078 /* blankLevelPreview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankLevelPreview.png; sourceTree = "<group>"; };
+		7DDB87F61186EE40007FB078 /* ankh.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ankh.tmx; path = Maps/ankh.tmx; sourceTree = "<group>"; };
+		7DDB87F71186EE40007FB078 /* apple.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = apple.tmx; path = Maps/apple.tmx; sourceTree = "<group>"; };
+		7DDB87F81186EE40007FB078 /* castle.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = castle.tmx; path = Maps/castle.tmx; sourceTree = "<group>"; };
+		7DDB87F91186EE40007FB078 /* clock.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = clock.tmx; path = Maps/clock.tmx; sourceTree = "<group>"; };
+		7DDB87FA1186EE40007FB078 /* floppyDisk.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = floppyDisk.tmx; path = Maps/floppyDisk.tmx; sourceTree = "<group>"; };
+		7DDB87FB1186EE40007FB078 /* house.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = house.tmx; path = Maps/house.tmx; sourceTree = "<group>"; };
+		7DDB87FC1186EE40007FB078 /* insect.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = insect.tmx; path = Maps/insect.tmx; sourceTree = "<group>"; };
+		7DDB87FD1186EE40007FB078 /* mushroom.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mushroom.tmx; path = Maps/mushroom.tmx; sourceTree = "<group>"; };
+		7DDB87FE1186EE40007FB078 /* padlock.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = padlock.tmx; path = Maps/padlock.tmx; sourceTree = "<group>"; };
+		7DDB87FF1186EE40007FB078 /* smiley.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = smiley.tmx; path = Maps/smiley.tmx; sourceTree = "<group>"; };
+		7DDB88001186EE40007FB078 /* socket.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = socket.tmx; path = Maps/socket.tmx; sourceTree = "<group>"; };
+		7DDB88011186EE40007FB078 /* stairs.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = stairs.tmx; path = Maps/stairs.tmx; sourceTree = "<group>"; };
+		7DDB88021186EE40007FB078 /* sword.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = sword.tmx; path = Maps/sword.tmx; sourceTree = "<group>"; };
+		7DDB88031186EE40007FB078 /* tv.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tv.tmx; path = Maps/tv.tmx; sourceTree = "<group>"; };
 		7DE7C3F91175C9310047653D /* pauseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseOverlay.png; sourceTree = "<group>"; };
 		7DE7C3FF1175D0360047653D /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Buttons/pauseButton.png; sourceTree = "<group>"; };
 		7DE7C4001175D0360047653D /* pauseButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButtonOn.png; path = Buttons/pauseButtonOn.png; sourceTree = "<group>"; };
@@ -748,6 +776,20 @@
 		38EC2501116A7DE600358D1B /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				7DDB87F61186EE40007FB078 /* ankh.tmx */,
+				7DDB87F71186EE40007FB078 /* apple.tmx */,
+				7DDB87F81186EE40007FB078 /* castle.tmx */,
+				7DDB87F91186EE40007FB078 /* clock.tmx */,
+				7DDB87FA1186EE40007FB078 /* floppyDisk.tmx */,
+				7DDB87FB1186EE40007FB078 /* house.tmx */,
+				7DDB87FC1186EE40007FB078 /* insect.tmx */,
+				7DDB87FD1186EE40007FB078 /* mushroom.tmx */,
+				7DDB87FE1186EE40007FB078 /* padlock.tmx */,
+				7DDB87FF1186EE40007FB078 /* smiley.tmx */,
+				7DDB88001186EE40007FB078 /* socket.tmx */,
+				7DDB88011186EE40007FB078 /* stairs.tmx */,
+				7DDB88021186EE40007FB078 /* sword.tmx */,
+				7DDB88031186EE40007FB078 /* tv.tmx */,
 				38CD53A41174F09D00F1C75B /* bomb.tmx */,
 				38CD53A51174F09D00F1C75B /* crescentMoon.tmx */,
 				38CD53A61174F09D00F1C75B /* emoticon.tmx */,
@@ -1306,6 +1348,20 @@
 				7DDB877A1184CFA6007FB078 /* loseOverlay.png in Resources */,
 				7DDB877B1184CFA6007FB078 /* winOverlay.png in Resources */,
 				7DDB879F1184DD04007FB078 /* blankLevelPreview.png in Resources */,
+				7DDB88041186EE40007FB078 /* ankh.tmx in Resources */,
+				7DDB88051186EE40007FB078 /* apple.tmx in Resources */,
+				7DDB88061186EE40007FB078 /* castle.tmx in Resources */,
+				7DDB88071186EE40007FB078 /* clock.tmx in Resources */,
+				7DDB88081186EE40007FB078 /* floppyDisk.tmx in Resources */,
+				7DDB88091186EE40007FB078 /* house.tmx in Resources */,
+				7DDB880A1186EE40007FB078 /* insect.tmx in Resources */,
+				7DDB880B1186EE40007FB078 /* mushroom.tmx in Resources */,
+				7DDB880C1186EE40007FB078 /* padlock.tmx in Resources */,
+				7DDB880D1186EE40007FB078 /* smiley.tmx in Resources */,
+				7DDB880E1186EE40007FB078 /* socket.tmx in Resources */,
+				7DDB880F1186EE40007FB078 /* stairs.tmx in Resources */,
+				7DDB88101186EE40007FB078 /* sword.tmx in Resources */,
+				7DDB88111186EE40007FB078 /* tv.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

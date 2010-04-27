@@ -64,6 +64,7 @@
 	// Load default defaults - I'm just going to assume this is working
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
+	[defaults synchronize];
 	
 	// Set global game data singleton options with preferences
 	[GameDataManager sharedManager].playSFX = [defaults boolForKey:@"playSFX"];
