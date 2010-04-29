@@ -302,17 +302,17 @@
 	paused = FALSE;
 }
 
--(void) changeTapActionToMark:(id)sender
+- (void)changeTapActionToMark:(id)sender
 {
 	tapAction = MARK;
 }
 
--(void) changeTapActionToFill:(id)sender
+- (void)changeTapActionToFill:(id)sender
 {
 	tapAction = FILL;
 }
 
--(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	// Figure out initial location of touch
 	UITouch *touch = [touches anyObject];

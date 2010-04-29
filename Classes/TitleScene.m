@@ -9,6 +9,7 @@
 #import "TitleScene.h"
 #import "OptionsScene.h"
 #import "LevelSelectScene.h"
+#import "TutorialScene.h"
 #import "GameDataManager.h"
 
 @implementation TitleScene
@@ -64,6 +65,8 @@
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TutorialScene node]]];
 }
 
 -(void) goToOptions: (id)sender
