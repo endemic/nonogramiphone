@@ -185,7 +185,15 @@
 		[instructions setPosition:ccp(160, 415)];
 		[self addChild:instructions];
 
-		[instructions setString:@"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct spaces to create a picture! [tap to continue]"];
+		[instructions setString:@" [tap to continue]"];
+		
+		NSString *text[10];
+		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct spaces to create a picture!";
+		text[1] = @"Use your finger to move the crosshairs on the puzzle. Why don't you try it now?";
+		text[2] = @"See the numbers in the rows and columns? You'll use those to complete the puzzle.";
+		text[3] = @"The '10' in the first column means the whole column is filled in.";
+		text[4] = @"Tap the 'fill' button, move the crosshairs all the way to the left, then tap again to fill in a block.";
+		text[5] = @"Looks good! Do that for the whole column. You can double-tap then move the cursor to auto-fill.";
 	}
 	return self;
 }
