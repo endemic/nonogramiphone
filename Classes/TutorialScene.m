@@ -187,13 +187,26 @@
 
 		[instructions setString:@" [tap to continue]"];
 		
-		NSString *text[10];
+		NSString *text[20];
 		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct spaces to create a picture!";
-		text[1] = @"Use your finger to move the crosshairs on the puzzle. Why don't you try it now?";
-		text[2] = @"See the numbers in the rows and columns? You'll use those to complete the puzzle.";
-		text[3] = @"The '10' in the first column means the whole column is filled in.";
-		text[4] = @"Tap the 'fill' button, move the crosshairs all the way to the left, then tap again to fill in a block.";
+		text[1] = @"Use your finger to move your cursor on the puzzle. Why don't you try it now?";
+		text[2] = @"See the numbers in the rows and columns? You'll use those to solve the puzzle.";
+		text[3] = @"The '0' in the first column means no blocks need to be filled in.";
+		text[4] = @"Move your cursor all the way to the left, then tap to mark a block.";
 		text[5] = @"Looks good! Do that for the whole column. You can double-tap then move the cursor to auto-fill.";
+		text[6] = @"Take a look at the next column. The '10' means all the blocks are filled in.";
+		text[7] = @"Tap the 'fill' button, move your cursor to the next column, then tap to fill in a block.";
+		text[8] = @"Looks good! Do that for the whole column. You can double-tap then move the cursor to auto-fill.";
+		text[9] = @"Next, let's take a look at the rows. Look at the top row. It's got 8 filled in blocks.";
+		text[10] = @"You filled in the first one, so do 7 more after that.";
+		text[11] = @"The next row is the same as the first, so go ahead and fill in those blocks too.";
+		text[12] = @"The middle rows are more tricky. See how there are two numbers as clues?";
+		text[13] = @"'2 4' means there are two sequential filled in blocks, a gap, then four filled in blocks.";
+		text[14] = @"If you don't know how big the gap is, you can always come back to it later.";
+		text[15] = @"You can also work from the bottom to the top. Go ahead and fill in the bottom row.";
+		text[16] = @"Now you have a base you can build on moving upwards.";
+		text[17] = @"See if you can finish this puzzle using what you've learned. There's no time limit!";
+		text[18] = @"Good luck! [tap to read the tutorial again]";
 	}
 	return self;
 }

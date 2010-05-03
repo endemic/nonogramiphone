@@ -273,7 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
+									<integer>17</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LevelSelectScene.m</string>
+								<string>TutorialScene.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LevelSelectScene.m</string>
+										<string>TutorialScene.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38B288C51187549000958630</string>
+										<string>38EFAF6B118F77530021B682</string>
 										<key>history</key>
 										<array>
 											<string>38A28F1611760F4900BA300A</string>
@@ -348,7 +348,8 @@
 											<string>38B288BB1187549000958630</string>
 											<string>38B288BC1187549000958630</string>
 											<string>38B288BD1187549000958630</string>
-											<string>38B288BE1187549000958630</string>
+											<string>38EFAF68118F77530021B682</string>
+											<string>38EFAF69118F77530021B682</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -383,12 +384,8 @@
 											<string>385A882F117F872C00F22A1F</string>
 											<string>385A8834117F872C00F22A1F</string>
 											<string>38D5AAAA11872CBD00046C20</string>
-											<string>38B288BF1187549000958630</string>
-											<string>38B288C01187549000958630</string>
 											<string>38B288C11187549000958630</string>
-											<string>38B288C21187549000958630</string>
-											<string>38B288C31187549000958630</string>
-											<string>38B288C41187549000958630</string>
+											<string>38EFAF6A118F77530021B682</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -446,9 +443,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>38B288C61187549000958630</string>
+				<string>38EFAF6C118F77530021B682</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>38B288C71187549000958630</string>
+				<string>38EFAF6D118F77530021B682</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -582,11 +579,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>38B288D01187549000958630</string>
-		<string>38B288D11187549000958630</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>38F17B97115A9C8F007CAB05</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/nathandemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
