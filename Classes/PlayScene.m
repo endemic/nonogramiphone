@@ -106,7 +106,7 @@
 			[self addChild:verticalClues[i] z:3];
 			
 			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(100, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
-			[horizontalClues[i] setPosition:ccp(58, 60 + (blockSize * i))];
+			[horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i))];
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
 			[self addChild:horizontalClues[i] z:3];

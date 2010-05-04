@@ -13,6 +13,7 @@
  */
 
 #import "TutorialScene.h"
+#import "TitleScene.h"
 
 @implementation TutorialScene
 
@@ -97,7 +98,7 @@
 			[self addChild:verticalClues[i] z:3];
 			
 			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(100, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
-			[horizontalClues[i] setPosition:ccp(58, 60 + (blockSize * i))];
+			[horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i))];
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
 			[self addChild:horizontalClues[i] z:3];
@@ -180,7 +181,7 @@
 		
 		step = 0;
 		
-		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct spaces to create a picture!";
+		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct blocks to create a picture!";
 		text[1] = @"Use your finger to move your cursor on the puzzle. Why don't you try it now?";
 		text[2] = @"See the numbers in the rows and columns? You'll use those to solve the puzzle.";
 		text[3] = @"The '0' in the first column means no blocks need to be filled in.";
@@ -207,10 +208,10 @@
 		[instructions setPosition:ccp(160, 415)];
 		[self addChild:instructions];
 		
-		actions = [CCLabel labelWithString:@"(tap to continue)" dimensions:CGSizeMake(150, 16) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
+		actions = [CCLabel labelWithString:@"(tap to continue)" dimensions:CGSizeMake(200, 16) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
 		[actions setColor:ccc3(00, 00, 00)];
 		[actions.texture setAliasTexParameters];
-		[actions setPosition:ccp(200, 374)];
+		[actions setPosition:ccp(205, 370)];
 		[self addChild:actions];
 	}
 	return self;
@@ -233,8 +234,18 @@
 	
 	if (touch) 
 	{
-		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
-		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
+		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView: [touch view]]];
+		
+		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), currentPoint))
+		{
+			// Do nothing if at top of screen
+			//NSLog(@"Ignoring starting touch");
+		}
+		else
+		{
+			startPoint = previousPoint = currentPoint;
+			cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
+		}
 	}
 }
 
@@ -251,15 +262,16 @@
 		// User's finger
 		CGPoint location = [touch locationInView: [touch view]];
 		
-		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), location))
+		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
+		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
+		
+		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), currentPoint))
 		{
 			// Do nothing if at top of screen
+			//NSLog(@"Ignoring movement");
 		}
 		else 
 		{
-			// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
-			CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
-			
 			// Gets relative movement
 			//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 			
@@ -448,7 +460,57 @@
 
 - (void)wonGame
 {
+	// Hide cursor highlights
+	horizontalHighlight.visible = FALSE;
+	verticalHighlight.visible = FALSE;
 	
+	// Create/move "you win" overlay down on screen
+	CCSprite *overlay = [CCSprite spriteWithFile:@"winOverlay.png"];
+	[overlay.texture setAliasTexParameters];
+	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
+	[self addChild:overlay z:4];
+	
+	// Add buttons to overlay
+	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToTitleScreen:)];
+	
+	CCMenu *overlayMenu = [CCMenu menuWithItems:continueButton, nil];		// Create container menu object
+	[overlayMenu setPosition:ccp(150, 50)];
+	[overlay addChild:overlayMenu];
+	
+	// Load level!
+	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+	
+	// Draw finished puzzle image on to overlay
+	CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tutorial.tmx"];
+	
+	// Try to shrink by half
+	[tileMap setScale:0.5];
+	
+	[tileMap setPosition:ccp(100, 125)];
+	[overlay addChild:tileMap];
+	
+	// Write image title on to overlay
+	CCLabel *levelTitle = [CCLabel labelWithString:@"the letter 'g'" fontName:@"slkscr.ttf" fontSize:24];
+	[levelTitle setColor:ccc3(00, 00, 00)];
+	[levelTitle.texture setAliasTexParameters];
+	[levelTitle setPosition:ccp(150, 100)];
+	
+	[overlay addChild:levelTitle];
+	
+	// Move overlay downwards over play area
+	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	
+	// Set instructions label to contain congratulatory message
+	[instructions setString:@"Congratulations! You understand the basics, now try some more difficult puzzles!"];
+}
+
+- (void)goToTitleScreen:(id)sender
+{
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }
 
 @end
