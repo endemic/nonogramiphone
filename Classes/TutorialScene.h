@@ -57,6 +57,15 @@
 	
 	// Label for instructive text =]
 	CCLabel *instructions;
+	
+	// Label to tell you what to do next
+	CCLabel *actions;
+	
+	// What step we're on in the tutorial text
+	int step;
+	
+	// Tutorial text
+	NSString *text[20];
 }
 
 - (void)markBlock;

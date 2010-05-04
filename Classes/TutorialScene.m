@@ -75,10 +75,10 @@
 		[self addChild:actionsMenu z:3];
 		
 		// Load level!
-		NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
+		//NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
 		
 		// Load tile map for this particular puzzle
-		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tutorial.tmx"];
 		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
 		
 		// Init block status array
@@ -96,8 +96,8 @@
 			[verticalClues[i].texture setAliasTexParameters];
 			[self addChild:verticalClues[i] z:3];
 			
-			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(75, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
-			[horizontalClues[i] setPosition:ccp(70, 60 + (blockSize * i))];
+			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(100, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
+			[horizontalClues[i] setPosition:ccp(58, 60 + (blockSize * i))];
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
 			[self addChild:horizontalClues[i] z:3];
@@ -178,16 +178,8 @@
 			}
 		}
 		
-		// Set up tutorial instruction label
-		instructions = [CCLabel labelWithString:@"" dimensions:CGSizeMake(290, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[instructions setColor:ccc3(00, 00, 00)];
-		[instructions.texture setAliasTexParameters];
-		[instructions setPosition:ccp(160, 415)];
-		[self addChild:instructions];
-
-		[instructions setString:@" [tap to continue]"];
+		step = 0;
 		
-		NSString *text[20];
 		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct spaces to create a picture!";
 		text[1] = @"Use your finger to move your cursor on the puzzle. Why don't you try it now?";
 		text[2] = @"See the numbers in the rows and columns? You'll use those to solve the puzzle.";
@@ -206,7 +198,20 @@
 		text[15] = @"You can also work from the bottom to the top. Go ahead and fill in the bottom row.";
 		text[16] = @"Now you have a base you can build on moving upwards.";
 		text[17] = @"See if you can finish this puzzle using what you've learned. There's no time limit!";
-		text[18] = @"Good luck! [tap to read the tutorial again]";
+		text[18] = @"Good luck!";
+		
+		// Set up tutorial instruction label
+		instructions = [CCLabel labelWithString:text[step] dimensions:CGSizeMake(290, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
+		[instructions setColor:ccc3(00, 00, 00)];
+		[instructions.texture setAliasTexParameters];
+		[instructions setPosition:ccp(160, 415)];
+		[self addChild:instructions];
+		
+		actions = [CCLabel labelWithString:@"(tap to continue)" dimensions:CGSizeMake(150, 16) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
+		[actions setColor:ccc3(00, 00, 00)];
+		[actions.texture setAliasTexParameters];
+		[actions setPosition:ccp(220, 374)];
+		[self addChild:actions];
 	}
 	return self;
 }
@@ -246,52 +251,59 @@
 		// User's finger
 		CGPoint location = [touch locationInView: [touch view]];
 		
-		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
-		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
-		
-		// Gets relative movement
-		//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
-		
-		// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
-		CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
-		
-		// Add to current point the cursor is at
-		cursorPoint = ccpAdd(cursorPoint, relativeMovement);
-		
-		// Get row/column values - 50 & 110 is the blank space on the x/y axes 
-		currentRow = (cursorPoint.y - 50) / blockSize + 1;
-		currentColumn = (cursorPoint.x - 110) / blockSize + 1;
-		
-		// Enforce positions in grid
-		if (currentRow > 10) currentRow = 10;
-		if (currentRow < 1) currentRow = 1;
-		if (currentColumn > 10) currentColumn = 10;
-		if (currentColumn < 1) currentColumn = 1;
-		
-		// If the cursor has changed rows
-		if ((previousRow != currentRow || previousColumn != currentColumn))
+		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), location))
 		{
-			// Update sprite positions based on row/column variables
-			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
-			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
+			// Do nothing if at top of screen
+		}
+		else 
+		{
+			// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
+			CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
 			
-			// Play SFX if allowed
-			if ([GameDataManager sharedManager].playSFX)
-				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
+			// Gets relative movement
+			//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 			
-			// If player has double tapped, try to place a mark/fill in the new block
-			if (touch.tapCount > 1) 
+			// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
+			CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
+			
+			// Add to current point the cursor is at
+			cursorPoint = ccpAdd(cursorPoint, relativeMovement);
+			
+			// Get row/column values - 50 & 110 is the blank space on the x/y axes 
+			currentRow = (cursorPoint.y - 50) / blockSize + 1;
+			currentColumn = (cursorPoint.x - 110) / blockSize + 1;
+			
+			// Enforce positions in grid
+			if (currentRow > 10) currentRow = 10;
+			if (currentRow < 1) currentRow = 1;
+			if (currentColumn > 10) currentColumn = 10;
+			if (currentColumn < 1) currentColumn = 1;
+			
+			// If the cursor has changed rows
+			if ((previousRow != currentRow || previousColumn != currentColumn))
 			{
-				switch (tapAction) 
+				// Update sprite positions based on row/column variables
+				[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
+				[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
+				
+				// Play SFX if allowed
+				if ([GameDataManager sharedManager].playSFX)
+					[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
+				
+				// If player has double tapped, try to place a mark/fill in the new block
+				if (touch.tapCount > 1) 
 				{
-					case FILL: [self fillBlock]; break;
-					case MARK: [self markBlock]; break;
+					switch (tapAction) 
+					{
+						case FILL: [self fillBlock]; break;
+						case MARK: [self markBlock]; break;
+					}
 				}
 			}
+			
+			// Set the previous point value to be what we used as current
+			previousPoint = currentPoint;
 		}
-		
-		// Set the previous point value to be what we used as current
-		previousPoint = currentPoint;
 	}
 }
 
@@ -305,16 +317,35 @@
 		// convert touch coords
 		CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		
-		// This value is the sensitivity for filling/marking a block
-		int moveThreshold = 10;
-		
-		// If a tap is detected - i.e. if the movement of the finger is less than the threshold
-		if (ccpDistance(startPoint, endPoint) < moveThreshold)
+		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), endPoint))
 		{
-			switch (tapAction) 
+			// Advance tutorial text if at top of screen
+			step++;
+			
+			if (step > 18)
+				step = 0;
+			
+			// Update label
+			[instructions setString:text[step]];
+			
+			if (step == 18)
+				[actions setString:@"(tap to read again)"];
+			else if (step == 0)
+				[actions setString:@"(tap to continue)"];
+		}
+		else 
+		{
+			// This value is the sensitivity for filling/marking a block
+			int moveThreshold = 10;
+			
+			// If a tap is detected - i.e. if the movement of the finger is less than the threshold
+			if (ccpDistance(startPoint, endPoint) < moveThreshold)
 			{
-				case FILL: [self fillBlock]; break;
-				case MARK: [self markBlock]; break;
+				switch (tapAction) 
+				{
+					case FILL: [self fillBlock]; break;
+					case MARK: [self markBlock]; break;
+				}
 			}
 		}
 	}
