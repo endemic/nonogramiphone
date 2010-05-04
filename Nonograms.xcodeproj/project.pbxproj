@@ -25,6 +25,10 @@
 		380CA14411664400002B3E1C /* prevButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 380CA14211664400002B3E1C /* prevButtonOn.png */; };
 		380CA1F511667389002B3E1C /* buttonPress.wav in Resources */ = {isa = PBXBuildFile; fileRef = 380CA1F411667389002B3E1C /* buttonPress.wav */; };
 		38287D5D116E15920085B8E2 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38287D5C116E15920085B8E2 /* Defaults.plist */; };
+		389DF0A711905A2500FDAD83 /* nextButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 389DF0A311905A2500FDAD83 /* nextButtonDisabled.png */; };
+		389DF0A811905A2500FDAD83 /* prevButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 389DF0A411905A2500FDAD83 /* prevButtonDisabled.png */; };
+		389DF0A911905A2500FDAD83 /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 389DF0A511905A2500FDAD83 /* retryButton.png */; };
+		389DF0AA11905A2500FDAD83 /* retryButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 389DF0A611905A2500FDAD83 /* retryButtonOn.png */; };
 		38A28EFA1175F53400BA300A /* resumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28EF81175F53400BA300A /* resumeButton.png */; };
 		38A28EFB1175F53400BA300A /* resumeButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38A28EF91175F53400BA300A /* resumeButtonOn.png */; };
 		38A28F3711761C1400BA300A /* dud.wav in Resources */ = {isa = PBXBuildFile; fileRef = 38A28F3611761C1400BA300A /* dud.wav */; };
@@ -353,6 +357,10 @@
 		380CA14211664400002B3E1C /* prevButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButtonOn.png; path = Buttons/prevButtonOn.png; sourceTree = "<group>"; };
 		380CA1F411667389002B3E1C /* buttonPress.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = buttonPress.wav; path = Sounds/buttonPress.wav; sourceTree = "<group>"; };
 		38287D5C116E15920085B8E2 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		389DF0A311905A2500FDAD83 /* nextButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nextButtonDisabled.png; path = Buttons/nextButtonDisabled.png; sourceTree = "<group>"; };
+		389DF0A411905A2500FDAD83 /* prevButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = prevButtonDisabled.png; path = Buttons/prevButtonDisabled.png; sourceTree = "<group>"; };
+		389DF0A511905A2500FDAD83 /* retryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retryButton.png; path = Buttons/retryButton.png; sourceTree = "<group>"; };
+		389DF0A611905A2500FDAD83 /* retryButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retryButtonOn.png; path = Buttons/retryButtonOn.png; sourceTree = "<group>"; };
 		38A28EF81175F53400BA300A /* resumeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resumeButton.png; path = Buttons/resumeButton.png; sourceTree = "<group>"; };
 		38A28EF91175F53400BA300A /* resumeButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resumeButtonOn.png; path = Buttons/resumeButtonOn.png; sourceTree = "<group>"; };
 		38A28F3611761C1400BA300A /* dud.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dud.wav; path = Sounds/dud.wav; sourceTree = "<group>"; };
@@ -762,6 +770,10 @@
 		380CA11511663E8F002B3E1C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				389DF0A311905A2500FDAD83 /* nextButtonDisabled.png */,
+				389DF0A411905A2500FDAD83 /* prevButtonDisabled.png */,
+				389DF0A511905A2500FDAD83 /* retryButton.png */,
+				389DF0A611905A2500FDAD83 /* retryButtonOn.png */,
 				38A28F421176459500BA300A /* continueButton.png */,
 				38A28F431176459500BA300A /* continueButtonOn.png */,
 				38A28EF81175F53400BA300A /* resumeButton.png */,
@@ -1446,6 +1458,10 @@
 				7DBC423C11902731003EA08A /* robotHead.tmx in Resources */,
 				7DBC423D11902731003EA08A /* spraypaint.tmx in Resources */,
 				7DBC423E11902731003EA08A /* tutorial.tmx in Resources */,
+				389DF0A711905A2500FDAD83 /* nextButtonDisabled.png in Resources */,
+				389DF0A811905A2500FDAD83 /* prevButtonDisabled.png in Resources */,
+				389DF0A911905A2500FDAD83 /* retryButton.png in Resources */,
+				389DF0AA11905A2500FDAD83 /* retryButtonOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

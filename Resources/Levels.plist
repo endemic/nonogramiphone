@@ -6,9 +6,25 @@
 		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
-		<string>Test</string>
+		<string>Musical Note</string>
 		<key>filename</key>
-		<string>test.tmx</string>
+		<string>note.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Emoticon</string>
+		<key>filename</key>
+		<string>emoticon.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Question Mark</string>
+		<key>filename</key>
+		<string>questionMark.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -28,35 +44,11 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Question Mark</string>
-		<key>filename</key>
-		<string>questionMark.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Musical Note</string>
-		<key>filename</key>
-		<string>note.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
 		<string>Heart</string>
 		<key>filename</key>
 		<string>heart.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Emoticon</string>
-		<key>filename</key>
-		<string>emoticon.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>

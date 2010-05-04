@@ -41,19 +41,19 @@
 	if ((self = [super init]))
 	{
 		// Set up "previous" button
-		CCMenuItem *previousButton = [CCMenuItemImage itemFromNormalImage:@"prevButton.png" selectedImage:@"prevButtonOn.png" disabledImage:@"prevButton.png" target:self selector:@selector(showPreviousLevel:)];
+		previousButton = [CCMenuItemImage itemFromNormalImage:@"prevButton.png" selectedImage:@"prevButtonOn.png" disabledImage:@"prevButtonDisabled.png" target:self selector:@selector(showPreviousLevel:)];
 		CCMenu *previousButtonMenu = [CCMenu menuWithItems:previousButton, nil];
 		[previousButtonMenu setPosition:ccp(30, 300)];
 		[self addChild:previousButtonMenu z:1];
 		
 		// Set up "next" button
-		CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:@"nextButton.png" selectedImage:@"nextButtonOn.png" disabledImage:@"nextButton.png" target:self selector:@selector(showNextLevel:)];
+		nextButton = [CCMenuItemImage itemFromNormalImage:@"nextButton.png" selectedImage:@"nextButtonOn.png" disabledImage:@"nextButtonDisabled.png" target:self selector:@selector(showNextLevel:)];
 		CCMenu *nextButtonMenu = [CCMenu menuWithItems:nextButton, nil];
 		[nextButtonMenu setPosition:ccp(290, 300)];
 		[self addChild:nextButtonMenu z:1];
 		
 		// Set up play/back buttons
-		CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" disabledImage:@"playButton.png" target:self selector:@selector(playLevel:)];
+		CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" target:self selector:@selector(playLevel:)];
 		CCMenuItem *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButton.png" target:self selector:@selector(goToTitle:)];
 		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, backButton, nil];
 		[playButtonMenu alignItemsVertically];
@@ -69,33 +69,33 @@
 		[headerLabel setPosition:ccp(160, 440)];
 		[headerLabel setColor:ccc3(255,255,255)];
 		[headerLabel.texture setAliasTexParameters];
-		[self addChild:headerLabel z:3];
-		
+		[self addChild:headerLabel z:4];
+
 		// Details for each level
-		//NSLog(@"Difficulty: %@", [[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"]);
+		// Difficulty
 		difficultyLabel = [CCLabel labelWithString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[difficultyLabel setPosition:ccp(230, 175)];
+		[difficultyLabel setPosition:ccp(265, 171)];
 		[difficultyLabel setColor:ccc3(255,255,255)];
 		[difficultyLabel.texture setAliasTexParameters];
 		[self addChild:difficultyLabel z:3];
 		
-		//NSLog(@"Attempts: %@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]);
+		// # of attempts
 		attemptsLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[attemptsLabel setPosition:ccp(230, 156)];
+		[attemptsLabel setPosition:ccp(265, 152)];
 		[attemptsLabel setColor:ccc3(255,255,255)];
 		[attemptsLabel.texture setAliasTexParameters];
 		[self addChild:attemptsLabel z:3];
 		
-		//NSLog(@"First time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"]);
+		// First time completed
 		firstTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[firstTimeLabel setPosition:ccp(230, 137)];
+		[firstTimeLabel setPosition:ccp(265, 133)];
 		[firstTimeLabel setColor:ccc3(255,255,255)];
 		[firstTimeLabel.texture setAliasTexParameters];
 		[self addChild:firstTimeLabel z:3];
 		
-		//NSLog(@"Best time for level %i: %@", [GameDataManager sharedManager].currentLevel, [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"]);
+		// Best time completed
 		bestTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[bestTimeLabel setPosition:ccp(230, 118)];
+		[bestTimeLabel setPosition:ccp(265, 114)];
 		[bestTimeLabel setColor:ccc3(255,255,255)];
 		[bestTimeLabel.texture setAliasTexParameters];
 		[self addChild:bestTimeLabel z:3];
@@ -146,6 +146,17 @@
 			[self addChild:s];
 			[levelDisplayList insertObject:s atIndex:i];
 		}
+		
+		// Set prev/next buttons as disabled if needed
+		if ([GameDataManager sharedManager].currentLevel == 1)
+			[previousButton setIsEnabled:FALSE];
+		else
+			[previousButton setIsEnabled:TRUE];
+		
+		if ([GameDataManager sharedManager].currentLevel == [[GameDataManager sharedManager].levels count])
+			[nextButton setIsEnabled:FALSE];
+		else
+			[nextButton setIsEnabled:TRUE];
 	}
 	return self;
 }
@@ -204,6 +215,11 @@
 		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
 	}
 	
+	// Muck with enabling/disabling prev/next buttons
+	[nextButton setIsEnabled:TRUE];
+	if ([GameDataManager sharedManager].currentLevel == 1)
+		[previousButton setIsEnabled:FALSE];
+	
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
@@ -230,6 +246,11 @@
 		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
 	}
 	
+	// Muck with enabling/disabling prev/next buttons
+	[previousButton setIsEnabled:TRUE];
+	if ([GameDataManager sharedManager].currentLevel == [[GameDataManager sharedManager].levels count])
+		[nextButton setIsEnabled:FALSE];
+
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];

@@ -210,7 +210,7 @@
 		actions = [CCLabel labelWithString:@"(tap to continue)" dimensions:CGSizeMake(150, 16) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
 		[actions setColor:ccc3(00, 00, 00)];
 		[actions.texture setAliasTexParameters];
-		[actions setPosition:ccp(220, 374)];
+		[actions setPosition:ccp(200, 374)];
 		[self addChild:actions];
 	}
 	return self;

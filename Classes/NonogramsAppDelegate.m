@@ -73,7 +73,7 @@
 	[GameDataManager sharedManager].levels = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"]];
 	
 	// Set current level for player
-	[GameDataManager sharedManager].currentLevel = 1;
+	[GameDataManager sharedManager].currentLevel = [defaults integerForKey:@"currentLevel"];
 	
 	// Run default scene
 	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
@@ -92,7 +92,12 @@
 	[[CCTextureCache sharedTextureCache] removeUnusedTextures];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)applicationWillTerminate:(UIApplication *)application 
+{
+	// Save current level
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setInteger:[GameDataManager sharedManager].currentLevel forKey:@"currentLevel"];
+	
 	[[CCDirector sharedDirector] end];
 }
 

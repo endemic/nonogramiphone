@@ -22,6 +22,10 @@
 	CCLabel *attemptsLabel;
 	CCLabel *firstTimeLabel;
 	CCLabel *bestTimeLabel;
+	
+	// Prev/next buttons
+	CCMenuItem *previousButton;
+	CCMenuItem *nextButton;
 }
 
 - (void)showNextLevel:(id)sender;

@@ -192,9 +192,9 @@
 		
 		// Set up % complete label
 		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:48];
-		[percentComplete setPosition:ccp(260, 430)];
+		[percentComplete setPosition:ccp(260, 422)];
 		[percentComplete.texture setAliasTexParameters];
-		[percentComplete setColor:ccc3(33, 33, 33)];
+		[percentComplete setColor:ccc3(00, 00, 00)];
 		[self addChild:percentComplete z:3];
 		
 		// Set up timer labels/internal variables/scheduler
@@ -205,13 +205,13 @@
 		
 		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
 		[minutesLeftLabel setPosition:ccp(110, 395)];
-		[minutesLeftLabel setColor:ccc3(33, 33, 33)];
+		[minutesLeftLabel setColor:ccc3(00, 00, 00)];
 		[minutesLeftLabel.texture setAliasTexParameters];
 		[self addChild:minutesLeftLabel z:3];
 		
 		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
 		[secondsLeftLabel setPosition:ccp(110, 355)];
-		[secondsLeftLabel setColor:ccc3(33, 33, 33)];
+		[secondsLeftLabel setColor:ccc3(00, 00, 00)];
 		[secondsLeftLabel.texture setAliasTexParameters];
 		[self addChild:secondsLeftLabel z:3];
 		
@@ -627,9 +627,10 @@
 	
 	// Add buttons to overlay
 	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
-	CCMenuItem *tryAgainButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(retryLevel:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retryButton.png" selectedImage:@"retryButtonOn.png" target:self selector:@selector(retryLevel:)];
 	
-	CCMenu *overlayMenu = [CCMenu menuWithItems:tryAgainButton, continueButton, nil];		// Create container menu object
+	CCMenu *overlayMenu = [CCMenu menuWithItems:retryButton, continueButton, nil];		// Create container menu object
+	[overlayMenu alignItemsVertically];
 	[overlayMenu setPosition:ccp(150, 50)];
 	[overlay addChild:overlayMenu];
 	
