@@ -285,21 +285,33 @@
 		
 		paused = TRUE;
 	}
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 -(void) resume:(id)sender
 {
-	// Remove "paused" overlay and reschedule timer
-	[self schedule:@selector(timer:) interval:1.0];
+	// Do nothing if game is not paused
+	if (paused)
+	{
+		// Remove "paused" overlay and reschedule timer
+		[self schedule:@selector(timer:) interval:1.0];
+		
+		// Move pause overlay off screen to the right, then reset position offscreen left
+		[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(470, 200)]];
+		
+		// Show cursor highlights
+		horizontalHighlight.visible = TRUE;
+		verticalHighlight.visible = TRUE;
+		
+		paused = FALSE;
+	}
 	
-	// Move pause overlay off screen to the right, then reset position offscreen left
-	[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(470, 200)]];
-	
-	// Show cursor highlights
-	horizontalHighlight.visible = TRUE;
-	verticalHighlight.visible = TRUE;
-	
-	paused = FALSE;
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 - (void)changeTapActionToMark:(id)sender

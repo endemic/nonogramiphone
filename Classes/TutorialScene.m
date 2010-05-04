@@ -477,9 +477,6 @@
 	[overlayMenu setPosition:ccp(150, 50)];
 	[overlay addChild:overlayMenu];
 	
-	// Load level!
-	NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
-	
 	// Draw finished puzzle image on to overlay
 	CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tutorial.tmx"];
 	
