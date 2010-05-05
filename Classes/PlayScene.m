@@ -586,6 +586,10 @@
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"winJingle.mp3"];
+	
 	// Get whole array of default level times
 	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];
 	

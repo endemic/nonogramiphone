@@ -60,6 +60,7 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"winJingle.mp3"];
 
 	// Load default defaults
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

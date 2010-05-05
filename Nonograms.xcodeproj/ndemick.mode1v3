@@ -326,10 +326,9 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7DBC4269119033CE003EA08A</string>
+										<string>7D5A6A6B1191812B00BB2E4E</string>
 										<key>history</key>
 										<array>
-											<string>7DDF4256116D4685006FC228</string>
 											<string>7DEFB370116DE8910019FC39</string>
 											<string>7D8EFB3711732ECD002D5627</string>
 											<string>7D8EFB3811732ECD002D5627</string>
@@ -364,17 +363,18 @@
 											<string>7DDB88271186F1AA007FB078</string>
 											<string>7D6109811186F950007ECF43</string>
 											<string>7D6109831186F950007ECF43</string>
-											<string>7D6109D311899540007ECF43</string>
 											<string>7D6109D411899540007ECF43</string>
 											<string>7D6109DD118995AB007ECF43</string>
 											<string>7DBC424111902A05003EA08A</string>
 											<string>7DBC425911903136003EA08A</string>
 											<string>7DBC425A11903136003EA08A</string>
-											<string>7DBC425B11903136003EA08A</string>
 											<string>7DBC425C11903136003EA08A</string>
 											<string>7DBC425D11903136003EA08A</string>
 											<string>7DBC4267119033CE003EA08A</string>
-											<string>7DBC4268119033CE003EA08A</string>
+											<string>7D5A6A671191812B00BB2E4E</string>
+											<string>7D5A6A681191812B00BB2E4E</string>
+											<string>7D5A6A691191812B00BB2E4E</string>
+											<string>7D5A6A6A1191812B00BB2E4E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -432,9 +432,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7DBC421311902648003EA08A</string>
+				<string>7D5A6A5D1191790900BB2E4E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7DBC421411902648003EA08A</string>
+				<string>7D5A6A5E1191790900BB2E4E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -572,6 +572,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>7D5A6A731191812B00BB2E4E</string>
+		<string>7D5A6A741191812B00BB2E4E</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
@@ -599,7 +601,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TutorialScene.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -616,8 +618,6 @@
 							<string>283pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -657,7 +657,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7DB8C2B8115BB9630097C084</string>
-				<string>7DBC421511902648003EA08A</string>
+				<string>7D5A6A5F1191790900BB2E4E</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -779,13 +779,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7DBC424411902A05003EA08A</string>
+				<string>7D5A6A6C1191812B00BB2E4E</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7DBC424511902A05003EA08A</string>
-				<string>7DBC424611902A05003EA08A</string>
-				<string>7DBC424711902A05003EA08A</string>
-				<string>7DBC424811902A05003EA08A</string>
-				<string>7DBC424911902A05003EA08A</string>
+				<string>7D5A6A6D1191812B00BB2E4E</string>
+				<string>7D5A6A6E1191812B00BB2E4E</string>
+				<string>7D5A6A6F1191812B00BB2E4E</string>
+				<string>7D5A6A701191812B00BB2E4E</string>
+				<string>7D5A6A711191812B00BB2E4E</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -904,8 +904,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -941,7 +939,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>7DBC424A11902A05003EA08A</string>
+				<string>7D5A6A721191812B00BB2E4E</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
