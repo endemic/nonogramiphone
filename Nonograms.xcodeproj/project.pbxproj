@@ -264,6 +264,7 @@
 		50F414F01069373D002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EC1069373D002A0D5E /* Default.png */; };
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
+		7D4AF32211981793004D0058 /* loseJingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D4AF32111981793004D0058 /* loseJingle.mp3 */; };
 		7D56853E11747878004CDB64 /* 4pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D56853D11747878004CDB64 /* 4pxSquare.png */; };
 		7D5685421174792A004CDB64 /* 8pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D5685411174792A004CDB64 /* 8pxSquare.png */; };
 		7D5A6A62119180EB00BB2E4E /* winJingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */; };
@@ -598,6 +599,7 @@
 		50F414ED1069373D002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D4AF32111981793004D0058 /* loseJingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = loseJingle.mp3; path = Sounds/loseJingle.mp3; sourceTree = "<group>"; };
 		7D56853D11747878004CDB64 /* 4pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4pxSquare.png; sourceTree = "<group>"; };
 		7D5685411174792A004CDB64 /* 8pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8pxSquare.png; sourceTree = "<group>"; };
 		7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = winJingle.mp3; path = Sounds/winJingle.mp3; sourceTree = "<group>"; };
@@ -813,6 +815,7 @@
 		380CA1F31166737D002B3E1C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				7D4AF32111981793004D0058 /* loseJingle.mp3 */,
 				7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */,
 				38A28F3611761C1400BA300A /* dud.wav */,
 				38CD53821174C0A900F1C75B /* cursorMove.wav */,
@@ -1466,6 +1469,7 @@
 				389DF0A911905A2500FDAD83 /* retryButton.png in Resources */,
 				389DF0AA11905A2500FDAD83 /* retryButtonOn.png in Resources */,
 				7D5A6A62119180EB00BB2E4E /* winJingle.mp3 in Resources */,
+				7D4AF32211981793004D0058 /* loseJingle.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

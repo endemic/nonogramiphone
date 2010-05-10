@@ -266,6 +266,7 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>50F414EB1069373D002A0D5E</string>
+								<string>380CA1F31166737D002B3E1C</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -296,7 +297,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>5 55 1383 823 0 0 1440 878 </string>
+						<string>3 55 1383 823 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,7 +327,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D5A6A6B1191812B00BB2E4E</string>
+										<string>7D4AF325119817F6004D0058</string>
 										<key>history</key>
 										<array>
 											<string>7DEFB370116DE8910019FC39</string>
@@ -373,8 +374,8 @@
 											<string>7DBC4267119033CE003EA08A</string>
 											<string>7D5A6A671191812B00BB2E4E</string>
 											<string>7D5A6A681191812B00BB2E4E</string>
-											<string>7D5A6A691191812B00BB2E4E</string>
-											<string>7D5A6A6A1191812B00BB2E4E</string>
+											<string>7D4AF323119817F6004D0058</string>
+											<string>7D4AF324119817F6004D0058</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -388,7 +389,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1175, 777}}</string>
 								<key>RubberWindowFrame</key>
-								<string>5 55 1383 823 0 0 1440 878 </string>
+								<string>3 55 1383 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -408,7 +409,7 @@
 								<key>Frame</key>
 								<string>{{0, 782}, {1175, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>5 55 1383 823 0 0 1440 878 </string>
+								<string>3 55 1383 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -432,9 +433,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7D5A6A5D1191790900BB2E4E</string>
+				<string>7D4AF31D119815EA004D0058</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7D5A6A5E1191790900BB2E4E</string>
+				<string>7D4AF31E119815EA004D0058</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -572,15 +573,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>7D5A6A731191812B00BB2E4E</string>
-		<string>7D5A6A741191812B00BB2E4E</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
 		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>5 55 1383 823 0 0 1440 878 </string>
+	<string>3 55 1383 823 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -657,7 +654,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7DB8C2B8115BB9630097C084</string>
-				<string>7D5A6A5F1191790900BB2E4E</string>
+				<string>7D4AF31F119815EA004D0058</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
