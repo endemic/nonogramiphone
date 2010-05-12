@@ -264,6 +264,48 @@
 		50F414F01069373D002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EC1069373D002A0D5E /* Default.png */; };
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
+		7D1E8219119AB9E600E28163 /* airplane.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81EF119AB9E600E28163 /* airplane.tmx */; };
+		7D1E821A119AB9E600E28163 /* alien1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F0119AB9E600E28163 /* alien1.tmx */; };
+		7D1E821B119AB9E600E28163 /* alien2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F1119AB9E600E28163 /* alien2.tmx */; };
+		7D1E821C119AB9E600E28163 /* balloon.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F2119AB9E600E28163 /* balloon.tmx */; };
+		7D1E821D119AB9E600E28163 /* battery.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F3119AB9E600E28163 /* battery.tmx */; };
+		7D1E821E119AB9E600E28163 /* beginnerBadge.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F4119AB9E600E28163 /* beginnerBadge.tmx */; };
+		7D1E821F119AB9E600E28163 /* binoculars.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F5119AB9E600E28163 /* binoculars.tmx */; };
+		7D1E8220119AB9E600E28163 /* calculator.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F6119AB9E600E28163 /* calculator.tmx */; };
+		7D1E8221119AB9E600E28163 /* car.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F7119AB9E600E28163 /* car.tmx */; };
+		7D1E8222119AB9E600E28163 /* carriageReturn.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F8119AB9E600E28163 /* carriageReturn.tmx */; };
+		7D1E8223119AB9E600E28163 /* cityscape.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81F9119AB9E600E28163 /* cityscape.tmx */; };
+		7D1E8224119AB9E600E28163 /* crt.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81FA119AB9E600E28163 /* crt.tmx */; };
+		7D1E8225119AB9E600E28163 /* cube.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81FB119AB9E600E28163 /* cube.tmx */; };
+		7D1E8226119AB9E600E28163 /* easyChair.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81FC119AB9E600E28163 /* easyChair.tmx */; };
+		7D1E8227119AB9E600E28163 /* envelope.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81FD119AB9E600E28163 /* envelope.tmx */; };
+		7D1E8228119AB9E600E28163 /* face.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81FE119AB9E600E28163 /* face.tmx */; };
+		7D1E8229119AB9E600E28163 /* feather.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E81FF119AB9E600E28163 /* feather.tmx */; };
+		7D1E822A119AB9E600E28163 /* film.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8200119AB9E600E28163 /* film.tmx */; };
+		7D1E822B119AB9E600E28163 /* flower.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8201119AB9E600E28163 /* flower.tmx */; };
+		7D1E822C119AB9E600E28163 /* folder.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8202119AB9E600E28163 /* folder.tmx */; };
+		7D1E822D119AB9E600E28163 /* fourway.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8203119AB9E600E28163 /* fourway.tmx */; };
+		7D1E822E119AB9E600E28163 /* ghost.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8204119AB9E600E28163 /* ghost.tmx */; };
+		7D1E822F119AB9E600E28163 /* iphone.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8205119AB9E600E28163 /* iphone.tmx */; };
+		7D1E8230119AB9E600E28163 /* key.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8206119AB9E600E28163 /* key.tmx */; };
+		7D1E8231119AB9E600E28163 /* lightbulb.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8207119AB9E600E28163 /* lightbulb.tmx */; };
+		7D1E8232119AB9E600E28163 /* macClassic.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8208119AB9E600E28163 /* macClassic.tmx */; };
+		7D1E8233119AB9E600E28163 /* martini.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8209119AB9E600E28163 /* martini.tmx */; };
+		7D1E8234119AB9E600E28163 /* mouse.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E820A119AB9E600E28163 /* mouse.tmx */; };
+		7D1E8235119AB9E600E28163 /* mouseCursor.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E820B119AB9E600E28163 /* mouseCursor.tmx */; };
+		7D1E8236119AB9E600E28163 /* pencil.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E820C119AB9E600E28163 /* pencil.tmx */; };
+		7D1E8237119AB9E600E28163 /* pistol.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E820D119AB9E600E28163 /* pistol.tmx */; };
+		7D1E8238119AB9E600E28163 /* portrait.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E820E119AB9E600E28163 /* portrait.tmx */; };
+		7D1E8239119AB9E600E28163 /* printer.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E820F119AB9E600E28163 /* printer.tmx */; };
+		7D1E823A119AB9E600E28163 /* prohibited.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8210119AB9E600E28163 /* prohibited.tmx */; };
+		7D1E823B119AB9E600E28163 /* rainCloud.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8211119AB9E600E28163 /* rainCloud.tmx */; };
+		7D1E823C119AB9E600E28163 /* rss.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8212119AB9E600E28163 /* rss.tmx */; };
+		7D1E823D119AB9E600E28163 /* shoppingCart.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8213119AB9E600E28163 /* shoppingCart.tmx */; };
+		7D1E823E119AB9E600E28163 /* skullAndBone.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8214119AB9E600E28163 /* skullAndBone.tmx */; };
+		7D1E823F119AB9E600E28163 /* sphere.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8215119AB9E600E28163 /* sphere.tmx */; };
+		7D1E8240119AB9E600E28163 /* star.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8216119AB9E600E28163 /* star.tmx */; };
+		7D1E8241119AB9E600E28163 /* vase.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8217119AB9E600E28163 /* vase.tmx */; };
+		7D1E8242119AB9E600E28163 /* yinyang.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8218119AB9E600E28163 /* yinyang.tmx */; };
 		7D4AF32211981793004D0058 /* loseJingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D4AF32111981793004D0058 /* loseJingle.mp3 */; };
 		7D56853E11747878004CDB64 /* 4pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D56853D11747878004CDB64 /* 4pxSquare.png */; };
 		7D5685421174792A004CDB64 /* 8pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D5685411174792A004CDB64 /* 8pxSquare.png */; };
@@ -599,6 +641,48 @@
 		50F414ED1069373D002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D1E81EF119AB9E600E28163 /* airplane.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = airplane.tmx; path = Maps/airplane.tmx; sourceTree = "<group>"; };
+		7D1E81F0119AB9E600E28163 /* alien1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = alien1.tmx; path = Maps/alien1.tmx; sourceTree = "<group>"; };
+		7D1E81F1119AB9E600E28163 /* alien2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = alien2.tmx; path = Maps/alien2.tmx; sourceTree = "<group>"; };
+		7D1E81F2119AB9E600E28163 /* balloon.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = balloon.tmx; path = Maps/balloon.tmx; sourceTree = "<group>"; };
+		7D1E81F3119AB9E600E28163 /* battery.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = battery.tmx; path = Maps/battery.tmx; sourceTree = "<group>"; };
+		7D1E81F4119AB9E600E28163 /* beginnerBadge.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = beginnerBadge.tmx; path = Maps/beginnerBadge.tmx; sourceTree = "<group>"; };
+		7D1E81F5119AB9E600E28163 /* binoculars.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = binoculars.tmx; path = Maps/binoculars.tmx; sourceTree = "<group>"; };
+		7D1E81F6119AB9E600E28163 /* calculator.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = calculator.tmx; path = Maps/calculator.tmx; sourceTree = "<group>"; };
+		7D1E81F7119AB9E600E28163 /* car.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = car.tmx; path = Maps/car.tmx; sourceTree = "<group>"; };
+		7D1E81F8119AB9E600E28163 /* carriageReturn.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = carriageReturn.tmx; path = Maps/carriageReturn.tmx; sourceTree = "<group>"; };
+		7D1E81F9119AB9E600E28163 /* cityscape.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cityscape.tmx; path = Maps/cityscape.tmx; sourceTree = "<group>"; };
+		7D1E81FA119AB9E600E28163 /* crt.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = crt.tmx; path = Maps/crt.tmx; sourceTree = "<group>"; };
+		7D1E81FB119AB9E600E28163 /* cube.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cube.tmx; path = Maps/cube.tmx; sourceTree = "<group>"; };
+		7D1E81FC119AB9E600E28163 /* easyChair.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = easyChair.tmx; path = Maps/easyChair.tmx; sourceTree = "<group>"; };
+		7D1E81FD119AB9E600E28163 /* envelope.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = envelope.tmx; path = Maps/envelope.tmx; sourceTree = "<group>"; };
+		7D1E81FE119AB9E600E28163 /* face.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = face.tmx; path = Maps/face.tmx; sourceTree = "<group>"; };
+		7D1E81FF119AB9E600E28163 /* feather.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = feather.tmx; path = Maps/feather.tmx; sourceTree = "<group>"; };
+		7D1E8200119AB9E600E28163 /* film.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = film.tmx; path = Maps/film.tmx; sourceTree = "<group>"; };
+		7D1E8201119AB9E600E28163 /* flower.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = flower.tmx; path = Maps/flower.tmx; sourceTree = "<group>"; };
+		7D1E8202119AB9E600E28163 /* folder.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder.tmx; path = Maps/folder.tmx; sourceTree = "<group>"; };
+		7D1E8203119AB9E600E28163 /* fourway.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fourway.tmx; path = Maps/fourway.tmx; sourceTree = "<group>"; };
+		7D1E8204119AB9E600E28163 /* ghost.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = ghost.tmx; path = Maps/ghost.tmx; sourceTree = "<group>"; };
+		7D1E8205119AB9E600E28163 /* iphone.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = iphone.tmx; path = Maps/iphone.tmx; sourceTree = "<group>"; };
+		7D1E8206119AB9E600E28163 /* key.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = key.tmx; path = Maps/key.tmx; sourceTree = "<group>"; };
+		7D1E8207119AB9E600E28163 /* lightbulb.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = lightbulb.tmx; path = Maps/lightbulb.tmx; sourceTree = "<group>"; };
+		7D1E8208119AB9E600E28163 /* macClassic.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = macClassic.tmx; path = Maps/macClassic.tmx; sourceTree = "<group>"; };
+		7D1E8209119AB9E600E28163 /* martini.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = martini.tmx; path = Maps/martini.tmx; sourceTree = "<group>"; };
+		7D1E820A119AB9E600E28163 /* mouse.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mouse.tmx; path = Maps/mouse.tmx; sourceTree = "<group>"; };
+		7D1E820B119AB9E600E28163 /* mouseCursor.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mouseCursor.tmx; path = Maps/mouseCursor.tmx; sourceTree = "<group>"; };
+		7D1E820C119AB9E600E28163 /* pencil.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pencil.tmx; path = Maps/pencil.tmx; sourceTree = "<group>"; };
+		7D1E820D119AB9E600E28163 /* pistol.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pistol.tmx; path = Maps/pistol.tmx; sourceTree = "<group>"; };
+		7D1E820E119AB9E600E28163 /* portrait.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = portrait.tmx; path = Maps/portrait.tmx; sourceTree = "<group>"; };
+		7D1E820F119AB9E600E28163 /* printer.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = printer.tmx; path = Maps/printer.tmx; sourceTree = "<group>"; };
+		7D1E8210119AB9E600E28163 /* prohibited.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = prohibited.tmx; path = Maps/prohibited.tmx; sourceTree = "<group>"; };
+		7D1E8211119AB9E600E28163 /* rainCloud.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = rainCloud.tmx; path = Maps/rainCloud.tmx; sourceTree = "<group>"; };
+		7D1E8212119AB9E600E28163 /* rss.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = rss.tmx; path = Maps/rss.tmx; sourceTree = "<group>"; };
+		7D1E8213119AB9E600E28163 /* shoppingCart.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = shoppingCart.tmx; path = Maps/shoppingCart.tmx; sourceTree = "<group>"; };
+		7D1E8214119AB9E600E28163 /* skullAndBone.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = skullAndBone.tmx; path = Maps/skullAndBone.tmx; sourceTree = "<group>"; };
+		7D1E8215119AB9E600E28163 /* sphere.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = sphere.tmx; path = Maps/sphere.tmx; sourceTree = "<group>"; };
+		7D1E8216119AB9E600E28163 /* star.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = star.tmx; path = Maps/star.tmx; sourceTree = "<group>"; };
+		7D1E8217119AB9E600E28163 /* vase.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vase.tmx; path = Maps/vase.tmx; sourceTree = "<group>"; };
+		7D1E8218119AB9E600E28163 /* yinyang.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = yinyang.tmx; path = Maps/yinyang.tmx; sourceTree = "<group>"; };
 		7D4AF32111981793004D0058 /* loseJingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = loseJingle.mp3; path = Sounds/loseJingle.mp3; sourceTree = "<group>"; };
 		7D56853D11747878004CDB64 /* 4pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4pxSquare.png; sourceTree = "<group>"; };
 		7D5685411174792A004CDB64 /* 8pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8pxSquare.png; sourceTree = "<group>"; };
@@ -836,6 +920,48 @@
 		38EC2501116A7DE600358D1B /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				7D1E81EF119AB9E600E28163 /* airplane.tmx */,
+				7D1E81F0119AB9E600E28163 /* alien1.tmx */,
+				7D1E81F1119AB9E600E28163 /* alien2.tmx */,
+				7D1E81F2119AB9E600E28163 /* balloon.tmx */,
+				7D1E81F3119AB9E600E28163 /* battery.tmx */,
+				7D1E81F4119AB9E600E28163 /* beginnerBadge.tmx */,
+				7D1E81F5119AB9E600E28163 /* binoculars.tmx */,
+				7D1E81F6119AB9E600E28163 /* calculator.tmx */,
+				7D1E81F7119AB9E600E28163 /* car.tmx */,
+				7D1E81F8119AB9E600E28163 /* carriageReturn.tmx */,
+				7D1E81F9119AB9E600E28163 /* cityscape.tmx */,
+				7D1E81FA119AB9E600E28163 /* crt.tmx */,
+				7D1E81FB119AB9E600E28163 /* cube.tmx */,
+				7D1E81FC119AB9E600E28163 /* easyChair.tmx */,
+				7D1E81FD119AB9E600E28163 /* envelope.tmx */,
+				7D1E81FE119AB9E600E28163 /* face.tmx */,
+				7D1E81FF119AB9E600E28163 /* feather.tmx */,
+				7D1E8200119AB9E600E28163 /* film.tmx */,
+				7D1E8201119AB9E600E28163 /* flower.tmx */,
+				7D1E8202119AB9E600E28163 /* folder.tmx */,
+				7D1E8203119AB9E600E28163 /* fourway.tmx */,
+				7D1E8204119AB9E600E28163 /* ghost.tmx */,
+				7D1E8205119AB9E600E28163 /* iphone.tmx */,
+				7D1E8206119AB9E600E28163 /* key.tmx */,
+				7D1E8207119AB9E600E28163 /* lightbulb.tmx */,
+				7D1E8208119AB9E600E28163 /* macClassic.tmx */,
+				7D1E8209119AB9E600E28163 /* martini.tmx */,
+				7D1E820A119AB9E600E28163 /* mouse.tmx */,
+				7D1E820B119AB9E600E28163 /* mouseCursor.tmx */,
+				7D1E820C119AB9E600E28163 /* pencil.tmx */,
+				7D1E820D119AB9E600E28163 /* pistol.tmx */,
+				7D1E820E119AB9E600E28163 /* portrait.tmx */,
+				7D1E820F119AB9E600E28163 /* printer.tmx */,
+				7D1E8210119AB9E600E28163 /* prohibited.tmx */,
+				7D1E8211119AB9E600E28163 /* rainCloud.tmx */,
+				7D1E8212119AB9E600E28163 /* rss.tmx */,
+				7D1E8213119AB9E600E28163 /* shoppingCart.tmx */,
+				7D1E8214119AB9E600E28163 /* skullAndBone.tmx */,
+				7D1E8215119AB9E600E28163 /* sphere.tmx */,
+				7D1E8216119AB9E600E28163 /* star.tmx */,
+				7D1E8217119AB9E600E28163 /* vase.tmx */,
+				7D1E8218119AB9E600E28163 /* yinyang.tmx */,
 				7DBC421711902731003EA08A /* anchor.tmx */,
 				7DBC421811902731003EA08A /* bell.tmx */,
 				7DBC421911902731003EA08A /* candle.tmx */,
@@ -1470,6 +1596,48 @@
 				389DF0AA11905A2500FDAD83 /* retryButtonOn.png in Resources */,
 				7D5A6A62119180EB00BB2E4E /* winJingle.mp3 in Resources */,
 				7D4AF32211981793004D0058 /* loseJingle.mp3 in Resources */,
+				7D1E8219119AB9E600E28163 /* airplane.tmx in Resources */,
+				7D1E821A119AB9E600E28163 /* alien1.tmx in Resources */,
+				7D1E821B119AB9E600E28163 /* alien2.tmx in Resources */,
+				7D1E821C119AB9E600E28163 /* balloon.tmx in Resources */,
+				7D1E821D119AB9E600E28163 /* battery.tmx in Resources */,
+				7D1E821E119AB9E600E28163 /* beginnerBadge.tmx in Resources */,
+				7D1E821F119AB9E600E28163 /* binoculars.tmx in Resources */,
+				7D1E8220119AB9E600E28163 /* calculator.tmx in Resources */,
+				7D1E8221119AB9E600E28163 /* car.tmx in Resources */,
+				7D1E8222119AB9E600E28163 /* carriageReturn.tmx in Resources */,
+				7D1E8223119AB9E600E28163 /* cityscape.tmx in Resources */,
+				7D1E8224119AB9E600E28163 /* crt.tmx in Resources */,
+				7D1E8225119AB9E600E28163 /* cube.tmx in Resources */,
+				7D1E8226119AB9E600E28163 /* easyChair.tmx in Resources */,
+				7D1E8227119AB9E600E28163 /* envelope.tmx in Resources */,
+				7D1E8228119AB9E600E28163 /* face.tmx in Resources */,
+				7D1E8229119AB9E600E28163 /* feather.tmx in Resources */,
+				7D1E822A119AB9E600E28163 /* film.tmx in Resources */,
+				7D1E822B119AB9E600E28163 /* flower.tmx in Resources */,
+				7D1E822C119AB9E600E28163 /* folder.tmx in Resources */,
+				7D1E822D119AB9E600E28163 /* fourway.tmx in Resources */,
+				7D1E822E119AB9E600E28163 /* ghost.tmx in Resources */,
+				7D1E822F119AB9E600E28163 /* iphone.tmx in Resources */,
+				7D1E8230119AB9E600E28163 /* key.tmx in Resources */,
+				7D1E8231119AB9E600E28163 /* lightbulb.tmx in Resources */,
+				7D1E8232119AB9E600E28163 /* macClassic.tmx in Resources */,
+				7D1E8233119AB9E600E28163 /* martini.tmx in Resources */,
+				7D1E8234119AB9E600E28163 /* mouse.tmx in Resources */,
+				7D1E8235119AB9E600E28163 /* mouseCursor.tmx in Resources */,
+				7D1E8236119AB9E600E28163 /* pencil.tmx in Resources */,
+				7D1E8237119AB9E600E28163 /* pistol.tmx in Resources */,
+				7D1E8238119AB9E600E28163 /* portrait.tmx in Resources */,
+				7D1E8239119AB9E600E28163 /* printer.tmx in Resources */,
+				7D1E823A119AB9E600E28163 /* prohibited.tmx in Resources */,
+				7D1E823B119AB9E600E28163 /* rainCloud.tmx in Resources */,
+				7D1E823C119AB9E600E28163 /* rss.tmx in Resources */,
+				7D1E823D119AB9E600E28163 /* shoppingCart.tmx in Resources */,
+				7D1E823E119AB9E600E28163 /* skullAndBone.tmx in Resources */,
+				7D1E823F119AB9E600E28163 /* sphere.tmx in Resources */,
+				7D1E8240119AB9E600E28163 /* star.tmx in Resources */,
+				7D1E8241119AB9E600E28163 /* vase.tmx in Resources */,
+				7D1E8242119AB9E600E28163 /* yinyang.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
