@@ -11,8 +11,8 @@ ABCDE t120
 
 ;Init A channel
 A l4 o4 @01 @v0
-C l4 o3 q6
+C l8 o3 q6
 
 
 A [e f g a b c d e]2
-C [c c g g c c g g]2
+C [c r c r g r g r c r c r d e f g]4
