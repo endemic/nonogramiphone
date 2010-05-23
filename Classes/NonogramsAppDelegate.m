@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
+//#import "CDAudioManager.h"
 #import "TitleScene.h"
 #import "GameDataManager.h"
 
@@ -62,6 +63,10 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"winJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"loseJingle.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"titleScreen.mp3"];
+	
+	// Uncomment this line and the #import above if finding that music does not resume after device sleeps 10+ minutes 
+	// [[CDAudioManager sharedManager] setResignBehavior:kAMRBStopPlay autoHandle:YES];
 	
 	// Load default defaults
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

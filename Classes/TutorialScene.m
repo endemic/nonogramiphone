@@ -220,11 +220,19 @@
 - (void)changeTapActionToMark:(id)sender
 {
 	tapAction = MARK;
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 - (void)changeTapActionToFill:(id)sender
 {
 	tapAction = FILL;
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

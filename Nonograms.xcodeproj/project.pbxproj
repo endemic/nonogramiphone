@@ -359,6 +359,7 @@
 		7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3F91175C9310047653D /* pauseOverlay.png */; };
 		7DE7C4011175D0360047653D /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3FF1175D0360047653D /* pauseButton.png */; };
 		7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C4001175D0360047653D /* pauseButtonOn.png */; };
+		7DFF221E11A94D5B003B4C79 /* titleScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -738,6 +739,7 @@
 		7DE7C3F91175C9310047653D /* pauseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseOverlay.png; sourceTree = "<group>"; };
 		7DE7C3FF1175D0360047653D /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Buttons/pauseButton.png; sourceTree = "<group>"; };
 		7DE7C4001175D0360047653D /* pauseButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButtonOn.png; path = Buttons/pauseButtonOn.png; sourceTree = "<group>"; };
+		7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = titleScreen.mp3; path = Music/titleScreen.mp3; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1305,6 +1307,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7DFF221C11A94D4D003B4C79 /* Music */,
 				38EC2501116A7DE600358D1B /* Maps */,
 				380CA1F31166737D002B3E1C /* Sounds */,
 				38FF51E311613C3400FF0BC9 /* Fonts */,
@@ -1318,6 +1321,14 @@
 				38CD53B61174F21900F1C75B /* Levels.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7DFF221C11A94D4D003B4C79 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */,
+			);
+			name = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1638,6 +1649,7 @@
 				7D1E8240119AB9E600E28163 /* star.tmx in Resources */,
 				7D1E8241119AB9E600E28163 /* vase.tmx in Resources */,
 				7D1E8242119AB9E600E28163 /* yinyang.tmx in Resources */,
+				7DFF221E11A94D5B003B4C79 /* titleScreen.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

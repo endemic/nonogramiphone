@@ -47,6 +47,10 @@
 		[menu alignItemsVertically];
 		[menu setPosition:ccp(160, 100)];
 		[self addChild:menu	z:1];
+		
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playMusic)
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
 	}
 	return self;
 }
