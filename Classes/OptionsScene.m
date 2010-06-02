@@ -38,7 +38,7 @@
 		CCRadioMenu *sfxMenu = [CCRadioMenu menuWithItems:sfxOnButton, sfxOffButton, nil];
 		
 		[sfxMenu alignItemsHorizontally];
-		[sfxMenu setPosition:ccp(200, 210)];
+		[sfxMenu setPosition:ccp(200, 160)];
 		
 		// Decide which button is highlighted
 		if ([GameDataManager sharedManager].playSFX == TRUE)
@@ -59,7 +59,7 @@
 		CCRadioMenu *musicMenu = [CCRadioMenu menuWithItems:musicOnButton, musicOffButton, nil];
 		
 		[musicMenu alignItemsHorizontally];
-		[musicMenu setPosition:ccp(200, 160)];
+		[musicMenu setPosition:ccp(200, 210)];
 		
 		// Decide which button is highlighted
 		if ([GameDataManager sharedManager].playMusic == TRUE)
@@ -110,6 +110,9 @@
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
+	if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
+	
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = TRUE;
 }
@@ -119,6 +122,10 @@
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Turn off music if it's still playing
+	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
 	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = FALSE;

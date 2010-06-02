@@ -530,6 +530,10 @@
 		// Run "shake" action, then return the grid to its original state
 		[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
 		
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"miss.wav"];
+		
 		// Subtract time based on how many mistakes you made previously
 		switch (++misses)
 		{
@@ -553,6 +557,10 @@
 {
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
+	
+	// Turn off music if it's still playing
+	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;
@@ -593,7 +601,7 @@
 	
 	// Move overlay downwards over play area
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
-	
+
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"winJingle.mp3"];
@@ -638,6 +646,10 @@
 {
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
+	
+	// Turn off music if it's still playing
+	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;

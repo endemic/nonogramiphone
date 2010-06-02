@@ -306,6 +306,22 @@
 		7D1E8240119AB9E600E28163 /* star.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8216119AB9E600E28163 /* star.tmx */; };
 		7D1E8241119AB9E600E28163 /* vase.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8217119AB9E600E28163 /* vase.tmx */; };
 		7D1E8242119AB9E600E28163 /* yinyang.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D1E8218119AB9E600E28163 /* yinyang.tmx */; };
+		7D41E71511B667830091257A /* miss.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E71411B667830091257A /* miss.wav */; };
+		7D41E73711B669FB0091257A /* calendar.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72811B669FB0091257A /* calendar.tmx */; };
+		7D41E73811B669FB0091257A /* clipboard.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72911B669FB0091257A /* clipboard.tmx */; };
+		7D41E73911B669FB0091257A /* flag.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72A11B669FB0091257A /* flag.tmx */; };
+		7D41E73A11B669FB0091257A /* globe.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72B11B669FB0091257A /* globe.tmx */; };
+		7D41E73B11B669FB0091257A /* graph.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72C11B669FB0091257A /* graph.tmx */; };
+		7D41E73C11B669FB0091257A /* magicWand.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72D11B669FB0091257A /* magicWand.tmx */; };
+		7D41E73D11B669FB0091257A /* magnet.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72E11B669FB0091257A /* magnet.tmx */; };
+		7D41E73E11B669FB0091257A /* medal.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E72F11B669FB0091257A /* medal.tmx */; };
+		7D41E73F11B669FB0091257A /* mobilePhone.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73011B669FB0091257A /* mobilePhone.tmx */; };
+		7D41E74011B669FB0091257A /* purse.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73111B669FB0091257A /* purse.tmx */; };
+		7D41E74111B669FB0091257A /* puzzlePiece.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73211B669FB0091257A /* puzzlePiece.tmx */; };
+		7D41E74211B669FB0091257A /* sad.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73311B669FB0091257A /* sad.tmx */; };
+		7D41E74311B669FB0091257A /* scissors.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73411B669FB0091257A /* scissors.tmx */; };
+		7D41E74411B669FB0091257A /* shield.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73511B669FB0091257A /* shield.tmx */; };
+		7D41E74511B669FB0091257A /* speaker.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D41E73611B669FB0091257A /* speaker.tmx */; };
 		7D4AF32211981793004D0058 /* loseJingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D4AF32111981793004D0058 /* loseJingle.mp3 */; };
 		7D56853E11747878004CDB64 /* 4pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D56853D11747878004CDB64 /* 4pxSquare.png */; };
 		7D5685421174792A004CDB64 /* 8pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D5685411174792A004CDB64 /* 8pxSquare.png */; };
@@ -684,6 +700,22 @@
 		7D1E8216119AB9E600E28163 /* star.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = star.tmx; path = Maps/star.tmx; sourceTree = "<group>"; };
 		7D1E8217119AB9E600E28163 /* vase.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vase.tmx; path = Maps/vase.tmx; sourceTree = "<group>"; };
 		7D1E8218119AB9E600E28163 /* yinyang.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = yinyang.tmx; path = Maps/yinyang.tmx; sourceTree = "<group>"; };
+		7D41E71411B667830091257A /* miss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = miss.wav; path = Sounds/miss.wav; sourceTree = "<group>"; };
+		7D41E72811B669FB0091257A /* calendar.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = calendar.tmx; path = Maps/calendar.tmx; sourceTree = "<group>"; };
+		7D41E72911B669FB0091257A /* clipboard.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = clipboard.tmx; path = Maps/clipboard.tmx; sourceTree = "<group>"; };
+		7D41E72A11B669FB0091257A /* flag.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = flag.tmx; path = Maps/flag.tmx; sourceTree = "<group>"; };
+		7D41E72B11B669FB0091257A /* globe.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = globe.tmx; path = Maps/globe.tmx; sourceTree = "<group>"; };
+		7D41E72C11B669FB0091257A /* graph.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = graph.tmx; path = Maps/graph.tmx; sourceTree = "<group>"; };
+		7D41E72D11B669FB0091257A /* magicWand.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = magicWand.tmx; path = Maps/magicWand.tmx; sourceTree = "<group>"; };
+		7D41E72E11B669FB0091257A /* magnet.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = magnet.tmx; path = Maps/magnet.tmx; sourceTree = "<group>"; };
+		7D41E72F11B669FB0091257A /* medal.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = medal.tmx; path = Maps/medal.tmx; sourceTree = "<group>"; };
+		7D41E73011B669FB0091257A /* mobilePhone.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mobilePhone.tmx; path = Maps/mobilePhone.tmx; sourceTree = "<group>"; };
+		7D41E73111B669FB0091257A /* purse.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = purse.tmx; path = Maps/purse.tmx; sourceTree = "<group>"; };
+		7D41E73211B669FB0091257A /* puzzlePiece.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = puzzlePiece.tmx; path = Maps/puzzlePiece.tmx; sourceTree = "<group>"; };
+		7D41E73311B669FB0091257A /* sad.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = sad.tmx; path = Maps/sad.tmx; sourceTree = "<group>"; };
+		7D41E73411B669FB0091257A /* scissors.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = scissors.tmx; path = Maps/scissors.tmx; sourceTree = "<group>"; };
+		7D41E73511B669FB0091257A /* shield.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = shield.tmx; path = Maps/shield.tmx; sourceTree = "<group>"; };
+		7D41E73611B669FB0091257A /* speaker.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = speaker.tmx; path = Maps/speaker.tmx; sourceTree = "<group>"; };
 		7D4AF32111981793004D0058 /* loseJingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = loseJingle.mp3; path = Sounds/loseJingle.mp3; sourceTree = "<group>"; };
 		7D56853D11747878004CDB64 /* 4pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4pxSquare.png; sourceTree = "<group>"; };
 		7D5685411174792A004CDB64 /* 8pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8pxSquare.png; sourceTree = "<group>"; };
@@ -901,6 +933,7 @@
 		380CA1F31166737D002B3E1C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				7D41E71411B667830091257A /* miss.wav */,
 				7D4AF32111981793004D0058 /* loseJingle.mp3 */,
 				7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */,
 				38A28F3611761C1400BA300A /* dud.wav */,
@@ -922,6 +955,21 @@
 		38EC2501116A7DE600358D1B /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				7D41E72811B669FB0091257A /* calendar.tmx */,
+				7D41E72911B669FB0091257A /* clipboard.tmx */,
+				7D41E72A11B669FB0091257A /* flag.tmx */,
+				7D41E72B11B669FB0091257A /* globe.tmx */,
+				7D41E72C11B669FB0091257A /* graph.tmx */,
+				7D41E72D11B669FB0091257A /* magicWand.tmx */,
+				7D41E72E11B669FB0091257A /* magnet.tmx */,
+				7D41E72F11B669FB0091257A /* medal.tmx */,
+				7D41E73011B669FB0091257A /* mobilePhone.tmx */,
+				7D41E73111B669FB0091257A /* purse.tmx */,
+				7D41E73211B669FB0091257A /* puzzlePiece.tmx */,
+				7D41E73311B669FB0091257A /* sad.tmx */,
+				7D41E73411B669FB0091257A /* scissors.tmx */,
+				7D41E73511B669FB0091257A /* shield.tmx */,
+				7D41E73611B669FB0091257A /* speaker.tmx */,
 				7D1E81EF119AB9E600E28163 /* airplane.tmx */,
 				7D1E81F0119AB9E600E28163 /* alien1.tmx */,
 				7D1E81F1119AB9E600E28163 /* alien2.tmx */,
@@ -1650,6 +1698,22 @@
 				7D1E8241119AB9E600E28163 /* vase.tmx in Resources */,
 				7D1E8242119AB9E600E28163 /* yinyang.tmx in Resources */,
 				7DFF221E11A94D5B003B4C79 /* titleScreen.mp3 in Resources */,
+				7D41E71511B667830091257A /* miss.wav in Resources */,
+				7D41E73711B669FB0091257A /* calendar.tmx in Resources */,
+				7D41E73811B669FB0091257A /* clipboard.tmx in Resources */,
+				7D41E73911B669FB0091257A /* flag.tmx in Resources */,
+				7D41E73A11B669FB0091257A /* globe.tmx in Resources */,
+				7D41E73B11B669FB0091257A /* graph.tmx in Resources */,
+				7D41E73C11B669FB0091257A /* magicWand.tmx in Resources */,
+				7D41E73D11B669FB0091257A /* magnet.tmx in Resources */,
+				7D41E73E11B669FB0091257A /* medal.tmx in Resources */,
+				7D41E73F11B669FB0091257A /* mobilePhone.tmx in Resources */,
+				7D41E74011B669FB0091257A /* purse.tmx in Resources */,
+				7D41E74111B669FB0091257A /* puzzlePiece.tmx in Resources */,
+				7D41E74211B669FB0091257A /* sad.tmx in Resources */,
+				7D41E74311B669FB0091257A /* scissors.tmx in Resources */,
+				7D41E74411B669FB0091257A /* shield.tmx in Resources */,
+				7D41E74511B669FB0091257A /* speaker.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

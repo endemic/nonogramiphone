@@ -61,6 +61,7 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"winJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"loseJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"titleScreen.mp3"];

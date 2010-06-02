@@ -463,6 +463,10 @@
 		
 		// Run "shake" action, then return the grid to its original state
 		[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
+		
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"miss.wav"];
 	}
 }
 
