@@ -40,6 +40,10 @@
 {
 	if ((self = [super init]))
 	{
+		// Play music if allowed
+		if ([GameDataManager sharedManager].playMusic)
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
+		
 		// Set up "previous" button
 		previousButton = [CCMenuItemImage itemFromNormalImage:@"prevButton.png" selectedImage:@"prevButtonOn.png" disabledImage:@"prevButtonDisabled.png" target:self selector:@selector(showPreviousLevel:)];
 		CCMenu *previousButtonMenu = [CCMenu menuWithItems:previousButton, nil];

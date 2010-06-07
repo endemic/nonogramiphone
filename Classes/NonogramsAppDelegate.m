@@ -62,9 +62,13 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
+	//[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"titleScreen.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
+	
+	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.25];
 	
 	// Uncomment this line and the #import above if finding that music does not resume after device sleeps 10+ minutes 
 	// [[CDAudioManager sharedManager] setResignBehavior:kAMRBStopPlay autoHandle:YES];
