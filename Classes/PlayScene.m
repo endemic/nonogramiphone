@@ -558,10 +558,6 @@
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
 	
-	// Turn off music if it's still playing
-	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
-		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-	
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;
 	verticalHighlight.visible = FALSE;
@@ -603,8 +599,8 @@
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 
 	// Play SFX if allowed
-	if ([GameDataManager sharedManager].playSFX)
-		[[SimpleAudioEngine sharedEngine] playEffect:@"winJingle.mp3"];
+	if ([GameDataManager sharedManager].playMusic)
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"winJingle.mp3" loop:FALSE];
 	
 	// Get whole array of default level times
 	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];
@@ -647,10 +643,6 @@
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
 	
-	// Turn off music if it's still playing
-	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
-		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-	
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;
 	verticalHighlight.visible = FALSE;
@@ -674,8 +666,8 @@
 	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 	
 	// Play SFX if allowed
-	if ([GameDataManager sharedManager].playSFX)
-		[[SimpleAudioEngine sharedEngine] playEffect:@"loseJingle.mp3"];
+	if ([GameDataManager sharedManager].playMusic)
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"loseJingle.mp3" loop:FALSE];
 	
 	// Get whole array of default level times
 	NSMutableArray *levelTimes = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"]];

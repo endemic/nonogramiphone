@@ -49,7 +49,7 @@
 		[self addChild:menu	z:1];
 		
 		// Play SFX if allowed
-		if ([GameDataManager sharedManager].playMusic)
+		if ([GameDataManager sharedManager].playMusic && ![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
 			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
 	}
 	return self;

@@ -6,17 +6,25 @@
 		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
-		<string>Sad Face</string>
+		<string>Musical Note</string>
 		<key>filename</key>
-		<string>sad.tmx</string>
+		<string>note.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Hard</string>
+		<string>Easy</string>
 		<key>title</key>
-		<string>Graph</string>
+		<string>Exclamation Mark</string>
 		<key>filename</key>
-		<string>graph.tmx</string>
+		<string>exclamationMark.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Sad</string>
+		<key>filename</key>
+		<string>sad.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -38,25 +46,41 @@
 		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
+		<string>Question Mark</string>
+		<key>filename</key>
+		<string>questionMark.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
 		<string>Clipboard</string>
 		<key>filename</key>
 		<string>clipboard.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Easy</string>
 		<key>title</key>
-		<string>Purse</string>
+		<string>Happy</string>
 		<key>filename</key>
-		<string>purse.tmx</string>
+		<string>smiley.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Easy</string>
 		<key>title</key>
-		<string>Globe</string>
+		<string>Left Arrow</string>
 		<key>filename</key>
-		<string>globe.tmx</string>
+		<string>leftArrow.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Envelope</string>
+		<key>filename</key>
+		<string>envelope.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -65,38 +89,6 @@
 		<string>Medal</string>
 		<key>filename</key>
 		<string>medal.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Flag</string>
-		<key>filename</key>
-		<string>flag.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Speaker</string>
-		<key>filename</key>
-		<string>speaker.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Magic Want</string>
-		<key>filename</key>
-		<string>magicWand.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Scissors</string>
-		<key>filename</key>
-		<string>scissors.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -118,6 +110,14 @@
 		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
+		<string>Robot Head</string>
+		<key>filename</key>
+		<string>robotHead.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
 		<string>Magnet</string>
 		<key>filename</key>
 		<string>magnet.tmx</string>
@@ -132,11 +132,139 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Hard</string>
+		<string>Easy</string>
 		<key>title</key>
-		<string>Pencil</string>
+		<string>Emoticon</string>
 		<key>filename</key>
-		<string>pencil.tmx</string>
+		<string>emoticon.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Ankh</string>
+		<key>filename</key>
+		<string>ankh.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Profile</string>
+		<key>filename</key>
+		<string>face.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>RSS</string>
+		<key>filename</key>
+		<string>rss.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Film</string>
+		<key>filename</key>
+		<string>film.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Airplane</string>
+		<key>filename</key>
+		<string>airplane.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Printer</string>
+		<key>filename</key>
+		<string>printer.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Calculator</string>
+		<key>filename</key>
+		<string>calculator.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Alien #1</string>
+		<key>filename</key>
+		<string>alien1.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>CRT</string>
+		<key>filename</key>
+		<string>crt.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Vase</string>
+		<key>filename</key>
+		<string>vase.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Alien #2</string>
+		<key>filename</key>
+		<string>alien2.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Carriage Return</string>
+		<key>filename</key>
+		<string>carriageReturn.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Recliner</string>
+		<key>filename</key>
+		<string>easyChair.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>TV</string>
+		<key>filename</key>
+		<string>tv.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Ghost</string>
+		<key>filename</key>
+		<string>ghost.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Gravestone</string>
+		<key>filename</key>
+		<string>gravestone.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -164,75 +292,19 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
+		<string>Medium</string>
 		<key>title</key>
-		<string>Film</string>
+		<string>Bell</string>
 		<key>filename</key>
-		<string>film.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Airplane</string>
-		<key>filename</key>
-		<string>airplane.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Calculator</string>
-		<key>filename</key>
-		<string>calculator.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Alien #2</string>
-		<key>filename</key>
-		<string>alien2.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Alien #1</string>
-		<key>filename</key>
-		<string>alien1.tmx</string>
+		<string>bell.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
-		<string>Ghost</string>
+		<string>Document</string>
 		<key>filename</key>
-		<string>ghost.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Yin Yang</string>
-		<key>filename</key>
-		<string>yinyang.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Cube</string>
-		<key>filename</key>
-		<string>cube.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Martini</string>
-		<key>filename</key>
-		<string>martini.tmx</string>
+		<string>document.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -252,19 +324,51 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Sphere</string>
-		<key>filename</key>
-		<string>sphere.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
 		<string>Mac Classic</string>
 		<key>filename</key>
 		<string>macClassic.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Footprints</string>
+		<key>filename</key>
+		<string>footprints.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Candle</string>
+		<key>filename</key>
+		<string>candle.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Neko</string>
+		<key>filename</key>
+		<string>neko.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Die</string>
+		<key>filename</key>
+		<string>die.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Hourglass</string>
+		<key>filename</key>
+		<string>hourglass.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -300,11 +404,27 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
+		<string>Medium</string>
 		<key>title</key>
-		<string>Vase</string>
+		<string>Speaker</string>
 		<key>filename</key>
-		<string>vase.tmx</string>
+		<string>speaker.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Globe</string>
+		<key>filename</key>
+		<string>globe.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Scissors</string>
+		<key>filename</key>
+		<string>scissors.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -324,14 +444,6 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Profile</string>
-		<key>filename</key>
-		<string>face.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
 		<string>Not Allowed</string>
@@ -340,11 +452,11 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Hard</string>
+		<string>Medium</string>
 		<key>title</key>
-		<string>Cursor</string>
+		<string>Stairs</string>
 		<key>filename</key>
-		<string>mouseCursor.tmx</string>
+		<string>stairs.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -380,75 +492,11 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Hard</string>
+		<string>Medium</string>
 		<key>title</key>
-		<string>Flower</string>
+		<string>Purse</string>
 		<key>filename</key>
-		<string>flower.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>CRT</string>
-		<key>filename</key>
-		<string>crt.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Envelope</string>
-		<key>filename</key>
-		<string>envelope.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Easy Chair</string>
-		<key>filename</key>
-		<string>easyChair.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>RSS</string>
-		<key>filename</key>
-		<string>rss.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Key</string>
-		<key>filename</key>
-		<string>key.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Printer</string>
-		<key>filename</key>
-		<string>printer.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Feather</string>
-		<key>filename</key>
-		<string>feather.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Carriage Return</string>
-		<key>filename</key>
-		<string>carriageReturn.tmx</string>
+		<string>purse.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -457,38 +505,6 @@
 		<string>Pistol</string>
 		<key>filename</key>
 		<string>pistol.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Pencil</string>
-		<key>filename</key>
-		<string>pencil.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Musical Note</string>
-		<key>filename</key>
-		<string>note.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Emoticon</string>
-		<key>filename</key>
-		<string>emoticon.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Question Mark</string>
-		<key>filename</key>
-		<string>questionMark.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -510,17 +526,33 @@
 		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
-		<string>Heart</string>
+		<string>Padlock</string>
 		<key>filename</key>
-		<string>heart.tmx</string>
+		<string>padlock.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
+		<string>Medium</string>
 		<key>title</key>
-		<string>Exclamation Mark</string>
+		<string>Floppy Disk</string>
 		<key>filename</key>
-		<string>exclamationMark.tmx</string>
+		<string>floppyDisk.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>House</string>
+		<key>filename</key>
+		<string>house.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Heart</string>
+		<key>filename</key>
+		<string>heart.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -540,11 +572,19 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
+		<string>Medium</string>
 		<key>title</key>
-		<string>Ankh</string>
+		<string>Coffee</string>
 		<key>filename</key>
-		<string>ankh.tmx</string>
+		<string>coffee.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Lucky Charm</string>
+		<key>filename</key>
+		<string>omamori.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -572,19 +612,11 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Floppy Disk</string>
+		<string>Flower</string>
 		<key>filename</key>
-		<string>floppyDisk.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>House</string>
-		<key>filename</key>
-		<string>house.tmx</string>
+		<string>flower.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -604,22 +636,6 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Padlock</string>
-		<key>filename</key>
-		<string>padlock.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Smiley</string>
-		<key>filename</key>
-		<string>smiley.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
 		<string>Hard</string>
 		<key>title</key>
 		<string>Electrical Outlet</string>
@@ -628,11 +644,43 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Stairs</string>
+		<string>Yin Yang</string>
 		<key>filename</key>
-		<string>stairs.tmx</string>
+		<string>yinyang.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Cube</string>
+		<key>filename</key>
+		<string>cube.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Martini</string>
+		<key>filename</key>
+		<string>martini.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Pencil</string>
+		<key>filename</key>
+		<string>pencil.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Sphere</string>
+		<key>filename</key>
+		<string>sphere.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -646,41 +694,25 @@
 		<key>difficulty</key>
 		<string>Hard</string>
 		<key>title</key>
-		<string>TV</string>
-		<key>filename</key>
-		<string>tv.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
 		<string>Anchor</string>
 		<key>filename</key>
 		<string>anchor.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Gravestone</string>
+		<string>Flag</string>
 		<key>filename</key>
-		<string>gravestone.tmx</string>
+		<string>flag.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Bell</string>
+		<string>Magic Wand</string>
 		<key>filename</key>
-		<string>bell.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Document</string>
-		<key>filename</key>
-		<string>document.tmx</string>
+		<string>magicWand.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -692,27 +724,11 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Coffee</string>
-		<key>filename</key>
-		<string>coffee.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
 		<string>Hard</string>
 		<key>title</key>
 		<string>Spraypaint</string>
 		<key>filename</key>
 		<string>spraypaint.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Lucky Charm</string>
-		<key>filename</key>
-		<string>omamori.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -724,14 +740,6 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Left Arrow</string>
-		<key>filename</key>
-		<string>leftArrow.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
 		<string>Hard</string>
 		<key>title</key>
 		<string>Glass &amp; Bottle</string>
@@ -740,35 +748,35 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Robot Head</string>
+		<string>Key</string>
 		<key>filename</key>
-		<string>robotHead.tmx</string>
+		<string>key.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Candle</string>
+		<string>Feather</string>
 		<key>filename</key>
-		<string>candle.tmx</string>
+		<string>feather.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Neko</string>
+		<string>Pencil</string>
 		<key>filename</key>
-		<string>neko.tmx</string>
+		<string>pencil.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Die</string>
+		<string>Graph</string>
 		<key>filename</key>
-		<string>die.tmx</string>
+		<string>graph.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -780,19 +788,11 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
-		<string>Medium</string>
+		<string>Hard</string>
 		<key>title</key>
-		<string>Hourglass</string>
+		<string>Cursor</string>
 		<key>filename</key>
-		<string>hourglass.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Footprints</string>
-		<key>filename</key>
-		<string>footprints.tmx</string>
+		<string>mouseCursor.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
