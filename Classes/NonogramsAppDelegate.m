@@ -68,7 +68,8 @@
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"titleScreen.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
 	
-	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.25];
+	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.15];
+	NSLog(@"Current background music volume: %f", [[SimpleAudioEngine sharedEngine] backgroundMusicVolume]);
 	
 	// Uncomment this line and the #import above if finding that music does not resume after device sleeps 10+ minutes 
 	// [[CDAudioManager sharedManager] setResignBehavior:kAMRBStopPlay autoHandle:YES];
