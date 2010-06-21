@@ -328,6 +328,7 @@
 		7D5A6A62119180EB00BB2E4E /* winJingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */; };
 		7D6109E5118996BE007ECF43 /* tutorialBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D6109E4118996BE007ECF43 /* tutorialBackground.png */; };
 		7D74C05811BD02D700E57B2F /* levelSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D74C05711BD02D700E57B2F /* levelSelect.mp3 */; };
+		7D87E97011CF78110038B62A /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87E96F11CF78110038B62A /* GameState.m */; };
 		7D8EFB3311732A3F002D5627 /* Tasks.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8EFB3211732A3F002D5627 /* Tasks.rtf */; };
 		7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFD9B116208F200182B25 /* slkscr.fnt */; };
 		7D9BFDA411620A1400182B25 /* slkscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDA311620A1400182B25 /* slkscr.png */; };
@@ -723,6 +724,8 @@
 		7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = winJingle.mp3; path = Sounds/winJingle.mp3; sourceTree = "<group>"; };
 		7D6109E4118996BE007ECF43 /* tutorialBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorialBackground.png; sourceTree = "<group>"; };
 		7D74C05711BD02D700E57B2F /* levelSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelSelect.mp3; path = Music/levelSelect.mp3; sourceTree = "<group>"; };
+		7D87E96E11CF78110038B62A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		7D87E96F11CF78110038B62A /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		7D8EFB3211732A3F002D5627 /* Tasks.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Tasks.rtf; sourceTree = "<group>"; };
 		7D9BFD9B116208F200182B25 /* slkscr.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slkscr.fnt; sourceTree = "<group>"; };
 		7D9BFDA311620A1400182B25 /* slkscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slkscr.png; sourceTree = "<group>"; };
@@ -887,6 +890,8 @@
 				380CA13311664007002B3E1C /* OptionsScene.m */,
 				38EC252C116A861600358D1B /* GameDataManager.h */,
 				38EC252D116A861600358D1B /* GameDataManager.m */,
+				7D87E96E11CF78110038B62A /* GameState.h */,
+				7D87E96F11CF78110038B62A /* GameState.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1738,6 +1743,7 @@
 				380CA13411664007002B3E1C /* OptionsScene.m in Sources */,
 				38EC252E116A861600358D1B /* GameDataManager.m in Sources */,
 				38D20732116CF0340096DC65 /* CCRadioMenu.m in Sources */,
+				7D87E97011CF78110038B62A /* GameState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
