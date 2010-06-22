@@ -468,6 +468,10 @@
 	// The tilemap's y-coords are inverse of the iphone coords, so invert it
 	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 	{
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"hit.wav"];
+		
 		// Add a "filled" block to the grid
 		blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
 		[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
@@ -532,7 +536,7 @@
 		
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playSFX)
-			[[SimpleAudioEngine sharedEngine] playEffect:@"miss.wav"];
+			[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
 		
 		// Subtract time based on how many mistakes you made previously
 		switch (++misses)

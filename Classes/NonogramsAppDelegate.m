@@ -62,7 +62,7 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
-	//[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"titleScreen.mp3"];

@@ -329,6 +329,7 @@
 		7D6109E5118996BE007ECF43 /* tutorialBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D6109E4118996BE007ECF43 /* tutorialBackground.png */; };
 		7D74C05811BD02D700E57B2F /* levelSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D74C05711BD02D700E57B2F /* levelSelect.mp3 */; };
 		7D87E97011CF78110038B62A /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87E96F11CF78110038B62A /* GameState.m */; };
+		7D87E97211D0CD900038B62A /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D87E97111D0CD900038B62A /* hit.wav */; };
 		7D8EFB3311732A3F002D5627 /* Tasks.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8EFB3211732A3F002D5627 /* Tasks.rtf */; };
 		7D9BFD9E116208F200182B25 /* slkscr.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFD9B116208F200182B25 /* slkscr.fnt */; };
 		7D9BFDA411620A1400182B25 /* slkscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDA311620A1400182B25 /* slkscr.png */; };
@@ -726,6 +727,7 @@
 		7D74C05711BD02D700E57B2F /* levelSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelSelect.mp3; path = Music/levelSelect.mp3; sourceTree = "<group>"; };
 		7D87E96E11CF78110038B62A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
 		7D87E96F11CF78110038B62A /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
+		7D87E97111D0CD900038B62A /* hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hit.wav; path = Sounds/hit.wav; sourceTree = "<group>"; };
 		7D8EFB3211732A3F002D5627 /* Tasks.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Tasks.rtf; sourceTree = "<group>"; };
 		7D9BFD9B116208F200182B25 /* slkscr.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slkscr.fnt; sourceTree = "<group>"; };
 		7D9BFDA311620A1400182B25 /* slkscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slkscr.png; sourceTree = "<group>"; };
@@ -940,6 +942,7 @@
 		380CA1F31166737D002B3E1C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				7D87E97111D0CD900038B62A /* hit.wav */,
 				7D41E71411B667830091257A /* miss.wav */,
 				7D4AF32111981793004D0058 /* loseJingle.mp3 */,
 				7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */,
@@ -1723,6 +1726,7 @@
 				7D41E74411B669FB0091257A /* shield.tmx in Resources */,
 				7D41E74511B669FB0091257A /* speaker.tmx in Resources */,
 				7D74C05811BD02D700E57B2F /* levelSelect.mp3 in Resources */,
+				7D87E97211D0CD900038B62A /* hit.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
