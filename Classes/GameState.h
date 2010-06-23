@@ -9,23 +9,35 @@
 // Taken from http://stackoverflow.com/questions/2670815/game-state-singleton-cocos2d-initwithencoder-always-returns-null
 
 #import "cocos2d.h"
+#import "SynthesizeSingleton.h"
 
 @interface GameState : NSObject <NSCoding> 
 {
-	int currentLevel;
+	NSInteger currentLevel;
 	
 	// Values that store where the player cursor currently is in the puzzle
-	int currentRow, currentColumn;
+	NSInteger currentRow, currentColumn;
 	
 	// Time remaining
-	int minutesLeft, secondsLeft;
+	NSInteger minutesLeft, secondsLeft;
 	
 	// 2D array of ints to figure out the current status of the puzzle
-	int blockStatus[10][10];
+	//NSInteger blockStatus[10][10];
 	
 	// To keep track of a win condition
-	int hits, misses;
+	NSInteger hits, misses;
 }
+
+@property (readwrite) NSInteger currentLevel;
+@property (readwrite) NSInteger currentRow;
+@property (readwrite) NSInteger currentColumn;
+@property (readwrite) NSInteger minutesLeft;
+@property (readwrite) NSInteger secondsLeft;
+//@property (readwrite) NSInteger blockStatus;
+@property (readwrite) NSInteger hits;
+@property (readwrite) NSInteger misses;
+
+SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameState);
 
 + (void)loadState;
 + (void)saveState;
