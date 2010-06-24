@@ -8,6 +8,7 @@
 
 #import "PlayScene.h"
 #import "LevelSelectScene.h"
+#import "GameState.h"
 
 @implementation PlayScene
 
@@ -17,6 +18,9 @@
 	{
 		// Add "play" layer
 		[self addChild:[PlayLayer node] z:0];
+		
+		// Tell GameState singleton that we want to restore to current level if player quits during puzzle
+		[GameState sharedGameState].restoreLevel = TRUE;
 	}
 	return self;
 }
@@ -386,6 +390,10 @@
 			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
 			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
 			
+			// Save position values to the GameState singleton, which will be saved on exiting the game
+			[GameState sharedGameState].currentRow = currentRow;
+			[GameState sharedGameState].currentColumn = currentColumn;
+			
 			// Play SFX if allowed
 			if ([GameDataManager sharedManager].playSFX)
 				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
@@ -640,6 +648,9 @@
 	// Re-save
 	[levelTimes replaceObjectAtIndex:[GameDataManager sharedManager].currentLevel - 1 withObject:timeData];
 	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
+	
+	// Player has won/lost, we don't need to restore playing position anymore
+	[GameState sharedGameState].restoreLevel = FALSE;
 }
 
 - (void)lostGame
@@ -688,6 +699,9 @@
 	// Re-save
 	[levelTimes replaceObjectAtIndex:[GameDataManager sharedManager].currentLevel - 1 withObject:timeData];
 	[[NSUserDefaults standardUserDefaults] setObject:levelTimes forKey:@"levelTimes"];
+	
+	// Player has won/lost, we don't need to restore playing position anymore
+	[GameState sharedGameState].restoreLevel = FALSE;
 }
 
 - (void)goToLevelSelect:(id)sender

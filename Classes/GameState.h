@@ -13,29 +13,33 @@
 
 @interface GameState : NSObject <NSCoding> 
 {
-	NSInteger currentLevel;
+	// The current level is actually saved in the NSUserDefaults
+	// NSInteger currentLevel;
+	
+	// Variable we check to see if player quit in the middle of a puzzle
+	bool restoreLevel;
 	
 	// Values that store where the player cursor currently is in the puzzle
-	NSInteger currentRow, currentColumn;
+	int currentRow, currentColumn;
 	
 	// Time remaining
-	NSInteger minutesLeft, secondsLeft;
+	int minutesLeft, secondsLeft;
 	
 	// 2D array of ints to figure out the current status of the puzzle
-	//NSInteger blockStatus[10][10];
+	//int blockStatus[10][10];
 	
 	// To keep track of a win condition
-	NSInteger hits, misses;
+	int hits, misses;
 }
 
-@property (readwrite) NSInteger currentLevel;
-@property (readwrite) NSInteger currentRow;
-@property (readwrite) NSInteger currentColumn;
-@property (readwrite) NSInteger minutesLeft;
-@property (readwrite) NSInteger secondsLeft;
-//@property (readwrite) NSInteger blockStatus;
-@property (readwrite) NSInteger hits;
-@property (readwrite) NSInteger misses;
+@property (readwrite) bool restoreLevel;
+@property (readwrite) int currentRow;
+@property (readwrite) int currentColumn;
+@property (readwrite) int minutesLeft;
+@property (readwrite) int secondsLeft;
+//@property (readwrite) int blockStatus[10][10];
+@property (readwrite) int hits;
+@property (readwrite) int misses;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameState);
 

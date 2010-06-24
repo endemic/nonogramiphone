@@ -11,7 +11,7 @@
 
 @implementation GameState
 
-@synthesize currentLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses;
+@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 
@@ -20,7 +20,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 	if ((self = [super init])) 
 	{
 		// Set some default values here... probably zeros or whatever, since they'll be re-written
-		self.currentLevel = 1;
+		//self.currentLevel = 1;
 	}
 	return self;
 }
@@ -68,10 +68,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
+	[coder encodeInt:self.restoreLevel forKey:@"restoreLevel"];
 	[coder encodeInt:self.currentRow forKey:@"currentRow"];
 	[coder encodeInt:self.currentColumn forKey:@"currentColumn"];
 	[coder encodeBool:self.minutesLeft forKey:@"minutesLeft"];
 	[coder encodeBool:self.secondsLeft forKey:@"secondsLeft"];
+	[coder encodeBool:self.hits forKey:@"hits"];
+	[coder encodeBool:self.misses forKey:@"misses"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
@@ -79,10 +82,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 	self = [super init];
 	if (self != nil) 
 	{
+		self.restoreLevel = [coder decodeIntForKey:@"restoreLevel"];
 		self.currentRow = [coder decodeIntForKey:@"currentRow"];
 		self.currentColumn = [coder decodeIntForKey:@"currentColumn"];
 		self.minutesLeft = [coder decodeBoolForKey:@"minutesLeft"];
 		self.secondsLeft = [coder decodeBoolForKey:@"secondsLeft"];
+		self.hits = [coder decodeBoolForKey:@"hits"];
+		self.misses = [coder decodeBoolForKey:@"misses"];
 	}
 	return self;
 }

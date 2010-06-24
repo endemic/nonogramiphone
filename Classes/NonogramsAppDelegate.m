@@ -12,7 +12,9 @@
 #import "SimpleAudioEngine.h"
 //#import "CDAudioManager.h"
 #import "TitleScene.h"
+#import "PlayScene.h"
 #import "GameDataManager.h"
+#import "GameState.h"
 
 @implementation NonogramsAppDelegate
 
@@ -88,8 +90,22 @@
 	// Set current level for player
 	[GameDataManager sharedManager].currentLevel = [defaults integerForKey:@"currentLevel"];
 	
-	// Run default scene
-	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
+	// Load our saved game data if player quit during a puzzle! What the what!
+	[GameState loadState];
+	
+	// Testing some saved data
+	NSLog(@"Saved row: %i, Saved column: %i", [GameState sharedGameState].currentRow, [GameState sharedGameState].currentColumn);
+	
+	// If player quit during a puzzle, go back to the PlayScene instead of title screen
+	if ([GameState sharedGameState].restoreLevel)
+	{
+		[[CCDirector sharedDirector] runWithScene: [PlayScene node]];
+	}
+	else 
+	{
+		// Run default scene
+		[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
+	}
 }
 
 
@@ -111,6 +127,9 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setInteger:[GameDataManager sharedManager].currentLevel forKey:@"currentLevel"];
 	
+	// Save game state
+	[GameState saveState];
+	
 	[[CCDirector sharedDirector] end];
 }
 
@@ -119,7 +138,6 @@
 }
 
 - (void)dealloc {
-	[[GameDataManager sharedManager] release];
 	[[CCDirector sharedDirector] release];
 	[window release];
 	[super dealloc];
