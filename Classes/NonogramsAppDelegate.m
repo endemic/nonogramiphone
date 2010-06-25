@@ -93,12 +93,10 @@
 	// Load our saved game data if player quit during a puzzle! What the what!
 	[GameState loadState];
 	
-	// Testing some saved data
-	NSLog(@"Saved row: %i, Saved column: %i", [GameState sharedGameState].currentRow, [GameState sharedGameState].currentColumn);
-	
 	// If player quit during a puzzle, go back to the PlayScene instead of title screen
 	if ([GameState sharedGameState].restoreLevel)
 	{
+		NSLog(@"Minutes Left: %02d, seconds left: %02d", [GameState sharedGameState].minutesLeft, [GameState sharedGameState].secondsLeft);
 		[[CCDirector sharedDirector] runWithScene: [PlayScene node]];
 	}
 	else 

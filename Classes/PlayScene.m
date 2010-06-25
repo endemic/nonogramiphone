@@ -177,18 +177,24 @@
 			// Add the text to the label objects
 			if ([cluesTextHoriz length] > 0)
 			{
+				if (cluesTextHoriz == @"0 ") [horizontalClues[9 - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				
 				[horizontalClues[9 - i] setString:cluesTextHoriz];
 			}
+			
 			if ([cluesTextVert length] > 0)
 			{
+				if (cluesTextVert == @"0\n") [verticalClues[i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				
 				[verticalClues[i] setString:cluesTextVert];
 				NSArray *numberOfVerticalClues = [cluesTextVert componentsSeparatedByString:@"\n"];
 				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 17))];
 			}
-			else
-			{
-				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
-			}
+			
+			 //else
+			 //{
+			 //	[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
+			 //}
 		}
 		
 		// Set up schedulers
@@ -236,6 +242,28 @@
 		[overlayMenu alignItemsVertically];
 		[overlayMenu setPosition:ccp(150, 50)];
 		[pauseOverlay addChild:overlayMenu];
+		
+		// If the player was in the middle of a puzzle, restore the variables from where they left off
+		if ([GameState sharedGameState].restoreLevel)
+		{
+			currentRow = [GameState sharedGameState].currentRow;
+			currentColumn = [GameState sharedGameState].currentColumn;
+			minutesLeft = [GameState sharedGameState].minutesLeft;
+			secondsLeft = [GameState sharedGameState].secondsLeft;
+			hits = [GameState sharedGameState].hits;
+			misses = [GameState sharedGameState].misses;
+			
+			NSLog(@"Minutes Left: %02d, seconds left: %02d", [GameState sharedGameState].minutesLeft, [GameState sharedGameState].secondsLeft);
+			
+			//Change some labels here, so they don't appear to have the old value for a second until they're updated
+			[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
+			[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
+			
+			// Update "% complete" number
+			[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
+			
+			// Draw "mini-map", the regular tiles, and set fading for completed clues
+		}
 	}
 	return self;
 }

@@ -27,6 +27,7 @@
 	
 	// 2D array of ints to figure out the current status of the puzzle
 	//int blockStatus[10][10];
+	NSArray *blockStatus;
 	
 	// To keep track of a win condition
 	int hits, misses;
@@ -37,9 +38,9 @@
 @property (readwrite) int currentColumn;
 @property (readwrite) int minutesLeft;
 @property (readwrite) int secondsLeft;
-//@property (readwrite) int blockStatus[10][10];
 @property (readwrite) int hits;
 @property (readwrite) int misses;
+@property (readwrite, assign) NSArray *blockStatus;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameState);
 

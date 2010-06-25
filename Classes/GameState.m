@@ -11,7 +11,7 @@
 
 @implementation GameState
 
-@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses;
+@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses, blockStatus;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 
@@ -68,27 +68,26 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-	[coder encodeInt:self.restoreLevel forKey:@"restoreLevel"];
+	[coder encodeBool:self.restoreLevel forKey:@"restoreLevel"];
 	[coder encodeInt:self.currentRow forKey:@"currentRow"];
 	[coder encodeInt:self.currentColumn forKey:@"currentColumn"];
-	[coder encodeBool:self.minutesLeft forKey:@"minutesLeft"];
-	[coder encodeBool:self.secondsLeft forKey:@"secondsLeft"];
-	[coder encodeBool:self.hits forKey:@"hits"];
-	[coder encodeBool:self.misses forKey:@"misses"];
+	[coder encodeInt:self.minutesLeft forKey:@"minutesLeft"];
+	[coder encodeInt:self.secondsLeft forKey:@"secondsLeft"];
+	[coder encodeInt:self.hits forKey:@"hits"];
+	[coder encodeInt:self.misses forKey:@"misses"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
 {
-	self = [super init];
-	if (self != nil) 
+	if ((self = [super init])) 
 	{
-		self.restoreLevel = [coder decodeIntForKey:@"restoreLevel"];
+		self.restoreLevel = [coder decodeBoolForKey:@"restoreLevel"];
 		self.currentRow = [coder decodeIntForKey:@"currentRow"];
 		self.currentColumn = [coder decodeIntForKey:@"currentColumn"];
-		self.minutesLeft = [coder decodeBoolForKey:@"minutesLeft"];
-		self.secondsLeft = [coder decodeBoolForKey:@"secondsLeft"];
-		self.hits = [coder decodeBoolForKey:@"hits"];
-		self.misses = [coder decodeBoolForKey:@"misses"];
+		self.minutesLeft = [coder decodeIntForKey:@"minutesLeft"];
+		self.secondsLeft = [coder decodeIntForKey:@"secondsLeft"];
+		self.hits = [coder decodeIntForKey:@"hits"];
+		self.misses = [coder decodeIntForKey:@"misses"];
 	}
 	return self;
 }
