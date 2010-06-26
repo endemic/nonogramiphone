@@ -20,7 +20,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 	if ((self = [super init])) 
 	{
 		// Set some default values here... probably zeros or whatever, since they'll be re-written
-		//self.currentLevel = 1;
+		blockStatus = [[NSMutableArray arrayWithCapacity:100] retain];		// Equivalent of a 10x10 2D array
+		for (int i = 0; i < 100; i++) 
+		{
+			[blockStatus addObject:[NSNumber numberWithInt:0]];	// Populate the array! arrayWithCapacity is only a "guideline"
+		}
 	}
 	return self;
 }

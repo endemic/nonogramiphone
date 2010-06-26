@@ -95,15 +95,10 @@
 	
 	// If player quit during a puzzle, go back to the PlayScene instead of title screen
 	if ([GameState sharedGameState].restoreLevel)
-	{
-		NSLog(@"Minutes Left: %02d, seconds left: %02d", [GameState sharedGameState].minutesLeft, [GameState sharedGameState].secondsLeft);
 		[[CCDirector sharedDirector] runWithScene: [PlayScene node]];
-	}
 	else 
-	{
 		// Run default scene
 		[[CCDirector sharedDirector] runWithScene: [TitleScene node]];
-	}
 }
 
 

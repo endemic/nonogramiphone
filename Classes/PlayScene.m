@@ -177,24 +177,25 @@
 			// Add the text to the label objects
 			if ([cluesTextHoriz length] > 0)
 			{
-				if (cluesTextHoriz == @"0 ") [horizontalClues[9 - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
-				
 				[horizontalClues[9 - i] setString:cluesTextHoriz];
 			}
+			else 
+			{
+				[horizontalClues[9 - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+			}
+
 			
 			if ([cluesTextVert length] > 0)
 			{
-				if (cluesTextVert == @"0\n") [verticalClues[i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
-				
 				[verticalClues[i] setString:cluesTextVert];
 				NSArray *numberOfVerticalClues = [cluesTextVert componentsSeparatedByString:@"\n"];
 				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 17))];
 			}
-			
-			 //else
-			 //{
-			 //	[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
-			 //}
+			else
+			{
+				[verticalClues[i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
+			}
 		}
 		
 		// Set up schedulers
@@ -253,7 +254,9 @@
 			hits = [GameState sharedGameState].hits;
 			misses = [GameState sharedGameState].misses;
 			
-			NSLog(@"Minutes Left: %02d, seconds left: %02d", [GameState sharedGameState].minutesLeft, [GameState sharedGameState].secondsLeft);
+			// Update sprite positions based on row/column variables
+			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
+			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
 			
 			//Change some labels here, so they don't appear to have the old value for a second until they're updated
 			[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
@@ -263,18 +266,28 @@
 			[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
 			
 			// Draw "mini-map", the regular tiles, and set fading for completed clues
+			
+			// array[x + y*size] === array[x][y]
+			for (int row = 0; row < 10; row++) 
+				for (int col = 0; col < 10; col++)
+				{
+					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(row + col * 10)] intValue];
+					NSLog(@"Populating a block at %i, %i with value %i", row, col, blockStatus[row][col]);
+				}
 		}
 	}
 	return self;
 }
 
 // This scheduled method currently commented out
+/*
 -(void) update:(ccTime)dt
 {	
 	// Update sprite positions based on row/column variables
 	[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
 	[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
 }
+*/
 
 -(void) timer:(ccTime)dt
 {
@@ -295,6 +308,10 @@
 	// Update labels for time
 	[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
 	[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
+	
+	// Update GameState
+	[GameState sharedGameState].minutesLeft = minutesLeft;
+	[GameState sharedGameState].secondsLeft = secondsLeft;
 }
 
 -(void) pause:(id)sender
@@ -373,6 +390,16 @@
 	{
 		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
+		
+		// If player has double tapped, try to place a mark/fill in the new block
+		if (touch.tapCount > 1) 
+		{
+			switch (tapAction) 
+			{
+				case FILL: [self fillBlock]; break;
+				case MARK: [self markBlock]; break;
+			}
+		}
 	}
 }
 
@@ -393,10 +420,10 @@
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
 		
 		// Gets relative movement
-		//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
+		CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 		
 		// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
-		CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
+		//CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
 		
 		// Add to current point the cursor is at
 		cursorPoint = ccpAdd(cursorPoint, relativeMovement);
@@ -450,12 +477,13 @@
 	if (touch && !paused)
 	{
 		// convert touch coords
-		CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+		//CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		
 		// This value is the sensitivity for filling/marking a block
-		int moveThreshold = 10;
+		//int moveThreshold = 10;
 		
 		// If a tap is detected - i.e. if the movement of the finger is less than the threshold
+		/*
 		if (ccpDistance(startPoint, endPoint) < moveThreshold)
 		{
 			switch (tapAction) 
@@ -464,6 +492,7 @@
 				case MARK: [self markBlock]; break;
 			}
 		}
+		 */
 	}
 }
 
@@ -508,12 +537,21 @@
 		if ([GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"hit.wav"];
 		
-		// Add a "filled" block to the grid
+		// Draw a "filled" block to the puzzle grid
 		blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
 		[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
 		[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 		[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
+		
+		// Update "status" 2D array
 		blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
+		
+		// Update GameState singleton
+		// array[x + y*size] === array[x][y]
+		int tmpIndex = (currentRow - 1) + (currentColumn - 1) * 10;
+		[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:FILLED] atIndex:tmpIndex];
+		//NSLog(@"Updating GameState block status with %i at index %i", FILLED, tmpIndex);
+		//NSLog(@"Verifying contents: %i", [[[GameState sharedGameState].blockStatus objectAtIndex:tmpIndex] intValue]);
 		
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
@@ -523,6 +561,9 @@
 		
 		// Increment correct guess counter
 		hits++;
+		
+		// Update GameState singleton
+		[GameState sharedGameState].hits = hits;
 		
 		// Cycle through that particular row/column to see if all the blocks have been filled in; if so, "dim" the row/column clues
 		int columnTotal = 0;
@@ -586,6 +627,9 @@
 			minutesLeft = 0;
 			secondsLeft = 0;
 		}
+		
+		// Update GameState singleton
+		[GameState sharedGameState].misses = misses;
 		
 		// Update time labels
 		[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
@@ -774,6 +818,10 @@
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
+	// Player has won/lost, we don't need to restore playing position anymore
+	[GameState sharedGameState].restoreLevel = FALSE;
+	
+	// Return to level select scene
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[LevelSelectScene node]]];
 }
 
