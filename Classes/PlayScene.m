@@ -272,7 +272,7 @@
 				for (int col = 0; col < 10; col++)
 				{
 					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(row + col * 10)] intValue];
-					NSLog(@"Populating a block at %i, %i with value %i", row, col, blockStatus[row][col]);
+					//NSLog(@"Populating a block at %i, %i with value %i", row, col, blockStatus[row][col]);
 				}
 		}
 	}
@@ -550,8 +550,8 @@
 		// array[x + y*size] === array[x][y]
 		int tmpIndex = (currentRow - 1) + (currentColumn - 1) * 10;
 		[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:FILLED] atIndex:tmpIndex];
-		//NSLog(@"Updating GameState block status with %i at index %i", FILLED, tmpIndex);
-		//NSLog(@"Verifying contents: %i", [[[GameState sharedGameState].blockStatus objectAtIndex:tmpIndex] intValue]);
+		NSLog(@"Updating GameState block status with %i at index %i", FILLED, tmpIndex);
+		NSLog(@"Verifying contents: %i", [[[GameState sharedGameState].blockStatus objectAtIndex:tmpIndex] intValue]);
 		
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];

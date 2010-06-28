@@ -33,14 +33,14 @@
 	int hits, misses;
 }
 
-@property (readwrite) bool restoreLevel;
-@property (readwrite) int currentRow;
-@property (readwrite) int currentColumn;
-@property (readwrite) int minutesLeft;
-@property (readwrite) int secondsLeft;
-@property (readwrite) int hits;
-@property (readwrite) int misses;
-@property (readwrite, retain) NSMutableArray *blockStatus;
+@property bool restoreLevel;
+@property (readwrite, nonatomic) int currentRow;
+@property (readwrite, nonatomic) int currentColumn;
+@property (readwrite, nonatomic) int minutesLeft;
+@property (readwrite, nonatomic) int secondsLeft;
+@property (readwrite, nonatomic) int hits;
+@property (readwrite, nonatomic) int misses;
+@property (readwrite, retain, nonatomic) NSMutableArray *blockStatus;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameState);
 

@@ -22,9 +22,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 		// Set some default values here... probably zeros or whatever, since they'll be re-written
 		blockStatus = [[NSMutableArray arrayWithCapacity:100] retain];		// Equivalent of a 10x10 2D array
 		for (int i = 0; i < 100; i++) 
-		{
 			[blockStatus addObject:[NSNumber numberWithInt:0]];	// Populate the array! arrayWithCapacity is only a "guideline"
-		}
 	}
 	return self;
 }
@@ -79,6 +77,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 	[coder encodeInt:self.secondsLeft forKey:@"secondsLeft"];
 	[coder encodeInt:self.hits forKey:@"hits"];
 	[coder encodeInt:self.misses forKey:@"misses"];
+	[coder encodeObject:self.blockStatus forKey:@"blockStatus"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
@@ -92,6 +91,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 		self.secondsLeft = [coder decodeIntForKey:@"secondsLeft"];
 		self.hits = [coder decodeIntForKey:@"hits"];
 		self.misses = [coder decodeIntForKey:@"misses"];
+		self.blockStatus = [coder decodeObjectForKey:@"blockStatus"];
 	}
 	return self;
 }

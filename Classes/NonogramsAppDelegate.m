@@ -92,6 +92,7 @@
 	
 	// Load our saved game data if player quit during a puzzle! What the what!
 	[GameState loadState];
+	NSLog(@"Block status: %@", [GameState sharedGameState].blockStatus);
 	
 	// If player quit during a puzzle, go back to the PlayScene instead of title screen
 	if ([GameState sharedGameState].restoreLevel)
