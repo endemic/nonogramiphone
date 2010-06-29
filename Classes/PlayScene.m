@@ -265,16 +265,51 @@
 			// Update "% complete" number
 			[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
 			
-			// Draw "mini-map", the regular tiles, and set fading for completed clues
-			
 			// array[x + y*size] === array[x][y]
 			for (int row = 0; row < 10; row++) 
 				for (int col = 0; col < 10; col++)
 				{
+					// Assign value to the 2D array the game uses
 					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(row + col * 10)] intValue];
-					//NSLog(@"Populating a block at %i, %i with value %i", row, col, blockStatus[row][col]);
+					NSLog(@"blockStatus[%i][%i] == %i", row, col, blockStatus[row][col]);
+					
+					// Reset the saved array
+					//[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:0] atIndex:(row + col * 10)];
+					
+					if (blockStatus[row][col] == FILLED)
+					{
+						// Draw "mini-map"
+						CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
+						[b setPosition:ccp(16 + (row + 1) * 8, 256 + (col + 1) * 8)];
+						//[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
+						[self addChild:b z:2];
+						
+						// Draw filled tiles
+						blockSprites[row][col] = [CCSprite spriteWithFile:@"fillIcon.png"];
+						[blockSprites[row][col] setPosition:ccp(row * 20 + 120, col * 20 + 60)];
+						[blockSprites[row][col].texture setAliasTexParameters];
+						[self addChild:blockSprites[row][col] z:2];
+					}
+					
+					if (blockStatus[row][col] == MARKED)
+					{
+						// Draw marked tiles
+						blockSprites[row][col] = [CCSprite spriteWithFile:@"markIcon.png"];
+						[blockSprites[row][col] setPosition:ccp(row * 20 + 110, col * 20 + 50)];
+						[blockSprites[row][col].texture setAliasTexParameters];
+						[self addChild:blockSprites[row][col] z:2];
+					}
 				}
+				
+			// Set fading for completed clues
 		}
+		else 
+		{
+			// Reset values here
+			for (int i = 0; i < 100; i++) 
+				[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:0] atIndex:i];
+		}
+
 	}
 	return self;
 }
@@ -383,6 +418,7 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+	// IDEA: Store the grid location of the first touch; if it doesn't equal the second, then ignore
 	// Figure out initial location of touch
 	UITouch *touch = [touches anyObject];
 	
@@ -548,14 +584,15 @@
 		
 		// Update GameState singleton
 		// array[x + y*size] === array[x][y]
-		int tmpIndex = (currentRow - 1) + (currentColumn - 1) * 10;
+		int tmpIndex = (currentColumn - 1) + (currentRow - 1) * 10;
 		[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:FILLED] atIndex:tmpIndex];
-		NSLog(@"Updating GameState block status with %i at index %i", FILLED, tmpIndex);
-		NSLog(@"Verifying contents: %i", [[[GameState sharedGameState].blockStatus objectAtIndex:tmpIndex] intValue]);
+		
+		//NSLog(@"Updating GameState block status with %i at index %i", FILLED, tmpIndex);
+		//NSLog(@"blockStatus position: %i, %i", currentRow - 1, currentColumn - 1);
+		//NSLog(@"Verifying contents: %i", [[[GameState sharedGameState].blockStatus objectAtIndex:tmpIndex] intValue]);
 		
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-		//[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];	// Old position
 		[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
 		[self addChild:b z:2];
 		
