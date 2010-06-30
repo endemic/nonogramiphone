@@ -31,15 +31,18 @@
 	
 	// To keep track of a win condition
 	int hits, misses;
+	
+	bool fillButtonSelected;
 }
 
-@property bool restoreLevel;
+@property (nonatomic) bool restoreLevel;
 @property (readwrite, nonatomic) int currentRow;
 @property (readwrite, nonatomic) int currentColumn;
 @property (readwrite, nonatomic) int minutesLeft;
 @property (readwrite, nonatomic) int secondsLeft;
 @property (readwrite, nonatomic) int hits;
 @property (readwrite, nonatomic) int misses;
+@property (readwrite, nonatomic) bool fillButtonSelected;
 @property (readwrite, retain, nonatomic) NSMutableArray *blockStatus;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameState);

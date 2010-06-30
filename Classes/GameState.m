@@ -11,7 +11,7 @@
 
 @implementation GameState
 
-@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses, blockStatus;
+@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses, blockStatus, fillButtonSelected;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 
@@ -71,6 +71,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 - (void)encodeWithCoder:(NSCoder *)coder
 {
 	[coder encodeBool:self.restoreLevel forKey:@"restoreLevel"];
+	[coder encodeBool:self.fillButtonSelected forKey:@"fillButtonSelected"];
 	[coder encodeInt:self.currentRow forKey:@"currentRow"];
 	[coder encodeInt:self.currentColumn forKey:@"currentColumn"];
 	[coder encodeInt:self.minutesLeft forKey:@"minutesLeft"];
@@ -85,6 +86,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 	if ((self = [super init])) 
 	{
 		self.restoreLevel = [coder decodeBoolForKey:@"restoreLevel"];
+		self.fillButtonSelected = [coder decodeBoolForKey:@"fillButtonSelected"];
 		self.currentRow = [coder decodeIntForKey:@"currentRow"];
 		self.currentColumn = [coder decodeIntForKey:@"currentColumn"];
 		self.minutesLeft = [coder decodeIntForKey:@"minutesLeft"];

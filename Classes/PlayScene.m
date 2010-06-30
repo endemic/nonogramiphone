@@ -265,28 +265,32 @@
 			// Update "% complete" number
 			[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
 			
+			// Set mark/fill button state
+			if ([GameState sharedGameState].fillButtonSelected)
+			{
+				[actionsMenu setSelectedItem:fillButton];
+				[fillButton selected];
+				tapAction = FILL;
+			}
+			
 			// array[x + y*size] === array[x][y]
-			for (int row = 0; row < 10; row++) 
+			for (int row = 9; row >= 0; row--) 
 				for (int col = 0; col < 10; col++)
 				{
 					// Assign value to the 2D array the game uses
-					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(row + col * 10)] intValue];
-					NSLog(@"blockStatus[%i][%i] == %i", row, col, blockStatus[row][col]);
-					
-					// Reset the saved array
-					//[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:0] atIndex:(row + col * 10)];
+					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(col + row * 10)] intValue];
+					//NSLog(@"blockStatus[%i][%i] == %i (from index %i)", row, col, blockStatus[row][col], (col + row * 10));
 					
 					if (blockStatus[row][col] == FILLED)
 					{
 						// Draw "mini-map"
 						CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-						[b setPosition:ccp(16 + (row + 1) * 8, 256 + (col + 1) * 8)];
-						//[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
+						[b setPosition:ccp(16 + (col + 1) * 8, 256 + (row + 1) * 8)];
 						[self addChild:b z:2];
 						
 						// Draw filled tiles
 						blockSprites[row][col] = [CCSprite spriteWithFile:@"fillIcon.png"];
-						[blockSprites[row][col] setPosition:ccp(row * 20 + 120, col * 20 + 60)];
+						[blockSprites[row][col] setPosition:ccp(col * 20 + 120, row * 20 + 60)];
 						[blockSprites[row][col].texture setAliasTexParameters];
 						[self addChild:blockSprites[row][col] z:2];
 					}
@@ -307,7 +311,7 @@
 		{
 			// Reset values here
 			for (int i = 0; i < 100; i++) 
-				[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:0] atIndex:i];
+				[[GameState sharedGameState].blockStatus replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:0]];
 		}
 
 	}
@@ -401,6 +405,7 @@
 - (void)changeTapActionToMark:(id)sender
 {
 	tapAction = MARK;
+	[GameState sharedGameState].fillButtonSelected = FALSE;
 	
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
@@ -410,6 +415,7 @@
 - (void)changeTapActionToFill:(id)sender
 {
 	tapAction = FILL;
+	[GameState sharedGameState].fillButtonSelected = TRUE;
 	
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
@@ -585,12 +591,9 @@
 		// Update GameState singleton
 		// array[x + y*size] === array[x][y]
 		int tmpIndex = (currentColumn - 1) + (currentRow - 1) * 10;
-		[[GameState sharedGameState].blockStatus insertObject:[NSNumber numberWithInt:FILLED] atIndex:tmpIndex];
-		
-		//NSLog(@"Updating GameState block status with %i at index %i", FILLED, tmpIndex);
-		//NSLog(@"blockStatus position: %i, %i", currentRow - 1, currentColumn - 1);
-		//NSLog(@"Verifying contents: %i", [[[GameState sharedGameState].blockStatus objectAtIndex:tmpIndex] intValue]);
-		
+		[[GameState sharedGameState].blockStatus replaceObjectAtIndex:tmpIndex withObject:[NSNumber numberWithInt:FILLED]];
+		//NSLog(@"blockStatus[%i][%i] == %i (index %i)", currentRow - 1, currentColumn - 1, FILLED, tmpIndex);
+
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
 		[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position

@@ -92,7 +92,7 @@
 	
 	// Load our saved game data if player quit during a puzzle! What the what!
 	[GameState loadState];
-	
+
 	// If player quit during a puzzle, go back to the PlayScene instead of title screen
 	if ([GameState sharedGameState].restoreLevel)
 		[[CCDirector sharedDirector] runWithScene: [PlayScene node]];
