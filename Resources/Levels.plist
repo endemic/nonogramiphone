@@ -110,14 +110,6 @@
 		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
-		<string>Robot Head</string>
-		<key>filename</key>
-		<string>robotHead.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
 		<string>Magnet</string>
 		<key>filename</key>
 		<string>magnet.tmx</string>
@@ -625,6 +617,14 @@
 		<string>Insect</string>
 		<key>filename</key>
 		<string>insect.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Robot Head</string>
+		<key>filename</key>
+		<string>robotHead.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>

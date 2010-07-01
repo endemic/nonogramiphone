@@ -79,6 +79,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 	[coder encodeInt:self.hits forKey:@"hits"];
 	[coder encodeInt:self.misses forKey:@"misses"];
 	[coder encodeObject:self.blockStatus forKey:@"blockStatus"];
+	[coder encodeBool:paused forKey:@"paused"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
@@ -94,6 +95,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 		self.hits = [coder decodeIntForKey:@"hits"];
 		self.misses = [coder decodeIntForKey:@"misses"];
 		self.blockStatus = [coder decodeObjectForKey:@"blockStatus"];
+		paused = [coder decodeBoolForKey:@"paused"];
 	}
 	return self;
 }

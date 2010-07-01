@@ -52,6 +52,8 @@
 		// Init variables used to keep track of correct/incorrect guesses
 		hits = misses = 0;
 		
+		actionOnPreviousBlock = FALSE;
+		
 		// Init horizontal "cursor" highlight
 		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
 		[horizontalHighlight setPosition:ccp(160, 240)];
@@ -244,6 +246,10 @@
 		[overlayMenu setPosition:ccp(150, 50)];
 		[pauseOverlay addChild:overlayMenu];
 		
+		// Play music if allowed
+		if ([GameDataManager sharedManager].playMusic)
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
+		
 		// If the player was in the middle of a puzzle, restore the variables from where they left off
 		if ([GameState sharedGameState].restoreLevel)
 		{
@@ -274,7 +280,8 @@
 			}
 			
 			// array[x + y*size] === array[x][y]
-			for (int row = 9; row >= 0; row--) 
+			for (int row = 9; row >= 0; row--)
+			{
 				for (int col = 0; col < 10; col++)
 				{
 					// Assign value to the 2D array the game uses
@@ -299,13 +306,54 @@
 					{
 						// Draw marked tiles
 						blockSprites[row][col] = [CCSprite spriteWithFile:@"markIcon.png"];
-						[blockSprites[row][col] setPosition:ccp(row * 20 + 110, col * 20 + 50)];
+						[blockSprites[row][col] setPosition:ccp(col * 20 + 120, row * 20 + 60)];
 						[blockSprites[row][col].texture setAliasTexParameters];
 						[self addChild:blockSprites[row][col] z:2];
 					}
 				}
+			}
+			
+			for (int j = 1; j <= 10; j++)
+			{
+				// Set fading for completed clues
+				int columnTotal = 0;
+				int filledColumnTotal = 0;
 				
-			// Set fading for completed clues
+				int rowTotal = 0;
+				int filledRowTotal = 0;
+				
+				for (int i = 0; i < 10; i++) 
+				{
+					if (blockStatus[i][j - 1] == FILLED) filledColumnTotal++;
+					if ([tileMapLayer tileGIDAt:ccp(j - 1, 9 - i)] == 1) columnTotal++;
+					
+					if (blockStatus[j - 1][i] == FILLED) filledRowTotal++;
+					if ([tileMapLayer tileGIDAt:ccp(i, 10 - j)] == 1) rowTotal++;
+				}
+				
+				if (rowTotal == filledRowTotal)
+					[horizontalClues[j - 1] setColor:ccc3(66, 66, 66)];
+				
+				if (columnTotal == filledColumnTotal) 
+					[verticalClues[j - 1] setColor:ccc3(66, 66, 66)];
+			}
+			
+			// Set pause overlay up if enabled
+			if ([GameState sharedGameState].paused) 
+			{
+				// Move "paused" overlay on top of puzzle, and unschedule the timer
+				[self unschedule:@selector(timer:)];
+				
+				// Make sure the overlay is on the left side of the screen
+				[pauseOverlay setPosition:ccp(-150, 200)];
+				
+				// Move pause overlay to 160, 200
+				[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+				
+				// Hide cursor highlights
+				horizontalHighlight.visible = FALSE;
+				verticalHighlight.visible = FALSE;
+			}
 		}
 		else 
 		{
@@ -372,6 +420,7 @@
 		verticalHighlight.visible = FALSE;
 		
 		paused = TRUE;
+		[GameState sharedGameState].paused = TRUE;
 	}
 	
 	// Play SFX if allowed
@@ -395,6 +444,7 @@
 		verticalHighlight.visible = TRUE;
 		
 		paused = FALSE;
+		[GameState sharedGameState].paused = FALSE;
 	}
 	
 	// Play SFX if allowed
@@ -434,7 +484,7 @@
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
 		
 		// If player has double tapped, try to place a mark/fill in the new block
-		if (touch.tapCount > 1) 
+		if (touch.tapCount > 1)
 		{
 			switch (tapAction) 
 			{
@@ -551,6 +601,11 @@
 			[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 			[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 			blockStatus[currentRow - 1][currentColumn - 1] = MARKED;
+			
+			// Update GameState singleton
+			// array[x + y*size] === array[x][y]
+			int tmpIndex = (currentColumn - 1) + (currentRow - 1) * 10;
+			[[GameState sharedGameState].blockStatus replaceObjectAtIndex:tmpIndex withObject:[NSNumber numberWithInt:MARKED]];
 		}
 		// If marked, remove mark
 		else
@@ -558,6 +613,11 @@
 			[self removeChild:blockSprites[currentRow - 1][currentColumn - 1] cleanup:FALSE];
 			blockSprites[currentRow - 1][currentColumn - 1] = nil;
 			blockStatus[currentRow - 1][currentColumn - 1] = BLANK;
+			
+			// Update GameState singleton
+			// array[x + y*size] === array[x][y]
+			int tmpIndex = (currentColumn - 1) + (currentRow - 1) * 10;
+			[[GameState sharedGameState].blockStatus replaceObjectAtIndex:tmpIndex withObject:[NSNumber numberWithInt:BLANK]];
 		}
 	}
 	// Block is filled

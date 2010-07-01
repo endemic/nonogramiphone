@@ -52,6 +52,9 @@
 	// 0 for mark, 1 for fill
 	int tapAction;
 	
+	// Boolean val that tries to prevent mistaken block fills
+	bool actionOnPreviousBlock;
+	
 	// To keep track of a win condition
 	int totalBlocksInPuzzle, hits, misses;
 	
@@ -59,7 +62,7 @@
 	CCLabel *percentComplete;
 	
 	// For debuggin' the position of a person's finger!
-	CCSprite *pixelTarget;
+	//CCSprite *pixelTarget;
 	
 	// For timer calculation/display
 	int minutesLeft, secondsLeft;

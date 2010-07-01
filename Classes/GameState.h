@@ -32,7 +32,7 @@
 	// To keep track of a win condition
 	int hits, misses;
 	
-	bool fillButtonSelected;
+	bool fillButtonSelected, paused;
 }
 
 @property (nonatomic) bool restoreLevel;
@@ -43,6 +43,7 @@
 @property (readwrite, nonatomic) int hits;
 @property (readwrite, nonatomic) int misses;
 @property (readwrite, nonatomic) bool fillButtonSelected;
+@property (nonatomic) bool paused;
 @property (readwrite, retain, nonatomic) NSMutableArray *blockStatus;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameState);
