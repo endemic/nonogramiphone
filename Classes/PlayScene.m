@@ -715,11 +715,23 @@
 		if ([GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
 		
-		// Subtract time based on how many mistakes you made previously
+		// Subtract time based on how many mistakes you made previously - also create a label that shows how much time you lost
 		switch (++misses)
 		{
-			case 1: minutesLeft -= 2; break;
-			case 2: minutesLeft -= 4; break;
+			case 1: 
+				minutesLeft -= 2;
+				CCLabel *label = [CCLabel labelWithString:@"-2" fontName:@"slkscr.ttf" fontSize:16];
+				[label setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+				[label setColor:ccc3(0,0,0)];
+				[label.texture setAliasTexParameters];
+				[self addChild:label z:5];
+				
+				//id move = [CCMoveTo
+				//[label runAction:[CCSequence actions:
+			break;
+			case 2: 
+				minutesLeft -= 4; 
+			break;
 			default: minutesLeft -= 8; break;
 		}
 		if (minutesLeft < 0)

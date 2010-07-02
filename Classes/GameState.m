@@ -11,7 +11,7 @@
 
 @implementation GameState
 
-@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses, blockStatus, fillButtonSelected;
+@synthesize restoreLevel, currentRow, currentColumn, minutesLeft, secondsLeft, hits, misses, blockStatus, fillButtonSelected, paused;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(GameState);
 
