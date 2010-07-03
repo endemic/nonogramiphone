@@ -480,11 +480,14 @@
 	
 	if (touch && !paused) 
 	{
-		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+		startPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
 		
+		// This value is the sensitivity for filling/marking a block
+		int moveThreshold = 10;
+		//NSLog(@"%f", ccpDistance(startPoint, previousPoint));
 		// If player has double tapped, try to place a mark/fill in the new block
-		if (touch.tapCount > 1)
+		if (touch.tapCount > 1 && ccpDistance(startPoint, previousPoint) < moveThreshold)
 		{
 			switch (tapAction) 
 			{
@@ -492,6 +495,8 @@
 				case MARK: [self markBlock]; break;
 			}
 		}
+		
+		previousPoint = startPoint;
 	}
 }
 
@@ -715,25 +720,37 @@
 		if ([GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
 		
-		// Subtract time based on how many mistakes you made previously - also create a label that shows how much time you lost
+		// Create a label that shows how much time you lost
+		CCLabel *label = [CCLabel labelWithString:@" " fontName:@"slkscr.ttf" fontSize:16];
+		[label setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		[label setColor:ccc3(0,0,0)];
+		[label.texture setAliasTexParameters];
+		[self addChild:label z:5];
+		
+		// Move and fade actions - I'm not going to worry about removing these sprites
+		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(verticalHighlight.position.x, horizontalHighlight.position.y + 20)];
+		id fadeAction = [CCFadeOut actionWithDuration:1];
+		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
+		
+		// Subtract time based on how many mistakes you made previously
 		switch (++misses)
 		{
 			case 1: 
 				minutesLeft -= 2;
-				CCLabel *label = [CCLabel labelWithString:@"-2" fontName:@"slkscr.ttf" fontSize:16];
-				[label setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
-				[label setColor:ccc3(0,0,0)];
-				[label.texture setAliasTexParameters];
-				[self addChild:label z:5];
-				
-				//id move = [CCMoveTo
-				//[label runAction:[CCSequence actions:
+				[label setString:@"-2"];
 			break;
 			case 2: 
-				minutesLeft -= 4; 
+				minutesLeft -= 4;
+				[label setString:@"-4"];
 			break;
-			default: minutesLeft -= 8; break;
+			default: 
+				minutesLeft -= 8; 
+				[label setString:@"-8"];
+			break;
 		}
+		
+		[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+		
 		if (minutesLeft < 0)
 		{
 			minutesLeft = 0;
@@ -749,7 +766,12 @@
 	}
 }
 
--(void) wonGame
+- (void)removeFromParent:(CCNode *)sprite
+{
+	[sprite.parent removeChild:sprite cleanup:YES];
+}
+																				
+- (void)wonGame
 {
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];

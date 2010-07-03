@@ -205,7 +205,7 @@
 		// Move current offscreen
 		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(440, 300)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
-		//id removeSelfAction = [CCCallFunc actionWithTarget:self selector:@selector(removeFromParent:)];
+		//id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
 		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
 		
@@ -236,7 +236,7 @@
 		// Move current offscreen
 		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-140, 300)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
-		//id removeSelfAction = [CCCallFunc actionWithTarget:self selector:@selector(removeFromParent:)];
+		//id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
 		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
 		
