@@ -181,12 +181,13 @@
 		
 		step = 0;
 		
-		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles; fill in the correct blocks to create a picture!";
-		text[1] = @"Use your finger to move your cursor on the puzzle. Why don't you try it now?";
-		text[2] = @"See the numbers in the rows and columns? You'll use those to solve the puzzle.";
-		text[3] = @"The '0' in the first column means no blocks need to be filled in.";
-		text[4] = @"Move your cursor all the way to the left, then tap to mark a block.";
-		text[5] = @"Looks good! Do that for the whole column. You can double-tap then move the cursor to auto-fill.";
+		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles where you fill the correct blocks to create a picture!";
+		text[1] = @"Use your finger to move the crosshairs around the puzzle. They determine where you mark or fill a block.";
+		text[2] = @"The numbers in the rows and columns above the square grid are the clues you'll use to solve each puzzle.";
+		text[3] = @"The '0' in the first column means that there are no filled blocks in that column; it's completely blank.";
+		text[4] = @"Marking blocks is a good way to remember which blocks are blank. Move your cursor crosshairs all the way to the left.";
+		text[5] = @"Double tap to mark one of the blocks. You can double tap then move the cursor to auto-fill.";
+		//text[6] = @"";
 		text[6] = @"Take a look at the next column. The '10' means all the blocks are filled in.";
 		text[7] = @"Tap the 'fill' button, move your cursor to the next column, then tap to fill in a block.";
 		text[8] = @"Looks good! Do that for the whole column. You can double-tap then move the cursor to auto-fill.";

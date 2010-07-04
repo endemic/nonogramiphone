@@ -73,6 +73,12 @@
 	
 	// Determines if the game is paused or playing
 	bool paused;
+	
+	// Lots of crap to try to fix cursor sensitivity issue
+	int tapCount;
+	
+	// Whether or not the player's cursor moved
+	bool justMovedCursor;
 }
 
 - (void)markBlock;

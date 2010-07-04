@@ -480,14 +480,18 @@
 	
 	if (touch && !paused) 
 	{
-		startPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
+		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
 		
-		// This value is the sensitivity for filling/marking a block
-		int moveThreshold = 10;
-		//NSLog(@"%f", ccpDistance(startPoint, previousPoint));
+		tapCount = touch.tapCount;
+		if (justMovedCursor)
+		{
+			tapCount--;
+			justMovedCursor = FALSE;
+		}
+		
 		// If player has double tapped, try to place a mark/fill in the new block
-		if (touch.tapCount > 1 && ccpDistance(startPoint, previousPoint) < moveThreshold)
+		if (tapCount > 1)
 		{
 			switch (tapAction) 
 			{
@@ -495,8 +499,6 @@
 				case MARK: [self markBlock]; break;
 			}
 		}
-		
-		previousPoint = startPoint;
 	}
 }
 
@@ -538,6 +540,8 @@
 		// If the cursor has changed rows
 		if ((previousRow != currentRow || previousColumn != currentColumn))
 		{
+			justMovedCursor = TRUE;
+			
 			// Update sprite positions based on row/column variables
 			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
 			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
