@@ -53,6 +53,8 @@
 		// Init variables used to keep track of correct/incorrect guesses
 		hits = misses = 0;
 		
+		actionOnPreviousBlock = FALSE;
+		
 		// Init horizontal "cursor" highlight
 		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
 		[horizontalHighlight setPosition:ccp(160, 240)];
@@ -74,9 +76,6 @@
 		[markButton selected];
 		tapAction = MARK;	// 0 for mark, 1 for fill
 		[self addChild:actionsMenu z:3];
-		
-		// Load level!
-		//NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1];	// -1 becos we're accessing an array
 		
 		// Load tile map for this particular puzzle
 		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tutorial.tmx"];
@@ -167,6 +166,11 @@
 			{
 				[horizontalClues[9 - i] setString:cluesTextHoriz];
 			}
+			else 
+			{
+				[horizontalClues[9 - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+			}
+			
 			if ([cluesTextVert length] > 0)
 			{
 				[verticalClues[i] setString:cluesTextVert];
@@ -175,32 +179,69 @@
 			}
 			else
 			{
+				[verticalClues[i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
 				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
 			}
 		}
 		
+		// Init graphic to highlight certain rows/colums the tutorial text is referencing
+		tutorialHighlight = [CCSprite spriteWithFile:@"tutorialRowColumnHighlight.png"];
+		[tutorialHighlight setPosition:ccp(160, 240)];
+		[tutorialHighlight setOpacity:0];		// Hide for now
+		[self addChild:tutorialHighlight z:1];
+		
+		// Initialize "steps" counter
 		step = 0;
 		
 		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles where you fill the correct blocks to create a picture!";
 		text[1] = @"Use your finger to move the crosshairs around the puzzle. They determine where you mark or fill a block.";
 		text[2] = @"The numbers in the rows and columns above the square grid are the clues you'll use to solve each puzzle.";
-		text[3] = @"The '0' in the first column means that there are no filled blocks in that column; it's completely blank.";
-		text[4] = @"Marking blocks is a good way to remember which blocks are blank. Move your cursor crosshairs all the way to the left.";
-		text[5] = @"Double tap to mark one of the blocks. You can double tap then move the cursor to auto-fill.";
-		//text[6] = @"";
-		text[6] = @"Take a look at the next column. The '10' means all the blocks are filled in.";
-		text[7] = @"Tap the 'fill' button, move your cursor to the next column, then tap to fill in a block.";
-		text[8] = @"Looks good! Do that for the whole column. You can double-tap then move the cursor to auto-fill.";
-		text[9] = @"Next, let's take a look at the rows. Look at the top row. It's got 8 filled in blocks.";
-		text[10] = @"You filled in the first one, so do 7 more after that.";
-		text[11] = @"The next row is the same as the first, so go ahead and fill in those blocks too.";
-		text[12] = @"The middle rows are more tricky. See how there are two numbers as clues?";
-		text[13] = @"'2 4' means there are two sequential filled in blocks, a gap, then four filled in blocks.";
-		text[14] = @"If you don't know how big the gap is, you can always come back to it later.";
-		text[15] = @"You can also work from the bottom to the top. Go ahead and fill in the bottom row.";
-		text[16] = @"Now you have a base you can build on moving upwards.";
-		text[17] = @"See if you can finish this puzzle using what you've learned. There's no time limit!";
-		text[18] = @"Good luck!";
+		text[3] = @"Each number represents the quantity of filled blocks that are in a row or column.";
+		
+		// Flash highlight over col #1
+		text[4] = @"The '0' in the first column means that there are no filled blocks in that column; it's completely blank.";
+		text[5] = @"Marking blocks is a good way to remember which blocks are blank. Move your cursor crosshairs all the way to the left.";
+		text[6] = @"Double tap to mark one of the blocks. You can double tap then move the cursor to auto-fill. Mark all the blocks in this column.";
+		
+		// Flash highlight over col #2
+		text[7] = @"Look at the next column. The '10' means all the blocks are filled in. Move your cursor over to this column.";
+		text[8] = @"Change the action of your cursor from 'mark' to 'fill' by clicking the button in the lower left corner of the screen.";
+		text[9] = @"Now go ahead and fill this whole column. You can double tap each block, or double tap then drag the cursor to auto-fill.";
+		
+		// Flash highlight over col #3
+		text[10] = @"The third column is the same as the second. Go ahead and fill in all the blocks in this column as well.";
+		
+		// Flash highlight over col #4
+		text[11] = @"The fourth column is tricky. There are two groups of two filled in blocks. But they could be anywhere in the column.";
+		text[12] = @"Instead of guessing the placement of the blocks, let's try to solve some rows instead.";
+		
+		// Flash highlight over row #1
+		text[13] = @"Look at the first row. The clue says it has eight filled blocks, and we've already got a start on it.";
+		text[14] = @"Go ahead and finish filling in eight sequential blocks in this row. The second row is the same, so do that one too.";
+		
+		// Flash highlight over row #3
+		text[15] = @"Notice how when you finish a row or column, the clues fade in color? That helps you know you've finished a section.";
+		text[16] = @"The third row is already done. But let's mark the empty blocks so that we know those blocks are blank.";
+		
+		// Flash highlight over row #4
+		text[17] = @"Go ahead and do the same to the fourth row.";
+		
+		// Flash highlight over rows #4-7
+		text[18] = @"The next four rows are a problem. They're not finished, but we don't know exactly where to fill in blocks. Skip them for now.";
+		
+		// Flash highlight over rows #9 and #10
+		text[19] = @"The last two rows are the same as the first two: eight sequential blocks filled in. You know the drill.";
+		
+		// Flash highlight over column #9
+		text[20] = @"Let's go back to trying to solve columns. Take a look at the second to last column.";
+		text[21] = @"You've filled in the first two blocks, but there another six in the column.";
+		text[22] = @"This time, you can start at the bottom and work your way upwards. Fill in six blocks starting at the bottom of the column.";
+		
+		// Flash highlight over column #8
+		text[23] = @"Go ahead and do the same for the previous column, since it has the same clues.";
+		
+		// Flash highlight over rows #5 & 6
+		text[24] = @"Almost done! There are only two rows left. See if you can complete them on your own.";
 		
 		// Set up tutorial instruction label
 		instructions = [CCLabel labelWithString:text[step] dimensions:CGSizeMake(290, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
@@ -214,6 +255,10 @@
 		[actions.texture setAliasTexParameters];
 		[actions setPosition:ccp(205, 370)];
 		[self addChild:actions];
+		
+		// Play music if allowed
+		if ([GameDataManager sharedManager].playMusic)
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
 	}
 	return self;
 }
@@ -240,7 +285,7 @@
 {
 	// Figure out initial location of touch
 	UITouch *touch = [touches anyObject];
-	
+
 	if (touch) 
 	{
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView: [touch view]]];
@@ -254,6 +299,23 @@
 		{
 			startPoint = previousPoint = currentPoint;
 			cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
+			
+			tapCount = touch.tapCount;
+			if (justMovedCursor)
+			{
+				tapCount--;
+				justMovedCursor = FALSE;
+			}
+			
+			// If player has double tapped, try to place a mark/fill in the new block
+			if (tapCount > 1)
+			{
+				switch (tapAction) 
+				{
+					case FILL: [self fillBlock]; break;
+					case MARK: [self markBlock]; break;
+				}
+			}
 		}
 	}
 }
@@ -282,10 +344,10 @@
 		else 
 		{
 			// Gets relative movement
-			//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
+			CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 			
 			// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
-			CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
+			//CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
 			
 			// Add to current point the cursor is at
 			cursorPoint = ccpAdd(cursorPoint, relativeMovement);
@@ -303,6 +365,8 @@
 			// If the cursor has changed rows
 			if ((previousRow != currentRow || previousColumn != currentColumn))
 			{
+				justMovedCursor = TRUE;
+				
 				// Update sprite positions based on row/column variables
 				[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
 				[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
@@ -343,13 +407,104 @@
 			// Advance tutorial text if at top of screen
 			step++;
 			
-			if (step > 18)
+			if (step > 24)
 				step = 0;
 			
 			// Update label
 			[instructions setString:text[step]];
 			
-			if (step == 18)
+			// Perform various actions here based on the step number
+			switch (step) 
+			{
+				case 0:
+					// Reset the highlight in case the player is viewing instructions for a 2nd time
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setOpacity:0];
+					tutorialHighlight.scaleY = 1;
+					break;
+				case 4:
+				//case 5:
+				//case 6:
+					// Set up highlight
+					[tutorialHighlight setOpacity:64];
+					[tutorialHighlight setRotation:90.0];		// Rotate vertical since we want to highlight a column
+					
+					// Move & apply action
+					[tutorialHighlight setPosition:ccp(120,200)];		// Col #1
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 7:
+				//case 8:
+				//case 9:
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(140,200)];		// Col #2
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 10:
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(160,200)];		// Col #3
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 11:
+				//case 12:
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(180,200)];		// Col #4
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 13:
+				//case 14:
+					[tutorialHighlight setRotation:0];	// Highlighting rows, so turn back horizontal
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(160,240)];		// Row #1
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 15:
+				//case 16:
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(160,200)];		// Row #3
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 17:
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(160,180)];		// Row #4
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 18:
+					[tutorialHighlight stopAllActions];
+					tutorialHighlight.scaleY = 4;		// Make it 4x high
+					[tutorialHighlight setPosition:ccp(160,130)];		// Rows #5-8
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 19:
+					[tutorialHighlight stopAllActions];
+					tutorialHighlight.scaleY = 2;		// Make it 2x high
+					[tutorialHighlight setPosition:ccp(160,70)];		// Rows #9-10
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 20:
+					[tutorialHighlight stopAllActions];
+					tutorialHighlight.scaleY = 1;		// turn it back to normal
+					[tutorialHighlight setRotation:90];
+					[tutorialHighlight setPosition:ccp(280,200)];		// Column #9
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 23:
+					[tutorialHighlight stopAllActions];
+					[tutorialHighlight setPosition:ccp(260,200)];		// Column #8
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				case 24:
+					[tutorialHighlight stopAllActions];
+					tutorialHighlight.scaleY = 2;		// Make 2x high
+					[tutorialHighlight setRotation:180];
+					[tutorialHighlight setPosition:ccp(160,150)];		// Rows #5-6
+					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					break;
+				default:
+					break;
+			}
+			
+			if (step == 24)
 				[actions setString:@"(tap to read again)"];
 			else if (step == 0)
 				[actions setString:@"(tap to continue)"];
@@ -357,17 +512,17 @@
 		else 
 		{
 			// This value is the sensitivity for filling/marking a block
-			int moveThreshold = 10;
+			//int moveThreshold = 10;
 			
 			// If a tap is detected - i.e. if the movement of the finger is less than the threshold
-			if (ccpDistance(startPoint, endPoint) < moveThreshold)
-			{
-				switch (tapAction) 
-				{
-					case FILL: [self fillBlock]; break;
-					case MARK: [self markBlock]; break;
-				}
-			}
+			//if (ccpDistance(startPoint, endPoint) < moveThreshold)
+			//{
+			//	switch (tapAction) 
+			//	{
+			//		case FILL: [self fillBlock]; break;
+			//		case MARK: [self markBlock]; break;
+			//	}
+			//}
 		}
 	}
 }
@@ -465,10 +620,29 @@
 		// Run "shake" action, then return the grid to its original state
 		[self runAction:[CCSequence actions:shake, [CCStopGrid action], nil]];
 		
+		// Create a label that helps show you got one wrong
+		CCLabel *label = [CCLabel labelWithString:@"miss!" fontName:@"slkscr.ttf" fontSize:16];
+		[label setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		[label setColor:ccc3(0,0,0)];
+		[label.texture setAliasTexParameters];
+		[self addChild:label z:5];
+		
+		// Move and fade actions
+		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(verticalHighlight.position.x, horizontalHighlight.position.y + 20)];
+		id fadeAction = [CCFadeOut actionWithDuration:1];
+		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
+		
+		[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"miss.wav"];
 	}
+}
+
+- (void)removeFromParent:(CCNode *)sprite
+{
+	[sprite.parent removeChild:sprite cleanup:YES];
 }
 
 - (void)wonGame
@@ -512,6 +686,9 @@
 	
 	// Set instructions label to contain congratulatory message
 	[instructions setString:@"Congratulations! You understand the basics, now try some more difficult puzzles!"];
+	
+	step = 18;
+	[actions setString:@"(tap to read again)"];
 }
 
 - (void)goToTitleScreen:(id)sender

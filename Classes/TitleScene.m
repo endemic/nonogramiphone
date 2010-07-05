@@ -12,6 +12,9 @@
 #import "TutorialScene.h"
 #import "GameDataManager.h"
 
+#import "CocosDenshion.h"
+#import "SimpleAudioEngine.h"
+
 @implementation TitleScene
 
 -(id) init
@@ -47,6 +50,15 @@
 		[menu alignItemsVertically];
 		[menu setPosition:ccp(160, 100)];
 		[self addChild:menu	z:1];
+		
+		// Preload the rest of the required SFX/music resources
+		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
+		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
+		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
 		
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playMusic && ![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])

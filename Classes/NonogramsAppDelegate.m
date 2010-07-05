@@ -57,21 +57,15 @@
 	[[CCDirector sharedDirector] attachInView:window];	
 	[window makeKeyAndVisible];		
 	
-	// Preload some SFX/muzak!
+	// Preload some SFX/muzak needed for the 1st scene
 	// Check this out: http://www.cocos2d-iphone.org/forum/topic/55
 	// To convert .wav files: afconvert -v -f WAVE -d LEI16 notworking.wav working.wav
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
-	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
-	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
-	[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
-	[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
-	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
-	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"titleScreen.mp3"];
-	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
-	
 	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.15];
 	//NSLog(@"Current background music volume: %f", [[SimpleAudioEngine sharedEngine] backgroundMusicVolume]);
+	
+
 	
 	// Uncomment this line and the #import above if finding that music does not resume after device sleeps 10+ minutes 
 	// [[CDAudioManager sharedManager] setResignBehavior:kAMRBStopPlay autoHandle:YES];

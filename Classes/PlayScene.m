@@ -341,14 +341,14 @@
 			// Set pause overlay up if enabled
 			if ([GameState sharedGameState].paused) 
 			{
-				// Move "paused" overlay on top of puzzle, and unschedule the timer
+				// Set 'paused' bool
+				paused = TRUE;
+				
+				// Unschedule the timer
 				[self unschedule:@selector(timer:)];
 				
-				// Make sure the overlay is on the left side of the screen
-				[pauseOverlay setPosition:ccp(-150, 200)];
-				
-				// Move pause overlay to 160, 200
-				[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+				// Make sure the overlay over puzzle
+				[pauseOverlay setPosition:ccp(160, 200)];
 				
 				// Hide cursor highlights
 				horizontalHighlight.visible = FALSE;
@@ -360,6 +360,14 @@
 			// Reset values here
 			for (int i = 0; i < 100; i++) 
 				[[GameState sharedGameState].blockStatus replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:0]];
+
+			[GameState sharedGameState].currentRow = currentRow;
+			[GameState sharedGameState].currentColumn = currentColumn;
+			[GameState sharedGameState].minutesLeft = minutesLeft;
+			[GameState sharedGameState].secondsLeft = secondsLeft;
+			[GameState sharedGameState].hits = hits;
+			[GameState sharedGameState].misses = misses;
+			[GameState sharedGameState].paused = FALSE;
 		}
 
 	}
@@ -731,7 +739,7 @@
 		[label.texture setAliasTexParameters];
 		[self addChild:label z:5];
 		
-		// Move and fade actions - I'm not going to worry about removing these sprites
+		// Move and fade actions
 		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(verticalHighlight.position.x, horizontalHighlight.position.y + 20)];
 		id fadeAction = [CCFadeOut actionWithDuration:1];
 		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];

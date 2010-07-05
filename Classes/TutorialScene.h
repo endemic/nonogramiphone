@@ -43,8 +43,13 @@
 	// 2D array of sprites that show marking/filling the puzzle
 	CCSprite *blockSprites[10][10];
 	
+	CCSprite *tutorialHighlight;
+	
 	// 2D array of ints to figure out the current status of the puzzle - prevents having to subclass CCSprite, I guess
 	int blockStatus[10][10];
+	
+	// Boolean val that tries to prevent mistaken block fills
+	bool actionOnPreviousBlock;
 	
 	// Tile map layer that contains the puzzle
 	CCTMXLayer *tileMapLayer;
@@ -66,6 +71,12 @@
 	
 	// Tutorial text
 	NSString *text[20];
+	
+	// Lots of crap to try to fix cursor sensitivity issue
+	int tapCount;
+	
+	// Whether or not the player's cursor moved
+	bool justMovedCursor;
 }
 
 - (void)markBlock;

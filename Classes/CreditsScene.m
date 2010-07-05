@@ -45,7 +45,6 @@
 
 -(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	//[[CCDirector sharedDirector] replaceScene:[TitleScene node]];
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }
 
