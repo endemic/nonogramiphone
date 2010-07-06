@@ -610,6 +610,10 @@
 	// Toggle 'X' mark on a block if it's not already filled in
 	if (blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 	{
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"mark.wav"];
+		
 		// If not marked, mark
 		if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
 		{

@@ -70,7 +70,7 @@
 		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
-		<string>Left Arrow</string>
+		<string>Right Arrow</string>
 		<key>filename</key>
 		<string>leftArrow.tmx</string>
 	</dict>

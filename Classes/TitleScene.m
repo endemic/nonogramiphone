@@ -59,6 +59,7 @@
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"mark.wav"];
 		
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playMusic && ![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])

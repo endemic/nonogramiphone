@@ -277,7 +277,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 2}, {186, 764}}</string>
+							<string>{{0, 69}, {186, 764}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -296,7 +296,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>3 55 1390 823 0 0 1440 878 </string>
+						<string>0 55 1390 823 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,12 +326,11 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D1B4CEB11E23EB7006665CE</string>
+										<string>7D1B4D0811E34081006665CE</string>
 										<key>history</key>
 										<array>
 											<string>7D8D6F5511DF63E800099F67</string>
 											<string>7D8D6F5611DF63E800099F67</string>
-											<string>7D8D6F6811DF681400099F67</string>
 											<string>7D8D6F8311E0B2D600099F67</string>
 											<string>7D8D6F8411E0B2D600099F67</string>
 											<string>7D1B4C2F11E2198F006665CE</string>
@@ -339,14 +338,17 @@
 											<string>7D1B4C4211E224CE006665CE</string>
 											<string>7D1B4C5C11E22BF2006665CE</string>
 											<string>7D1B4CC611E23C7B006665CE</string>
-											<string>7D1B4CC711E23C7B006665CE</string>
 											<string>7D1B4CC811E23C7B006665CE</string>
-											<string>7D1B4CC911E23C7B006665CE</string>
 											<string>7D1B4CCA11E23C7B006665CE</string>
-											<string>7D1B4CCB11E23C7B006665CE</string>
-											<string>7D1B4CE811E23EB7006665CE</string>
 											<string>7D1B4CE911E23EB7006665CE</string>
-											<string>7D1B4CEA11E23EB7006665CE</string>
+											<string>7D1B4CF211E338C6006665CE</string>
+											<string>7D1B4CFB11E33A2F006665CE</string>
+											<string>7D1B4CFC11E33A2F006665CE</string>
+											<string>7D1B4CFD11E33A2F006665CE</string>
+											<string>7D1B4D0211E33D97006665CE</string>
+											<string>7D1B4D0311E33D97006665CE</string>
+											<string>7D1B4D0411E33D97006665CE</string>
+											<string>7D1B4D0511E33D97006665CE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -360,7 +362,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1182, 777}}</string>
 								<key>RubberWindowFrame</key>
-								<string>3 55 1390 823 0 0 1440 878 </string>
+								<string>0 55 1390 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -380,7 +382,7 @@
 								<key>Frame</key>
 								<string>{{0, 782}, {1182, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>3 55 1390 823 0 0 1440 878 </string>
+								<string>0 55 1390 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -552,7 +554,7 @@
 		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>3 55 1390 823 0 0 1440 878 </string>
+	<string>0 55 1390 823 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

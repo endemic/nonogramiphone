@@ -241,7 +241,7 @@
 		text[23] = @"Go ahead and do the same for the previous column, since it has the same clues.";
 		
 		// Flash highlight over rows #5 & 6
-		text[24] = @"Almost done! There are only two rows left. See if you can complete them on your own.";
+		text[24] = @"Almost done! There are only two rows left. See if you can complete them on your own. Good luck!";
 		
 		// Set up tutorial instruction label
 		instructions = [CCLabel labelWithString:text[step] dimensions:CGSizeMake(290, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
@@ -532,6 +532,10 @@
 	// Toggle 'X' mark on a block if it's not already filled in
 	if (blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 	{
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"mark.wav"];
+		
 		// If not marked, mark
 		if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
 		{
@@ -564,6 +568,10 @@
 	// The tilemap's y-coords are inverse of the iphone coords, so invert it
 	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 	{
+		// Play SFX if allowed
+		if ([GameDataManager sharedManager].playSFX)
+			[[SimpleAudioEngine sharedEngine] playEffect:@"hit.wav"];
+		
 		// Add a "filled" block to the grid
 		blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
 		[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
