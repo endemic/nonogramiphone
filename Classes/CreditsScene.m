@@ -24,7 +24,7 @@
 
 @implementation CreditsLayer
 
--(id) init
+- (id)init
 {
 	if ((self = [super init]))
 	{
@@ -38,12 +38,12 @@
 	return self;
 }
 
--(void) goToTitle: (id)sender
+- (void)goToTitle:(id)sender
 {
 	[[CCDirector sharedDirector] replaceScene:[TitleScene node]];
 }
 
--(void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }

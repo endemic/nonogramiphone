@@ -266,6 +266,7 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>50F414EB1069373D002A0D5E</string>
+								<string>380CA1F31166737D002B3E1C</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -277,7 +278,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 48}, {186, 764}}</string>
+							<string>{{0, 69}, {186, 764}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -326,7 +327,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D10401111E94B3800124DBD</string>
+										<string>7D10401911E9DC4100124DBD</string>
 										<key>history</key>
 										<array>
 											<string>7D8D6F5511DF63E800099F67</string>
@@ -338,19 +339,19 @@
 											<string>7D1B4CC611E23C7B006665CE</string>
 											<string>7D1B4CC811E23C7B006665CE</string>
 											<string>7D1B4CCA11E23C7B006665CE</string>
-											<string>7D1B4CE911E23EB7006665CE</string>
 											<string>7D1B4CF211E338C6006665CE</string>
 											<string>7D1B4CFB11E33A2F006665CE</string>
 											<string>7D1B4CFC11E33A2F006665CE</string>
 											<string>7D1B4CFD11E33A2F006665CE</string>
-											<string>7D1B4D0211E33D97006665CE</string>
 											<string>7D1B4D0411E33D97006665CE</string>
 											<string>7D103FC811E93CD800124DBD</string>
 											<string>7D103FE211E9455000124DBD</string>
 											<string>7D103FE711E9471D00124DBD</string>
 											<string>7D10400E11E94B3800124DBD</string>
 											<string>7D10400F11E94B3800124DBD</string>
-											<string>7D10401011E94B3800124DBD</string>
+											<string>7D10401511E9DB2200124DBD</string>
+											<string>7D10401811E9DC4100124DBD</string>
+											<string>7D10401411E9DB2200124DBD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -552,8 +553,8 @@
 		<string>7D103FD311E93CD800124DBD</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
-		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 55 1390 823 0 0 1440 878 </string>

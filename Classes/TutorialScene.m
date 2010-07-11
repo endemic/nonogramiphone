@@ -234,7 +234,7 @@
 		
 		// Flash highlight over column #9
 		text[20] = @"Let's go back to trying to solve columns. Take a look at the second to last column.";
-		text[21] = @"You've filled in the first two blocks, but there another six in the column.";
+		text[21] = @"You've filled in the first two blocks, but there are another six in the column.";
 		text[22] = @"This time, you can start at the bottom and work your way upwards. Fill in six blocks starting at the bottom of the column.";
 		
 		// Flash highlight over column #8
@@ -663,8 +663,12 @@
 	// Set instructions label to contain congratulatory message
 	[instructions setString:@"Congratulations! You understand the basics, now try some more difficult puzzles!"];
 	
-	step = 18;
+	step = 24;
 	[actions setString:@"(tap to read again)"];
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playMusic)
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"winJingle.mp3" loop:FALSE];
 }
 
 - (void)goToTitleScreen:(id)sender

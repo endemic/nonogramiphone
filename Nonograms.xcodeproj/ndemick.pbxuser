@@ -24,7 +24,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 7DB8C29F115BB9520097C084 /* Nonograms */;
-		activeSDKPreference = iphonesimulator3.2;
+		activeSDKPreference = iphoneos3.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Nonograms */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Nonograms */,
@@ -122,6 +122,12 @@
 			7D10400F11E94B3800124DBD /* PBXTextBookmark */ = 7D10400F11E94B3800124DBD /* PBXTextBookmark */;
 			7D10401011E94B3800124DBD /* PBXTextBookmark */ = 7D10401011E94B3800124DBD /* PBXTextBookmark */;
 			7D10401111E94B3800124DBD /* PBXTextBookmark */ = 7D10401111E94B3800124DBD /* PBXTextBookmark */;
+			7D10401411E9DB2200124DBD /* PBXTextBookmark */ = 7D10401411E9DB2200124DBD /* PBXTextBookmark */;
+			7D10401511E9DB2200124DBD /* PBXTextBookmark */ = 7D10401511E9DB2200124DBD /* PBXTextBookmark */;
+			7D10401611E9DB2200124DBD /* PBXTextBookmark */ = 7D10401611E9DB2200124DBD /* PBXTextBookmark */;
+			7D10401711E9DB2200124DBD /* PBXTextBookmark */ = 7D10401711E9DB2200124DBD /* PBXTextBookmark */;
+			7D10401811E9DC4100124DBD /* PBXTextBookmark */ = 7D10401811E9DC4100124DBD /* PBXTextBookmark */;
+			7D10401911E9DC4100124DBD /* PBXTextBookmark */ = 7D10401911E9DC4100124DBD /* PBXTextBookmark */;
 			7D1B4C2F11E2198F006665CE = 7D1B4C2F11E2198F006665CE /* PBXTextBookmark */;
 			7D1B4C3011E2198F006665CE = 7D1B4C3011E2198F006665CE /* PBXTextBookmark */;
 			7D1B4C4211E224CE006665CE = 7D1B4C4211E224CE006665CE /* PBXTextBookmark */;
@@ -283,9 +289,9 @@
 	};
 	38F17BA3115A9EAC007CAB05 /* CreditsScene.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1121, 745}}";
-			sepNavSelRange = "{163, 0}";
-			sepNavVisRange = "{0, 945}";
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 722}}";
+			sepNavSelRange = "{363, 0}";
+			sepNavVisRange = "{0, 944}";
 		};
 	};
 	38F17BE9115AA774007CAB05 /* LevelSelectScene.h */ = {
@@ -446,7 +452,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 459";
 		rLen = 0;
-		rLoc = 16895;
+		rLoc = 16899;
 		rType = 0;
 		vrLen = 2464;
 		vrLoc = 15174;
@@ -456,7 +462,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 460";
 		rLen = 0;
-		rLoc = 16969;
+		rLoc = 16973;
 		rType = 0;
 		vrLen = 2385;
 		vrLoc = 15174;
@@ -476,7 +482,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 435";
 		rLen = 8;
-		rLoc = 15732;
+		rLoc = 15736;
 		rType = 0;
 		vrLen = 2157;
 		vrLoc = 15012;
@@ -486,7 +492,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 476";
 		rLen = 0;
-		rLoc = 17793;
+		rLoc = 17797;
 		rType = 0;
 		vrLen = 2346;
 		vrLoc = 15776;
@@ -496,7 +502,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 451";
 		rLen = 0;
-		rLoc = 16377;
+		rLoc = 16381;
 		rType = 0;
 		vrLen = 2408;
 		vrLoc = 15075;
@@ -506,7 +512,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 466";
 		rLen = 0;
-		rLoc = 17157;
+		rLoc = 17161;
 		rType = 0;
 		vrLen = 2533;
 		vrLoc = 15375;
@@ -516,7 +522,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 618";
 		rLen = 0;
-		rLoc = 22909;
+		rLoc = 22913;
 		rType = 0;
 		vrLen = 2016;
 		vrLoc = 22493;
@@ -536,7 +542,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 604";
 		rLen = 7;
-		rLoc = 22472;
+		rLoc = 22476;
 		rType = 0;
 		vrLen = 2274;
 		vrLoc = 21541;
@@ -546,7 +552,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 605";
 		rLen = 0;
-		rLoc = 22538;
+		rLoc = 22542;
 		rType = 0;
 		vrLen = 2138;
 		vrLoc = 21541;
@@ -566,7 +572,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 465";
 		rLen = 14;
-		rLoc = 17036;
+		rLoc = 17040;
 		rType = 0;
 		vrLen = 2446;
 		vrLoc = 15800;
@@ -576,7 +582,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 471";
 		rLen = 0;
-		rLoc = 17282;
+		rLoc = 17286;
 		rType = 0;
 		vrLen = 2387;
 		vrLoc = 15814;
@@ -586,7 +592,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 608";
 		rLen = 0;
-		rLoc = 22539;
+		rLoc = 22543;
 		rType = 0;
 		vrLen = 2169;
 		vrLoc = 21071;
@@ -596,7 +602,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 611";
 		rLen = 0;
-		rLoc = 22614;
+		rLoc = 22618;
 		rType = 0;
 		vrLen = 2173;
 		vrLoc = 21071;
@@ -616,7 +622,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 611";
 		rLen = 0;
-		rLoc = 22614;
+		rLoc = 22618;
 		rType = 0;
 		vrLen = 2224;
 		vrLoc = 21071;
@@ -626,7 +632,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 593";
 		rLen = 0;
-		rLoc = 21712;
+		rLoc = 21716;
 		rType = 0;
 		vrLen = 2208;
 		vrLoc = 21071;
@@ -636,7 +642,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 468";
 		rLen = 0;
-		rLoc = 17077;
+		rLoc = 17081;
 		rType = 0;
 		vrLen = 2518;
 		vrLoc = 15661;
@@ -646,7 +652,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 473";
 		rLen = 0;
-		rLoc = 17372;
+		rLoc = 17376;
 		rType = 0;
 		vrLen = 2518;
 		vrLoc = 15661;
@@ -656,7 +662,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 468";
 		rLen = 0;
-		rLoc = 17077;
+		rLoc = 17081;
 		rType = 0;
 		vrLen = 2520;
 		vrLoc = 15661;
@@ -666,7 +672,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 463";
 		rLen = 0;
-		rLoc = 16831;
+		rLoc = 16835;
 		rType = 0;
 		vrLen = 2522;
 		vrLoc = 15661;
@@ -676,7 +682,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 455";
 		rLen = 0;
-		rLoc = 16506;
+		rLoc = 16510;
 		rType = 0;
 		vrLen = 2535;
 		vrLoc = 15661;
@@ -686,7 +692,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 468";
 		rLen = 0;
-		rLoc = 17099;
+		rLoc = 17103;
 		rType = 0;
 		vrLen = 2421;
 		vrLoc = 15661;
@@ -696,7 +702,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 501";
 		rLen = 0;
-		rLoc = 18438;
+		rLoc = 18442;
 		rType = 0;
 		vrLen = 2403;
 		vrLoc = 16509;
@@ -716,7 +722,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 511";
 		rLen = 0;
-		rLoc = 18698;
+		rLoc = 18702;
 		rType = 0;
 		vrLen = 3785;
 		vrLoc = 6361;
@@ -766,10 +772,70 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 470";
 		rLen = 0;
-		rLoc = 17245;
+		rLoc = 17249;
 		rType = 0;
 		vrLen = 2299;
 		vrLoc = 15931;
+	};
+	7D10401411E9DB2200124DBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
+		name = "TutorialScene.m: 614";
+		rLen = 293;
+		rLoc = 22939;
+		rType = 0;
+		vrLen = 2108;
+		vrLoc = 21470;
+	};
+	7D10401511E9DB2200124DBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 794";
+		rLen = 0;
+		rLoc = 27796;
+		rType = 0;
+		vrLen = 1969;
+		vrLoc = 26994;
+	};
+	7D10401611E9DB2200124DBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */;
+		name = "CreditsScene.m: 9";
+		rLen = 0;
+		rLoc = 163;
+		rType = 0;
+		vrLen = 945;
+		vrLoc = 0;
+	};
+	7D10401711E9DB2200124DBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */;
+		name = "CreditsScene.m: 27";
+		rLen = 0;
+		rLoc = 363;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 0;
+	};
+	7D10401811E9DC4100124DBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */;
+		name = "CreditsScene.m: 27";
+		rLen = 0;
+		rLoc = 363;
+		rType = 0;
+		vrLen = 944;
+		vrLoc = 0;
+	};
+	7D10401911E9DC4100124DBD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
+		name = "TutorialScene.m: 642";
+		rLen = 0;
+		rLoc = 23996;
+		rType = 0;
+		vrLen = 1983;
+		vrLoc = 23232;
 	};
 	7D1B4C2F11E2198F006665CE /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -907,7 +973,7 @@
 		fRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */;
 		name = "TutorialScene.m: 605";
 		rLen = 0;
-		rLoc = 20968;
+		rLoc = 20972;
 		rType = 0;
 		vrLen = 2306;
 		vrLoc = 20307;
@@ -1069,9 +1135,9 @@
 	};
 	7DBB10B0115CB6780083D073 /* TutorialScene.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1643, 8892}}";
-			sepNavSelRange = "{17245, 0}";
-			sepNavVisRange = "{15931, 2299}";
+			sepNavIntBoundsRect = "{{0, 0}, {1181, 8502}}";
+			sepNavSelRange = "{9406, 0}";
+			sepNavVisRange = "{6051, 3662}";
 			sepNavWindowFrame = "{{38, 294}, {750, 558}}";
 		};
 	};
@@ -1085,9 +1151,9 @@
 	};
 	7DBB10B5115CBAE90083D073 /* PlayScene.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1121, 12571}}";
-			sepNavSelRange = "{20890, 131}";
-			sepNavVisRange = "{20680, 2115}";
+			sepNavIntBoundsRect = "{{0, 0}, {1300, 12896}}";
+			sepNavSelRange = "{29522, 156}";
+			sepNavVisRange = "{28653, 2752}";
 		};
 	};
 	7DDB87F61186EE40007FB078 /* ankh.tmx */ = {
