@@ -426,79 +426,55 @@
 				//case 5:
 				//case 6:
 					// Set up highlight
-					[tutorialHighlight setOpacity:64];
+					[tutorialHighlight setPosition:ccp(120, 200)];
 					[tutorialHighlight setRotation:90.0];		// Rotate vertical since we want to highlight a column
 					
+					// [CCBlink actionWithDuration:600 blinks:300]
+					
 					// Move & apply action
-					[tutorialHighlight setPosition:ccp(120,200)];		// Col #1
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCFadeTo actionWithDuration:0.5 opacity:64]];
 					break;
 				case 7:
 				//case 8:
 				//case 9:
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(140,200)];		// Col #2
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(140, 200)]];	// Col #2
 					break;
 				case 10:
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(160,200)];		// Col #3
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];	// Col #3
 					break;
 				case 11:
 				//case 12:
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(180,200)];		// Col #4
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(180, 200)]];	// Col #4
 					break;
 				case 13:
 				//case 14:
-					[tutorialHighlight setRotation:0];	// Highlighting rows, so turn back horizontal
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(160,240)];		// Row #1
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:0], [CCMoveTo actionWithDuration:0.5 position:ccp(160, 240)], nil]];	// Row #1
 					break;
 				case 15:
 				//case 16:
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(160,200)];		// Row #3
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];		// Row #3
 					break;
 				case 17:
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(160,180)];		// Row #4
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160,180)]];		// Row #4
 					break;
 				case 18:
-					[tutorialHighlight stopAllActions];
-					tutorialHighlight.scaleY = 4;		// Make it 4x high
-					[tutorialHighlight setPosition:ccp(160,130)];		// Rows #5-8
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					// Make it 4x high, rows #5-8
+					[tutorialHighlight runAction:[CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(160,130)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:4], nil]];
 					break;
 				case 19:
-					[tutorialHighlight stopAllActions];
-					tutorialHighlight.scaleY = 2;		// Make it 2x high
-					[tutorialHighlight setPosition:ccp(160,70)];		// Rows #9-10
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					// Scale 2x
+					[tutorialHighlight runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:2], [CCMoveTo actionWithDuration:0.5 position:ccp(160,70)], nil]];
 					break;
 				case 20:
-					[tutorialHighlight stopAllActions];
-					tutorialHighlight.scaleY = 1;		// turn it back to normal
-					[tutorialHighlight setRotation:90];
-					[tutorialHighlight setPosition:ccp(280,200)];		// Column #9
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					// Rotate back to original position, scale back to normal, move to column #9
+					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:90], [CCMoveTo actionWithDuration:0.5 position:ccp(280,200)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:1], nil]];
 					break;
 				case 23:
-					[tutorialHighlight stopAllActions];
-					[tutorialHighlight setPosition:ccp(260,200)];		// Column #8
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(260,200)]];		// Column #8
 					break;
 				case 24:
-					[tutorialHighlight stopAllActions];
-					tutorialHighlight.scaleY = 2;		// Make 2x high
-					[tutorialHighlight setRotation:180];
-					[tutorialHighlight setPosition:ccp(160,150)];		// Rows #5-6
-					[tutorialHighlight runAction:[CCBlink actionWithDuration:300 blinks:150]];
+					// Rows #5-6,  Make 2x high
+					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:180], [CCMoveTo actionWithDuration:0.5 position:ccp(160,150)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:2], nil]];
 					break;
 				default:
 					break;
@@ -508,21 +484,6 @@
 				[actions setString:@"(tap to read again)"];
 			else if (step == 0)
 				[actions setString:@"(tap to continue)"];
-		}
-		else 
-		{
-			// This value is the sensitivity for filling/marking a block
-			//int moveThreshold = 10;
-			
-			// If a tap is detected - i.e. if the movement of the finger is less than the threshold
-			//if (ccpDistance(startPoint, endPoint) < moveThreshold)
-			//{
-			//	switch (tapAction) 
-			//	{
-			//		case FILL: [self fillBlock]; break;
-			//		case MARK: [self markBlock]; break;
-			//	}
-			//}
 		}
 	}
 }
@@ -650,7 +611,14 @@
 
 - (void)removeFromParent:(CCNode *)sprite
 {
-	[sprite.parent removeChild:sprite cleanup:YES];
+	//[sprite.parent removeChild:sprite cleanup:YES];
+	
+	// Trying this from forum post http://www.cocos2d-iphone.org/forum/topic/981#post-5895
+	// Apparently fixes a memory error?
+	CCNode *parent = sprite.parent;
+	[sprite retain];
+	[parent removeChild:sprite cleanup:YES];
+	[sprite autorelease];
 }
 
 - (void)wonGame

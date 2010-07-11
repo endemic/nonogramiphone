@@ -734,7 +734,7 @@
 		
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playSFX)
-			[[SimpleAudioEngine sharedEngine] playEffect:@"dud.wav"];
+			[[SimpleAudioEngine sharedEngine] playEffect:@"miss.wav"];
 		
 		// Create a label that shows how much time you lost
 		CCLabel *label = [CCLabel labelWithString:@" " fontName:@"slkscr.ttf" fontSize:16];
@@ -784,7 +784,14 @@
 
 - (void)removeFromParent:(CCNode *)sprite
 {
-	[sprite.parent removeChild:sprite cleanup:YES];
+	//[sprite.parent removeChild:sprite cleanup:YES];
+	
+	// Trying this from forum post http://www.cocos2d-iphone.org/forum/topic/981#post-5895
+	// Apparently fixes a memory error?
+	CCNode *parent = sprite.parent;
+	[sprite retain];
+	[parent removeChild:sprite cleanup:YES];
+	[sprite autorelease];
 }
 																				
 - (void)wonGame

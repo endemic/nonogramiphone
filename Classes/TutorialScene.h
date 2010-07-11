@@ -70,7 +70,7 @@
 	int step;
 	
 	// Tutorial text
-	NSString *text[20];
+	NSString *text[30];
 	
 	// Lots of crap to try to fix cursor sensitivity issue
 	int tapCount;
