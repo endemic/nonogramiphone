@@ -106,8 +106,14 @@
 		
 		// Init level display list
 		levelDisplayList = [[NSMutableArray arrayWithCapacity:[[GameDataManager sharedManager].levels count]] retain];
+		
+		// Populate level
+		for (int j = 0, k = [[GameDataManager sharedManager].levels count]; j < k; j++)
+			[levelDisplayList insertObject:[NSNumber numberWithInt:0] atIndex:j];
+		
 		//NSLog(@"Total number of levels: %i", [[GameDataManager sharedManager].levels count]);
 		
+		/*
 		// Set up sprites that show level details
 		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
 		{
@@ -150,6 +156,42 @@
 			[self addChild:s];
 			[levelDisplayList insertObject:s atIndex:i];
 		}
+		*/
+		
+		// New code
+		int i = [GameDataManager sharedManager].currentLevel - 1;
+		CCSprite *s;
+		
+		if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
+		{
+			// Load question mark
+			s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+		}
+		else 
+		{
+			// Create blank sprite
+			s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+			
+			// Load puzzle data
+			NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:i];
+			
+			// Draw puzzle on to overlay
+			CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+			[tileMap setScale:0.75];
+			[tileMap setPosition:ccp(25, 35)];
+			[s addChild:tileMap];
+			
+			// Draw title
+			CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+			[label setColor:ccc3(00, 00, 00)];
+			[label setPosition:ccp(100, 15)];
+			[label.texture setAliasTexParameters];
+			[s addChild:label];
+		}
+		
+		[levelDisplayList replaceObjectAtIndex:i withObject:s];
+		[s setPosition:ccp(160, 300)];
+		[self addChild:s];
 		
 		// Set prev/next buttons as disabled if needed
 		if ([GameDataManager sharedManager].currentLevel == 1)
@@ -202,21 +244,71 @@
 {
 	if ([GameDataManager sharedManager].currentLevel > 1)
 	{
+		/**
+		 Add code that loads a sprite for new level here, moves it into place, then moves current sprite off screen and removes it from parent
+		 */
+		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
+		int currentLevel = [GameDataManager sharedManager].currentLevel - 1;
+		int previousLevel = [GameDataManager sharedManager].currentLevel - 2;
+		
+		CCSprite *s;
+		
+		// Check to see if the object is a NSNumber... if so, create a sprite and replace the number in the array
+		if ([[levelDisplayList objectAtIndex:previousLevel] isKindOfClass:[NSNumber class]])
+		{
+			if ([[[levelTimes objectAtIndex:previousLevel] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
+			{
+				// Load question mark
+				s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+			}
+			else 
+			{
+				// Create blank sprite
+				s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+				
+				// Load puzzle data
+				NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:previousLevel];
+				
+				// Draw puzzle on to overlay
+				CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+				[tileMap setScale:0.75];
+				[tileMap setPosition:ccp(25, 35)];
+				[s addChild:tileMap];
+				
+				// Draw title
+				CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+				[label setColor:ccc3(00, 00, 00)];
+				[label setPosition:ccp(100, 15)];
+				[label.texture setAliasTexParameters];
+				[s addChild:label];
+			}
+			
+			[levelDisplayList replaceObjectAtIndex:previousLevel withObject:s];
+			[s setPosition:ccp(-140, 300)];
+			[self addChild:s];
+		}
+		else
+		{
+			s = [levelDisplayList objectAtIndex:previousLevel];
+			[s setPosition:ccp(-140, 300)];
+			[self addChild:s];
+		}
+		
 		// Move current offscreen
 		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(440, 300)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
-		//id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
+		id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
-		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
+		[[levelDisplayList objectAtIndex:currentLevel] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, removeSelfAction, nil]];
 		
 		// Decrement level counter
 		[GameDataManager sharedManager].currentLevel--;
-		
+
 		// Move previous onscreen
 		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(160, 300)];
 		id showLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(showLevelData:)];
 		
-		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
+		[[levelDisplayList objectAtIndex:previousLevel] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
 	}
 	
 	// Muck with enabling/disabling prev/next buttons
@@ -233,12 +325,60 @@
 {
 	if ([GameDataManager sharedManager].currentLevel < [[GameDataManager sharedManager].levels count])
 	{
+		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
+		int currentLevel = [GameDataManager sharedManager].currentLevel - 1;
+		int nextLevel = [GameDataManager sharedManager].currentLevel;
+		
+		CCSprite *s;
+		
+		// Check to see if the object is a NSNumber... if so, create a sprite and replace the number in the array
+		if ([[levelDisplayList objectAtIndex:nextLevel] isKindOfClass:[NSNumber class]])
+		{
+			if ([[[levelTimes objectAtIndex:nextLevel] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
+			{
+				// Load question mark
+				s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+			}
+			else 
+			{
+				// Create blank sprite
+				s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+				
+				// Load puzzle data
+				NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:nextLevel];
+				
+				// Draw puzzle on to overlay
+				CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+				[tileMap setScale:0.75];
+				[tileMap setPosition:ccp(25, 35)];
+				[s addChild:tileMap];
+				
+				// Draw title
+				CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+				[label setColor:ccc3(00, 00, 00)];
+				[label setPosition:ccp(100, 15)];
+				[label.texture setAliasTexParameters];
+				[s addChild:label];
+			}
+			
+			[levelDisplayList replaceObjectAtIndex:nextLevel withObject:s];
+			[s setPosition:ccp(440, 300)];
+			[self addChild:s];
+		}
+		else 
+		{
+			s = [levelDisplayList objectAtIndex:nextLevel];
+			[s setPosition:ccp(440, 300)];
+			[self addChild:s];
+		}
+
+		
 		// Move current offscreen
 		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-140, 300)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
-		//id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
+		id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
-		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, nil]];
+		[[levelDisplayList objectAtIndex:currentLevel] runAction:[CCSequence actions:hideLevelDataAction, moveOffScreenAction, removeSelfAction, nil]];
 		
 		// Increment level counter
 		[GameDataManager sharedManager].currentLevel++;
@@ -247,7 +387,7 @@
 		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(160, 300)];
 		id showLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(showLevelData:)];
 		
-		[[levelDisplayList objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
+		[[levelDisplayList objectAtIndex:nextLevel] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
 	}
 	
 	// Muck with enabling/disabling prev/next buttons
@@ -281,7 +421,14 @@
 // This isn't used; might not work
 - (void)removeFromParent:(CCNode *)sprite
 {
-	[sprite.parent removeChild:sprite cleanup:YES];
+	//[sprite.parent removeChild:sprite cleanup:YES];
+	
+	// Trying this from forum post http://www.cocos2d-iphone.org/forum/topic/981#post-5895
+	// Apparently fixes a memory error?
+	CCNode *parent = sprite.parent;
+	[sprite retain];
+	[parent removeChild:sprite cleanup:YES];
+	[sprite autorelease];
 }
 
 - (void)dealloc
