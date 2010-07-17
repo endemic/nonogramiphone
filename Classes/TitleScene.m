@@ -52,15 +52,18 @@
 		[self addChild:menu	z:1];
 		
 		// Preload the rest of the required SFX/music resources
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"mark.wav"];
-		
+		if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) 
+		{
+			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
+			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
+			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
+			[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
+			[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
+			[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
+			[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
+			[[SimpleAudioEngine sharedEngine] preloadEffect:@"mark.wav"];
+		}
+
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playMusic && ![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
 			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
