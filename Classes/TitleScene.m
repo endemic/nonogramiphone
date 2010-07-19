@@ -55,6 +55,7 @@
 		if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) 
 		{
 			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
+			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"play.mp3"];
 			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
 			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
 			[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];

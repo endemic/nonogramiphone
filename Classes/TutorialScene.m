@@ -344,10 +344,10 @@
 		else 
 		{
 			// Gets relative movement
-			CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
+			//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 			
-			// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
-			//CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
+			// Gets relative movement - slowed down by 10% - maybe easier to move the cursor?
+			CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.90, (currentPoint.y - previousPoint.y) * 0.90);
 			
 			// Add to current point the cursor is at
 			cursorPoint = ccpAdd(cursorPoint, relativeMovement);
@@ -676,6 +676,9 @@
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Make sure background music is stopped before going to next scene
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }

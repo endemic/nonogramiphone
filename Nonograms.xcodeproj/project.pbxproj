@@ -63,7 +63,6 @@
 		38EC2636116BB69C00358D1B /* fillButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2632116BB69C00358D1B /* fillButtonOn.png */; };
 		38EC2637116BB69C00358D1B /* markButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2633116BB69C00358D1B /* markButton.png */; };
 		38EC2638116BB69C00358D1B /* markButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2634116BB69C00358D1B /* markButtonOn.png */; };
-		38EC2657116BCE9500358D1B /* pixelTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = 38EC2656116BCE9500358D1B /* pixelTarget.png */; };
 		38F17B6A115A886E007CAB05 /* TitleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17B69115A886E007CAB05 /* TitleScene.m */; };
 		38F17B90115A9C7A007CAB05 /* titleBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 38F17B8F115A9C7A007CAB05 /* titleBackground.png */; };
 		38F17BA4115A9EAC007CAB05 /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F17BA3115A9EAC007CAB05 /* CreditsScene.m */; };
@@ -329,6 +328,9 @@
 		7D5685421174792A004CDB64 /* 8pxSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D5685411174792A004CDB64 /* 8pxSquare.png */; };
 		7D5A6A62119180EB00BB2E4E /* winJingle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */; };
 		7D6109E5118996BE007ECF43 /* tutorialBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D6109E4118996BE007ECF43 /* tutorialBackground.png */; };
+		7D71AFE011F325E3009DD7E0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D71AFDF11F325E3009DD7E0 /* Icon@2x.png */; };
+		7D71AFE211F325F3009DD7E0 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 7D71AFE111F325F3009DD7E0 /* iTunesArtwork */; };
+		7D71B09211F46353009DD7E0 /* play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D71B09111F46353009DD7E0 /* play.mp3 */; };
 		7D74C05811BD02D700E57B2F /* levelSelect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D74C05711BD02D700E57B2F /* levelSelect.mp3 */; };
 		7D87E97011CF78110038B62A /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87E96F11CF78110038B62A /* GameState.m */; };
 		7D87E97211D0CD900038B62A /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D87E97111D0CD900038B62A /* hit.wav */; };
@@ -463,7 +465,6 @@
 		38EC2632116BB69C00358D1B /* fillButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fillButtonOn.png; path = Buttons/fillButtonOn.png; sourceTree = "<group>"; };
 		38EC2633116BB69C00358D1B /* markButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = markButton.png; path = Buttons/markButton.png; sourceTree = "<group>"; };
 		38EC2634116BB69C00358D1B /* markButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = markButtonOn.png; path = Buttons/markButtonOn.png; sourceTree = "<group>"; };
-		38EC2656116BCE9500358D1B /* pixelTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelTarget.png; sourceTree = "<group>"; };
 		38F17B68115A886E007CAB05 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		38F17B69115A886E007CAB05 /* TitleScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScene.m; sourceTree = "<group>"; };
 		38F17B8F115A9C7A007CAB05 /* titleBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleBackground.png; sourceTree = "<group>"; };
@@ -707,7 +708,6 @@
 		7D1E8216119AB9E600E28163 /* star.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = star.tmx; path = Maps/star.tmx; sourceTree = "<group>"; };
 		7D1E8217119AB9E600E28163 /* vase.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vase.tmx; path = Maps/vase.tmx; sourceTree = "<group>"; };
 		7D1E8218119AB9E600E28163 /* yinyang.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = yinyang.tmx; path = Maps/yinyang.tmx; sourceTree = "<group>"; };
-		7D20731511F06F2C008FD850 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		7D41E71411B667830091257A /* miss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = miss.wav; path = Sounds/miss.wav; sourceTree = "<group>"; };
 		7D41E72811B669FB0091257A /* calendar.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = calendar.tmx; path = Maps/calendar.tmx; sourceTree = "<group>"; };
 		7D41E72911B669FB0091257A /* clipboard.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = clipboard.tmx; path = Maps/clipboard.tmx; sourceTree = "<group>"; };
@@ -729,6 +729,12 @@
 		7D5685411174792A004CDB64 /* 8pxSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8pxSquare.png; sourceTree = "<group>"; };
 		7D5A6A61119180EB00BB2E4E /* winJingle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = winJingle.mp3; path = Sounds/winJingle.mp3; sourceTree = "<group>"; };
 		7D6109E4118996BE007ECF43 /* tutorialBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorialBackground.png; sourceTree = "<group>"; };
+		7D71AFDC11F32480009DD7E0 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		7D71AFDD11F32480009DD7E0 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		7D71AFDF11F325E3009DD7E0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		7D71AFE111F325F3009DD7E0 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		7D71B04E11F3811C009DD7E0 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		7D71B09111F46353009DD7E0 /* play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = play.mp3; path = Music/play.mp3; sourceTree = "<group>"; };
 		7D74C05711BD02D700E57B2F /* levelSelect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelSelect.mp3; path = Music/levelSelect.mp3; sourceTree = "<group>"; };
 		7D83CC6011D21C200093779E /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		7D87E96E11CF78110038B62A /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
@@ -849,7 +855,7 @@
 				50F414EB1069373D002A0D5E /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				7D20731511F06F2C008FD850 /* Entitlements.plist */,
+				7D71B04E11F3811C009DD7E0 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1091,7 +1097,6 @@
 				7DE7C3F91175C9310047653D /* pauseOverlay.png */,
 				7D5685411174792A004CDB64 /* 8pxSquare.png */,
 				7D56853D11747878004CDB64 /* 4pxSquare.png */,
-				38EC2656116BCE9500358D1B /* pixelTarget.png */,
 				380CA13B116642A7002B3E1C /* defaultLevelPreview.png */,
 				380CA13C116642A7002B3E1C /* levelSelectBackground.png */,
 				380CA1371166412B002B3E1C /* optionsBackground.png */,
@@ -1375,6 +1380,10 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D71AFE111F325F3009DD7E0 /* iTunesArtwork */,
+				7D71AFDF11F325E3009DD7E0 /* Icon@2x.png */,
+				7D71AFDC11F32480009DD7E0 /* Icon-Small.png */,
+				7D71AFDD11F32480009DD7E0 /* Icon-Small@2x.png */,
 				7DFF221C11A94D4D003B4C79 /* Music */,
 				38EC2501116A7DE600358D1B /* Maps */,
 				380CA1F31166737D002B3E1C /* Sounds */,
@@ -1394,6 +1403,7 @@
 		7DFF221C11A94D4D003B4C79 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				7D71B09111F46353009DD7E0 /* play.mp3 */,
 				7D74C05711BD02D700E57B2F /* levelSelect.mp3 */,
 				7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */,
 			);
@@ -1598,7 +1608,6 @@
 				38EC2636116BB69C00358D1B /* fillButtonOn.png in Resources */,
 				38EC2637116BB69C00358D1B /* markButton.png in Resources */,
 				38EC2638116BB69C00358D1B /* markButtonOn.png in Resources */,
-				38EC2657116BCE9500358D1B /* pixelTarget.png in Resources */,
 				38D20736116CF0DA0096DC65 /* fillButtonSelected.png in Resources */,
 				38D20737116CF0DA0096DC65 /* markButtonSelected.png in Resources */,
 				38D207B2116D1A9B0096DC65 /* backButton.png in Resources */,
@@ -1739,6 +1748,9 @@
 				7D87E97211D0CD900038B62A /* hit.wav in Resources */,
 				7D1B4C4011E22456006665CE /* tutorialRowColumnHighlight.png in Resources */,
 				7D1B4CF711E339D1006665CE /* mark.wav in Resources */,
+				7D71AFE011F325E3009DD7E0 /* Icon@2x.png in Resources */,
+				7D71AFE211F325F3009DD7E0 /* iTunesArtwork in Resources */,
+				7D71B09211F46353009DD7E0 /* play.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1950,14 +1962,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				PRODUCT_NAME = "Nonogram Madness";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Distribution;
 		};
@@ -2005,13 +2021,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos4.0]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};

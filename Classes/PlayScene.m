@@ -248,7 +248,7 @@
 		
 		// Play music if allowed
 		if ([GameDataManager sharedManager].playMusic)
-			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"play.mp3"];
 		
 		// If the player was in the middle of a puzzle, restore the variables from where they left off
 		if ([GameState sharedGameState].restoreLevel)
@@ -527,10 +527,10 @@
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
 		
 		// Gets relative movement
-		CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
+		//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 		
-		// Gets relative movement - slowed down by 25% - maybe easier to move the cursor?
-		//CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.75, (currentPoint.y - previousPoint.y) * 0.75);
+		// Gets relative movement - slowed down by 10% - maybe easier to move the cursor?
+		CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.90, (currentPoint.y - previousPoint.y) * 0.90);
 		
 		// Add to current point the cursor is at
 		cursorPoint = ccpAdd(cursorPoint, relativeMovement);

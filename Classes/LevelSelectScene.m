@@ -415,6 +415,9 @@
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
+	// Make sure background music is stopped before going to next scene
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }
 
