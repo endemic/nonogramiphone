@@ -33,6 +33,9 @@
 	// Size (in pixels) of each square in the puzzle
 	int blockSize;
 	
+	// Size (in tiles) of the puzzle
+	int puzzleSize;
+	
 	// Values that store where the player cursor currently is in the puzzle
 	int currentRow, currentColumn;
 	

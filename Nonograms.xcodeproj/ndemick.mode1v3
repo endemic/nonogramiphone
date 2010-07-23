@@ -264,6 +264,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>2D500B1D0D5A766B00DBA0E3</string>
+								<string>50F414EB1069373D002A0D5E</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -271,12 +273,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>14</integer>
-									<integer>13</integer>
+									<integer>8</integer>
+									<integer>4</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {186, 764}}</string>
+							<string>{{0, 91}, {186, 764}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -295,7 +298,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>2 55 1390 823 0 0 1440 878 </string>
+						<string>0 55 1390 823 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -313,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CCDirector.m</string>
+								<string>PlayScene.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -321,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CCDirector.m</string>
+										<string>PlayScene.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D2F40BB11F71D21002C22E0</string>
+										<string>7D2F40E411F9AA39002C22E0</string>
 										<key>history</key>
 										<array>
 											<string>7D8D6F5511DF63E800099F67</string>
@@ -335,8 +338,6 @@
 											<string>7D1B4C2F11E2198F006665CE</string>
 											<string>7D1B4C3011E2198F006665CE</string>
 											<string>7D1B4CC811E23C7B006665CE</string>
-											<string>7D1B4CCA11E23C7B006665CE</string>
-											<string>7D1B4D0411E33D97006665CE</string>
 											<string>7D103FE211E9455000124DBD</string>
 											<string>7D103FE711E9471D00124DBD</string>
 											<string>7D10400E11E94B3800124DBD</string>
@@ -360,8 +361,10 @@
 											<string>7D2F407B11F4656E002C22E0</string>
 											<string>7D2F408F11F70084002C22E0</string>
 											<string>7D2F409011F70084002C22E0</string>
-											<string>7D2F40AE11F707F5002C22E0</string>
-											<string>7D2F40AF11F707F5002C22E0</string>
+											<string>7D2F40BE11F9A37F002C22E0</string>
+											<string>7D2F40BF11F9A37F002C22E0</string>
+											<string>7D2F40C611F9A53A002C22E0</string>
+											<string>7D2F40C711F9A53A002C22E0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -375,7 +378,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1182, 777}}</string>
 								<key>RubberWindowFrame</key>
-								<string>2 55 1390 823 0 0 1440 878 </string>
+								<string>0 55 1390 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -395,7 +398,7 @@
 								<key>Frame</key>
 								<string>{{0, 782}, {1182, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>2 55 1390 823 0 0 1440 878 </string>
+								<string>0 55 1390 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -561,13 +564,13 @@
 	<array>
 		<string>7D2F408911F4656E002C22E0</string>
 		<string>7D2F408A11F4656E002C22E0</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
 		<string>/Users/ndemick/iPhone/Nonograms/Nonograms.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
-	<string>2 55 1390 823 0 0 1440 878 </string>
+	<string>0 55 1390 823 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -893,6 +896,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -938,7 +943,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

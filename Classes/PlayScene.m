@@ -45,10 +45,6 @@
 		// Set the width of puzzle blocks
 		blockSize = 20;
 		
-		// Current position of the cursor
-		currentColumn = 1;
-		currentRow = 10;
-		
 		// Init variables used to keep track of correct/incorrect guesses
 		hits = misses = 0;
 		
@@ -96,13 +92,24 @@
 		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
 		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
 		
+		// Get details regarding how large the level is (e.g. 10x10 or 5x5)
+		puzzleSize = tileMap.mapSize.width;
+		
+		// Current position of the cursor
+		currentColumn = 1;
+		currentRow = puzzleSize;
+		
+		// Update sprite positions based on row/column variables
+		[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
+		[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
+		
 		// Init block status array
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++)
+		for (int i = 0; i < puzzleSize; i++)
+			for (int j = 0; j < puzzleSize; j++)
 				blockStatus[i][j] = 0;		// Unmarked, unfilled
 		
 		// Create "clue" labels in arrays for rows and columns
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < puzzleSize; i++)
 		{
 			// Create new label; set position/color/aliasing values
 			verticalClues[i] = [CCLabel labelWithString:@"0\n" dimensions:CGSizeMake(25, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
@@ -127,11 +134,11 @@
 		NSString *cluesTextHoriz = @"";
 		NSString *cluesTextVert = @"";
 
-		for (int i = 0; i < 10; i++) 
+		for (int i = 0; i < puzzleSize; i++) 
 		{
 			cluesTextHoriz = @"";
 			cluesTextVert = @"";
-			for (int j = 0; j < 10; j++) 
+			for (int j = 0; j < puzzleSize; j++) 
 			{
 				// Horizontal clues (for rows)
 				if ([tileMapLayer tileGIDAt:ccp(j, i)] == 1)
@@ -179,11 +186,11 @@
 			// Add the text to the label objects
 			if ([cluesTextHoriz length] > 0)
 			{
-				[horizontalClues[9 - i] setString:cluesTextHoriz];
+				[horizontalClues[(puzzleSize - 1) - i] setString:cluesTextHoriz];
 			}
 			else 
 			{
-				[horizontalClues[9 - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				[horizontalClues[(puzzleSize - 1) - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
 			}
 
 			
@@ -280,9 +287,9 @@
 			}
 			
 			// array[x + y*size] === array[x][y]
-			for (int row = 9; row >= 0; row--)
+			for (int row = puzzleSize - 1; row >= 0; row--)
 			{
-				for (int col = 0; col < 10; col++)
+				for (int col = 0; col < puzzleSize; col++)
 				{
 					// Assign value to the 2D array the game uses
 					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(col + row * 10)] intValue];
@@ -313,7 +320,7 @@
 				}
 			}
 			
-			for (int j = 1; j <= 10; j++)
+			for (int j = 1; j <= puzzleSize; j++)
 			{
 				// Set fading for completed clues
 				int columnTotal = 0;
@@ -322,7 +329,7 @@
 				int rowTotal = 0;
 				int filledRowTotal = 0;
 				
-				for (int i = 0; i < 10; i++) 
+				for (int i = 0; i < puzzleSize; i++) 
 				{
 					if (blockStatus[i][j - 1] == FILLED) filledColumnTotal++;
 					if ([tileMapLayer tileGIDAt:ccp(j - 1, 9 - i)] == 1) columnTotal++;
@@ -540,9 +547,9 @@
 		currentColumn = (cursorPoint.x - 110) / blockSize + 1;
 		
 		// Enforce positions in grid
-		if (currentRow > 10) currentRow = 10;
+		if (currentRow > puzzleSize) currentRow = puzzleSize;
 		if (currentRow < 1) currentRow = 1;
-		if (currentColumn > 10) currentColumn = 10;
+		if (currentColumn > puzzleSize) currentColumn = puzzleSize;
 		if (currentColumn < 1) currentColumn = 1;
 		
 		// If the cursor has changed rows
@@ -654,7 +661,7 @@
 {
 	// If the tile at the current location is a filled in tile...
 	// The tilemap's y-coords are inverse of the iphone coords, so invert it
-	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
+	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, puzzleSize - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 	{
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playSFX)
@@ -693,13 +700,13 @@
 		int rowTotal = 0;
 		int filledRowTotal = 0;
 		
-		for (int i = 0; i < 10; i++) 
+		for (int i = 0; i < puzzleSize; i++) 
 		{
 			if (blockStatus[i][currentColumn - 1] == FILLED) filledColumnTotal++;
-			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)] == 1) columnTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;
 			
 			if (blockStatus[currentRow - 1][i] == FILLED) filledRowTotal++;
-			if ([tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] == 1) rowTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(i, puzzleSize - currentRow)] == 1) rowTotal++;
 		}
 		
 		//NSLog(@"Filled vs. total in column: %i, %i", filledColumnTotal, columnTotal);
