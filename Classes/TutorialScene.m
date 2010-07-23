@@ -258,7 +258,7 @@
 		
 		// Play music if allowed
 		if ([GameDataManager sharedManager].playMusic)
-			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"play.mp3"];
 	}
 	return self;
 }
