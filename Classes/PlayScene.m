@@ -94,10 +94,10 @@
 		
 		// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 		puzzleSize = tileMap.mapSize.width;
-		
-		// Current position of the cursor
+
+		// Current position of the cursor - always upper left
 		currentColumn = 1;
-		currentRow = puzzleSize;
+		currentRow = 10;
 		
 		// Update sprite positions based on row/column variables
 		[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
@@ -117,9 +117,9 @@
 			[verticalClues[i] setColor:ccc3(0,0,0)];
 			[verticalClues[i].texture setAliasTexParameters];
 			[self addChild:verticalClues[i] z:3];
-			
+		
 			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(100, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
-			[horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i))];
+			[horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i) + ((10 - puzzleSize) * blockSize))];	// Bizarre placement here corrects for smaller than 10x10 grids
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
 			[self addChild:horizontalClues[i] z:3];
@@ -547,8 +547,8 @@
 		currentColumn = (cursorPoint.x - 110) / blockSize + 1;
 		
 		// Enforce positions in grid
-		if (currentRow > puzzleSize) currentRow = puzzleSize;
-		if (currentRow < 1) currentRow = 1;
+		if (currentRow > 10) currentRow = 10;
+		if (currentRow < 11 - puzzleSize) currentRow = 11 - puzzleSize;
 		if (currentColumn > puzzleSize) currentColumn = puzzleSize;
 		if (currentColumn < 1) currentColumn = 1;
 		
@@ -661,7 +661,7 @@
 {
 	// If the tile at the current location is a filled in tile...
 	// The tilemap's y-coords are inverse of the iphone coords, so invert it
-	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, puzzleSize - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
+	if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 10 - currentRow)] == 1 && blockStatus[currentRow - 1][currentColumn - 1] != FILLED)
 	{
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playSFX)
@@ -703,10 +703,10 @@
 		for (int i = 0; i < puzzleSize; i++) 
 		{
 			if (blockStatus[i][currentColumn - 1] == FILLED) filledColumnTotal++;
-			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;	// Y value here WAS (10 - 1) - i; changed to reflect variable puzzle size
 			
 			if (blockStatus[currentRow - 1][i] == FILLED) filledRowTotal++;
-			if ([tileMapLayer tileGIDAt:ccp(i, puzzleSize - currentRow)] == 1) rowTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] == 1) rowTotal++;
 		}
 		
 		//NSLog(@"Filled vs. total in column: %i, %i", filledColumnTotal, columnTotal);
@@ -774,14 +774,21 @@
 		
 		[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
 		
+		// Update GameState singleton
+		[GameState sharedGameState].misses = misses;
+		
 		if (minutesLeft < 0)
 		{
 			minutesLeft = 0;
 			secondsLeft = 0;
+			
+			// Update time labels
+			[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
+			[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
+			
+			// Go directly to jail! Do not pass Go, do not collect $200!
+			[self lostGame];
 		}
-		
-		// Update GameState singleton
-		[GameState sharedGameState].misses = misses;
 		
 		// Update time labels
 		[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
