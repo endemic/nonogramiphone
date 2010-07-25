@@ -48,18 +48,8 @@
 		// Init variables used to keep track of correct/incorrect guesses
 		hits = misses = 0;
 		
+		// Inits a variable that helps remove over-sensitive double-taps
 		actionOnPreviousBlock = FALSE;
-		
-		// Init horizontal "cursor" highlight
-		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
-		[horizontalHighlight setPosition:ccp(160, 240)];
-		[self addChild:horizontalHighlight z:3];
-		
-		// Init vertical "cursor" highlight
-		verticalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
-		[verticalHighlight setPosition:ccp(120, 200)];
-		[verticalHighlight setRotation:90.0];
-		[self addChild:verticalHighlight z:3];
 		
 		// Set up buttons to control mark/fill
 		CCMenuItem *markButton = [CCMenuItemImage itemFromNormalImage:@"markButton.png" selectedImage:@"markButtonSelected.png" target:self selector:@selector(changeTapActionToMark:)];
@@ -94,7 +84,34 @@
 		
 		// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 		puzzleSize = tileMap.mapSize.width;
+		
+		// If smaller puzzle, show blockout overlay to signify that part of the larger grid is blank
+		if (puzzleSize == 5) 
+		{
+			CCSprite *blockoutOverlay = [CCSprite spriteWithFile:@"blockoutOverlay2.png"];
+			[blockoutOverlay setPosition:ccp(160, 200)];
+			[self addChild:blockoutOverlay z:1];
+			
+			// User smaller highlight bars
+			horizontalHighlight = [CCSprite spriteWithFile:@"highlightSmall.png"];
+			verticalHighlight = [CCSprite spriteWithFile:@"highlightSmall.png"];
+		}
+		else 
+		{
+			horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
+			verticalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
+		}
 
+		
+		// Init horizontal "cursor" highlight
+		[horizontalHighlight setPosition:ccp(160, 240)];
+		[self addChild:horizontalHighlight z:3];
+		
+		// Init vertical "cursor" highlight
+		[verticalHighlight setPosition:ccp(120, 200)];
+		[verticalHighlight setRotation:90.0];
+		[self addChild:verticalHighlight z:3];
+		
 		// Current position of the cursor - always upper left
 		currentColumn = 1;
 		currentRow = 10;
