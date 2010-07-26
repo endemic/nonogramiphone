@@ -4,11 +4,67 @@
 <array>
 	<dict>
 		<key>difficulty</key>
-		<string>Easy</string>
+		<string>Beginner</string>
 		<key>title</key>
-		<string>Musical Note</string>
+		<string>Triangle</string>
 		<key>filename</key>
-		<string>test.tmx</string>
+		<string>triangle-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Mask</string>
+		<key>filename</key>
+		<string>mask-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Puzzle Piece</string>
+		<key>filename</key>
+		<string>puzzlePiece-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Pinwheel</string>
+		<key>filename</key>
+		<string>pinwheel-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Top Hat</string>
+		<key>filename</key>
+		<string>tophat-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Ladder</string>
+		<key>filename</key>
+		<string>ladder-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Anchor</string>
+		<key>filename</key>
+		<string>anchor-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Die</string>
+		<key>filename</key>
+		<string>die-easy.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -17,6 +73,14 @@
 		<string>Exclamation Mark</string>
 		<key>filename</key>
 		<string>exclamationMark.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Musical Note</string>
+		<key>filename</key>
+		<string>note.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -33,14 +97,6 @@
 		<string>Mobile Phone</string>
 		<key>filename</key>
 		<string>mobilePhone.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Puzzle Piece</string>
-		<key>filename</key>
-		<string>puzzlePiece.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -81,22 +137,6 @@
 		<string>Envelope</string>
 		<key>filename</key>
 		<string>envelope.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Medal</string>
-		<key>filename</key>
-		<string>medal.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Calendar</string>
-		<key>filename</key>
-		<string>calendar.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -302,14 +342,6 @@
 		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
-		<string>Beginner Badge</string>
-		<key>filename</key>
-		<string>beginnerBadge.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
 		<string>Mouse</string>
 		<key>filename</key>
 		<string>mouse.tmx</string>
@@ -326,6 +358,14 @@
 		<key>difficulty</key>
 		<string>Medium</string>
 		<key>title</key>
+		<string>Calendar</string>
+		<key>filename</key>
+		<string>calendar.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
 		<string>Footprints</string>
 		<key>filename</key>
 		<string>footprints.tmx</string>
@@ -337,22 +377,6 @@
 		<string>Candle</string>
 		<key>filename</key>
 		<string>candle.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Neko</string>
-		<key>filename</key>
-		<string>neko.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Die</string>
-		<key>filename</key>
-		<string>die.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -385,14 +409,6 @@
 		<string>Portrait</string>
 		<key>filename</key>
 		<string>portrait.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Shopping Cart</string>
-		<key>filename</key>
-		<string>shoppingCart.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -694,14 +710,6 @@
 		<key>difficulty</key>
 		<string>Hard</string>
 		<key>title</key>
-		<string>Anchor</string>
-		<key>filename</key>
-		<string>anchor.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
 		<string>Flag</string>
 		<key>filename</key>
 		<string>flag.tmx</string>
@@ -769,14 +777,6 @@
 		<string>Pencil</string>
 		<key>filename</key>
 		<string>pencil.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Graph</string>
-		<key>filename</key>
-		<string>graph.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>

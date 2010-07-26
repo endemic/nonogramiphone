@@ -316,7 +316,8 @@
 					{
 						// Draw "mini-map"
 						CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-						[b setPosition:ccp(16 + (col + 1) * 8, 256 + (row + 1) * 8)];
+						int offset = ((10 - puzzleSize) * 8) / 2;
+						[b setPosition:ccp(16 + ((col + 1) * 8) + offset, 256 + ((row + 1) * 8) - offset)];
 						[self addChild:b z:2];
 						
 						// Draw filled tiles
@@ -348,8 +349,9 @@
 				
 				for (int i = 0; i < puzzleSize; i++) 
 				{
-					if (blockStatus[i][j - 1] == FILLED) filledColumnTotal++;
-					if ([tileMapLayer tileGIDAt:ccp(j - 1, 9 - i)] == 1) columnTotal++;
+					//if (blockStatus[i][j - 1] == FILLED) filledColumnTotal++;
+					if (blockStatus[i + (10 - puzzleSize)][j - 1] == FILLED) filledColumnTotal++;
+					if ([tileMapLayer tileGIDAt:ccp(j - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;
 					
 					if (blockStatus[j - 1][i] == FILLED) filledRowTotal++;
 					if ([tileMapLayer tileGIDAt:ccp(i, 10 - j)] == 1) rowTotal++;
@@ -701,7 +703,8 @@
 
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-		[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
+		int offset = ((10 - puzzleSize) * 8) / 2;
+		[b setPosition:ccp(16 + (currentColumn * 8) + offset, 256 + (currentRow * 8) - offset)];	// New position
 		[self addChild:b z:2];
 		
 		// Increment correct guess counter
@@ -719,20 +722,17 @@
 		
 		for (int i = 0; i < puzzleSize; i++) 
 		{
-			if (blockStatus[i][currentColumn - 1] == FILLED) filledColumnTotal++;
+			if (blockStatus[i + (10 - puzzleSize)][currentColumn - 1] == FILLED) filledColumnTotal++;
 			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;	// Y value here WAS (10 - 1) - i; changed to reflect variable puzzle size
 			
 			if (blockStatus[currentRow - 1][i] == FILLED) filledRowTotal++;
 			if ([tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] == 1) rowTotal++;
 		}
 		
-		//NSLog(@"Filled vs. total in column: %i, %i", filledColumnTotal, columnTotal);
-		//NSLog(@"Filled vs. total in row: %i, %i", filledRowTotal, rowTotal);
-		
 		if (rowTotal == filledRowTotal)
-			[horizontalClues[currentRow - 1] setColor:ccc3(66, 66, 66)];
+			[horizontalClues[(currentRow - 1) - (10 - puzzleSize)] setColor:ccc3(66, 66, 66)];
 		
-		if (columnTotal == filledColumnTotal) 
+		if (columnTotal == filledColumnTotal)
 			[verticalClues[currentColumn - 1] setColor:ccc3(66, 66, 66)];
 		
 		// Update "% complete" number
@@ -853,10 +853,13 @@
 	// Draw finished puzzle image on to overlay
 	CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
 	
+	// Offset the position of the displayed level sprite - the following logic is arcane, don't try to understand it
+	int offset = ((10 - tileMap.mapSize.width) * (blockSize / 2)) / 2;
+	
 	// Try to shrink by half
 	[tileMap setScale:0.5];
 	
-	[tileMap setPosition:ccp(100, 125)];
+	[tileMap setPosition:ccp(100 + offset, 125 + offset)];
 	[overlay addChild:tileMap];
 	
 	// Write image title on to overlay

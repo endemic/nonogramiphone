@@ -111,53 +111,6 @@
 		for (int j = 0, k = [[GameDataManager sharedManager].levels count]; j < k; j++)
 			[levelDisplayList insertObject:[NSNumber numberWithInt:0] atIndex:j];
 		
-		//NSLog(@"Total number of levels: %i", [[GameDataManager sharedManager].levels count]);
-		
-		/*
-		// Set up sprites that show level details
-		for (int i = 0; i < [[GameDataManager sharedManager].levels count]; i++) 
-		{
-			CCSprite *s;
-
-			if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
-			{
-				// Load question mark
-				s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
-			}
-			else 
-			{
-				s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
-				
-				// Load puzzle image
-				// Load level!
-				NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:i];
-				
-				// Draw on to overlay
-				CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
-				[tileMap setScale:0.75];
-				[tileMap setPosition:ccp(25, 35)];
-				[s addChild:tileMap];
-				
-				// Draw title
-				CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
-				[label setColor:ccc3(00, 00, 00)];
-				[label setPosition:ccp(100, 15)];
-				[label.texture setAliasTexParameters];
-				[s addChild:label];
-			}
-
-			if (i < [GameDataManager sharedManager].currentLevel - 1)
-				[s setPosition:ccp(-140, 300)];	// Position to the left
-			else if (i == [GameDataManager sharedManager].currentLevel - 1)
-				[s setPosition:ccp(160, 300)];	// Current one is in the middle of the screen
-			else
-				[s setPosition:ccp(440, 300)];	// Offscreen for the rest
-
-			[self addChild:s];
-			[levelDisplayList insertObject:s atIndex:i];
-		}
-		*/
-		
 		// New code
 		int i = [GameDataManager sharedManager].currentLevel - 1;
 		CCSprite *s;
@@ -177,8 +130,12 @@
 			
 			// Draw puzzle on to overlay
 			CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+			
+			// Get details regarding how large the level is (e.g. 10x10 or 5x5)
+			int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
+
 			[tileMap setScale:0.75];
-			[tileMap setPosition:ccp(25, 35)];
+			[tileMap setPosition:ccp(25 + offset, 35 + offset)];
 			[s addChild:tileMap];
 			
 			// Draw title
@@ -271,8 +228,12 @@
 				
 				// Draw puzzle on to overlay
 				CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+				
+				// Get details regarding how large the level is (e.g. 10x10 or 5x5)
+				int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
+				
 				[tileMap setScale:0.75];
-				[tileMap setPosition:ccp(25, 35)];
+				[tileMap setPosition:ccp(25 + offset, 35 + offset)];
 				[s addChild:tileMap];
 				
 				// Draw title
@@ -349,8 +310,13 @@
 				
 				// Draw puzzle on to overlay
 				CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:[level objectForKey:@"filename"]];
+				
+				// Get details regarding how large the level is (e.g. 10x10 or 5x5)
+				int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
+				NSLog(@"Offset: %i", offset);
+				
 				[tileMap setScale:0.75];
-				[tileMap setPosition:ccp(25, 35)];
+				[tileMap setPosition:ccp(25 + offset, 35 + offset)];
 				[s addChild:tileMap];
 				
 				// Draw title

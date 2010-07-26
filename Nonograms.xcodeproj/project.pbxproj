@@ -342,6 +342,19 @@
 		7D9BFDA411620A1400182B25 /* slkscr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDA311620A1400182B25 /* slkscr.png */; };
 		7D9BFDEA116356B600182B25 /* fillIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDE8116356B600182B25 /* fillIcon.png */; };
 		7D9BFDEB116356B600182B25 /* markIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BFDE9116356B600182B25 /* markIcon.png */; };
+		7DA53E6A11FD9ABE001D336F /* bowtie-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E5D11FD9ABE001D336F /* bowtie-easy.tmx */; };
+		7DA53E6B11FD9ABE001D336F /* anchor-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E5E11FD9ABE001D336F /* anchor-easy.tmx */; };
+		7DA53E6C11FD9ABE001D336F /* die-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E5F11FD9ABE001D336F /* die-easy.tmx */; };
+		7DA53E6D11FD9ABE001D336F /* checkerboard-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6011FD9ABE001D336F /* checkerboard-easy.tmx */; };
+		7DA53E6E11FD9ABE001D336F /* candy-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6111FD9ABE001D336F /* candy-easy.tmx */; };
+		7DA53E6F11FD9ABE001D336F /* ladder-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6211FD9ABE001D336F /* ladder-easy.tmx */; };
+		7DA53E7011FD9ABE001D336F /* ghost-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6311FD9ABE001D336F /* ghost-easy.tmx */; };
+		7DA53E7111FD9ABE001D336F /* puzzlePiece-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6411FD9ABE001D336F /* puzzlePiece-easy.tmx */; };
+		7DA53E7211FD9ABE001D336F /* pinwheel-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6511FD9ABE001D336F /* pinwheel-easy.tmx */; };
+		7DA53E7311FD9ABE001D336F /* mask-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6611FD9ABE001D336F /* mask-easy.tmx */; };
+		7DA53E7411FD9ABE001D336F /* tophat-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6711FD9ABE001D336F /* tophat-easy.tmx */; };
+		7DA53E7511FD9ABE001D336F /* spring-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6811FD9ABE001D336F /* spring-easy.tmx */; };
+		7DA53E7611FD9ABE001D336F /* triangle-easy.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA53E6911FD9ABE001D336F /* triangle-easy.tmx */; };
 		7DBB10B1115CB6780083D073 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B0115CB6780083D073 /* TutorialScene.m */; };
 		7DBB10B6115CBAE90083D073 /* PlayScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */; };
 		7DBB10C0115CBCC90083D073 /* playBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBB10BF115CBCC90083D073 /* playBackground.png */; };
@@ -751,6 +764,19 @@
 		7D9BFDA311620A1400182B25 /* slkscr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slkscr.png; sourceTree = "<group>"; };
 		7D9BFDE8116356B600182B25 /* fillIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fillIcon.png; sourceTree = "<group>"; };
 		7D9BFDE9116356B600182B25 /* markIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markIcon.png; sourceTree = "<group>"; };
+		7DA53E5D11FD9ABE001D336F /* bowtie-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "bowtie-easy.tmx"; path = "Maps/bowtie-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E5E11FD9ABE001D336F /* anchor-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "anchor-easy.tmx"; path = "Maps/anchor-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E5F11FD9ABE001D336F /* die-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "die-easy.tmx"; path = "Maps/die-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6011FD9ABE001D336F /* checkerboard-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "checkerboard-easy.tmx"; path = "Maps/checkerboard-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6111FD9ABE001D336F /* candy-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "candy-easy.tmx"; path = "Maps/candy-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6211FD9ABE001D336F /* ladder-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "ladder-easy.tmx"; path = "Maps/ladder-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6311FD9ABE001D336F /* ghost-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "ghost-easy.tmx"; path = "Maps/ghost-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6411FD9ABE001D336F /* puzzlePiece-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "puzzlePiece-easy.tmx"; path = "Maps/puzzlePiece-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6511FD9ABE001D336F /* pinwheel-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "pinwheel-easy.tmx"; path = "Maps/pinwheel-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6611FD9ABE001D336F /* mask-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "mask-easy.tmx"; path = "Maps/mask-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6711FD9ABE001D336F /* tophat-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "tophat-easy.tmx"; path = "Maps/tophat-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6811FD9ABE001D336F /* spring-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "spring-easy.tmx"; path = "Maps/spring-easy.tmx"; sourceTree = "<group>"; };
+		7DA53E6911FD9ABE001D336F /* triangle-easy.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "triangle-easy.tmx"; path = "Maps/triangle-easy.tmx"; sourceTree = "<group>"; };
 		7DBB10AF115CB6780083D073 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		7DBB10B0115CB6780083D073 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
 		7DBB10B4115CBAE90083D073 /* PlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayScene.h; sourceTree = "<group>"; };
@@ -986,6 +1012,19 @@
 		38EC2501116A7DE600358D1B /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				7DA53E5D11FD9ABE001D336F /* bowtie-easy.tmx */,
+				7DA53E5E11FD9ABE001D336F /* anchor-easy.tmx */,
+				7DA53E5F11FD9ABE001D336F /* die-easy.tmx */,
+				7DA53E6011FD9ABE001D336F /* checkerboard-easy.tmx */,
+				7DA53E6111FD9ABE001D336F /* candy-easy.tmx */,
+				7DA53E6211FD9ABE001D336F /* ladder-easy.tmx */,
+				7DA53E6311FD9ABE001D336F /* ghost-easy.tmx */,
+				7DA53E6411FD9ABE001D336F /* puzzlePiece-easy.tmx */,
+				7DA53E6511FD9ABE001D336F /* pinwheel-easy.tmx */,
+				7DA53E6611FD9ABE001D336F /* mask-easy.tmx */,
+				7DA53E6711FD9ABE001D336F /* tophat-easy.tmx */,
+				7DA53E6811FD9ABE001D336F /* spring-easy.tmx */,
+				7DA53E6911FD9ABE001D336F /* triangle-easy.tmx */,
 				7D41E72811B669FB0091257A /* calendar.tmx */,
 				7D41E72911B669FB0091257A /* clipboard.tmx */,
 				7D41E72A11B669FB0091257A /* flag.tmx */,
@@ -1763,6 +1802,19 @@
 				7D638C3611FCD2F100FC4907 /* blockoutOverlay1.png in Resources */,
 				7D638C3711FCD2F100FC4907 /* blockoutOverlay2.png in Resources */,
 				7D638C4911FCD5EF00FC4907 /* highlightSmall.png in Resources */,
+				7DA53E6A11FD9ABE001D336F /* bowtie-easy.tmx in Resources */,
+				7DA53E6B11FD9ABE001D336F /* anchor-easy.tmx in Resources */,
+				7DA53E6C11FD9ABE001D336F /* die-easy.tmx in Resources */,
+				7DA53E6D11FD9ABE001D336F /* checkerboard-easy.tmx in Resources */,
+				7DA53E6E11FD9ABE001D336F /* candy-easy.tmx in Resources */,
+				7DA53E6F11FD9ABE001D336F /* ladder-easy.tmx in Resources */,
+				7DA53E7011FD9ABE001D336F /* ghost-easy.tmx in Resources */,
+				7DA53E7111FD9ABE001D336F /* puzzlePiece-easy.tmx in Resources */,
+				7DA53E7211FD9ABE001D336F /* pinwheel-easy.tmx in Resources */,
+				7DA53E7311FD9ABE001D336F /* mask-easy.tmx in Resources */,
+				7DA53E7411FD9ABE001D336F /* tophat-easy.tmx in Resources */,
+				7DA53E7511FD9ABE001D336F /* spring-easy.tmx in Resources */,
+				7DA53E7611FD9ABE001D336F /* triangle-easy.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
