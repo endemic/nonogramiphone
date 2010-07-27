@@ -46,25 +46,10 @@
 		// Set the width of puzzle blocks
 		blockSize = 20;
 		
-		// Current position of the cursor
-		currentColumn = 1;
-		currentRow = 10;
-		
 		// Init variables used to keep track of correct/incorrect guesses
 		hits = misses = 0;
 		
 		actionOnPreviousBlock = FALSE;
-		
-		// Init horizontal "cursor" highlight
-		horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
-		[horizontalHighlight setPosition:ccp(160, 240)];
-		[self addChild:horizontalHighlight z:3];
-		
-		// Init vertical "cursor" highlight
-		verticalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
-		[verticalHighlight setPosition:ccp(120, 200)];
-		[verticalHighlight setRotation:90.0];
-		[self addChild:verticalHighlight z:3];
 		
 		// Set up buttons to control mark/fill
 		CCMenuItem *markButton = [CCMenuItemImage itemFromNormalImage:@"markButton.png" selectedImage:@"markButtonSelected.png" target:self selector:@selector(changeTapActionToMark:)];
@@ -77,17 +62,63 @@
 		tapAction = MARK;	// 0 for mark, 1 for fill
 		[self addChild:actionsMenu z:3];
 		
+		// Set up "pause" button
+		CCMenuItem *pauseButton = [CCMenuItemImage itemFromNormalImage:@"pauseButton.png" selectedImage:@"pauseButtonOn.png" target:self selector:@selector(pause:)];
+		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
+		[pauseMenu setPosition:ccp(25, 415)];
+		[self addChild:pauseMenu z:3];
+		
 		// Load tile map for this particular puzzle
 		CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tutorial.tmx"];
 		tileMapLayer = [[tileMap layerNamed:@"Layer 1"] retain];
 		
+		// Get details regarding how large the level is (e.g. 10x10 or 5x5)
+		puzzleSize = tileMap.mapSize.width;
+		
+		
+		NSLog(@"Puzzle size: %i", puzzleSize);
+		
+		// If smaller puzzle, show blockout overlay to signify that part of the larger grid is blank
+		if (puzzleSize == 5) 
+		{
+			CCSprite *blockoutOverlay = [CCSprite spriteWithFile:@"blockoutOverlay2.png"];
+			[blockoutOverlay setPosition:ccp(160, 200)];
+			[self addChild:blockoutOverlay z:1];
+			
+			// User smaller highlight bars
+			horizontalHighlight = [CCSprite spriteWithFile:@"highlightSmall.png"];
+			verticalHighlight = [CCSprite spriteWithFile:@"highlightSmall.png"];
+		}
+		else 
+		{
+			horizontalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
+			verticalHighlight = [CCSprite spriteWithFile:@"highlight.png"];
+		}
+		
+		// Init horizontal "cursor" highlight
+		[horizontalHighlight setPosition:ccp(160, 240)];
+		[self addChild:horizontalHighlight z:3];
+		
+		// Init vertical "cursor" highlight
+		[verticalHighlight setPosition:ccp(120, 200)];
+		[verticalHighlight setRotation:90.0];
+		[self addChild:verticalHighlight z:3];
+		
+		// Current position of the cursor
+		currentColumn = 1;
+		currentRow = 10;
+		
+		// Update sprite positions based on row/column variables
+		[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
+		[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
+		
 		// Init block status array
-		for (int i = 0; i < 10; i++)
-			for (int j = 0; j < 10; j++)
+		for (int i = 0; i < puzzleSize; i++)
+			for (int j = 0; j < puzzleSize; j++)
 				blockStatus[i][j] = 0;		// Unmarked, unfilled
 		
 		// Create "clue" labels in arrays for rows and columns
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < puzzleSize; i++)
 		{
 			// Create new label; set position/color/aliasing values
 			verticalClues[i] = [CCLabel labelWithString:@"0\n" dimensions:CGSizeMake(25, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
@@ -97,7 +128,7 @@
 			[self addChild:verticalClues[i] z:3];
 			
 			horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(100, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
-			[horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i))];
+			[horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i) + ((10 - puzzleSize) * blockSize))];	// Bizarre placement here corrects for smaller than 10x10 grids
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
 			[self addChild:horizontalClues[i] z:3];
@@ -112,11 +143,11 @@
 		NSString *cluesTextHoriz = @"";
 		NSString *cluesTextVert = @"";
 		
-		for (int i = 0; i < 10; i++) 
+		for (int i = 0; i < puzzleSize; i++) 
 		{
 			cluesTextHoriz = @"";
 			cluesTextVert = @"";
-			for (int j = 0; j < 10; j++) 
+			for (int j = 0; j < puzzleSize; j++) 
 			{
 				// Horizontal clues (for rows)
 				if ([tileMapLayer tileGIDAt:ccp(j, i)] == 1)
@@ -164,12 +195,13 @@
 			// Add the text to the label objects
 			if ([cluesTextHoriz length] > 0)
 			{
-				[horizontalClues[9 - i] setString:cluesTextHoriz];
+				[horizontalClues[(puzzleSize - 1) - i] setString:cluesTextHoriz];
 			}
 			else 
 			{
-				[horizontalClues[9 - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				[horizontalClues[(puzzleSize - 1) - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
 			}
+			
 			
 			if ([cluesTextVert length] > 0)
 			{
@@ -183,6 +215,49 @@
 				[verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
 			}
 		}
+		
+		// Set up % complete label
+		percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:48];
+		[percentComplete setPosition:ccp(260, 422)];
+		[percentComplete.texture setAliasTexParameters];
+		[percentComplete setColor:ccc3(00, 00, 00)];
+		[self addChild:percentComplete z:3];
+		
+		// Set up timer labels/internal variables/scheduler
+		[self schedule:@selector(timer:) interval:1.0];
+		
+		minutesLeft = 30;
+		secondsLeft = 0;
+		
+		minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
+		[minutesLeftLabel setPosition:ccp(110, 395)];
+		[minutesLeftLabel setColor:ccc3(00, 00, 00)];
+		[minutesLeftLabel.texture setAliasTexParameters];
+		[self addChild:minutesLeftLabel z:3];
+		
+		secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
+		[secondsLeftLabel setPosition:ccp(110, 355)];
+		[secondsLeftLabel setColor:ccc3(00, 00, 00)];
+		[secondsLeftLabel.texture setAliasTexParameters];
+		[self addChild:secondsLeftLabel z:3];
+		
+		// Not paused to start with!
+		paused = FALSE;
+		
+		// Set up pause overlay
+		pauseOverlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
+		[pauseOverlay.texture setAliasTexParameters];
+		[pauseOverlay setPosition:ccp(-150, 200)];	// It's off screen to the right
+		[self addChild:pauseOverlay z:4];
+		
+		// Add buttons to overlay
+		CCMenuItem *resumeButton = [CCMenuItemImage itemFromNormalImage:@"resumeButton.png" selectedImage:@"resumeButtonOn.png" disabledImage:@"resumeButton.png" target:self selector:@selector(resume:)];
+		CCMenuItem *quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" disabledImage:@"quitButton.png" target:self selector:@selector(quit:)];
+		
+		CCMenu *overlayMenu = [CCMenu menuWithItems:resumeButton, quitButton, nil];		// Create container menu object
+		[overlayMenu alignItemsVertically];
+		[overlayMenu setPosition:ccp(150, 50)];
+		[pauseOverlay addChild:overlayMenu];
 		
 		// Init graphic to highlight certain rows/colums the tutorial text is referencing
 		tutorialHighlight = [CCSprite spriteWithFile:@"tutorialRowColumnHighlight.png"];
@@ -261,6 +336,76 @@
 			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"play.mp3"];
 	}
 	return self;
+}
+
+-(void) timer:(ccTime)dt
+{
+	secondsLeft--;
+	if (minutesLeft == 0 && secondsLeft < 0)
+	{
+		// So '00:00' is correctly shown instead of 00:-01
+		secondsLeft = 0;
+		
+		// Game over
+		[self lostGame];
+	}
+	else if (secondsLeft < 0)
+	{
+		minutesLeft--;
+		secondsLeft = 59;
+	}
+	// Update labels for time
+	[minutesLeftLabel setString:[NSString stringWithFormat:@"%02d", minutesLeft]];
+	[secondsLeftLabel setString:[NSString stringWithFormat:@"%02d", secondsLeft]];
+}
+
+-(void) pause:(id)sender
+{
+	// Do nothing if the game is already paused
+	if (!paused)
+	{
+		// Move "paused" overlay on top of puzzle, and unschedule the timer
+		[self unschedule:@selector(timer:)];
+		
+		// Make sure the overlay is on the left side of the screen
+		[pauseOverlay setPosition:ccp(-150, 200)];
+		
+		// Move pause overlay to 160, 200
+		[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+		
+		// Hide cursor highlights
+		horizontalHighlight.visible = FALSE;
+		verticalHighlight.visible = FALSE;
+		
+		paused = TRUE;
+	}
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+}
+
+- (void)resume:(id)sender
+{
+	// Do nothing if game is not paused
+	if (paused)
+	{
+		// Remove "paused" overlay and reschedule timer
+		[self schedule:@selector(timer:) interval:1.0];
+		
+		// Move pause overlay off screen to the right, then reset position offscreen left
+		[pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(470, 200)]];
+		
+		// Show cursor highlights
+		horizontalHighlight.visible = TRUE;
+		verticalHighlight.visible = TRUE;
+		
+		paused = FALSE;
+	}
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 }
 
 - (void)changeTapActionToMark:(id)sender
@@ -358,8 +503,8 @@
 			
 			// Enforce positions in grid
 			if (currentRow > 10) currentRow = 10;
-			if (currentRow < 1) currentRow = 1;
-			if (currentColumn > 10) currentColumn = 10;
+			if (currentRow < 11 - puzzleSize) currentRow = 11 - puzzleSize;
+			if (currentColumn > puzzleSize) currentColumn = puzzleSize;
 			if (currentColumn < 1) currentColumn = 1;
 			
 			// If the cursor has changed rows
@@ -533,17 +678,19 @@
 		if ([GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"hit.wav"];
 		
-		// Add a "filled" block to the grid
+		// Draw a "filled" block to the puzzle grid
 		blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
 		[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
 		[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 		[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
+		
+		// Update "status" 2D array
 		blockStatus[currentRow - 1][currentColumn - 1] = FILLED;
 		
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
 		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-		//[b setPosition:ccp(216 + currentColumn * 8, 365 + currentRow * 8)];	// Old position
-		[b setPosition:ccp(16 + currentColumn * 8, 256 + currentRow * 8)];	// New position
+		int offset = ((10 - puzzleSize) * 8) / 2;
+		[b setPosition:ccp(16 + (currentColumn * 8) + offset, 256 + (currentRow * 8) - offset)];	// New position
 		[self addChild:b z:2];
 		
 		// Increment correct guess counter
@@ -556,20 +703,23 @@
 		int rowTotal = 0;
 		int filledRowTotal = 0;
 		
-		for (int i = 0; i < 10; i++) 
+		for (int i = 0; i < puzzleSize; i++) 
 		{
-			if (blockStatus[i][currentColumn - 1] == FILLED) filledColumnTotal++;
-			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, 9 - i)] == 1) columnTotal++;
+			if (blockStatus[i + (10 - puzzleSize)][currentColumn - 1] == FILLED) filledColumnTotal++;
+			if ([tileMapLayer tileGIDAt:ccp(currentColumn - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;	// Y value here WAS (10 - 1) - i; changed to reflect variable puzzle size
 			
 			if (blockStatus[currentRow - 1][i] == FILLED) filledRowTotal++;
 			if ([tileMapLayer tileGIDAt:ccp(i, 10 - currentRow)] == 1) rowTotal++;
 		}
 		
 		if (rowTotal == filledRowTotal)
-			[horizontalClues[currentRow - 1] setColor:ccc3(66, 66, 66)];
+			[horizontalClues[(currentRow - 1) - (10 - puzzleSize)] setColor:ccc3(66, 66, 66)];
 		
-		if (columnTotal == filledColumnTotal) 
+		if (columnTotal == filledColumnTotal)
 			[verticalClues[currentColumn - 1] setColor:ccc3(66, 66, 66)];
+		
+		// Update "% complete" number
+		[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
 		
 		// Win condition
 		if (hits == totalBlocksInPuzzle) 
@@ -623,6 +773,9 @@
 
 - (void)wonGame
 {
+	paused = TRUE;
+	[self unschedule:@selector(timer:)];
+	
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;
 	verticalHighlight.visible = FALSE;
@@ -643,10 +796,13 @@
 	// Draw finished puzzle image on to overlay
 	CCTMXTiledMap *tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tutorial.tmx"];
 	
+	// Offset the position of the displayed level sprite - the following logic is arcane, don't try to understand it
+	int offset = ((10 - tileMap.mapSize.width) * (blockSize / 2)) / 2;
+	
 	// Try to shrink by half
 	[tileMap setScale:0.5];
 	
-	[tileMap setPosition:ccp(100, 125)];
+	[tileMap setPosition:ccp(100 + offset, 125 + offset)];
 	[overlay addChild:tileMap];
 	
 	// Write image title on to overlay
@@ -669,6 +825,61 @@
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playMusic)
 		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"winJingle.mp3" loop:FALSE];
+}
+
+- (void)lostGame
+{
+	paused = TRUE;
+	[self unschedule:@selector(timer:)];
+	
+	// Hide cursor highlights
+	horizontalHighlight.visible = FALSE;
+	verticalHighlight.visible = FALSE;
+	
+	// Create/move "you win" overlay down on screen
+	CCSprite *overlay = [CCSprite spriteWithFile:@"loseOverlay.png"];
+	[overlay.texture setAliasTexParameters];
+	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
+	[self addChild:overlay z:4];
+	
+	// Add buttons to overlay
+	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToTitle::)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retryButton.png" selectedImage:@"retryButtonOn.png" target:self selector:@selector(retryLevel:)];
+	
+	CCMenu *overlayMenu = [CCMenu menuWithItems:retryButton, continueButton, nil];		// Create container menu object
+	[overlayMenu alignItemsVertically];
+	[overlayMenu setPosition:ccp(150, 50)];
+	[overlay addChild:overlayMenu];
+	
+	// Move overlay downwards over play area
+	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playMusic)
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"loseJingle.mp3" loop:FALSE];
+}
+
+- (void)retryLevel:(id)sender
+{
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Just reload the scene
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TutorialScene node]]];
+}
+
+- (void)quit:(id)sender
+{
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	// Make sure background music is stopped before going to next scene
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	
+	// Return to level select scene
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }
 
 - (void)goToTitleScreen:(id)sender

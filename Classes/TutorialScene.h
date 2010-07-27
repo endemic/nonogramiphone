@@ -33,6 +33,9 @@
 	// Size (in pixels) of each square in the puzzle
 	int blockSize;
 	
+	// Size (in tiles) of the puzzle
+	int puzzleSize;
+	
 	// Values that store where the player cursor currently is in the puzzle
 	int currentRow, currentColumn;
 	
@@ -60,6 +63,19 @@
 	// To keep track of a win condition
 	int totalBlocksInPuzzle, hits, misses;
 	
+	// Shows % complete of puzzle
+	CCLabel *percentComplete;
+	
+	// For timer calculation/display
+	int minutesLeft, secondsLeft;
+	CCLabel *minutesLeftLabel, *secondsLeftLabel;
+	
+	// Used to obscure the puzzle when the game is paused
+	CCSprite *pauseOverlay;
+	
+	// Determines if the game is paused or playing
+	bool paused;
+	
 	// Label for instructive text =]
 	CCLabel *instructions;
 	
@@ -82,6 +98,8 @@
 - (void)markBlock;
 - (void)fillBlock;
 - (void)wonGame;
+- (void)lostGame;
+- (void)retryLevel:(id)sender;
 
 @end
 

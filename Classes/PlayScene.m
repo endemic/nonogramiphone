@@ -777,15 +777,15 @@
 		{
 			case 1: 
 				minutesLeft -= 2;
-				[label setString:@"-2"];
+				[label setString:@"-2 minutes"];
 			break;
 			case 2: 
 				minutesLeft -= 4;
-				[label setString:@"-4"];
+				[label setString:@"-4 minutes"];
 			break;
 			default: 
 				minutesLeft -= 8; 
-				[label setString:@"-8"];
+				[label setString:@"-8 minutes"];
 			break;
 		}
 		
