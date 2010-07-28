@@ -86,7 +86,10 @@
 	int step;
 	
 	// Tutorial text
-	NSString *text[30];
+	NSArray *text;
+	
+	// White background for instructional text
+	CCSprite *textBackground;
 	
 	// Lots of crap to try to fix cursor sensitivity issue
 	int tapCount;

@@ -38,7 +38,7 @@
 		[self setIsTouchEnabled:YES];
 		
 		// Add background to center of scene
-		CCSprite *background = [CCSprite spriteWithFile:@"tutorialBackground.png"];
+		CCSprite *background = [CCSprite spriteWithFile:@"playBackground.png"];
 		[background.texture setAliasTexParameters];	// Make aliased
 		[background setPosition:ccp(160, 240)];
 		[self addChild:background z:0];
@@ -74,10 +74,7 @@
 		
 		// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 		puzzleSize = tileMap.mapSize.width;
-		
-		
-		NSLog(@"Puzzle size: %i", puzzleSize);
-		
+	
 		// If smaller puzzle, show blockout overlay to signify that part of the larger grid is blank
 		if (puzzleSize == 5) 
 		{
@@ -268,68 +265,43 @@
 		// Initialize "steps" counter
 		step = 0;
 		
-		text[0] = @"Welcome to Nonogram Madness! Nonograms are logic puzzles where you fill the correct blocks to create a picture!";
-		text[1] = @"Use your finger to move the crosshairs around the puzzle. They determine where you mark or fill a block.";
-		text[2] = @"The numbers in the rows and columns above the square grid are the clues you'll use to solve each puzzle.";
-		text[3] = @"Each number represents the quantity of filled blocks that are in a row or column.";
-		
-		// Flash highlight over col #1
-		text[4] = @"The '0' in the first column means that there are no filled blocks in that column; it's completely blank.";
-		text[5] = @"Marking blocks is a good way to remember which blocks are blank. Move your cursor crosshairs all the way to the left.";
-		text[6] = @"Double tap to mark one of the blocks. You can double tap then move the cursor to auto-fill. Mark all the blocks in this column.";
-		
-		// Flash highlight over col #2
-		text[7] = @"Look at the next column. The '10' means all the blocks are filled in. Move your cursor over to this column.";
-		text[8] = @"Change the action of your cursor from 'mark' to 'fill' by clicking the button in the lower left corner of the screen.";
-		text[9] = @"Now go ahead and fill this whole column. You can double tap each block, or double tap then drag the cursor to auto-fill.";
-		
-		// Flash highlight over col #3
-		text[10] = @"The third column is the same as the second. Go ahead and fill in all the blocks in this column as well.";
-		
-		// Flash highlight over col #4
-		text[11] = @"The fourth column is tricky. There are two groups of two filled in blocks. But they could be anywhere in the column.";
-		text[12] = @"Instead of guessing the placement of the blocks, let's try to solve some rows instead.";
-		
-		// Flash highlight over row #1
-		text[13] = @"Look at the first row. The clue says it has eight filled blocks, and we've already got a start on it.";
-		text[14] = @"Go ahead and finish filling in eight sequential blocks in this row. The second row is the same, so do that one too.";
-		
-		// Flash highlight over row #3
-		text[15] = @"Notice how when you finish a row or column, the clues fade in color? That helps you know you've finished a section.";
-		text[16] = @"The third row is already done. But let's mark the empty blocks so that we know those blocks are blank.";
-		
-		// Flash highlight over row #4
-		text[17] = @"Go ahead and do the same to the fourth row.";
-		
-		// Flash highlight over rows #4-7
-		text[18] = @"The next four rows are a problem. They're not finished, but we don't know exactly where to fill in blocks. Skip them for now.";
-		
-		// Flash highlight over rows #9 and #10
-		text[19] = @"The last two rows are the same as the first two: eight sequential blocks filled in. You know the drill.";
-		
-		// Flash highlight over column #9
-		text[20] = @"Let's go back to trying to solve columns. Take a look at the second to last column.";
-		text[21] = @"You've filled in the first two blocks, but there are another six in the column.";
-		text[22] = @"This time, you can start at the bottom and work your way upwards. Fill in six blocks starting at the bottom of the column.";
-		
-		// Flash highlight over column #8
-		text[23] = @"Go ahead and do the same for the previous column, since it has the same clues.";
-		
-		// Flash highlight over rows #5 & 6
-		text[24] = @"Almost done! There are only two rows left. See if you can complete them on your own. Good luck!";
+		text = [[NSArray arrayWithObjects:
+				@"Welcome to Nonogram Madness! Nonograms are logic puzzles where you fill blocks in a grid to make a picture.",
+				@"You choose which block to fill by using the orange cursor, which you move with your finger.",
+				@"Touch anywhere near the puzzle and move your finger to move the cursor. Why don't you try it out?",
+				@"To complete each puzzle, you'll use the numbers above each column and to the left of each row.",
+				@"Those numbers show how many blocks are 'filled' in each row or column.",
+				// Highlight over col #1 (step 5)
+				@"For example, the '5' in the far left column means each block in that column is filled in.",	// 5
+				@"To fill a block, click the 'fill' button at the bottom of the screen.",
+				@"Now, move your cursor over to the far left column and double-tap.",
+				@"Fill in that entire column. Try double-tapping then moving your finger. Don't worry if you make a mistake.",
+				// Highlight over col #2 (step 9)
+				@"The next column is tricky. There are two filled blocks somewhere in this column.",	// 9
+				@"'1 1' means there is a single filled block, a space of one or more, then another filled block.",
+				@"However, we haven't completed enough of the puzzle to know where those filled blocks are.",
+				// Highlight over row #1
+				@"",	// 12
+				
+				nil] retain];
+
+		// Set up background for instructions
+		textBackground = [CCSprite spriteWithFile:@"textBackground.png"];
+		[textBackground setPosition:ccp(161, 95)];
+		[self addChild:textBackground z:2];
 		
 		// Set up tutorial instruction label
-		instructions = [CCLabel labelWithString:text[step] dimensions:CGSizeMake(290, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
+		instructions = [CCLabel labelWithString:[text objectAtIndex:step] dimensions:CGSizeMake(290, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
 		[instructions setColor:ccc3(00, 00, 00)];
 		[instructions.texture setAliasTexParameters];
-		[instructions setPosition:ccp(160, 415)];
-		[self addChild:instructions];
+		[instructions setPosition:ccp(160, 95)];
+		[self addChild:instructions z:3];
 		
 		actions = [CCLabel labelWithString:@"(tap to continue)" dimensions:CGSizeMake(200, 16) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
 		[actions setColor:ccc3(00, 00, 00)];
 		[actions.texture setAliasTexParameters];
-		[actions setPosition:ccp(205, 370)];
-		[self addChild:actions];
+		[actions setPosition:ccp(205, 53)];
+		[self addChild:actions z:3];
 		
 		// Play music if allowed
 		if ([GameDataManager sharedManager].playMusic)
@@ -377,6 +349,9 @@
 		horizontalHighlight.visible = FALSE;
 		verticalHighlight.visible = FALSE;
 		
+		// Hide tutorial text
+		textBackground.visible = FALSE;
+		
 		paused = TRUE;
 	}
 	
@@ -399,6 +374,9 @@
 		// Show cursor highlights
 		horizontalHighlight.visible = TRUE;
 		verticalHighlight.visible = TRUE;
+		
+		// Show tutorial text
+		textBackground.visible = TRUE;
 		
 		paused = FALSE;
 	}
@@ -435,9 +413,9 @@
 	{
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView: [touch view]]];
 		
-		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), currentPoint))
+		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), currentPoint))
 		{
-			// Do nothing if at top of screen
+			// Do nothing if touching the instructional text
 			//NSLog(@"Ignoring starting touch");
 		}
 		else
@@ -481,7 +459,7 @@
 		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
 		
-		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), currentPoint))
+		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), currentPoint))
 		{
 			// Do nothing if at top of screen
 			//NSLog(@"Ignoring movement");
@@ -547,16 +525,16 @@
 		// convert touch coords
 		CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		
-		if (CGRectContainsPoint(CGRectMake(0, 360, 320, 120), endPoint))
+		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), endPoint))
 		{
-			// Advance tutorial text if at top of screen
+			// Advance tutorial text
 			step++;
 			
-			if (step > 24)
+			if (step >= [text count])
 				step = 0;
 			
 			// Update label
-			[instructions setString:text[step]];
+			[instructions setString:[text objectAtIndex:step]];
 			
 			// Perform various actions here based on the step number
 			switch (step) 
@@ -572,7 +550,7 @@
 				//case 6:
 					// Set up highlight
 					[tutorialHighlight setPosition:ccp(120, 200)];
-					[tutorialHighlight setRotation:90.0];		// Rotate vertical since we want to highlight a column
+					[tutorialHighlight setScaleY:5];
 					
 					// [CCBlink actionWithDuration:600 blinks:300]
 					
@@ -625,7 +603,7 @@
 					break;
 			}
 			
-			if (step == 24)
+			if (step == [text count] - 1)
 				[actions setString:@"(tap to read again)"];
 			else if (step == 0)
 				[actions setString:@"(tap to continue)"];

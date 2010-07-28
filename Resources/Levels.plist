@@ -22,22 +22,6 @@
 		<key>difficulty</key>
 		<string>Beginner</string>
 		<key>title</key>
-		<string>Puzzle Piece</string>
-		<key>filename</key>
-		<string>puzzlePiece-easy.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Beginner</string>
-		<key>title</key>
-		<string>Pinwheel</string>
-		<key>filename</key>
-		<string>pinwheel-easy.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Beginner</string>
-		<key>title</key>
 		<string>Top Hat</string>
 		<key>filename</key>
 		<string>tophat-easy.tmx</string>
@@ -54,17 +38,33 @@
 		<key>difficulty</key>
 		<string>Beginner</string>
 		<key>title</key>
-		<string>Anchor</string>
+		<string>Die</string>
 		<key>filename</key>
-		<string>anchor-easy.tmx</string>
+		<string>die-easy.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
 		<string>Beginner</string>
 		<key>title</key>
-		<string>Die</string>
+		<string>Puzzle Piece</string>
 		<key>filename</key>
-		<string>die-easy.tmx</string>
+		<string>puzzlePiece-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Pinwheel</string>
+		<key>filename</key>
+		<string>pinwheel-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Anchor</string>
+		<key>filename</key>
+		<string>anchor-easy.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
