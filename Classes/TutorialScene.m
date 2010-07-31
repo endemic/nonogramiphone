@@ -264,7 +264,7 @@
 		
 		// Initialize "steps" counter
 		step = 0;
-		
+
 		text = [[NSArray arrayWithObjects:
 				@"Welcome to Nonogram Madness! Nonograms are logic puzzles where you fill blocks in a grid to make a picture.",
 				@"You choose which block to fill by using the orange cursor, which you move with your finger.",
@@ -273,16 +273,35 @@
 				@"Those numbers show how many blocks are 'filled' in each row or column.",
 				// Highlight over col #1 (step 5)
 				@"For example, the '5' in the far left column means each block in that column is filled in.",	// 5
-				@"To fill a block, click the 'fill' button at the bottom of the screen.",
+				@"To fill a block, click the \n'fill' button at the bottom of the screen.",
 				@"Now, move your cursor over to the far left column and double-tap.",
 				@"Fill in that entire column. Try double-tapping then moving your finger. Don't worry if you make a mistake.",
 				// Highlight over col #2 (step 9)
 				@"The next column is tricky. There are two filled blocks somewhere in this column.",	// 9
 				@"'1 1' means there is a single filled block, a space of one or more, then another filled block.",
 				@"However, we haven't completed enough of the puzzle to know where those filled blocks are.",
+				// Highlight over col #3 (step 12)
+				@"Let's move on to the third column. The clue tells us there are three single filled blocks.",	// 12
+				@"Since the column is only 5 blocks tall, we can easily figure out where the filled blocks should go.",
+				@"There has to be a gap of at least one empty block between each group of filled ones.",
+				@"Go ahead and fill in the three blocks with a gap between each one in this column.",
+				// Highlight over col #4 (16)
+				@"The same idea applies to the next. The clue '1 3' with one gap fills the whole five blocks in the column.",	// 16
+				@"Go ahead and fill in the first block, skip a block, then fill in the remaining three.",
+				// Highlight over col #5
+				@"The last column has a clue of '0', which means no blocks are filled there.",	// 18
+				@"To help remember which blocks are intentionally blank, you can 'mark' them.",
+				@"Tap the 'mark' button at the bottom of the screen, then double tap each block in this column.",
+				@"It's just a helpful reminder that you don't need to worry about those blocks.",
 				// Highlight over row #1
-				@"",	// 12
-				
+				@"Making progress! Let's move on to the rows. You can see the first row is almost complete",	// 22
+				@"You have three of the four blocks in this row filled in already. Go ahead and fill the last one.",
+				// Highlight over row #2
+				@"The second row is already done. If you like, you can \n'mark' the remaining blocks in this row.",	// 24
+				// Highlight over rows #3-4
+				@"Both these rows are completed as well. Go ahead and 'mark' the blank blocks in these two rows.",	// 25
+				// Highlight over row #5
+				@"Last row! I'm sure you can figure this one out.",	// 26
 				nil] retain];
 
 		// Set up background for instructions
@@ -351,6 +370,8 @@
 		
 		// Hide tutorial text
 		textBackground.visible = FALSE;
+		instructions.visible = FALSE;
+		actions.visible = FALSE;
 		
 		paused = TRUE;
 	}
@@ -377,6 +398,8 @@
 		
 		// Show tutorial text
 		textBackground.visible = TRUE;
+		instructions.visible = TRUE;
+		actions.visible = TRUE;
 		
 		paused = FALSE;
 	}
@@ -413,31 +436,23 @@
 	{
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView: [touch view]]];
 		
-		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), currentPoint))
+		startPoint = previousPoint = currentPoint;
+		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
+		
+		tapCount = touch.tapCount;
+		if (justMovedCursor)
 		{
-			// Do nothing if touching the instructional text
-			//NSLog(@"Ignoring starting touch");
+			tapCount--;
+			justMovedCursor = FALSE;
 		}
-		else
+		
+		// If player has double tapped, try to place a mark/fill in the new block
+		if (tapCount > 1)
 		{
-			startPoint = previousPoint = currentPoint;
-			cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
-			
-			tapCount = touch.tapCount;
-			if (justMovedCursor)
+			switch (tapAction) 
 			{
-				tapCount--;
-				justMovedCursor = FALSE;
-			}
-			
-			// If player has double tapped, try to place a mark/fill in the new block
-			if (tapCount > 1)
-			{
-				switch (tapAction) 
-				{
-					case FILL: [self fillBlock]; break;
-					case MARK: [self markBlock]; break;
-				}
+				case FILL: [self fillBlock]; break;
+				case MARK: [self markBlock]; break;
 			}
 		}
 	}
@@ -458,60 +473,52 @@
 		
 		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
 		CGPoint currentPoint = [[CCDirector sharedDirector] convertToGL:location];
+
+		// Gets relative movement
+		//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
 		
-		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), currentPoint))
+		// Gets relative movement - slowed down by 10% - maybe easier to move the cursor?
+		CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.90, (currentPoint.y - previousPoint.y) * 0.90);
+		
+		// Add to current point the cursor is at
+		cursorPoint = ccpAdd(cursorPoint, relativeMovement);
+		
+		// Get row/column values - 50 & 110 is the blank space on the x/y axes 
+		currentRow = (cursorPoint.y - 50) / blockSize + 1;
+		currentColumn = (cursorPoint.x - 110) / blockSize + 1;
+		
+		// Enforce positions in grid
+		if (currentRow > 10) currentRow = 10;
+		if (currentRow < 11 - puzzleSize) currentRow = 11 - puzzleSize;
+		if (currentColumn > puzzleSize) currentColumn = puzzleSize;
+		if (currentColumn < 1) currentColumn = 1;
+		
+		// If the cursor has changed rows
+		if ((previousRow != currentRow || previousColumn != currentColumn))
 		{
-			// Do nothing if at top of screen
-			//NSLog(@"Ignoring movement");
-		}
-		else 
-		{
-			// Gets relative movement
-			//CGPoint relativeMovement = ccp(currentPoint.x - previousPoint.x, currentPoint.y - previousPoint.y);
+			justMovedCursor = TRUE;
 			
-			// Gets relative movement - slowed down by 10% - maybe easier to move the cursor?
-			CGPoint relativeMovement = ccp((currentPoint.x - previousPoint.x) * 0.90, (currentPoint.y - previousPoint.y) * 0.90);
+			// Update sprite positions based on row/column variables
+			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
+			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
 			
-			// Add to current point the cursor is at
-			cursorPoint = ccpAdd(cursorPoint, relativeMovement);
+			// Play SFX if allowed
+			if ([GameDataManager sharedManager].playSFX)
+				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
 			
-			// Get row/column values - 50 & 110 is the blank space on the x/y axes 
-			currentRow = (cursorPoint.y - 50) / blockSize + 1;
-			currentColumn = (cursorPoint.x - 110) / blockSize + 1;
-			
-			// Enforce positions in grid
-			if (currentRow > 10) currentRow = 10;
-			if (currentRow < 11 - puzzleSize) currentRow = 11 - puzzleSize;
-			if (currentColumn > puzzleSize) currentColumn = puzzleSize;
-			if (currentColumn < 1) currentColumn = 1;
-			
-			// If the cursor has changed rows
-			if ((previousRow != currentRow || previousColumn != currentColumn))
+			// If player has double tapped, try to place a mark/fill in the new block
+			if (touch.tapCount > 1) 
 			{
-				justMovedCursor = TRUE;
-				
-				// Update sprite positions based on row/column variables
-				[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
-				[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
-				
-				// Play SFX if allowed
-				if ([GameDataManager sharedManager].playSFX)
-					[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
-				
-				// If player has double tapped, try to place a mark/fill in the new block
-				if (touch.tapCount > 1) 
+				switch (tapAction) 
 				{
-					switch (tapAction) 
-					{
-						case FILL: [self fillBlock]; break;
-						case MARK: [self markBlock]; break;
-					}
+					case FILL: [self fillBlock]; break;
+					case MARK: [self markBlock]; break;
 				}
 			}
-			
-			// Set the previous point value to be what we used as current
-			previousPoint = currentPoint;
 		}
+		
+		// Set the previous point value to be what we used as current
+		previousPoint = currentPoint;
 	}
 }
 
@@ -525,7 +532,8 @@
 		// convert touch coords
 		CGPoint endPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		
-		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), endPoint))
+		// Only advance tutorial text if both start/end touches are within the text box bounds
+		if (CGRectContainsPoint(CGRectMake(10, 44, 300, 100), startPoint) && CGRectContainsPoint(CGRectMake(10, 44, 300, 100), endPoint))
 		{
 			// Advance tutorial text
 			step++;
@@ -544,12 +552,11 @@
 					[tutorialHighlight stopAllActions];
 					[tutorialHighlight setOpacity:0];
 					tutorialHighlight.scaleY = 1;
+					tutorialHighlight.rotation = 0;
 					break;
-				case 4:
-				//case 5:
-				//case 6:
+				case 5:
 					// Set up highlight
-					[tutorialHighlight setPosition:ccp(120, 200)];
+					[tutorialHighlight setPosition:ccp(120, 200)];	// Col #1
 					[tutorialHighlight setScaleY:5];
 					
 					// [CCBlink actionWithDuration:600 blinks:300]
@@ -557,47 +564,30 @@
 					// Move & apply action
 					[tutorialHighlight runAction:[CCFadeTo actionWithDuration:0.5 opacity:64]];
 					break;
-				case 7:
-				//case 8:
-				//case 9:
+				case 9:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(140, 200)]];	// Col #2
 					break;
-				case 10:
+				case 12:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];	// Col #3
 					break;
-				case 11:
-				//case 12:
+				case 16:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(180, 200)]];	// Col #4
 					break;
-				case 13:
-				//case 14:
-					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:0], [CCMoveTo actionWithDuration:0.5 position:ccp(160, 240)], nil]];	// Row #1
-					break;
-				case 15:
-				//case 16:
-					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];		// Row #3
-					break;
-				case 17:
-					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160,180)]];		// Row #4
-					break;
 				case 18:
-					// Make it 4x high, rows #5-8
-					[tutorialHighlight runAction:[CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(160,130)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:4], nil]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(200, 200)]];	// Col #5
 					break;
-				case 19:
-					// Scale 2x
-					[tutorialHighlight runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:2], [CCMoveTo actionWithDuration:0.5 position:ccp(160,70)], nil]];
-					break;
-				case 20:
-					// Rotate back to original position, scale back to normal, move to column #9
-					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:90], [CCMoveTo actionWithDuration:0.5 position:ccp(280,200)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:1], nil]];
-					break;
-				case 23:
-					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(260,200)]];		// Column #8
+				case 22:
+					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:90], [CCMoveTo actionWithDuration:0.5 position:ccp(160, 240)], nil]];	// Row #1
 					break;
 				case 24:
-					// Rows #5-6,  Make 2x high
-					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:180], [CCMoveTo actionWithDuration:0.5 position:ccp(160,150)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:2], nil]];
+					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 220)]];		// Row #2
+					break;
+				case 25:
+					[tutorialHighlight runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.5 scaleX:2 scaleY:5], [CCMoveTo actionWithDuration:0.5 position:ccp(160,190)], nil]];	// Rows #3-4
+					break;
+				case 26:
+					// Scale back to normal, move over row #5
+					[tutorialHighlight runAction:[CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(160,160)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:5], nil]];
 					break;
 				default:
 					break;
@@ -758,6 +748,11 @@
 	horizontalHighlight.visible = FALSE;
 	verticalHighlight.visible = FALSE;
 	
+	// Hide tutorial text
+	textBackground.visible = FALSE;
+	instructions.visible = FALSE;
+	actions.visible = FALSE;
+	
 	// Create/move "you win" overlay down on screen
 	CCSprite *overlay = [CCSprite spriteWithFile:@"winOverlay.png"];
 	[overlay.texture setAliasTexParameters];
@@ -809,6 +804,11 @@
 {
 	paused = TRUE;
 	[self unschedule:@selector(timer:)];
+	
+	// Hide tutorial text
+	textBackground.visible = FALSE;
+	instructions.visible = FALSE;
+	actions.visible = FALSE;
 	
 	// Hide cursor highlights
 	horizontalHighlight.visible = FALSE;

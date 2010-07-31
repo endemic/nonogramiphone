@@ -46,9 +46,9 @@
 		<key>difficulty</key>
 		<string>Beginner</string>
 		<key>title</key>
-		<string>Puzzle Piece</string>
+		<string>Checkers Board</string>
 		<key>filename</key>
-		<string>puzzlePiece-easy.tmx</string>
+		<string>checkerboard-easy.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -68,6 +68,22 @@
 	</dict>
 	<dict>
 		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Bow Tie</string>
+		<key>filename</key>
+		<string>bowtie-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Ghost</string>
+		<key>filename</key>
+		<string>ghost-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
 		<string>Easy</string>
 		<key>title</key>
 		<string>Exclamation Mark</string>
@@ -81,14 +97,6 @@
 		<string>Musical Note</string>
 		<key>filename</key>
 		<string>note.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Easy</string>
-		<key>title</key>
-		<string>Sad</string>
-		<key>filename</key>
-		<string>sad.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -129,6 +137,14 @@
 		<string>Right Arrow</string>
 		<key>filename</key>
 		<string>leftArrow.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Sad</string>
+		<key>filename</key>
+		<string>sad.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -281,14 +297,6 @@
 		<string>TV</string>
 		<key>filename</key>
 		<string>tv.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Medium</string>
-		<key>title</key>
-		<string>Ghost</string>
-		<key>filename</key>
-		<string>ghost.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -793,14 +801,6 @@
 		<string>Cursor</string>
 		<key>filename</key>
 		<string>mouseCursor.tmx</string>
-	</dict>
-	<dict>
-		<key>difficulty</key>
-		<string>Hard</string>
-		<key>title</key>
-		<string>Cat</string>
-		<key>filename</key>
-		<string>cat.tmx</string>
 	</dict>
 </array>
 </plist>

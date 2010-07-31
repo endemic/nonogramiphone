@@ -304,14 +304,14 @@
 			}
 			
 			// array[x + y*size] === array[x][y]
-			for (int row = puzzleSize - 1; row >= 0; row--)
+			//for (int row = puzzleSize - 1; row >= 0; row--)
+			for (int row = 9; row >= 10 - puzzleSize; row--)
 			{
 				for (int col = 0; col < puzzleSize; col++)
 				{
 					// Assign value to the 2D array the game uses
 					blockStatus[row][col] = [[[GameState sharedGameState].blockStatus objectAtIndex:(col + row * 10)] intValue];
-					//NSLog(@"blockStatus[%i][%i] == %i (from index %i)", row, col, blockStatus[row][col], (col + row * 10));
-					
+
 					if (blockStatus[row][col] == FILLED)
 					{
 						// Draw "mini-map"
@@ -349,12 +349,13 @@
 				
 				for (int i = 0; i < puzzleSize; i++) 
 				{
-					//if (blockStatus[i][j - 1] == FILLED) filledColumnTotal++;
+					//NSLog(@"Checking at position %i, %i", j - 1, (puzzleSize - 1) - i);
 					if (blockStatus[i + (10 - puzzleSize)][j - 1] == FILLED) filledColumnTotal++;
 					if ([tileMapLayer tileGIDAt:ccp(j - 1, (puzzleSize - 1) - i)] == 1) columnTotal++;
 					
+					//NSLog(@"Checking at position %i, %i", i, puzzleSize - j);
 					if (blockStatus[j - 1][i] == FILLED) filledRowTotal++;
-					if ([tileMapLayer tileGIDAt:ccp(i, 10 - j)] == 1) rowTotal++;
+					if ([tileMapLayer tileGIDAt:ccp(i, puzzleSize - j)] == 1) rowTotal++;
 				}
 				
 				if (rowTotal == filledRowTotal)
