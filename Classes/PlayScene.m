@@ -51,6 +51,9 @@
 		// Inits a variable that helps remove over-sensitive double-taps
 		actionOnPreviousBlock = FALSE;
 		
+		// Variables that help "lock" movement into either vertical or horizontal movement
+		lockedRow = lockedColumn = -1;
+		
 		// Set up buttons to control mark/fill
 		CCMenuItem *markButton = [CCMenuItemImage itemFromNormalImage:@"markButton.png" selectedImage:@"markButtonSelected.png" target:self selector:@selector(changeTapActionToMark:)];
 		CCMenuItem *fillButton = [CCMenuItemImage itemFromNormalImage:@"fillButton.png" selectedImage:@"fillButtonSelected.png" target:self selector:@selector(changeTapActionToFill:)];
@@ -509,7 +512,6 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	// IDEA: Store the grid location of the first touch; if it doesn't equal the second, then ignore
 	// Figure out initial location of touch
 	UITouch *touch = [touches anyObject];
 	
@@ -524,6 +526,8 @@
 			tapCount--;
 			justMovedCursor = FALSE;
 		}
+		
+		lockedRow = lockedColumn = -1;
 		
 		// If player has double tapped, try to place a mark/fill in the new block
 		if (tapCount > 1)
@@ -572,6 +576,10 @@
 		if (currentColumn > puzzleSize) currentColumn = puzzleSize;
 		if (currentColumn < 1) currentColumn = 1;
 		
+		// If user has started moving cursor sideways or downward, and has been locked to that movement, enforce here
+		if (lockedColumn != -1) currentColumn = lockedColumn;
+		if (lockedRow != -1) currentRow = lockedRow;
+		
 		// If the cursor has changed rows
 		if ((previousRow != currentRow || previousColumn != currentColumn))
 		{
@@ -590,8 +598,23 @@
 				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
 			
 			// If player has double tapped, try to place a mark/fill in the new block
-			if (touch.tapCount > 1) 
+			if (tapCount > 1) 
 			{
+				// Lock into a specific row or column
+				if (lockedRow == -1 && lockedColumn == -1)
+				{
+					if (previousRow != currentRow) 
+					{
+						NSLog(@"Locking into row %i", currentRow);
+						lockedRow = currentRow;
+					}
+					else if (previousColumn != currentColumn)
+					{
+						NSLog(@"Locking into column %i", currentColumn);
+						lockedColumn = currentColumn;
+					}
+				}
+
 				switch (tapAction) 
 				{
 					case FILL: [self fillBlock]; break;
@@ -751,6 +774,10 @@
 	}
 	else
 	{
+		// Decrement tap count, so that user doesn't keep filling in wrong blocks
+		tapCount--;
+		justMovedCursor = TRUE;
+		
 		// Take off time here, as well as play sfx of some kind and shake the screen
 		id shake = [CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:0.1];
 		

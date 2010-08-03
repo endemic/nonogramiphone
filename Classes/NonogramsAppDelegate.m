@@ -106,11 +106,23 @@
 	[[CCTextureCache sharedTextureCache] removeUnusedTextures];
 }
 
+/*
+ * App enters background on iOS4
+ */
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+	// Save current level
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setInteger:[GameDataManager sharedManager].currentLevel forKey:@"currentLevel"];
+	[defaults synchronize];
+}
+
 - (void)applicationWillTerminate:(UIApplication *)application 
 {
 	// Save current level
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setInteger:[GameDataManager sharedManager].currentLevel forKey:@"currentLevel"];
+	[defaults synchronize];
 	
 	// Save game state
 	[GameState saveState];

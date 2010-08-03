@@ -507,7 +507,7 @@
 				[[SimpleAudioEngine sharedEngine] playEffect:@"cursorMove.wav"];
 			
 			// If player has double tapped, try to place a mark/fill in the new block
-			if (touch.tapCount > 1) 
+			if (tapCount > 1) 
 			{
 				switch (tapAction) 
 				{
@@ -701,6 +701,10 @@
 	}
 	else
 	{
+		// Decrement tap count, so that user doesn't keep filling in wrong blocks
+		tapCount--;
+		justMovedCursor = TRUE;
+		
 		// Take off time here, as well as play sfx of some kind and shake the screen
 		id shake = [CCShaky3D actionWithRange:3 shakeZ:FALSE grid:ccg(5, 5) duration:0.1];
 		
