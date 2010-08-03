@@ -186,6 +186,8 @@
 			7DA736D712082DFE00DC69E8 /* PBXTextBookmark */ = 7DA736D712082DFE00DC69E8 /* PBXTextBookmark */;
 			7DA736DC12082E3100DC69E8 /* PBXTextBookmark */ = 7DA736DC12082E3100DC69E8 /* PBXTextBookmark */;
 			7DA736DD12082E7C00DC69E8 /* PBXTextBookmark */ = 7DA736DD12082E7C00DC69E8 /* PBXTextBookmark */;
+			7DA736E21208C9F300DC69E8 /* PBXTextBookmark */ = 7DA736E21208C9F300DC69E8 /* PBXTextBookmark */;
+			7DA736E31208CA5600DC69E8 /* PBXTextBookmark */ = 7DA736E31208CA5600DC69E8 /* PBXTextBookmark */;
 			7DCAB06711FEED5C002FDF41 = 7DCAB06711FEED5C002FDF41 /* PBXBookmark */;
 			7DCAB08711FEF057002FDF41 = 7DCAB08711FEF057002FDF41 /* PBXTextBookmark */;
 			7DCAB08811FEF057002FDF41 = 7DCAB08811FEF057002FDF41 /* PBXTextBookmark */;
@@ -1040,7 +1042,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 754";
 		rLen = 0;
-		rLoc = 27811;
+		rLoc = 27984;
 		rType = 0;
 		vrLen = 2172;
 		vrLoc = 25699;
@@ -1050,7 +1052,7 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 754";
 		rLen = 113;
-		rLoc = 27738;
+		rLoc = 27911;
 		rType = 0;
 		vrLen = 2172;
 		vrLoc = 25699;
@@ -1170,10 +1172,30 @@
 		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
 		name = "PlayScene.m: 613";
 		rLen = 0;
-		rLoc = 21874;
+		rLoc = 22083;
 		rType = 0;
 		vrLen = 2260;
 		vrLoc = 19664;
+	};
+	7DA736E21208C9F300DC69E8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 612";
+		rLen = 0;
+		rLoc = 21948;
+		rType = 0;
+		vrLen = 2416;
+		vrLoc = 19664;
+	};
+	7DA736E31208CA5600DC69E8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7DBB10B5115CBAE90083D073 /* PlayScene.m */;
+		name = "PlayScene.m: 609";
+		rLen = 0;
+		rLoc = 21771;
+		rType = 0;
+		vrLen = 2062;
+		vrLoc = 20159;
 	};
 	7DB8C29F115BB9520097C084 /* Nonograms */ = {
 		isa = PBXExecutable;
@@ -1246,9 +1268,9 @@
 	};
 	7DBB10B5115CBAE90083D073 /* PlayScene.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1121, 13988}}";
-			sepNavSelRange = "{21874, 0}";
-			sepNavVisRange = "{19664, 2260}";
+			sepNavIntBoundsRect = "{{0, 0}, {1121, 14001}}";
+			sepNavSelRange = "{21771, 0}";
+			sepNavVisRange = "{20159, 2062}";
 		};
 	};
 	7DCAB06711FEED5C002FDF41 /* PBXBookmark */ = {

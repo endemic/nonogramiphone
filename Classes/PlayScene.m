@@ -603,15 +603,17 @@
 				// Lock into a specific row or column
 				if (lockedRow == -1 && lockedColumn == -1)
 				{
+					// Changed rows, which means moving up or down - lock into the current column
 					if (previousRow != currentRow) 
 					{
-						NSLog(@"Locking into row %i", currentRow);
-						lockedRow = currentRow;
+						//NSLog(@"Locking into column %i", currentColumn);
+						lockedColumn = currentColumn;
 					}
+					// Changed columns, which means moving left or right - lock into the current row
 					else if (previousColumn != currentColumn)
 					{
-						NSLog(@"Locking into column %i", currentColumn);
-						lockedColumn = currentColumn;
+						//NSLog(@"Locking into row %i", currentRow);
+						lockedRow = currentRow;
 					}
 				}
 
