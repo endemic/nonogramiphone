@@ -273,35 +273,37 @@
 				@"Those numbers show how many blocks are 'filled' in each row or column.",
 				// Highlight over col #1 (step 5)
 				@"For example, the '5' in the far left column means each block in that column is filled in.",	// 5
-				@"To fill a block, click the \n'fill' button at the bottom of the screen.",
+				@"To fill a block, click the    'fill' button at the bottom of the screen.",
 				@"Now, move your cursor over to the far left column and double-tap.",
 				@"Fill in that entire column. Try double-tapping then moving your finger. Don't worry if you make a mistake.",
-				// Highlight over col #2 (step 9)
-				@"The next column is tricky. There are two filled blocks somewhere in this column.",	// 9
+				@"Mistakes will drain your time limit in normal puzzles, but not here.",
+				// Highlight over col #2 (step 10)
+				@"The next column is tricky. There are two filled blocks somewhere in this column.",	// 10
 				@"'1 1' means there is a single filled block, a space of one or more, then another filled block.",
 				@"However, we haven't completed enough of the puzzle to know where those filled blocks are.",
-				// Highlight over col #3 (step 12)
-				@"Let's move on to the third column. The clue tells us there are three single filled blocks.",	// 12
+				// Highlight over col #3 (step 13)
+				@"Let's move on to the third column. The clue tells us there are three single filled blocks.",	// 13
 				@"Since the column is only 5 blocks tall, we can easily figure out where the filled blocks should go.",
 				@"There has to be a gap of at least one empty block between each group of filled ones.",
 				@"Go ahead and fill in the three blocks with a gap between each one in this column.",
 				// Highlight over col #4 (16)
-				@"The same idea applies to the next. The clue '1 3' with one gap fills the whole five blocks in the column.",	// 16
+				@"The same idea applies to the next. The clue '1 3' with one gap fills the whole five blocks in the column.",	// 17
 				@"Go ahead and fill in the first block, skip a block, then fill in the remaining three.",
 				// Highlight over col #5
-				@"The last column has a clue of '0', which means no blocks are filled there.",	// 18
+				@"The last column has a clue of '0', which means no blocks are filled there.",	// 19
 				@"To help remember which blocks are intentionally blank, you can 'mark' them.",
 				@"Tap the 'mark' button at the bottom of the screen, then double tap each block in this column.",
 				@"It's just a helpful reminder that you don't need to worry about those blocks.",
+				@"You can also remove a mark by double tapping a marked block.",
 				// Highlight over row #1
-				@"Making progress! Let's move on to the rows. You can see the first row is almost complete",	// 22
+				@"Making progress! Let's move on to the rows. You can see the first row is almost complete",	// 24
 				@"You have three of the four blocks in this row filled in already. Go ahead and fill the last one.",
 				// Highlight over row #2
-				@"The second row is already done. If you like, you can \n'mark' the remaining blocks in this row.",	// 24
+				@"The second row is already done. If you like, you can \n'mark' the remaining blocks in this row.",	// 26
 				// Highlight over rows #3-4
-				@"Both these rows are completed as well. Go ahead and 'mark' the blank blocks in these two rows.",	// 25
+				@"Both these rows are completed as well. Go ahead and 'mark' the blank blocks in these two rows.",	// 27
 				// Highlight over row #5
-				@"Last row! I'm sure you can figure this one out.",	// 26
+				@"Last row! I'm sure you can figure this one out.",	// 28
 				nil] retain];
 
 		// Set up background for instructions
@@ -439,6 +441,8 @@
 		startPoint = previousPoint = currentPoint;
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
 		
+		lockedRow = lockedColumn = -1;
+		
 		tapCount = touch.tapCount;
 		if (justMovedCursor)
 		{
@@ -493,11 +497,15 @@
 		if (currentColumn > puzzleSize) currentColumn = puzzleSize;
 		if (currentColumn < 1) currentColumn = 1;
 		
+		// If user has started moving cursor sideways or downward, and has been locked to that movement, enforce here
+		if (lockedColumn != -1) currentColumn = lockedColumn;
+		if (lockedRow != -1) currentRow = lockedRow;
+		
 		// If the cursor has changed rows
 		if ((previousRow != currentRow || previousColumn != currentColumn))
 		{
 			justMovedCursor = TRUE;
-			
+
 			// Update sprite positions based on row/column variables
 			[verticalHighlight setPosition:ccp(currentColumn * blockSize + 110 - (blockSize / 2), verticalHighlight.position.y)];
 			[horizontalHighlight setPosition:ccp(horizontalHighlight.position.x, currentRow * blockSize + 50 - (blockSize / 2))];
@@ -509,6 +517,17 @@
 			// If player has double tapped, try to place a mark/fill in the new block
 			if (tapCount > 1) 
 			{
+				// Lock into a specific row or column
+				if (lockedRow == -1 && lockedColumn == -1)
+				{
+					// Changed rows, which means moving up or down - lock into the current column
+					if (previousRow != currentRow) 
+						lockedColumn = currentColumn;
+					// Changed columns, which means moving left or right - lock into the current row
+					else if (previousColumn != currentColumn)
+						lockedRow = currentRow;
+				}
+				
 				switch (tapAction) 
 				{
 					case FILL: [self fillBlock]; break;
@@ -564,28 +583,28 @@
 					// Move & apply action
 					[tutorialHighlight runAction:[CCFadeTo actionWithDuration:0.5 opacity:64]];
 					break;
-				case 9:
+				case 10:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(140, 200)]];	// Col #2
 					break;
-				case 12:
+				case 13:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];	// Col #3
 					break;
-				case 16:
+				case 17:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(180, 200)]];	// Col #4
 					break;
-				case 18:
+				case 19:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(200, 200)]];	// Col #5
 					break;
-				case 22:
+				case 24:
 					[tutorialHighlight runAction:[CCSequence actions:[CCRotateTo actionWithDuration:0.5 angle:90], [CCMoveTo actionWithDuration:0.5 position:ccp(160, 240)], nil]];	// Row #1
 					break;
-				case 24:
+				case 26:
 					[tutorialHighlight runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 220)]];		// Row #2
 					break;
-				case 25:
+				case 27:
 					[tutorialHighlight runAction:[CCSequence actions:[CCScaleTo actionWithDuration:0.5 scaleX:2 scaleY:5], [CCMoveTo actionWithDuration:0.5 position:ccp(160,190)], nil]];	// Rows #3-4
 					break;
-				case 26:
+				case 28:
 					// Scale back to normal, move over row #5
 					[tutorialHighlight runAction:[CCSequence actions:[CCMoveTo actionWithDuration:0.5 position:ccp(160,160)], [CCScaleTo actionWithDuration:0.5 scaleX:1 scaleY:5], nil]];
 					break;

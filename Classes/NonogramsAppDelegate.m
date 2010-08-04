@@ -115,6 +115,9 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setInteger:[GameDataManager sharedManager].currentLevel forKey:@"currentLevel"];
 	[defaults synchronize];
+	
+	// Save game state
+	[GameState saveState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application 

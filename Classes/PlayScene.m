@@ -51,9 +51,6 @@
 		// Inits a variable that helps remove over-sensitive double-taps
 		actionOnPreviousBlock = FALSE;
 		
-		// Variables that help "lock" movement into either vertical or horizontal movement
-		lockedRow = lockedColumn = -1;
-		
 		// Set up buttons to control mark/fill
 		CCMenuItem *markButton = [CCMenuItemImage itemFromNormalImage:@"markButton.png" selectedImage:@"markButtonSelected.png" target:self selector:@selector(changeTapActionToMark:)];
 		CCMenuItem *fillButton = [CCMenuItemImage itemFromNormalImage:@"fillButton.png" selectedImage:@"fillButtonSelected.png" target:self selector:@selector(changeTapActionToFill:)];

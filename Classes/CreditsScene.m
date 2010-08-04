@@ -34,6 +34,11 @@
 		[self addChild:background z:0];
 		
 		[self setIsTouchEnabled:YES];
+		
+		/**
+		 Art, code & music by Nathan Demick
+		 Special thanks to Andy, Ben, & Andrew.
+		 */
 	}
 	return self;
 }

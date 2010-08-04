@@ -96,6 +96,9 @@
 	
 	// Whether or not the player's cursor moved
 	bool justMovedCursor;
+	
+	// Variables that help "lock" movement into either vertical or horizontal movement
+	int lockedRow, lockedColumn;
 }
 
 - (void)markBlock;
