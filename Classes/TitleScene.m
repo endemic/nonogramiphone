@@ -10,6 +10,7 @@
 #import "OptionsScene.h"
 #import "LevelSelectScene.h"
 #import "TutorialScene.h"
+#import "CreditsScene.h"
 #import "GameDataManager.h"
 
 #import "CocosDenshion.h"
@@ -46,7 +47,31 @@
 		CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton.png"	selectedImage:@"tutorialButtonOn.png" disabledImage:@"tutorialButton.png" target:self selector:@selector(goToTutorial:)];
 		CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButton.png" target:self selector:@selector(goToOptions:)];
 		
-		CCMenu *menu = [CCMenu menuWithItems:playButton, tutorialButton, optionsButton, nil];		// Create container menu object
+		// Determine if player has completed all levels
+		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
+		BOOL showCredits = TRUE;
+		for (int i = 0; i < 100; i++) 
+		{
+			if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
+			{
+				showCredits = FALSE;
+				break;
+			}
+		}
+		
+		// Show "credits" button if all levels have been completed
+		CCMenu *menu;
+		if (showCredits)
+		{
+			CCMenuItem *creditsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButton.png" target:self selector:@selector(goToCredits:)];
+			menu = [CCMenu menuWithItems:playButton, tutorialButton, optionsButton, creditsButton, nil];		// Create container menu object
+		}
+		else 
+		{
+			menu = [CCMenu menuWithItems:playButton, tutorialButton, optionsButton, nil];		// Create container menu object
+		}
+
+			
 		[menu alignItemsVertically];
 		[menu setPosition:ccp(160, 100)];
 		[self addChild:menu	z:1];
@@ -97,6 +122,15 @@
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[OptionsScene node]]];
+}
+
+- (void)goToCredits: (id)sender
+{
+	// Play SFX if allowed
+	if ([GameDataManager sharedManager].playSFX)
+		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
+	
+	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[CreditsScene node]]];
 }
 
 @end

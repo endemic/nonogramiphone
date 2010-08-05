@@ -326,7 +326,7 @@
 		
 		// Play music if allowed
 		if ([GameDataManager sharedManager].playMusic)
-			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"play.mp3"];
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"tutorial.mp3"];
 	}
 	return self;
 }

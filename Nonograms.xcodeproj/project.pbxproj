@@ -399,6 +399,8 @@
 		7DE7C3FA1175C9310047653D /* pauseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3F91175C9310047653D /* pauseOverlay.png */; };
 		7DE7C4011175D0360047653D /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C3FF1175D0360047653D /* pauseButton.png */; };
 		7DE7C4021175D0360047653D /* pauseButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE7C4001175D0360047653D /* pauseButtonOn.png */; };
+		7DF69F81120ACB3400DED9E9 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF69F80120ACB3400DED9E9 /* tutorial.mp3 */; };
+		7DF69F8B120ACF8300DED9E9 /* creditsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF69F8A120ACF8300DED9E9 /* creditsBackground.png */; };
 		7DFF221E11A94D5B003B4C79 /* titleScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
@@ -824,6 +826,8 @@
 		7DE7C3F91175C9310047653D /* pauseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseOverlay.png; sourceTree = "<group>"; };
 		7DE7C3FF1175D0360047653D /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Buttons/pauseButton.png; sourceTree = "<group>"; };
 		7DE7C4001175D0360047653D /* pauseButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButtonOn.png; path = Buttons/pauseButtonOn.png; sourceTree = "<group>"; };
+		7DF69F80120ACB3400DED9E9 /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tutorial.mp3; path = Music/tutorial.mp3; sourceTree = "<group>"; };
+		7DF69F8A120ACF8300DED9E9 /* creditsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditsBackground.png; sourceTree = "<group>"; };
 		7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = titleScreen.mp3; path = Music/titleScreen.mp3; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -1136,6 +1140,7 @@
 		38F17B6B115A9C70007CAB05 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7DF69F8A120ACF8300DED9E9 /* creditsBackground.png */,
 				7D782C36120039B8000542E1 /* textBackground.png */,
 				7D638C4811FCD5EF00FC4907 /* highlightSmall.png */,
 				7D638C3411FCD2F100FC4907 /* blockoutOverlay1.png */,
@@ -1454,6 +1459,7 @@
 		7DFF221C11A94D4D003B4C79 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				7DF69F80120ACB3400DED9E9 /* tutorial.mp3 */,
 				7D71B09111F46353009DD7E0 /* play.mp3 */,
 				7D74C05711BD02D700E57B2F /* levelSelect.mp3 */,
 				7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */,
@@ -1819,6 +1825,8 @@
 				7DA53E7511FD9ABE001D336F /* spring-easy.tmx in Resources */,
 				7DA53E7611FD9ABE001D336F /* triangle-easy.tmx in Resources */,
 				7D782C37120039B8000542E1 /* textBackground.png in Resources */,
+				7DF69F81120ACB3400DED9E9 /* tutorial.mp3 in Resources */,
+				7DF69F8B120ACF8300DED9E9 /* creditsBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

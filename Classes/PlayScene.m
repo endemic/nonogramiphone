@@ -272,7 +272,7 @@
 		
 		// Play music if allowed
 		if ([GameDataManager sharedManager].playMusic)
-			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"play.mp3"];
 		
 		// If the player was in the middle of a puzzle, restore the variables from where they left off
 		if ([GameState sharedGameState].restoreLevel)

@@ -15,9 +15,9 @@
 
 @interface TitleLayer : CCLayer { }
 
--(void) goToLevelSelect: (id)sender;
--(void) goToTutorial: (id)sender;
--(void) goToOptions: (id)sender;
-
+- (void)goToLevelSelect:(id)sender;
+- (void)goToTutorial:(id)sender;
+- (void)goToOptions:(id)sender;
+- (void)goToCredits:(id)sender;
 @end
 
