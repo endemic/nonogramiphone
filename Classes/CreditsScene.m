@@ -41,15 +41,15 @@
 		 Special thanks to Andrew, Andy, Ben, Jason and Neven
 		 */
 		
-		NSString *creditsText = @"Art, code & music\nNathan Demick\n\nSpecial thanks to\nAndrew\nAndy\nBen\nJason\nNeven";
-		CCLabel *creditsLabel = [CCLabel labelWithString:creditsText dimensions:CGSizeMake(320, 400) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:24];
-		[creditsLabel setPosition:ccp(160, 140)];
+		NSString *creditsText = @"Art, code & music\nNathan Demick\n\nSpecial thanks to\nAndrew\nAndy\nBen\nBrendan\nJason\nNeven";
+		CCLabel *creditsLabel = [CCLabel labelWithString:creditsText dimensions:CGSizeMake(320, 400) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+		[creditsLabel setPosition:ccp(160, 55)];
 		[self addChild:creditsLabel z:1];
 		
 		// Create "back" button that takes us back to the home screen
 		CCMenuItem *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButtonOn.png" target:self selector:@selector(goToTitle:)];
 		CCMenu *backMenu = [CCMenu menuWithItems:backButton, nil];
-		[backMenu setPosition:ccp(160, 63)];
+		[backMenu setPosition:ccp(160, 50)];
 		[self addChild:backMenu z:1];
 	}
 	return self;

@@ -50,7 +50,7 @@
 		// Determine if player has completed all levels
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
 		BOOL showCredits = TRUE;
-		for (int i = 0; i < 100; i++) 
+		for (int i = 0; i < [levelTimes count]; i++) 
 		{
 			if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
 			{
