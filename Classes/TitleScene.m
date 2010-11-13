@@ -22,13 +22,8 @@
 {
 	if ((self = [super init]))
 	{
-		// Set up background
-		CCSprite *background = [CCSprite spriteWithFile:@"titleBackground.png"];		// Create background sprite object
-		[background setPosition:ccp(160, 240)];											// Move background to center of screen
-		[self addChild:background z:0];													// Add background with lowest z-index
-		
 		// Add "scene" container
-		[self addChild:[TitleLayer node] z:1];
+		[self addChild:[TitleLayer node] z:0];
 	}
 	return self;
 }
@@ -41,12 +36,38 @@
 -(id) init
 {
 	if ((self = [super init]))
-	{		
-		// Set up buttons
-		CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" disabledImage:@"playButton.png" target:self selector:@selector(goToLevelSelect:)];
-		CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton.png"	selectedImage:@"tutorialButtonOn.png" disabledImage:@"tutorialButton.png" target:self selector:@selector(goToTutorial:)];
-		CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButton.png" target:self selector:@selector(goToOptions:)];
+	{
+		// Check if running on iPad
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+			iPad = YES;
+		else
+			iPad = NO;
 		
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
+		// Set up background
+		//if (iPad)
+		//	CCSprite *background = [CCSprite spriteWithFile:@"titleBackground-hd.png"];		// Create background sprite object
+		//else
+		CCSprite *background = [CCSprite spriteWithFile:@"titleBackground.png"];		// Create background sprite object
+		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];			// Move background to center of screen
+		[self addChild:background z:0];													// Add background with lowest z-index
+		
+		// Set up buttons
+//		if (iPad)
+//		{
+//			CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton-hd.png" selectedImage:@"playButtonOn-hd.png" target:self selector:@selector(goToLevelSelect:)];
+//			CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton-hd.png"	selectedImage:@"tutorialButtonOn-hd.png" target:self selector:@selector(goToTutorial:)];
+//			CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton-hd.png" selectedImage:@"optionsButtonOn-hd.png" target:self selector:@selector(goToOptions:)];
+//		}
+//		else 
+		//{
+			CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+			CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton.png"	selectedImage:@"tutorialButtonOn.png" target:self selector:@selector(goToTutorial:)];
+			CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" target:self selector:@selector(goToOptions:)];
+		//}
+
 		// Determine if player has completed all levels
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
 		BOOL showCredits = TRUE;
@@ -73,7 +94,8 @@
 
 			
 		[menu alignItemsVertically];
-		[menu setPosition:ccp(160, 100)];
+		//[menu setPosition:ccp(160, 100)];
+		[menu setPosition:ccp(winSize.width / 2, winSize.height / 4.8)];
 		[self addChild:menu	z:1];
 		
 		// Preload the rest of the required SFX/music resources

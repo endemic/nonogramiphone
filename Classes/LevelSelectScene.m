@@ -18,13 +18,8 @@
 {
 	if ((self = [super init]))
 	{
-		// Add up background
-		CCSprite *background = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
-		[background setPosition:ccp(160,240)];
-		[self addChild:background z:0];
-		
 		// Add layer
-		[self addChild:[LevelSelectLayer node] z:1];
+		[self addChild:[LevelSelectLayer node] z:0];
 	}
 	return self;
 }
@@ -32,14 +27,20 @@
 @end
 
 // Level select layer
-// Level manager is a singleton?
-// Maybe use NSSelectorFromString to select levels?
 @implementation LevelSelectLayer
 
 - (id)init
 {
 	if ((self = [super init]))
 	{
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
+		// Add up background
+		CCSprite *background = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
+		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];
+		[self addChild:background z:0];
+		
 		// Play music if allowed
 		if ([GameDataManager sharedManager].playMusic)
 			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];

@@ -24,6 +24,9 @@
 
 @interface PlayLayer : CCLayer 
 {
+	// Convenience var to determine if on tablet
+	bool iPad;
+	
 	// Sprites that show the current cursor location
 	CCSprite *horizontalHighlight, *verticalHighlight;
 	
@@ -63,9 +66,6 @@
 	
 	// Shows % complete of puzzle
 	CCLabel *percentComplete;
-	
-	// For debuggin' the position of a person's finger!
-	//CCSprite *pixelTarget;
 	
 	// For timer calculation/display
 	int minutesLeft, secondsLeft;

@@ -13,7 +13,10 @@
 @interface TitleScene : CCScene { }
 @end
 
-@interface TitleLayer : CCLayer { }
+@interface TitleLayer : CCLayer 
+{
+	bool iPad;
+}
 
 - (void)goToLevelSelect:(id)sender;
 - (void)goToTutorial:(id)sender;

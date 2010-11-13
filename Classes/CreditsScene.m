@@ -29,9 +29,12 @@
 {
 	if ((self = [super init]))
 	{
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
 		// Show credits background here
 		CCSprite *background = [CCSprite spriteWithFile:@"creditsBackground.png"];
-		[background setPosition:ccp(160, 240)];
+		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:background z:0];
 		
 		[self setIsTouchEnabled:YES];
@@ -42,15 +45,17 @@
 		 */
 		
 		NSString *creditsText = @"Art, code & music\nNathan Demick\n\nSpecial thanks to\nAndrew\nAndy\nBen\nBrendan\nJason\nNeven";
-		CCLabel *creditsLabel = [CCLabel labelWithString:creditsText dimensions:CGSizeMake(320, 400) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
-		[creditsLabel setPosition:ccp(160, 55)];
+		CCLabel *creditsLabel = [CCLabel labelWithString:creditsText dimensions:CGSizeMake(winSize.width, winSize.height) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+		//[creditsLabel setPosition:ccp(160, 55)];
+		[creditsLabel setPosition:ccp(winSize.width / 2, winSize.height / 8.75)];
 		[self addChild:creditsLabel z:1];
 		
 		// Create "back" button that takes us back to the home screen
 		CCMenuItem *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButtonOn.png" target:self selector:@selector(goToTitle:)];
 		CCMenu *backMenu = [CCMenu menuWithItems:backButton, nil];
-		[backMenu setPosition:ccp(160, 50)];
-		[self addChild:backMenu z:1];
+		//[backMenu setPosition:ccp(160, 50)];
+		[backMenu setPosition:ccp(winSize.width / 2, winSize.height / 9.75)];
+		[self addChild:backMenu z:2];
 	}
 	return self;
 }

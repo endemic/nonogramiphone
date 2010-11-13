@@ -32,6 +32,7 @@
 	// To keep track of a win condition
 	int hits, misses;
 	
+	// What button the user selected, whether the game is paused or not
 	bool fillButtonSelected, paused;
 }
 

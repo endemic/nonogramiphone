@@ -36,6 +36,12 @@
 		// Set touch enabled
 		[self setIsTouchEnabled:YES];
 		
+		// Check if running on iPad
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+			iPad = YES;
+		else
+			iPad = NO;
+		
 		// Add background to center of scene
 		CCSprite *background = [CCSprite spriteWithFile:@"playBackground.png"];
 		[background.texture setAliasTexParameters];	// Make aliased
