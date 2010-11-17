@@ -16,10 +16,8 @@
 {
 	if ((self = [super init]))
 	{
-		CCSprite *background = [CCSprite spriteWithFile:@"optionsBackground.png"];
-		[background setPosition:ccp(160,240)];
-		[self addChild:background z:0];
-		[self addChild:[OptionsLayer node] z:1];
+		// Add main layer for scene
+		[self addChild:[OptionsLayer node] z:0];
 	}
 	return self;
 }
@@ -32,13 +30,46 @@
 {
 	if ((self = [super init]))
 	{
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
+		// Check if running on iPad
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+			iPad = YES;
+		else
+			iPad = NO;
+		
+		// Init some local UI vars
+		CCSprite *background;
+		CCMenuItem *sfxOnButton, *sfxOffButton, *musicOnButton, *musicOffButton, *backButton;
+		CCRadioMenu *sfxMenu, *musicMenu;
+		CCMenu *backMenu;
+		
+		if (iPad)
+			background = [CCSprite spriteWithFile:@"optionsBackground-hd.png"];
+		else
+			background = [CCSprite spriteWithFile:@"optionsBackground.png"];
+
+		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];
+		[self addChild:background z:0];
+		
 		// Create buttons, etc. for optionz!
-		CCMenuItem *sfxOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton.png" selectedImage:@"onButtonSelected.png" target:self selector:@selector(sfxOn:)];
-		CCMenuItem *sfxOffButton = [CCMenuItemImage itemFromNormalImage:@"offButton.png" selectedImage:@"offButtonSelected.png" target:self selector:@selector(sfxOff:)];
-		CCRadioMenu *sfxMenu = [CCRadioMenu menuWithItems:sfxOnButton, sfxOffButton, nil];
+		if (iPad)
+		{
+			sfxOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton-hd.png" selectedImage:@"onButtonSelected-hd.png" target:self selector:@selector(sfxOn:)];
+			sfxOffButton = [CCMenuItemImage itemFromNormalImage:@"offButton-hd.png" selectedImage:@"offButtonSelected-hd.png" target:self selector:@selector(sfxOff:)];
+		}
+		else 
+		{
+			sfxOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton.png" selectedImage:@"onButtonSelected.png" target:self selector:@selector(sfxOn:)];
+			sfxOffButton = [CCMenuItemImage itemFromNormalImage:@"offButton.png" selectedImage:@"offButtonSelected.png" target:self selector:@selector(sfxOff:)];
+		}
+
+		sfxMenu = [CCRadioMenu menuWithItems:sfxOnButton, sfxOffButton, nil];
 		
 		[sfxMenu alignItemsHorizontally];
-		[sfxMenu setPosition:ccp(200, 160)];
+		//[sfxMenu setPosition:ccp(200, 160)];
+		[sfxMenu setPosition:ccp(winSize.width / 1.6, winSize.height / 2.9)];
 		
 		// Decide which button is highlighted
 		if ([GameDataManager sharedManager].playSFX == TRUE)
@@ -54,12 +85,22 @@
 		
 		[self addChild:sfxMenu z:1];
 		
-		CCMenuItem *musicOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton.png" selectedImage:@"onButtonSelected.png" target:self selector:@selector(musicOn:)];
-		CCMenuItem *musicOffButton = [CCMenuItemImage itemFromNormalImage:@"offButton.png" selectedImage:@"offButtonSelected.png" target:self selector:@selector(musicOff:)];
-		CCRadioMenu *musicMenu = [CCRadioMenu menuWithItems:musicOnButton, musicOffButton, nil];
+		if (iPad)
+		{
+			musicOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton-hd.png" selectedImage:@"onButtonSelected-hd.png" target:self selector:@selector(musicOn:)];
+			musicOffButton = [CCMenuItemImage itemFromNormalImage:@"offButton-hd.png" selectedImage:@"offButtonSelected-hd.png" target:self selector:@selector(musicOff:)];			
+		}
+		else
+		{
+			musicOnButton = [CCMenuItemImage itemFromNormalImage:@"onButton.png" selectedImage:@"onButtonSelected.png" target:self selector:@selector(musicOn:)];
+			musicOffButton = [CCMenuItemImage itemFromNormalImage:@"offButton.png" selectedImage:@"offButtonSelected.png" target:self selector:@selector(musicOff:)];
+		}
+
+		musicMenu = [CCRadioMenu menuWithItems:musicOnButton, musicOffButton, nil];
 		
 		[musicMenu alignItemsHorizontally];
-		[musicMenu setPosition:ccp(200, 210)];
+		//[musicMenu setPosition:ccp(200, 210)];
+		[musicMenu setPosition:ccp(winSize.width / 1.6, winSize.height * 0.4375)];
 		
 		// Decide which button is highlighted
 		if ([GameDataManager sharedManager].playMusic == TRUE)
@@ -76,9 +117,14 @@
 		[self addChild:musicMenu z:1];
 		
 		// Create "back" button that takes us back to the home screen
-		CCMenuItem *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButtonOn.png" target:self selector:@selector(goToTitleScreen:)];
-		CCMenu *backMenu = [CCMenu menuWithItems:backButton, nil];
-		[backMenu setPosition:ccp(160, 63)];
+		if (iPad)
+			backButton = [CCMenuItemImage itemFromNormalImage:@"backButton-hd.png" selectedImage:@"backButtonOn-hd.png" target:self selector:@selector(goToTitleScreen:)];
+		else
+			backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButtonOn.png" target:self selector:@selector(goToTitleScreen:)];
+
+		backMenu = [CCMenu menuWithItems:backButton, nil];
+		//[backMenu setPosition:ccp(160, 63)];
+		[backMenu setPosition:ccp(winSize.width / 2, winSize.height * 0.13125)];
 		[self addChild:backMenu z:1];
 	}
 	return self;

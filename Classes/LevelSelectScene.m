@@ -36,8 +36,18 @@
 		// Get window size
 		CGSize winSize = [CCDirector sharedDirector].winSize;
 		
+		// Check if running on iPad
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+			iPad = YES;
+		else
+			iPad = NO;
+		
+		CCSprite *background;
 		// Add up background
-		CCSprite *background = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
+		if (iPad)
+			background = [CCSprite spriteWithFile:@"levelSelectBackground-hd.png"];
+		else
+			background = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
 		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:background z:0];
 		
@@ -46,61 +56,96 @@
 			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelSelect.mp3"];
 		
 		// Set up "previous" button
-		previousButton = [CCMenuItemImage itemFromNormalImage:@"prevButton.png" selectedImage:@"prevButtonOn.png" disabledImage:@"prevButtonDisabled.png" target:self selector:@selector(showPreviousLevel:)];
+		if (iPad)
+			previousButton = [CCMenuItemImage itemFromNormalImage:@"prevButton-hd.png" selectedImage:@"prevButtonOn-hd.png" disabledImage:@"prevButtonDisabled-hd.png" target:self selector:@selector(showPreviousLevel:)];
+		else
+			previousButton = [CCMenuItemImage itemFromNormalImage:@"prevButton.png" selectedImage:@"prevButtonOn.png" disabledImage:@"prevButtonDisabled.png" target:self selector:@selector(showPreviousLevel:)];
 		CCMenu *previousButtonMenu = [CCMenu menuWithItems:previousButton, nil];
-		[previousButtonMenu setPosition:ccp(30, 300)];
+		//[previousButtonMenu setPosition:ccp(30, 300)];
+		[previousButtonMenu setPosition:ccp(winSize.width * 0.09375, winSize.height * 0.625)];
 		[self addChild:previousButtonMenu z:1];
 		
 		// Set up "next" button
-		nextButton = [CCMenuItemImage itemFromNormalImage:@"nextButton.png" selectedImage:@"nextButtonOn.png" disabledImage:@"nextButtonDisabled.png" target:self selector:@selector(showNextLevel:)];
+		if (iPad)
+			nextButton = [CCMenuItemImage itemFromNormalImage:@"nextButton-hd.png" selectedImage:@"nextButtonOn-hd.png" disabledImage:@"nextButtonDisabled-hd.png" target:self selector:@selector(showNextLevel:)];
+		else
+			nextButton = [CCMenuItemImage itemFromNormalImage:@"nextButton.png" selectedImage:@"nextButtonOn.png" disabledImage:@"nextButtonDisabled.png" target:self selector:@selector(showNextLevel:)];
 		CCMenu *nextButtonMenu = [CCMenu menuWithItems:nextButton, nil];
-		[nextButtonMenu setPosition:ccp(290, 300)];
+		//[nextButtonMenu setPosition:ccp(290, 300)];
+		[nextButtonMenu setPosition:ccp(winSize.width * 0.90625, winSize.height * 0.625)];
 		[self addChild:nextButtonMenu z:1];
 		
 		// Set up play/back buttons
-		CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" target:self selector:@selector(playLevel:)];
-		CCMenuItem *backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButton.png" target:self selector:@selector(goToTitle:)];
+		CCMenuItem *playButton, *backButton;
+		if (iPad)
+		{
+			playButton = [CCMenuItemImage itemFromNormalImage:@"playButton-hd.png" selectedImage:@"playButtonOn-hd.png" target:self selector:@selector(playLevel:)];
+			backButton = [CCMenuItemImage itemFromNormalImage:@"backButton-hd.png" selectedImage:@"backButtonOn-hd.png" target:self selector:@selector(goToTitle:)];
+		}
+		else
+		{
+			playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" target:self selector:@selector(playLevel:)];
+			backButton = [CCMenuItemImage itemFromNormalImage:@"backButton.png" selectedImage:@"backButtonOn.png" target:self selector:@selector(goToTitle:)];
+		}
 		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, backButton, nil];
 		[playButtonMenu alignItemsVertically];
-		[playButtonMenu setPosition:ccp(160, 50)];
+		[playButtonMenu setPosition:ccp(winSize.width / 2, winSize.height / 9.6)];
 		[self addChild:playButtonMenu z:1];
 		
 		// Get best times/attempts
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
 		// Set up labels to show level number, difficulty, times, etc.
 		
+		// Determine some font sizes!
+		int headerFontSize, fontSize;
+		if (iPad)
+		{
+			headerFontSize = 96;
+			fontSize = 32;
+		}
+		else
+		{
+			headerFontSize = 48;
+			fontSize = 16;
+		}
+		
 		// Large headline that shows level number
-		headerLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"Level %i", [GameDataManager sharedManager].currentLevel] dimensions:CGSizeMake(320, 40) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:48];
-		[headerLabel setPosition:ccp(160, 440)];
+		headerLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"Level %i", [GameDataManager sharedManager].currentLevel] dimensions:CGSizeMake(winSize.width, winSize.height / 10) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:headerFontSize];
+		//[headerLabel setPosition:ccp(winSize.width / 2, 440)];
+		[headerLabel setPosition:ccp(winSize.width / 2, winSize.height / 1.1)];
 		[headerLabel setColor:ccc3(255,255,255)];
 		[headerLabel.texture setAliasTexParameters];
 		[self addChild:headerLabel z:4];
 
 		// Details for each level
 		// Difficulty
-		difficultyLabel = [CCLabel labelWithString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[difficultyLabel setPosition:ccp(265, 171)];
+		difficultyLabel = [CCLabel labelWithString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
+		//[difficultyLabel setPosition:ccp(265, 171)];
+		[difficultyLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.35625)];
 		[difficultyLabel setColor:ccc3(255,255,255)];
 		[difficultyLabel.texture setAliasTexParameters];
 		[self addChild:difficultyLabel z:3];
 		
 		// # of attempts
-		attemptsLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[attemptsLabel setPosition:ccp(265, 152)];
+		attemptsLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
+		//[attemptsLabel setPosition:ccp(265, 152)];
+		[attemptsLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.316666666666667)];
 		[attemptsLabel setColor:ccc3(255,255,255)];
 		[attemptsLabel.texture setAliasTexParameters];
 		[self addChild:attemptsLabel z:3];
 		
 		// First time completed
-		firstTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[firstTimeLabel setPosition:ccp(265, 133)];
+		firstTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
+		//[firstTimeLabel setPosition:ccp(265, 133)];
+		[firstTimeLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.277083333333333)];
 		[firstTimeLabel setColor:ccc3(255,255,255)];
 		[firstTimeLabel.texture setAliasTexParameters];
 		[self addChild:firstTimeLabel z:3];
 		
 		// Best time completed
-		bestTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"] dimensions:CGSizeMake(150, 15) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:16];
-		[bestTimeLabel setPosition:ccp(265, 114)];
+		bestTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
+		//[bestTimeLabel setPosition:ccp(265, 114)];
+		[bestTimeLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.2375)];
 		[bestTimeLabel setColor:ccc3(255,255,255)];
 		[bestTimeLabel.texture setAliasTexParameters];
 		[self addChild:bestTimeLabel z:3];
@@ -148,7 +193,7 @@
 		}
 		
 		[levelDisplayList replaceObjectAtIndex:i withObject:s];
-		[s setPosition:ccp(160, 300)];
+		[s setPosition:ccp(winSize.width / 2, winSize.height / 1.6)];
 		[self addChild:s];
 		
 		// Set prev/next buttons as disabled if needed

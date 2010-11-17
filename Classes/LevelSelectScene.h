@@ -26,6 +26,8 @@
 	// Prev/next buttons
 	CCMenuItem *previousButton;
 	CCMenuItem *nextButton;
+	
+	bool iPad;
 }
 
 - (void)showNextLevel:(id)sender;

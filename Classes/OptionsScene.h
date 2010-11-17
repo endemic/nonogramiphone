@@ -13,6 +13,9 @@
 
 @end
 
-@interface OptionsLayer : CCLayer { }
+@interface OptionsLayer : CCLayer 
+{
+	bool iPad;
+}
 
 @end

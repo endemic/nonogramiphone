@@ -37,40 +37,45 @@
 {
 	if ((self = [super init]))
 	{
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
 		// Check if running on iPad
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 			iPad = YES;
 		else
 			iPad = NO;
 		
-		// Get window size
-		CGSize winSize = [CCDirector sharedDirector].winSize;
+		// Init some local UI variables
+		CCSprite *background;
+		CCMenuItem *playButton, *tutorialButton, *optionsButton;
+		CCMenu *menu;
 		
 		// Set up background
-		//if (iPad)
-		//	CCSprite *background = [CCSprite spriteWithFile:@"titleBackground-hd.png"];		// Create background sprite object
-		//else
-		CCSprite *background = [CCSprite spriteWithFile:@"titleBackground.png"];		// Create background sprite object
+		if (iPad)
+			background = [CCSprite spriteWithFile:@"titleBackground-hd.png"];		// Create background sprite object
+		else
+			background = [CCSprite spriteWithFile:@"titleBackground.png"];		// Create background sprite object
 		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];			// Move background to center of screen
 		[self addChild:background z:0];													// Add background with lowest z-index
 		
 		// Set up buttons
-//		if (iPad)
-//		{
-//			CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton-hd.png" selectedImage:@"playButtonOn-hd.png" target:self selector:@selector(goToLevelSelect:)];
-//			CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton-hd.png"	selectedImage:@"tutorialButtonOn-hd.png" target:self selector:@selector(goToTutorial:)];
-//			CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton-hd.png" selectedImage:@"optionsButtonOn-hd.png" target:self selector:@selector(goToOptions:)];
-//		}
-//		else 
-		//{
-			CCMenuItem *playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
-			CCMenuItem *tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton.png"	selectedImage:@"tutorialButtonOn.png" target:self selector:@selector(goToTutorial:)];
-			CCMenuItem *optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" target:self selector:@selector(goToOptions:)];
-		//}
+		if (iPad)
+		{
+			playButton = [CCMenuItemImage itemFromNormalImage:@"playButton-hd.png" selectedImage:@"playButtonOn-hd.png" target:self selector:@selector(goToLevelSelect:)];
+			tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton-hd.png"	selectedImage:@"tutorialButtonOn-hd.png" target:self selector:@selector(goToTutorial:)];
+			optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton-hd.png" selectedImage:@"optionsButtonOn-hd.png" target:self selector:@selector(goToOptions:)];
+		}
+		else 
+		{
+			playButton = [CCMenuItemImage itemFromNormalImage:@"playButton.png" selectedImage:@"playButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+			tutorialButton = [CCMenuItemImage itemFromNormalImage:@"tutorialButton.png"	selectedImage:@"tutorialButtonOn.png" target:self selector:@selector(goToTutorial:)];
+			optionsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" target:self selector:@selector(goToOptions:)];
+		}
 
 		// Determine if player has completed all levels
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
-		BOOL showCredits = TRUE;
+		bool showCredits = TRUE;
 		for (int i = 0; i < [levelTimes count]; i++) 
 		{
 			if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
@@ -81,17 +86,15 @@
 		}
 		
 		// Show "credits" button if all levels have been completed
-		CCMenu *menu;
 		if (showCredits)
 		{
-			CCMenuItem *creditsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" disabledImage:@"optionsButton.png" target:self selector:@selector(goToCredits:)];
+			CCMenuItem *creditsButton = [CCMenuItemImage itemFromNormalImage:@"optionsButton.png" selectedImage:@"optionsButtonOn.png" target:self selector:@selector(goToCredits:)];
 			menu = [CCMenu menuWithItems:playButton, tutorialButton, optionsButton, creditsButton, nil];		// Create container menu object
 		}
 		else 
 		{
 			menu = [CCMenu menuWithItems:playButton, tutorialButton, optionsButton, nil];		// Create container menu object
 		}
-
 			
 		[menu alignItemsVertically];
 		//[menu setPosition:ccp(160, 100)];
