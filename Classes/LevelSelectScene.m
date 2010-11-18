@@ -121,7 +121,8 @@
 		// Difficulty
 		difficultyLabel = [CCLabel labelWithString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[difficultyLabel setPosition:ccp(265, 171)];
-		[difficultyLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.35625)];
+		if (iPad) [difficultyLabel setPosition:ccp(530 + 96, 342 + 32)];	// Doubled, with 64px/34px gutters
+		else [difficultyLabel setPosition:ccp(265, 171)];
 		[difficultyLabel setColor:ccc3(255,255,255)];
 		[difficultyLabel.texture setAliasTexParameters];
 		[self addChild:difficultyLabel z:3];
@@ -129,7 +130,8 @@
 		// # of attempts
 		attemptsLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[attemptsLabel setPosition:ccp(265, 152)];
-		[attemptsLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.316666666666667)];
+		if (iPad) [attemptsLabel setPosition:ccp(530 + 96, 304 + 32)];	// Doubled, with 64px/34px gutters
+		else [attemptsLabel setPosition:ccp(265, 152)];
 		[attemptsLabel setColor:ccc3(255,255,255)];
 		[attemptsLabel.texture setAliasTexParameters];
 		[self addChild:attemptsLabel z:3];
@@ -137,7 +139,8 @@
 		// First time completed
 		firstTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[firstTimeLabel setPosition:ccp(265, 133)];
-		[firstTimeLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.277083333333333)];
+		if (iPad) [firstTimeLabel setPosition:ccp(530 + 96, 266 + 32)];
+		else [firstTimeLabel setPosition:ccp(265, 133)];
 		[firstTimeLabel setColor:ccc3(255,255,255)];
 		[firstTimeLabel.texture setAliasTexParameters];
 		[self addChild:firstTimeLabel z:3];
@@ -145,7 +148,8 @@
 		// Best time completed
 		bestTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[bestTimeLabel setPosition:ccp(265, 114)];
-		[bestTimeLabel setPosition:ccp(winSize.width * 0.828125, winSize.height * 0.2375)];
+		if (iPad) [bestTimeLabel setPosition:ccp(530 + 96, 228 + 32)];
+		else [bestTimeLabel setPosition:ccp(265, 114)];
 		[bestTimeLabel setColor:ccc3(255,255,255)];
 		[bestTimeLabel.texture setAliasTexParameters];
 		[self addChild:bestTimeLabel z:3];
@@ -164,12 +168,14 @@
 		if ([[[levelTimes objectAtIndex:i] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
 		{
 			// Load question mark
-			s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+			if (iPad) s = [CCSprite spriteWithFile:@"defaultLevelPreview-hd.png"];
+			else s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
 		}
 		else 
 		{
 			// Create blank sprite
-			s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+			if (iPad) s = [CCSprite spriteWithFile:@"blankLevelPreview-hd.png"];
+			else s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
 			
 			// Load puzzle data
 			NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:i];
@@ -179,15 +185,25 @@
 			
 			// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 			int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
-
-			[tileMap setScale:0.75];
-			[tileMap setPosition:ccp(25 + offset, 35 + offset)];
+			
+			if (iPad)
+			{
+				offset *= 2;
+				[tileMap setScale:1.5];
+				[tileMap setPosition:ccp(50 + offset, 70 + offset)];
+			}
+			else
+			{
+				[tileMap setScale:0.75];
+				[tileMap setPosition:ccp(25 + offset, 35 + offset)];
+			}
 			[s addChild:tileMap];
 			
 			// Draw title
-			CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+			CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:fontSize];
 			[label setColor:ccc3(00, 00, 00)];
-			[label setPosition:ccp(100, 15)];
+			if (iPad) [label setPosition:ccp(200, 30)];
+			else [label setPosition:ccp(100, 15)];
 			[label.texture setAliasTexParameters];
 			[s addChild:label];
 		}
@@ -247,6 +263,9 @@
 {
 	if ([GameDataManager sharedManager].currentLevel > 1)
 	{
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
 		/**
 		 Add code that loads a sprite for new level here, moves it into place, then moves current sprite off screen and removes it from parent
 		 */
@@ -262,12 +281,14 @@
 			if ([[[levelTimes objectAtIndex:previousLevel] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
 			{
 				// Load question mark
-				s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+				if (iPad) s = [CCSprite spriteWithFile:@"defaultLevelPreview-hd.png"];
+				else  s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
 			}
 			else 
 			{
 				// Create blank sprite
-				s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+				if (iPad) s = [CCSprite spriteWithFile:@"blankLevelPreview-hd.png"];
+				else s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
 				
 				// Load puzzle data
 				NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:previousLevel];
@@ -291,18 +312,18 @@
 			}
 			
 			[levelDisplayList replaceObjectAtIndex:previousLevel withObject:s];
-			[s setPosition:ccp(-140, 300)];
+			[s setPosition:ccp(-winSize.width / 2, winSize.height / 1.6)];
 			[self addChild:s];
 		}
 		else
 		{
 			s = [levelDisplayList objectAtIndex:previousLevel];
-			[s setPosition:ccp(-140, 300)];
+			[s setPosition:ccp(-winSize.width / 2, winSize.height / 1.6)];
 			[self addChild:s];
 		}
 		
 		// Move current offscreen
-		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(440, 300)];
+		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(winSize.width * 1.5, winSize.height / 1.6)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
 		id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
@@ -312,7 +333,7 @@
 		[GameDataManager sharedManager].currentLevel--;
 
 		// Move previous onscreen
-		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(160, 300)];
+		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(winSize.width / 2, winSize.height / 1.6)];
 		id showLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(showLevelData:)];
 		
 		[[levelDisplayList objectAtIndex:previousLevel] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];
@@ -332,6 +353,9 @@
 {
 	if ([GameDataManager sharedManager].currentLevel < [[GameDataManager sharedManager].levels count])
 	{
+		// Get window size
+		CGSize winSize = [CCDirector sharedDirector].winSize;
+		
 		NSArray *levelTimes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"levelTimes"];
 		int currentLevel = [GameDataManager sharedManager].currentLevel - 1;
 		int nextLevel = [GameDataManager sharedManager].currentLevel;
@@ -344,12 +368,14 @@
 			if ([[[levelTimes objectAtIndex:nextLevel] objectForKey:@"firstTime"] isEqualToString:@"--:--"])
 			{
 				// Load question mark
-				s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
+				if (iPad) s = [CCSprite spriteWithFile:@"defaultLevelPreview-hd.png"];
+				else s = [CCSprite spriteWithFile:@"defaultLevelPreview.png"];
 			}
 			else 
 			{
 				// Create blank sprite
-				s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
+				if (iPad) s = [CCSprite spriteWithFile:@"blankLevelPreview-hd.png"];
+				else s = [CCSprite spriteWithFile:@"blankLevelPreview.png"];
 				
 				// Load puzzle data
 				NSDictionary *level = [[GameDataManager sharedManager].levels objectAtIndex:nextLevel];
@@ -359,7 +385,7 @@
 				
 				// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 				int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
-				NSLog(@"Offset: %i", offset);
+				//NSLog(@"Offset: %i", offset);
 				
 				[tileMap setScale:0.75];
 				[tileMap setPosition:ccp(25 + offset, 35 + offset)];
@@ -374,19 +400,19 @@
 			}
 			
 			[levelDisplayList replaceObjectAtIndex:nextLevel withObject:s];
-			[s setPosition:ccp(440, 300)];
+			[s setPosition:ccp(winSize.width * 1.5, winSize.height / 1.6)];
 			[self addChild:s];
 		}
 		else 
 		{
 			s = [levelDisplayList objectAtIndex:nextLevel];
-			[s setPosition:ccp(440, 300)];
+			[s setPosition:ccp(winSize.width * 1.5, winSize.height / 1.6)];
 			[self addChild:s];
 		}
 
 		
 		// Move current offscreen
-		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-140, 300)];
+		id moveOffScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(-winSize.width / 2, winSize.height / 1.6)];
 		id hideLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(hideLevelData:)];
 		id removeSelfAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
@@ -396,7 +422,7 @@
 		[GameDataManager sharedManager].currentLevel++;
 
 		// Move next onscreen
-		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(160, 300)];
+		id moveOnScreenAction = [CCMoveTo actionWithDuration:0.75 position:ccp(winSize.width / 2, winSize.height / 1.6)];
 		id showLevelDataAction = [CCCallFunc actionWithTarget:self selector:@selector(showLevelData:)];
 		
 		[[levelDisplayList objectAtIndex:nextLevel] runAction:[CCSequence actions:moveOnScreenAction, showLevelDataAction, nil]];

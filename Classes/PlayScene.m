@@ -77,7 +77,7 @@
 		CCRadioMenu *actionsMenu = [CCRadioMenu menuWithItems:fillButton, markButton, nil];
 		[actionsMenu alignItemsHorizontally];
 		
-		if (iPad) [actionsMenu setPosition:ccp(160, 23)];
+		if (iPad) [actionsMenu setPosition:ccp(320 + 64, 46 + 32)];	// Doubled, with 64px/32px guttahs
 		else [actionsMenu setPosition:ccp(160, 23)];
 		
 		[actionsMenu setSelectedItem:markButton];
@@ -91,7 +91,7 @@
 		
 		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
 		
-		if (iPad) [pauseMenu setPosition:ccp(50 + 64, 830 + 34)];		// Doubled, with 64px/34px gutters
+		if (iPad) [pauseMenu setPosition:ccp(50 + 64, 830 + 32)];		// Doubled, with 64px/32px gutters
 		else [pauseMenu setPosition:ccp(25, 415)];
 		[self addChild:pauseMenu z:3];
 
@@ -118,7 +118,7 @@
 			CCSprite *blockoutOverlay;
 			if (iPad) blockoutOverlay = [CCSprite spriteWithFile:@"blockoutOverlay2-hd.png"];
 			else blockoutOverlay = [CCSprite spriteWithFile:@"blockoutOverlay2.png"];
-			if (iPad) [blockoutOverlay setPosition:ccp(winSize.width / 2, 400 + 34)];
+			if (iPad) [blockoutOverlay setPosition:ccp(winSize.width / 2, 400 + 32)];
 			else [blockoutOverlay setPosition:ccp(160, 200)];
 			[self addChild:blockoutOverlay z:1];
 			
@@ -167,7 +167,7 @@
 			// Create new label; set position/color/aliasing values
 			if (iPad) verticalClues[i] = [CCLabel labelWithString:@"0\n" dimensions:CGSizeMake(50, 200) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:32];
 			else verticalClues[i] = [CCLabel labelWithString:@"0\n" dimensions:CGSizeMake(25, 100) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
-			if (iPad) [verticalClues[i] setPosition:ccp(240 + 64 + (blockSize * i), 600 + 34)];		// Doubled, plus 64px/34px gutters
+			if (iPad) [verticalClues[i] setPosition:ccp(240 + 64 + (blockSize * i), 600 + 32)];		// Doubled, plus 64px/32px gutters
 			else [verticalClues[i] setPosition:ccp(120 + (blockSize * i), 300)];
 			[verticalClues[i] setColor:ccc3(0,0,0)];
 			[verticalClues[i].texture setAliasTexParameters];
@@ -175,7 +175,7 @@
 		
 			if (iPad) horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(200, 30) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:32];
 			else horizontalClues[i] = [CCLabel labelWithString:@"0 " dimensions:CGSizeMake(100, 15) alignment:UITextAlignmentRight fontName:@"slkscr.ttf" fontSize:16];
-			if (iPad) [horizontalClues[i] setPosition:ccp(120 + 64, 120 + 34 + (blockSize * i) + ((10 - puzzleSize) * blockSize))];	// Bizarre placement here corrects for smaller than 10x10 grids
+			if (iPad) [horizontalClues[i] setPosition:ccp(120 + 64, 120 + 32 + (blockSize * i) + ((10 - puzzleSize) * blockSize))];	// Bizarre placement here corrects for smaller than 10x10 grids
 			else [horizontalClues[i] setPosition:ccp(60, 60 + (blockSize * i) + ((10 - puzzleSize) * blockSize))];	// Bizarre placement here corrects for smaller than 10x10 grids
 			[horizontalClues[i] setColor:ccc3(0,0,0)];
 			[horizontalClues[i].texture setAliasTexParameters];
@@ -255,13 +255,13 @@
 			{
 				[verticalClues[i] setString:cluesTextVert];
 				NSArray *numberOfVerticalClues = [cluesTextVert componentsSeparatedByString:@"\n"];
-				if (iPad) [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 400 + 34 + (([numberOfVerticalClues count] - 1) * 34))];	// Doubled, plus extra 64px/34px gutter
+				if (iPad) [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 400 + 32 + (([numberOfVerticalClues count] - 1) * 34))];	// Doubled, plus extra 64px/32px gutter
 				else [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 200 + (([numberOfVerticalClues count] - 1) * 17))];
 			}
 			else
 			{
 				[verticalClues[i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
-				if (iPad) [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 434 + 34)];	// Doubled, plus extra 64px/34px gutter
+				if (iPad) [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 434 + 32)];	// Doubled, plus extra 64px/32px gutter
 				else [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
 			}
 		}
@@ -269,7 +269,7 @@
 		// Set up % complete label
 		if (iPad) percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:96];
 		else percentComplete = [CCLabel labelWithString:@"00" fontName:@"slkscr.ttf" fontSize:48];
-		if (iPad) [percentComplete setPosition:ccp(320 + 64, 844 + 34)];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [percentComplete setPosition:ccp(520 + 64, 844 + 32)];	// Doubled, plus extra 64px/32px gutter
 		else [percentComplete setPosition:ccp(260, 422)];
 		[percentComplete.texture setAliasTexParameters];
 		[percentComplete setColor:ccc3(00, 00, 00)];
@@ -283,7 +283,7 @@
 		
 		if (iPad) minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", minutesLeft] dimensions:CGSizeMake(200, 200) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:96];
 		else minutesLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", minutesLeft] dimensions:CGSizeMake(100, 100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
-		if (iPad) [minutesLeftLabel setPosition:ccp(220 + 64, 790 + 34)];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [minutesLeftLabel setPosition:ccp(220 + 64, 790 + 32)];	// Doubled, plus extra 64px/32px gutter
 		else [minutesLeftLabel setPosition:ccp(110, 395)];
 		[minutesLeftLabel setColor:ccc3(00, 00, 00)];
 		[minutesLeftLabel.texture setAliasTexParameters];
@@ -291,7 +291,7 @@
 		
 		if (iPad) secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", secondsLeft] dimensions:CGSizeMake(200,200) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:96];
 		else secondsLeftLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%02d", secondsLeft] dimensions:CGSizeMake(100,100) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:48];
-		if (iPad) [secondsLeftLabel setPosition:ccp(220 + 64, 710 + 34)];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [secondsLeftLabel setPosition:ccp(220 + 64, 710 + 32)];	// Doubled, plus extra 64px/32px gutter
 		else [secondsLeftLabel setPosition:ccp(110, 355)];
 		[secondsLeftLabel setColor:ccc3(00, 00, 00)];
 		[secondsLeftLabel.texture setAliasTexParameters];
@@ -304,7 +304,7 @@
 		if (iPad) pauseOverlay = [CCSprite spriteWithFile:@"pauseOverlay-hd.png"];
 		else pauseOverlay = [CCSprite spriteWithFile:@"pauseOverlay.png"];
 		[pauseOverlay.texture setAliasTexParameters];
-		if (iPad) [pauseOverlay setPosition:ccp(-winSize.width / 2, 400 + 34)];	// Doubled, plus 34px vertical gutter
+		if (iPad) [pauseOverlay setPosition:ccp(-winSize.width / 2, 400 + 32)];	// Doubled, plus 34px vertical gutter
 		else [pauseOverlay setPosition:ccp(-winSize.width / 2, 200)];	// It's off screen to the left
 		[self addChild:pauseOverlay z:4];
 		
@@ -318,7 +318,7 @@
 		
 		CCMenu *overlayMenu = [CCMenu menuWithItems:resumeButton, quitButton, nil];		// Create container menu object
 		[overlayMenu alignItemsVertically];
-		if (iPad) [overlayMenu setPosition:ccp(300 + 64, 100 + 34)];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [overlayMenu setPosition:ccp(300, 100)];	// Doubled
 		else [overlayMenu setPosition:ccp(150, 50)];
 		[pauseOverlay addChild:overlayMenu];
 		
@@ -378,7 +378,7 @@
 						if (iPad) offset = ((10 - puzzleSize) * 16) / 2;
 						
 						// Set position
-						if (iPad) [b setPosition:ccp(32 + 64 + ((col + 1) * 16) + offset, 512 + 34 + ((row + 1) * 16) - offset)]; 	// Doubled, plus extra 64px/34px gutter
+						if (iPad) [b setPosition:ccp(32 + 64 + ((col + 1) * 16) + offset, 512 + 32 + ((row + 1) * 16) - offset)]; 	// Doubled, plus extra 64px/32px gutter
 						else [b setPosition:ccp(16 + ((col + 1) * 8) + offset, 256 + ((row + 1) * 8) - offset)];
 						
 						// Add childz
@@ -389,7 +389,7 @@
 						else blockSprites[row][col] = [CCSprite spriteWithFile:@"fillIcon.png"];
 						
 						// Set positioning
-						if (iPad) [blockSprites[row][col] setPosition:ccp(col * blockSize + 240 + 64, row * blockSize + 120 + 34)];	// Doubled, plus extra 64px/34px gutter
+						if (iPad) [blockSprites[row][col] setPosition:ccp(col * blockSize + 240 + 64, row * blockSize + 120 + 32)];	// Doubled, plus extra 64px/32px gutter
 						else [blockSprites[row][col] setPosition:ccp(col * blockSize + 120, row * blockSize + 60)];
 						
 						[blockSprites[row][col].texture setAliasTexParameters];
@@ -402,7 +402,7 @@
 						if (iPad) blockSprites[row][col] = [CCSprite spriteWithFile:@"markIcon-hd.png"];
 						else blockSprites[row][col] = [CCSprite spriteWithFile:@"markIcon.png"];
 						
-						if (iPad) [blockSprites[row][col] setPosition:ccp(col * blockSize + 240 + 64, row * blockSize + 120 + 34)];	// Doubled, plus extra 64px/34px gutter
+						if (iPad) [blockSprites[row][col] setPosition:ccp(col * blockSize + 240 + 64, row * blockSize + 120 + 32)];	// Doubled, plus extra 64px/32px gutter
 						else [blockSprites[row][col] setPosition:ccp(col * blockSize + 120, row * blockSize + 60)];
 						
 						[blockSprites[row][col].texture setAliasTexParameters];
@@ -448,7 +448,7 @@
 				[self unschedule:@selector(timer:)];
 				
 				// Make sure the overlay over puzzle
-				if (iPad) [pauseOverlay setPosition:ccp(winSize.width / 2, 400 + 34)];	// Doubled, plus extra 64px/34px gutter
+				if (iPad) [pauseOverlay setPosition:ccp(winSize.width / 2, 400 + 32)];	// Doubled, plus extra 64px/32px gutter
 				else [pauseOverlay setPosition:ccp(winSize.width / 2, 200)];
 				
 				// Hide cursor highlights
@@ -516,11 +516,11 @@
 		[self unschedule:@selector(timer:)];
 		
 		// Make sure the overlay is on the left side of the screen
-		if (iPad) [pauseOverlay setPosition:ccp(-winSize.width / 2, 400 + 34)];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [pauseOverlay setPosition:ccp(-winSize.width / 2, 400 + 32)];	// Doubled, plus extra 64px/32px gutter
 		else [pauseOverlay setPosition:ccp(-winSize.width / 2, 200)];
 		
 		// Move pause overlay into position
-		if (iPad) [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width / 2, 400 + 34)]];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width / 2, 400 + 32)]];	// Doubled, plus extra 64px/32px gutter
 		else [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width / 2, 200)]];
 
 		// Hide cursor highlights
@@ -551,7 +551,7 @@
 		[self schedule:@selector(timer:) interval:1.0];
 		
 		// Move pause overlay off screen to the right, then reset position offscreen left
-		if (iPad) [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width * 1.5, 400 + 34)]];	// Doubled, plus extra 64px/34px gutter
+		if (iPad) [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width * 1.5, 400 + 32)]];	// Doubled, plus extra 64px/32px gutter
 		else [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width * 1.5, 200)]];
 		
 		// Show cursor highlights
@@ -600,24 +600,42 @@
 		startPoint = previousPoint = [[CCDirector sharedDirector] convertToGL:[touch locationInView:[touch view]]];
 		cursorPoint = ccp(verticalHighlight.position.x, horizontalHighlight.position.y);
 		
-		tapCount = touch.tapCount;
-		if (justMovedCursor)
+		if (!iPad)
 		{
-			tapCount--;
-			justMovedCursor = FALSE;
+			tapCount = touch.tapCount;
+			if (justMovedCursor)
+			{
+				tapCount--;
+				justMovedCursor = FALSE;
+			}
+			
+			lockedRow = lockedColumn = -1;
+			
+			// If player has double tapped, try to place a mark/fill in the new block - or any regular ol' touch on iPad
+			if (tapCount > 1)
+			{
+				switch (tapAction) 
+				{
+					case FILL: [self fillBlock]; break;
+					case MARK: [self markBlock]; break;
+				}
+			}
 		}
-		
-		lockedRow = lockedColumn = -1;
-		
-		// If player has double tapped, try to place a mark/fill in the new block - or any regular ol' touch on iPad
-		if (tapCount > 1 && iPad)
+		else 
 		{
-			switch (tapAction) 
+			// Get row/column values - change the number of pixels blank space
+			currentRow = (startPoint.y - 100 + 32) / blockSize + 1;
+			currentColumn = (startPoint.x - 220 + 64) / blockSize + 1;
+			
+			// Only try to mark/fill blocks if the user's finger has moved to a new block
+			if (currentRow >= 1 && currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize)
+				switch (tapAction) 
 			{
 				case FILL: [self fillBlock]; break;
 				case MARK: [self markBlock]; break;
 			}
 		}
+
 	}
 }
 
@@ -703,11 +721,11 @@
 		else
 		{
 			// Get row/column values - change the number of pixels blank space
-			currentRow = (cursorPoint.y - 50) / blockSize + 1;
-			currentColumn = (cursorPoint.x - 110) / blockSize + 1;
+			currentRow = (currentPoint.y - 100 + 32) / blockSize + 1;
+			currentColumn = (currentPoint.x - 220 + 64) / blockSize + 1;
 			
 			// Only try to mark/fill blocks if the user's finger has moved to a new block
-			if (previousRow != currentRow || previousColumn != currentColumn)
+			if (currentRow >= 1 && currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize && (previousRow != currentRow || previousColumn != currentColumn))
 				switch (tapAction) 
 				{
 					case FILL: [self fillBlock]; break;
@@ -743,8 +761,17 @@
 		// If not marked, mark
 		if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
 		{
-			blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon.png"];
-			[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+			if (iPad)
+			{
+				blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon-hd.png"];
+				[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp((currentColumn - 1) * blockSize + 284 - (blockSize / 2), (currentRow - 1) * blockSize + 132 - (blockSize / 2))];
+			}
+			else 
+			{
+				blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon.png"];
+				[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+			}
+
 			[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 			[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 			blockStatus[currentRow - 1][currentColumn - 1] = MARKED;

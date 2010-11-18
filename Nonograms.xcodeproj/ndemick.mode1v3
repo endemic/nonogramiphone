@@ -267,8 +267,6 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>50F414EB1069373D002A0D5E</string>
-								<string>38F17B6B115A9C70007CAB05</string>
-								<string>380CA11511663E8F002B3E1C</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -329,7 +327,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7D6525BB1294665C00328590</string>
+										<string>7DEE72141294ECA20089395C</string>
 										<key>history</key>
 										<array>
 											<string>7D8D6F5511DF63E800099F67</string>
@@ -373,10 +371,10 @@
 											<string>7DE940AF1293880D00D9C265</string>
 											<string>7DE940B01293880D00D9C265</string>
 											<string>7DE940B21293880D00D9C265</string>
-											<string>7DF1807312944AE4001B3251</string>
 											<string>7DF1807412944AE4001B3251</string>
 											<string>7D6525B91294665C00328590</string>
-											<string>7D6525BA1294665C00328590</string>
+											<string>7DEE71FE1294E5690089395C</string>
+											<string>7DEE71FF1294E5690089395C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -434,9 +432,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7D6525BC1294665C00328590</string>
+				<string>7DEE71AF1294D9D40089395C</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7D6525BD1294665C00328590</string>
+				<string>7DEE71B01294D9D40089395C</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -574,8 +572,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7DB8C2B8115BB9630097C084</string>
 		<string>/Users/ndemick/iPhone/NonogramMadness/Nonograms.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 55 1221 723 0 0 1280 778 </string>
@@ -599,7 +599,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>LevelSelectScene.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -616,6 +616,8 @@
 							<string>283pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -655,7 +657,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7DB8C2B8115BB9630097C084</string>
-				<string>7D6525BE1294665C00328590</string>
+				<string>7DEE71B11294D9D40089395C</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -777,13 +779,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7DE9409212937AF100D9C265</string>
+				<string>7DEE71DE1294E0300089395C</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7DE9409312937AF100D9C265</string>
-				<string>7DE9409412937AF100D9C265</string>
-				<string>7DE9409512937AF100D9C265</string>
-				<string>7DE9409612937AF100D9C265</string>
-				<string>7DE9409712937AF100D9C265</string>
+				<string>7DEE71DF1294E0300089395C</string>
+				<string>7DEE71E01294E0300089395C</string>
+				<string>7DEE71E11294E0300089395C</string>
+				<string>7DEE71E21294E0300089395C</string>
+				<string>7DEE71E31294E0300089395C</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -939,7 +941,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>7DE9407A12937A6A00D9C265</string>
+				<string>7DEE71E41294E0300089395C</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
