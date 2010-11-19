@@ -121,7 +121,7 @@
 		// Difficulty
 		difficultyLabel = [CCLabel labelWithString:[[[GameDataManager sharedManager].levels objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"difficulty"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[difficultyLabel setPosition:ccp(265, 171)];
-		if (iPad) [difficultyLabel setPosition:ccp(530 + 96, 342 + 32)];	// Doubled, with 64px/34px gutters
+		if (iPad) [difficultyLabel setPosition:ccp(532 + 96, 340 + 32)];	// Doubled, with 64px/34px gutters
 		else [difficultyLabel setPosition:ccp(265, 171)];
 		[difficultyLabel setColor:ccc3(255,255,255)];
 		[difficultyLabel.texture setAliasTexParameters];
@@ -130,7 +130,7 @@
 		// # of attempts
 		attemptsLabel = [CCLabel labelWithString:[NSString stringWithFormat:@"%@", [[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"attempts"]] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[attemptsLabel setPosition:ccp(265, 152)];
-		if (iPad) [attemptsLabel setPosition:ccp(530 + 96, 304 + 32)];	// Doubled, with 64px/34px gutters
+		if (iPad) [attemptsLabel setPosition:ccp(532 + 96, 302 + 32)];	// Doubled, with 64px/34px gutters
 		else [attemptsLabel setPosition:ccp(265, 152)];
 		[attemptsLabel setColor:ccc3(255,255,255)];
 		[attemptsLabel.texture setAliasTexParameters];
@@ -139,7 +139,7 @@
 		// First time completed
 		firstTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"firstTime"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[firstTimeLabel setPosition:ccp(265, 133)];
-		if (iPad) [firstTimeLabel setPosition:ccp(530 + 96, 266 + 32)];
+		if (iPad) [firstTimeLabel setPosition:ccp(532 + 96, 264 + 32)];
 		else [firstTimeLabel setPosition:ccp(265, 133)];
 		[firstTimeLabel setColor:ccc3(255,255,255)];
 		[firstTimeLabel.texture setAliasTexParameters];
@@ -148,7 +148,7 @@
 		// Best time completed
 		bestTimeLabel = [CCLabel labelWithString:[[levelTimes objectAtIndex:[GameDataManager sharedManager].currentLevel - 1] objectForKey:@"bestTime"] dimensions:CGSizeMake(winSize.width / 2, fontSize) alignment:UITextAlignmentLeft fontName:@"slkscr.ttf" fontSize:fontSize];
 		//[bestTimeLabel setPosition:ccp(265, 114)];
-		if (iPad) [bestTimeLabel setPosition:ccp(530 + 96, 228 + 32)];
+		if (iPad) [bestTimeLabel setPosition:ccp(532 + 96, 226 + 32)];
 		else [bestTimeLabel setPosition:ccp(265, 114)];
 		[bestTimeLabel setColor:ccc3(255,255,255)];
 		[bestTimeLabel.texture setAliasTexParameters];
@@ -200,7 +200,9 @@
 			[s addChild:tileMap];
 			
 			// Draw title
-			CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:fontSize];
+			CCLabel *label;
+			if (iPad) label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(400, 50) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:fontSize];
+			else label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:fontSize];
 			[label setColor:ccc3(00, 00, 00)];
 			if (iPad) [label setPosition:ccp(200, 30)];
 			else [label setPosition:ccp(100, 15)];
@@ -299,14 +301,26 @@
 				// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 				int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
 				
-				[tileMap setScale:0.75];
-				[tileMap setPosition:ccp(25 + offset, 35 + offset)];
+				if (iPad)
+				{
+					offset *= 2;
+					[tileMap setScale:1.5];
+					[tileMap setPosition:ccp(50 + offset, 70 + offset)];
+				}
+				else
+				{
+					[tileMap setScale:0.75];
+					[tileMap setPosition:ccp(25 + offset, 35 + offset)];
+				}
 				[s addChild:tileMap];
 				
 				// Draw title
-				CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+				CCLabel *label;
+				if (iPad) label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(400, 50) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:32];
+				else label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
 				[label setColor:ccc3(00, 00, 00)];
-				[label setPosition:ccp(100, 15)];
+				if (iPad) [label setPosition:ccp(200, 30)];
+				else [label setPosition:ccp(100, 15)];
 				[label.texture setAliasTexParameters];
 				[s addChild:label];
 			}
@@ -385,16 +399,27 @@
 				
 				// Get details regarding how large the level is (e.g. 10x10 or 5x5)
 				int offset = ((10 - tileMap.mapSize.width) * 15) / 2;
-				//NSLog(@"Offset: %i", offset);
-				
-				[tileMap setScale:0.75];
-				[tileMap setPosition:ccp(25 + offset, 35 + offset)];
+
+				if (iPad)
+				{
+					offset *= 2;
+					[tileMap setScale:1.5];
+					[tileMap setPosition:ccp(50 + offset, 70 + offset)];
+				}
+				else
+				{
+					[tileMap setScale:0.75];
+					[tileMap setPosition:ccp(25 + offset, 35 + offset)];	
+				}
 				[s addChild:tileMap];
 				
 				// Draw title
-				CCLabel *label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
+				CCLabel *label;
+				if (iPad) label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(400, 50) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:32];
+				else label = [CCLabel labelWithString:[level objectForKey:@"title"] dimensions:CGSizeMake(200, 25) alignment:UITextAlignmentCenter fontName:@"slkscr.ttf" fontSize:16];
 				[label setColor:ccc3(00, 00, 00)];
-				[label setPosition:ccp(100, 15)];
+				if (iPad) [label setPosition:ccp(200, 30)];
+				else [label setPosition:ccp(100, 15)];
 				[label.texture setAliasTexParameters];
 				[s addChild:label];
 			}

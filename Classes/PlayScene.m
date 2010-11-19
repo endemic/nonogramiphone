@@ -624,16 +624,19 @@
 		else 
 		{
 			// Get row/column values - change the number of pixels blank space
-			currentRow = (startPoint.y - 100 + 32) / blockSize + 1;
-			currentColumn = (startPoint.x - 220 + 64) / blockSize + 1;
+			currentRow = (startPoint.y - 132) / blockSize + 1;
+			currentColumn = (startPoint.x - 284) / blockSize + 1;
 			
-			// Only try to mark/fill blocks if the user's finger has moved to a new block
-			if (currentRow >= 1 && currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize)
+			//NSLog(@"Tap point: %f, %f", startPoint.x, startPoint.y);
+			//NSLog(@"Current row/col: %i, %i", currentRow, currentColumn);
+			
+			// Only try to mark/fill blocks if the user's finger is in valid place
+			if (currentRow >= 1 && 11 - currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize)
 				switch (tapAction) 
-			{
-				case FILL: [self fillBlock]; break;
-				case MARK: [self markBlock]; break;
-			}
+				{
+					case FILL: [self fillBlock]; break;
+					case MARK: [self markBlock]; break;
+				}
 		}
 
 	}
@@ -721,11 +724,11 @@
 		else
 		{
 			// Get row/column values - change the number of pixels blank space
-			currentRow = (currentPoint.y - 100 + 32) / blockSize + 1;
-			currentColumn = (currentPoint.x - 220 + 64) / blockSize + 1;
+			currentRow = (currentPoint.y - 132) / blockSize + 1;
+			currentColumn = (currentPoint.x - 284) / blockSize + 1;
 			
 			// Only try to mark/fill blocks if the user's finger has moved to a new block
-			if (currentRow >= 1 && currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize && (previousRow != currentRow || previousColumn != currentColumn))
+			if (currentRow >= 1 && 11 - currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize && (previousRow != currentRow || previousColumn != currentColumn))
 				switch (tapAction) 
 				{
 					case FILL: [self fillBlock]; break;
@@ -764,7 +767,7 @@
 			if (iPad)
 			{
 				blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon-hd.png"];
-				[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp((currentColumn - 1) * blockSize + 284 - (blockSize / 2), (currentRow - 1) * blockSize + 132 - (blockSize / 2))];
+				[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp((currentColumn - 1) * blockSize + 284 + (blockSize / 2), (currentRow - 1) * blockSize + 132 + (blockSize / 2))];
 			}
 			else 
 			{
@@ -814,8 +817,17 @@
 			[[SimpleAudioEngine sharedEngine] playEffect:@"hit.wav"];
 		
 		// Draw a "filled" block to the puzzle grid
-		blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
-		[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		if (iPad)
+		{
+			blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon-hd.png"];
+			[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp((currentColumn - 1) * blockSize + 284 + (blockSize / 2), (currentRow - 1) * blockSize + 132 + (blockSize / 2))];
+		}
+		else 
+		{
+			blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"fillIcon.png"];
+			[blockSprites[currentRow - 1][currentColumn - 1] setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		}
+
 		[blockSprites[currentRow - 1][currentColumn - 1].texture setAliasTexParameters];
 		[self addChild:blockSprites[currentRow - 1][currentColumn - 1] z:2];
 		
@@ -829,9 +841,22 @@
 		//NSLog(@"blockStatus[%i][%i] == %i (index %i)", currentRow - 1, currentColumn - 1, FILLED, tmpIndex);
 
 		// Add sprite to "minimap" section as well - these don't have to be referenced later
-		CCSprite *b = [CCSprite spriteWithFile:@"8pxSquare.png"];
-		int offset = ((10 - puzzleSize) * 8) / 2;
-		[b setPosition:ccp(16 + (currentColumn * 8) + offset, 256 + (currentRow * 8) - offset)];	// New position
+		CCSprite *b;
+		int offset;
+		
+		if (iPad)
+		{
+			b = [CCSprite spriteWithFile:@"8pxSquare-hd.png"];
+			offset = ((10 - puzzleSize) * 16) / 2;
+			[b setPosition:ccp(32 + 64 + (currentColumn * 16) + offset, 512 + 32 + (currentRow * 16) - offset)];	// Doubled, 64px/32px gutters
+		}
+		else
+		{
+			b = [CCSprite spriteWithFile:@"8pxSquare.png"];
+			offset = ((10 - puzzleSize) * 8) / 2;
+			[b setPosition:ccp(16 + (currentColumn * 8) + offset, 256 + (currentRow * 8) - offset)];	// New position
+		}
+
 		[self addChild:b z:2];
 		
 		// Increment correct guess counter
@@ -896,13 +921,14 @@
 		if (iPad) size = 32;
 		
 		CCLabel *label = [CCLabel labelWithString:@" " fontName:@"slkscr.ttf" fontSize:size];
-		[label setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
+		if (iPad) [label setPosition:ccp((currentColumn - 1) * blockSize + 284 + (blockSize / 2), (currentRow - 1) * blockSize + 132 + (blockSize / 2))];
+		else [label setPosition:ccp(verticalHighlight.position.x, horizontalHighlight.position.y)];
 		[label setColor:ccc3(0,0,0)];
 		[label.texture setAliasTexParameters];
 		[self addChild:label z:5];
 		
 		// Move and fade actions
-		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(verticalHighlight.position.x, horizontalHighlight.position.y + blockSize)];
+		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(label.position.x, label.position.y + blockSize)];
 		id fadeAction = [CCFadeOut actionWithDuration:1];
 		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeFromParent:)];
 		
@@ -969,16 +995,27 @@
 	verticalHighlight.visible = FALSE;
 	
 	// Create/move "you win" overlay down on screen
-	CCSprite *overlay = [CCSprite spriteWithFile:@"winOverlay.png"];
+	CCSprite *overlay;
+	if (iPad)
+	{
+		overlay = [CCSprite spriteWithFile:@"winOverlay-hd.png"];
+		[overlay setPosition:ccp(384, 1292)];	// Doubled, 64px/32px gutters
+	}
+	else
+	{
+		overlay = [CCSprite spriteWithFile:@"winOverlay.png"];
+		[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
+	}
 	[overlay.texture setAliasTexParameters];
-	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
 	[self addChild:overlay z:4];
 	
 	// Add buttons to overlay
-	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
-	
+	CCMenuItem *continueButton;
+	if (iPad) continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton-hd.png" selectedImage:@"continueButtonOn-hd.png" target:self selector:@selector(goToLevelSelect:)];
+	else continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
 	CCMenu *overlayMenu = [CCMenu menuWithItems:continueButton, nil];		// Create container menu object
-	[overlayMenu setPosition:ccp(150, 50)];
+	if (iPad) [overlayMenu setPosition:ccp(300, 100)];
+	else [overlayMenu setPosition:ccp(150, 50)];
 	[overlay addChild:overlayMenu];
 	
 	// Load level!
@@ -990,22 +1027,27 @@
 	// Offset the position of the displayed level sprite - the following logic is arcane, don't try to understand it
 	int offset = ((10 - tileMap.mapSize.width) * (blockSize / 2)) / 2;
 	
-	// Try to shrink by half
-	[tileMap setScale:0.5];
+	// Try to shrink by half if not iPadz
+	if (!iPad) [tileMap setScale:0.5];
 	
-	[tileMap setPosition:ccp(100 + offset, 125 + offset)];
+	if (iPad) [tileMap setPosition:ccp(200 + offset, 250 + offset)];
+	else [tileMap setPosition:ccp(100 + offset, 125 + offset)];
 	[overlay addChild:tileMap];
 	
 	// Write image title on to overlay
-	CCLabel *levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
+	CCLabel *levelTitle;
+	if (iPad) levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:48];
+	else  levelTitle = [CCLabel labelWithString:[level objectForKey:@"title"] fontName:@"slkscr.ttf" fontSize:24];
 	[levelTitle setColor:ccc3(00, 00, 00)];
 	[levelTitle.texture setAliasTexParameters];
-	[levelTitle setPosition:ccp(150, 100)];
+	if (iPad) [levelTitle setPosition:ccp(300, 200)];
+	else [levelTitle setPosition:ccp(150, 100)];
 	
 	[overlay addChild:levelTitle];
 	
 	// Move overlay downwards over play area
-	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	if (iPad) [overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(384, 432)]];
+	else [overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playMusic)
@@ -1035,7 +1077,7 @@
 	// If currentTime is lower than bestTime
 	if ([currentTime compare:bestTime options:NSNumericSearch] == NSOrderedAscending)
 	{
-		NSLog(@"Replacing %@ with %@ as the best time", bestTime, currentTime);
+		//NSLog(@"Replacing %@ with %@ as the best time", bestTime, currentTime);
 		[timeData setValue:currentTime forKey:@"bestTime"];
 	}
 	
@@ -1060,22 +1102,36 @@
 	verticalHighlight.visible = FALSE;
 	
 	// Create/move "you win" overlay down on screen
-	CCSprite *overlay = [CCSprite spriteWithFile:@"loseOverlay.png"];
+	CCSprite *overlay;
+	if (iPad) overlay = [CCSprite spriteWithFile:@"loseOverlay-hd.png"];
+	else overlay = [CCSprite spriteWithFile:@"loseOverlay.png"];
 	[overlay.texture setAliasTexParameters];
-	[overlay setPosition:ccp(160, 630)];	// It's off screen to the top
+	if (iPad) [overlay setPosition:ccp(384, 1292)];	// Doubled, 64px/32px gutters
+	else [overlay setPosition:ccp(160, 630)];	// It's off screen to the top
 	[self addChild:overlay z:4];
 	
 	// Add buttons to overlay
-	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
-	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" target:self selector:@selector(retryLevel:)];
-	
-	CCMenu *overlayMenu = [CCMenu menuWithItems:retryButton, continueButton, nil];		// Create container menu object
+	CCMenuItem *continueButton, *quitButton;
+	if (iPad)
+	{
+		continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton-hd.png" selectedImage:@"continueButtonOn-hd.png" target:self selector:@selector(retryLevel:)];
+		quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton-hd.png" selectedImage:@"quitButtonOn-hd.png" target:self selector:@selector(goToLevelSelect:)];
+	}
+	else
+	{
+		continueButton = [CCMenuItemImage itemFromNormalImage:@"continueButton.png" selectedImage:@"continueButtonOn.png" target:self selector:@selector(retryLevel:)];
+		quitButton = [CCMenuItemImage itemFromNormalImage:@"quitButton.png" selectedImage:@"quitButtonOn.png" target:self selector:@selector(goToLevelSelect:)];
+	}
+
+	CCMenu *overlayMenu = [CCMenu menuWithItems:continueButton, quitButton, nil];		// Create container menu object
 	[overlayMenu alignItemsVertically];
-	[overlayMenu setPosition:ccp(150, 50)];
+	if (iPad) [overlayMenu setPosition:ccp(300, 100)];
+	else [overlayMenu setPosition:ccp(150, 50)];
 	[overlay addChild:overlayMenu];
 	
 	// Move overlay downwards over play area
-	[overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
+	if (iPad) [overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(384, 432)]];
+	else [overlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(160, 200)]];
 	
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playMusic)
