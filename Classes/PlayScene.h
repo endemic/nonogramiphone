@@ -85,6 +85,9 @@
 	
 	// Variables that help "lock" movement into either vertical or horizontal movement
 	int lockedRow, lockedColumn;
+	
+	// Whether to lock the "mark" action into filling or erasing
+	int lockMark;
 }
 
 - (void)markBlock;

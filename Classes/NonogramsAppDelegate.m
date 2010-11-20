@@ -62,6 +62,15 @@
 	// To convert .wav files: afconvert -v -f WAVE -d LEI16 notworking.wav working.wav
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"buttonPress.wav"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"titleScreen.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"play.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"mark.wav"];
 	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.15];
 	//NSLog(@"Current background music volume: %f", [[SimpleAudioEngine sharedEngine] backgroundMusicVolume]);
 	

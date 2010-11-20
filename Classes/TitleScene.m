@@ -52,10 +52,8 @@
 		CCMenu *menu;
 		
 		// Set up background
-		if (iPad)
-			background = [CCSprite spriteWithFile:@"titleBackground-hd.png"];		// Create background sprite object
-		else
-			background = [CCSprite spriteWithFile:@"titleBackground.png"];		// Create background sprite object
+		if (iPad) background = [CCSprite spriteWithFile:@"titleBackground-hd.png"];		// Create background sprite object
+		else background = [CCSprite spriteWithFile:@"titleBackground.png"];		// Create background sprite object
 		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];			// Move background to center of screen
 		[self addChild:background z:0];													// Add background with lowest z-index
 		
@@ -102,18 +100,18 @@
 		[self addChild:menu	z:1];
 		
 		// Preload the rest of the required SFX/music resources
-		if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) 
-		{
-			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
-			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"play.mp3"];
-			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
-			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
-			[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
-			[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
-			[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
-			[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
-			[[SimpleAudioEngine sharedEngine] preloadEffect:@"mark.wav"];
-		}
+//		if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying]) 
+//		{
+//			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"levelSelect.mp3"];
+//			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"play.mp3"];
+//			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"winJingle.mp3"];
+//			[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"loseJingle.mp3"];
+//			[[SimpleAudioEngine sharedEngine] preloadEffect:@"cursorMove.wav"];
+//			[[SimpleAudioEngine sharedEngine] preloadEffect:@"dud.wav"];
+//			[[SimpleAudioEngine sharedEngine] preloadEffect:@"miss.wav"];
+//			[[SimpleAudioEngine sharedEngine] preloadEffect:@"hit.wav"];
+//			[[SimpleAudioEngine sharedEngine] preloadEffect:@"mark.wav"];
+//		}
 
 		// Play SFX if allowed
 		if ([GameDataManager sharedManager].playMusic && ![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])

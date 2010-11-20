@@ -158,6 +158,7 @@
 	
 	if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
 		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
+		//[[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
 	
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = TRUE;
@@ -172,6 +173,7 @@
 	// Turn off music if it's still playing
 	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
 		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+		//[[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
 	
 	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = FALSE;
@@ -185,7 +187,7 @@
 	// Play SFX if allowed
 	if ([GameDataManager sharedManager].playSFX)
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
-	
+
 	// Return to title sceen
 	[[CCDirector sharedDirector] replaceScene:[CCTurnOffTilesTransition transitionWithDuration:0.5 scene:[TitleScene node]]];
 }

@@ -11,7 +11,10 @@
 @interface CreditsScene : CCScene { }
 @end
 
-@interface CreditsLayer	: CCLayer { }
+@interface CreditsLayer	: CCLayer 
+{
+	bool iPad;
+}
 
 -(void) goToTitle: (id)sender;
 

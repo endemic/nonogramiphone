@@ -24,6 +24,10 @@
 
 @interface TutorialLayer : CCLayer 
 {
+	// Convenience method to check whether user is running on iPadddd
+	// Damn, I need an iPad. C'mon, Nonograms, sell enough so I can buy one!!!
+	bool iPad;
+	
 	// Sprites that show the current cursor location
 	CCSprite *horizontalHighlight, *verticalHighlight;
 	
@@ -86,7 +90,7 @@
 	int step;
 	
 	// Tutorial text
-	NSArray *text;
+	NSMutableArray *text;
 	
 	// White background for instructional text
 	CCSprite *textBackground;
@@ -99,6 +103,9 @@
 	
 	// Variables that help "lock" movement into either vertical or horizontal movement
 	int lockedRow, lockedColumn;
+	
+	// Whether to lock the "mark" action into filling or erasing
+	int lockMark;
 }
 
 - (void)markBlock;

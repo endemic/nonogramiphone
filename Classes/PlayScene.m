@@ -247,7 +247,7 @@
 			}
 			else 
 			{
-				[horizontalClues[(puzzleSize - 1) - i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				[horizontalClues[(puzzleSize - 1) - i] setColor:ccc3(77, 77, 77)];	// Set the text color as lighter since it's a zero - column already completed
 			}
 
 			
@@ -260,7 +260,7 @@
 			}
 			else
 			{
-				[verticalClues[i] setColor:ccc3(66, 66, 66)];	// Set the text color as lighter since it's a zero - column already completed
+				[verticalClues[i] setColor:ccc3(77, 77, 77)];	// Set the text color as lighter since it's a zero - column already completed
 				if (iPad) [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 434 + 32)];	// Doubled, plus extra 64px/32px gutter
 				else [verticalClues[i] setPosition:ccp(verticalClues[i].position.x, 217)];
 			}
@@ -432,10 +432,10 @@
 				}
 				
 				if (rowTotal == filledRowTotal)
-					[horizontalClues[j - 1] setColor:ccc3(66, 66, 66)];
+					[horizontalClues[j - 1] setColor:ccc3(77, 77, 77)];
 				
 				if (columnTotal == filledColumnTotal) 
-					[verticalClues[j - 1] setColor:ccc3(66, 66, 66)];
+					[verticalClues[j - 1] setColor:ccc3(77, 77, 77)];
 			}
 			
 			// Set pause overlay up if enabled
@@ -631,12 +631,15 @@
 			//NSLog(@"Current row/col: %i, %i", currentRow, currentColumn);
 			
 			// Only try to mark/fill blocks if the user's finger is in valid place
-			if (currentRow >= 1 && 11 - currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize)
+			if (11 - currentRow >= 1 && 11 - currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize)
+			{
+				//NSLog(@"Trying to do action!");
 				switch (tapAction) 
 				{
 					case FILL: [self fillBlock]; break;
 					case MARK: [self markBlock]; break;
 				}
+			}
 		}
 
 	}
@@ -728,7 +731,7 @@
 			currentColumn = (currentPoint.x - 284) / blockSize + 1;
 			
 			// Only try to mark/fill blocks if the user's finger has moved to a new block
-			if (currentRow >= 1 && 11 - currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize && (previousRow != currentRow || previousColumn != currentColumn))
+			if (11 - currentRow >= 1 && 11 - currentRow <= puzzleSize && currentColumn >= 1 && currentColumn <= puzzleSize && (previousRow != currentRow || previousColumn != currentColumn))
 				switch (tapAction) 
 				{
 					case FILL: [self fillBlock]; break;
@@ -748,7 +751,8 @@
 	
 	if (touch && !paused)
 	{
-		// Nothing currently here
+		// Remove this value if it existsz
+		lockMark = 0;
 	}
 }
 
@@ -761,9 +765,12 @@
 		if ([GameDataManager sharedManager].playSFX)
 			[[SimpleAudioEngine sharedEngine] playEffect:@"mark.wav"];
 		
-		// If not marked, mark
-		if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED)
+		// If not marked and not locked, mark
+		if (blockStatus[currentRow - 1][currentColumn - 1] != MARKED && (lockMark == 1 || lockMark == 0))
 		{
+			// Lock into making marks!
+			lockMark = 1;
+			
 			if (iPad)
 			{
 				blockSprites[currentRow - 1][currentColumn - 1] = [CCSprite spriteWithFile:@"markIcon-hd.png"];
@@ -785,8 +792,11 @@
 			[[GameState sharedGameState].blockStatus replaceObjectAtIndex:tmpIndex withObject:[NSNumber numberWithInt:MARKED]];
 		}
 		// If marked, remove mark
-		else
+		else if (blockStatus[currentRow - 1][currentColumn - 1] == MARKED && (lockMark == 2 || lockMark == 0))
 		{
+			// Lock into removing marks
+			lockMark = 2;
+			
 			[self removeChild:blockSprites[currentRow - 1][currentColumn - 1] cleanup:FALSE];
 			blockSprites[currentRow - 1][currentColumn - 1] = nil;
 			blockStatus[currentRow - 1][currentColumn - 1] = BLANK;
@@ -882,10 +892,10 @@
 		}
 		
 		if (rowTotal == filledRowTotal)
-			[horizontalClues[(currentRow - 1) - (10 - puzzleSize)] setColor:ccc3(66, 66, 66)];
+			[horizontalClues[(currentRow - 1) - (10 - puzzleSize)] setColor:ccc3(77, 77, 77)];
 		
 		if (columnTotal == filledColumnTotal)
-			[verticalClues[currentColumn - 1] setColor:ccc3(66, 66, 66)];
+			[verticalClues[currentColumn - 1] setColor:ccc3(77, 77, 77)];
 		
 		// Update "% complete" number
 		[percentComplete setString:[NSString stringWithFormat:@"%02d", (int)(((float)hits / (float)totalBlocksInPuzzle) * 100.0)]];
