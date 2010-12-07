@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Triangle</string>
+		<key>filename</key>
+		<string>triangle-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Mask</string>
+		<key>filename</key>
+		<string>mask-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Pinwheel</string>
+		<key>filename</key>
+		<string>pinwheel-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Beginner</string>
+		<key>title</key>
+		<string>Ghost</string>
+		<key>filename</key>
+		<string>ghost-easy.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Exclamation Mark</string>
+		<key>filename</key>
+		<string>exclamationMark.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Musical Note</string>
+		<key>filename</key>
+		<string>note.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Happy</string>
+		<key>filename</key>
+		<string>smiley.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Battery</string>
+		<key>filename</key>
+		<string>battery.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Shield</string>
+		<key>filename</key>
+		<string>shield.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Balloon</string>
+		<key>filename</key>
+		<string>balloon.tmx</string>
+	</dict>
+</array>
+</plist>

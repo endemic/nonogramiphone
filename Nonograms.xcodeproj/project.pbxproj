@@ -379,6 +379,7 @@
 		7DBC423C11902731003EA08A /* robotHead.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC422811902731003EA08A /* robotHead.tmx */; };
 		7DBC423D11902731003EA08A /* spraypaint.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC422911902731003EA08A /* spraypaint.tmx */; };
 		7DBC423E11902731003EA08A /* tutorial.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC422A11902731003EA08A /* tutorial.tmx */; };
+		7DD239B812AEAECF00CB4F96 /* demoLevels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DD239B712AEAECF00CB4F96 /* demoLevels.plist */; };
 		7DDB877A1184CFA6007FB078 /* loseOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87781184CFA6007FB078 /* loseOverlay.png */; };
 		7DDB877B1184CFA6007FB078 /* winOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB87791184CFA6007FB078 /* winOverlay.png */; };
 		7DDB879F1184DD04007FB078 /* blankLevelPreview.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DDB879E1184DD04007FB078 /* blankLevelPreview.png */; };
@@ -862,6 +863,7 @@
 		7DBC422811902731003EA08A /* robotHead.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = robotHead.tmx; path = Maps/robotHead.tmx; sourceTree = "<group>"; };
 		7DBC422911902731003EA08A /* spraypaint.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = spraypaint.tmx; path = Maps/spraypaint.tmx; sourceTree = "<group>"; };
 		7DBC422A11902731003EA08A /* tutorial.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tutorial.tmx; path = Maps/tutorial.tmx; sourceTree = "<group>"; };
+		7DD239B712AEAECF00CB4F96 /* demoLevels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = demoLevels.plist; sourceTree = "<group>"; };
 		7DDB87781184CFA6007FB078 /* loseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loseOverlay.png; sourceTree = "<group>"; };
 		7DDB87791184CFA6007FB078 /* winOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winOverlay.png; sourceTree = "<group>"; };
 		7DDB879E1184DD04007FB078 /* blankLevelPreview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankLevelPreview.png; sourceTree = "<group>"; };
@@ -1549,6 +1551,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7DD239B712AEAECF00CB4F96 /* demoLevels.plist */,
 				7D4A930E129DAC7F000C514B /* Icon-72.png */,
 				7DAA636C129C67D800748D12 /* Icon-Small-50.png */,
 				7DEE71F61294E4830089395C /* Default-Portrait.png */,
@@ -2075,6 +2078,7 @@
 				7D2BADB6129D84FF00E826F8 /* speechBubble.tmx in Resources */,
 				7D2BADB7129D84FF00E826F8 /* wrench.tmx in Resources */,
 				7D4A930F129DAC7F000C514B /* Icon-72.png in Resources */,
+				7DD239B812AEAECF00CB4F96 /* demoLevels.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
