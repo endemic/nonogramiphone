@@ -157,8 +157,8 @@
 		[[SimpleAudioEngine sharedEngine] playEffect:@"buttonPress.wav"];
 	
 	if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
-		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
-		//[[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
+		//[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"titleScreen.mp3"];
+		[[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
 	
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = TRUE;
@@ -172,8 +172,8 @@
 	
 	// Turn off music if it's still playing
 	if ([[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
-		[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-		//[[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
+		//[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+		[[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
 	
 	[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"playMusic"];
 	[GameDataManager sharedManager].playMusic = FALSE;

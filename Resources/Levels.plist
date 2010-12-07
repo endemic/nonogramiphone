@@ -782,9 +782,9 @@
 		<key>difficulty</key>
 		<string>Hard</string>
 		<key>title</key>
-		<string>Pencil</string>
+		<string>Shopping Cart</string>
 		<key>filename</key>
-		<string>pencil.tmx</string>
+		<string>shoppingCart.tmx</string>
 	</dict>
 	<dict>
 		<key>difficulty</key>
@@ -802,5 +802,87 @@
 		<key>filename</key>
 		<string>mouseCursor.tmx</string>
 	</dict>
+	<!-- New as of v1.1 -->
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Nintendo Game</string>
+		<key>filename</key>
+		<string>nintendoCart.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Spade</string>
+		<key>filename</key>
+		<string>spade.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Medium</string>
+		<key>title</key>
+		<string>Camera</string>
+		<key>filename</key>
+		<string>camera.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Speech Bubble</string>
+		<key>filename</key>
+		<string>speechBubble.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Ancient Phone</string>
+		<key>filename</key>
+		<string>phone.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Wrench</string>
+		<key>filename</key>
+		<string>wrench.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Dollar Sign</string>
+		<key>filename</key>
+		<string>dollarSign.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Easy</string>
+		<key>title</key>
+		<string>Bar Graph</string>
+		<key>filename</key>
+		<string>barGraph.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Medal</string>
+		<key>filename</key>
+		<string>medal.tmx</string>
+	</dict>
+	<dict>
+		<key>difficulty</key>
+		<string>Hard</string>
+		<key>title</key>
+		<string>Beginner's Badge</string>
+		<key>filename</key>
+		<string>beginnerBadge.tmx</string>
+	</dict>
+	<!-- unused: cat.tmx -->
 </array>
 </plist>

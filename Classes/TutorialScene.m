@@ -443,6 +443,11 @@
 		if (iPad) [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width / 2, 400 + 32)]];	// Doubled, plus extra 64px/32px gutter
 		else [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width / 2, 200)]];
 		
+		// Hide tutorial text
+		textBackground.visible = FALSE;
+		instructions.visible = FALSE;
+		actions.visible = FALSE;
+		
 		// Hide cursor highlights
 		if (!iPad)
 		{
@@ -472,6 +477,11 @@
 		// Move pause overlay off screen to the right, then reset position offscreen left
 		if (iPad) [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width * 1.5, 400 + 32)]];	// Doubled, plus extra 64px/32px gutter
 		else [pauseOverlay runAction:[CCMoveTo actionWithDuration:0.5 position:ccp(winSize.width * 1.5, 200)]];
+		
+		// Show tutorial text
+		textBackground.visible = TRUE;
+		instructions.visible = TRUE;
+		actions.visible = TRUE;
 		
 		// Show cursor highlights
 		if (!iPad)

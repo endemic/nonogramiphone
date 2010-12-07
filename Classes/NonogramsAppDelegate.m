@@ -75,7 +75,7 @@
 	//NSLog(@"Current background music volume: %f", [[SimpleAudioEngine sharedEngine] backgroundMusicVolume]);
 	
 	// Uncomment this line and the #import above if finding that music does not resume after device sleeps 10+ minutes 
-	// [[CDAudioManager sharedManager] setResignBehavior:kAMRBStopPlay autoHandle:YES];
+	[[CDAudioManager sharedManager] setResignBehavior:kAMRBStopPlay autoHandle:YES];
 	
 	// Load default defaults
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
