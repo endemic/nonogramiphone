@@ -89,6 +89,8 @@
 	[GameDataManager sharedManager].levels = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"]];
 	
 	// If the "demo" flag is set, choose the smaller demoLevels.plist file
+	// [GameDataManager sharedManager].isDemo = TRUE;
+	// if ([GameDataManager sharedManager].isDemo)
 	//[GameDataManager sharedManager].levels = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"demoLevels" ofType:@"plist"]];
 	
 	// Addt'l demo "to do's": Make an "advertisement" layer on top of the LevelSelectScene layer that shows when # of completed levels == total # of levels, store whether it's been shown or not in game singleton

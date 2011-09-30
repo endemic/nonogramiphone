@@ -456,6 +456,7 @@
 		7DEE71D21294DBDA0089395C /* winOverlay-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DEE71C21294DBDA0089395C /* winOverlay-hd.png */; };
 		7DEE71F81294E4830089395C /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DEE71F61294E4830089395C /* Default-Portrait.png */; };
 		7DEE71F91294E4830089395C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DEE71F71294E4830089395C /* Default@2x.png */; };
+		7DEF50D1130D2D630060B930 /* tasks.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7DEF50D0130D2D630060B930 /* tasks.rtf */; };
 		7DF69F81120ACB3400DED9E9 /* tutorial.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DF69F80120ACB3400DED9E9 /* tutorial.mp3 */; };
 		7DF69F8B120ACF8300DED9E9 /* creditsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF69F8A120ACF8300DED9E9 /* creditsBackground.png */; };
 		7DFF221E11A94D5B003B4C79 /* titleScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */; };
@@ -863,6 +864,8 @@
 		7DBC422811902731003EA08A /* robotHead.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = robotHead.tmx; path = Maps/robotHead.tmx; sourceTree = "<group>"; };
 		7DBC422911902731003EA08A /* spraypaint.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = spraypaint.tmx; path = Maps/spraypaint.tmx; sourceTree = "<group>"; };
 		7DBC422A11902731003EA08A /* tutorial.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tutorial.tmx; path = Maps/tutorial.tmx; sourceTree = "<group>"; };
+		7DBE876812CD3DCD009DEA0B /* Free.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Free.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DBE876A12CD3DCD009DEA0B /* Free-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Free-Info.plist"; sourceTree = "<group>"; };
 		7DD239B712AEAECF00CB4F96 /* demoLevels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = demoLevels.plist; sourceTree = "<group>"; };
 		7DDB87781184CFA6007FB078 /* loseOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loseOverlay.png; sourceTree = "<group>"; };
 		7DDB87791184CFA6007FB078 /* winOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winOverlay.png; sourceTree = "<group>"; };
@@ -940,6 +943,7 @@
 		7DEE71C21294DBDA0089395C /* winOverlay-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winOverlay-hd.png"; sourceTree = "<group>"; };
 		7DEE71F61294E4830089395C /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		7DEE71F71294E4830089395C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7DEF50D0130D2D630060B930 /* tasks.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = tasks.rtf; sourceTree = "<group>"; };
 		7DF69F80120ACB3400DED9E9 /* tutorial.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tutorial.mp3; path = Music/tutorial.mp3; sourceTree = "<group>"; };
 		7DF69F8A120ACF8300DED9E9 /* creditsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditsBackground.png; sourceTree = "<group>"; };
 		7DFF221D11A94D5B003B4C79 /* titleScreen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = titleScreen.mp3; path = Music/titleScreen.mp3; sourceTree = "<group>"; };
@@ -984,6 +988,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7DBE876612CD3DCD009DEA0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -992,6 +1003,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* Nonograms.app */,
 				506EE05E10304ED200A389B3 /* libcocos2d libraries.a */,
+				7DBE876812CD3DCD009DEA0B /* Free.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1008,6 +1020,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				7D4A92C9129DA879000C514B /* Entitlements.plist */,
+				7DBE876A12CD3DCD009DEA0B /* Free-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1571,6 +1584,7 @@
 				50F414EF1069373D002A0D5E /* Info.plist */,
 				38287D5C116E15920085B8E2 /* Defaults.plist */,
 				38CD53B61174F21900F1C75B /* Levels.plist */,
+				7DEF50D0130D2D630060B930 /* tasks.rtf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1799,6 +1813,23 @@
 			productReference = 506EE05E10304ED200A389B3 /* libcocos2d libraries.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		7DBE876712CD3DCD009DEA0B /* Free */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DBE876E12CD3DCD009DEA0B /* Build configuration list for PBXNativeTarget "Free" */;
+			buildPhases = (
+				7DBE876412CD3DCD009DEA0B /* Resources */,
+				7DBE876512CD3DCD009DEA0B /* Sources */,
+				7DBE876612CD3DCD009DEA0B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Free;
+			productName = Free;
+			productReference = 7DBE876812CD3DCD009DEA0B /* Free.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1820,6 +1851,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Nonograms */,
 				506EE05D10304ED200A389B3 /* cocos2d libraries */,
+				7DBE876712CD3DCD009DEA0B /* Free */,
 			);
 		};
 /* End PBXProject section */
@@ -2079,6 +2111,14 @@
 				7D2BADB7129D84FF00E826F8 /* wrench.tmx in Resources */,
 				7D4A930F129DAC7F000C514B /* Icon-72.png in Resources */,
 				7DD239B812AEAECF00CB4F96 /* demoLevels.plist in Resources */,
+				7DEF50D1130D2D630060B930 /* tasks.rtf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DBE876412CD3DCD009DEA0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2195,6 +2235,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7DBE876512CD3DCD009DEA0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2290,7 +2337,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ganbaru Games, LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = YES;
@@ -2300,10 +2347,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Nonogram Madness";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "83D24A32-FDDC-41AC-AC5B-7089E6CE207C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
+				debug = 1;
 			};
 			name = Distribution;
 		};
@@ -2346,21 +2394,92 @@
 			};
 			name = Distribution;
 		};
+		7DBE876B12CD3DCD009DEA0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Free-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Free;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7DBE876C12CD3DCD009DEA0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Free-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Free;
+				SDKROOT = iphoneos;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		7DBE876D12CD3DCD009DEA0B /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Free-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Free;
+				SDKROOT = iphoneos;
+			};
+			name = Distribution;
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos4.0]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos4.0]" = "iPhone Developer: Nathan Demick (NK8N934RTW)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos4.0]" = "43BF449C-329F-4CA3-9643-E158F9358500";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -2404,6 +2523,16 @@
 				506EE05F10304ED500A389B3 /* Debug */,
 				506EE06010304ED500A389B3 /* Release */,
 				7D20730411F06E37008FD850 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DBE876E12CD3DCD009DEA0B /* Build configuration list for PBXNativeTarget "Free" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DBE876B12CD3DCD009DEA0B /* Debug */,
+				7DBE876C12CD3DCD009DEA0B /* Release */,
+				7DBE876D12CD3DCD009DEA0B /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

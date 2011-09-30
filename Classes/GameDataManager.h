@@ -17,13 +17,18 @@
 	bool playSFX;
 	bool playMusic;
 	
+	// Array of puzzles
 	NSArray *levels;
+	
+	// Flag to check to see if certain functionality should be limited
+	bool isDemo;
 }
 
 @property int currentLevel;
 @property bool playSFX;
 @property bool playMusic;
 @property (retain) NSArray *levels;
+@property bool isDemo;
 
 +(GameDataManager *)sharedManager;
 

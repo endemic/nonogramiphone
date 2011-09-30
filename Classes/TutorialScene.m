@@ -325,7 +325,7 @@
 		text = [[NSMutableArray arrayWithObjects:
 				@"Welcome to Nonogram Madness! Nonograms are logic puzzles where you fill blocks in a grid to make a picture.",
 				@"You choose which block to fill by using the orange cursor, which you move with your finger.",
-				@"Touch anywhere near the puzzle and move your finger to move the cursor. Why don't you try it out?",
+				@"Touch anywhere on the screen and move your finger to move the cursor. Why don't you try it out?",
 				@"To complete each puzzle, you'll use the numbers above each column and to the left of each row.",
 				@"Those numbers show how many blocks are 'filled' in each row or column.",
 				// Highlight over col #1 (step 5)
